@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <title>olpeh.github.io</title>
 </head>
 
@@ -17,6 +18,13 @@
       <a href="https://olpeh.github.io/wht/">Working Hours Tracker</a>
     </li>
   </ul>
+
+  <script type="text/javascript">
+    var host = "olpe.fi";
+    if ((host == window.location.host) && (window.location.protocol != "https:")) {
+      window.location.protocol = "https";
+    }
+  </script>
 </body>
 
 </html>

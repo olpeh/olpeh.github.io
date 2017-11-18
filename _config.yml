@@ -1,1 +1,3 @@
 include: [".well-known"]
+url: https://olpe.fi
+enforce_ssl: olpe.fi
