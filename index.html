@@ -1,30 +1,11 @@
-<!doctype html>
-<html>
+---
+layout: default
+---
 
-<head>
-  <meta charset="utf-8">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-  <title>olpeh.github.io</title>
-</head>
+<div class="home">
 
-<body>
-  <h1>olpeh.github.io</h1>
-  <p>Here are some of my projects:</p>
-  <ul>
-    <li>
-      <a href="https://mpc.olpe.fi/">Meeting Price Calculator</a>
-    </li>
-    <li>
-      <a href="https://wht.olpe.fi/">Working Hours Tracker</a>
-    </li>
-  </ul>
+  {% include projects.html %}
 
-  <script type="text/javascript">
-    var host = "olpe.fi";
-    if ((host == window.location.host) && (window.location.protocol != "https:") && (window.location.protocol != "dat:")) {
-      window.location.protocol = "https";
-    }
-  </script>
-</body>
+  {% include posts.html %}
 
-</html>
+</div>

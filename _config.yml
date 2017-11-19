@@ -1,3 +1,20 @@
+---
+title: olpe.fi
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+excerpt_separator: ''
+plugins:
+- jekyll-paginate
+highlighter: pygments
+markdown: kramdown
+url: https://olpe.fi
+email: olavi.haapala@futurice.com
+author: Olavi Haapala
+description: A personal blog about development
+paginate: 50
 include: [".well-known"]
 url: https://olpe.fi
 enforce_ssl: olpe.fi

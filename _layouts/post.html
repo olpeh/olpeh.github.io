@@ -1,0 +1,19 @@
+---
+layout: base
+---
+
+<div id="open" class="overlay">
+  <article class="page">
+    <a href="/" class="close">⨯</a>
+    <header>
+      <section class="ep-meta">
+        <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
+        <h3>{{ page.title }}</h3>
+        <div>{{ page.excerpt }}</div>
+      </section>
+    </header>
+    <section class="container info">
+      {{ content }}
+    </section>
+  </article>
+</div>
