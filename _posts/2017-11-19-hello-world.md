@@ -45,7 +45,7 @@ This was enough to make my GitHub page (olpeh.github.io) available at [olpe.fi](
 
 ## Next step - HTTPS
 
-Next step was to enable and force using HTTPS in stead of HTTP on olpe.fi. Should be fairly to turn it on, right? And why is it not on by default? Nowadays browsers will show a warning if a page is served using HTTP instead of HTTPS and also I wanted to make my site available as a secure P2P site using dat and Beaker browser and that requires HTTPS. More about those later.
+Next step was to enable and force using HTTPS in stead of HTTP on olpe.fi. Should be fairly simple to turn it on, right? And why is it not on by default? Nowadays browsers will show a warning if a page is served using HTTP instead of HTTPS and I also wanted to make my site available as a secure P2P site using dat in Beaker browser which requires HTTPS. More about those later.
 
 However, it turns out GitHub does not support HTTPS for custom domains (yet)!
 
