@@ -1,0 +1,17 @@
+<section class='posts-container'>
+  <h2>olpe.fi blog posts</h2>
+  <ul>
+    {% for post in site.posts %}
+    <li class='post'>
+      <a href="{{ post.url }}">
+        <div>
+          <span class='date'>{{ post.date | date: "%b %-d, %Y" }}</span>
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.excerpt }}</p>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% include pagination.html %}
+</section>
