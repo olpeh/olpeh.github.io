@@ -8,7 +8,7 @@ collections:
 excerpt_separator: ''
 plugins:
 - jekyll-paginate
-highlighter: pygments
+highlighter: rouge
 markdown: kramdown
 url: https://olpe.fi
 email: olavi.haapala@futurice.com
