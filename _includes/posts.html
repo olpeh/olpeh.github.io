@@ -1,22 +1,12 @@
 <section class='posts-container'>
+  <h2>olpe.fi blog posts</h2>
   <ul>
-    <li class='post latest'>
-      <a href="{{ site.posts[0].url }}">
-        <div>
-          <h2>Latest post</h2>
-          <span class='date'>{{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
-          <hr>
-          <h3>{{ site.posts[0].title }}</h3>
-          <p>{{ site.posts[0].excerpt }}</p>
-        </div>
-      </a>
-    </li>
     {% for post in site.posts %}
     <li class='post'>
       <a href="{{ post.url }}">
         <div>
           <span class='date'>{{ post.date | date: "%b %-d, %Y" }}</span>
-          <h3>{{ post.title }}</h3>
+          <h4>{{ post.title }}</h4>
           <p>{{ post.excerpt }}</p>
         </div>
       </a>

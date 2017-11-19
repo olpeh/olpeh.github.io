@@ -1,3 +1,5 @@
 dat.json
 /_site
 Gemfile\.lock
+
+\.vscode/

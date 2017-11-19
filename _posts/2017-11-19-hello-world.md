@@ -2,16 +2,16 @@
 title: Hello world
 date: 2017-11-19 00:00:00 Z
 layout: post
-excerpt: "Setting up my personal blog and posting my first blog post"
+excerpt: "Setting up my personal blog and posting my first blog post."
 ---
 
-# Hello world
+# Hello world!
 
-For a long time, I have been thinking about starting a blog. I have just never got it done. Last week I was participating in a `Thought Leadership Workshop` at work and got the boost needed for starting a blog. So, now finally my blog sees the daylight! Amazing.
+For a long time, I have been thinking about starting a blog. I have just never got it done. Last week I was participating in a `Thought Leadership Workshop` at work and got the boost needed for starting a blog. So, now, finally my blog sees the daylight! Amazing.
 
 In my blog I'm going to write about software development and stuff that I have learned while programming.
 
-So in order to get started with blogging, I'll start by writing about the steps that were needed in order to set up this blog.
+So in order to get started with blogging, I'll start by writing about the steps that were needed in order to set up this blog. In this blog post I'm writing about how to setup HTTPS for a GitHub page using a custom domain.
 
 ## First step - custom domain
 
@@ -62,6 +62,7 @@ In the end my working setup looked like this:
 ![Cloudfare page rules]({{ "/images/screenshots/cloudfare-page-rules.png" | absolute_url }})
 
 `Nimipalvelin` means `name server` in Finnish.
+
 ![Louhi name servers]({{ "/images/screenshots/louhi-name-servers.png" | absolute_url }})
 
 So now my site was available via [HTTPS](https://olpe.fi/) and [dat](dat://olpe.fi/) as seen in the screenshot below.
