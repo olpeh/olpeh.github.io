@@ -1,6 +1,6 @@
 ---
-title: "Hello world!"
-date: 2017-11-19 14:00:00 Z
+title: Hello world
+date: 2017-11-19 00:00:00 Z
 layout: post
 excerpt: "Setting up my personal blog and posting my first blog post"
 ---
@@ -26,6 +26,6 @@ TODO: write about:
 
 
 # Acknowledgements
-- Thanks to [Ossi Hanhinen](https://futurice.com/people/ossi-hanhinen) for giving me good hint on how to setup basic jekyll based static site. Reused the structure from: [elmtown.audio](https://github.com/elmtown/elmtown.github.io) which is made by Ossi.
+- Thanks to [Ossi Hanhinen](https://futurice.com/people/ossi-hanhinen) for giving me good hints on how to setup basic jekyll based static site. Reused the structure from: [elmtown.audio](https://github.com/elmtown/elmtown.github.io) which is made by Ossi.
 - Thanks to my wonderful colleagues at [Futurice](https://futurice.com/) for arranging a Thought Leadership Workshop where I got boost I needed in order to start blogging.
 
