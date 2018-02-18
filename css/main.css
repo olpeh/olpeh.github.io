@@ -19,43 +19,39 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 80px;
+  min-height: 70px;
   background: rgb(54, 54, 54);
   color: rgb(243, 240, 240);
   text-align: center;
 }
 
 header a {
-  height: 80px;
-  margin-right: 40px;
+  height: 70px;
+  margin-right: 20px;
 }
 
-header .page-name {
-  margin-right: 40px;
-  font-size: 4.5rem;
-  line-height: 6rem;
-  font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
-  font-weight: 900;
+header .page-logo {
+  min-width: 78px;
 }
 
 header a img {
-  width: 88px;
-  height: 80px;
+  width: 78px;
+  height: 70px;
 }
 
 nav {
-  padding: 15px 0;
+  padding: 0;
 }
 
 nav a {
   color: rgb(243, 240, 240);
-  font-weight: bold;
   font-size: 28px;
   text-decoration: none;
   margin: 15px;
   text-transform: uppercase;
   font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 900;
+  line-height: 40px;
 }
 
 main {
@@ -68,14 +64,15 @@ main {
 
 footer {
   text-align: center;
-  padding: 15px 0;
+  padding: 8px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 14px;
 }
 
 footer a {
   text-decoration: none;
-  margin: 15px;
+  margin: 8px;
   font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
 }
