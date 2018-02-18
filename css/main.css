@@ -58,6 +58,10 @@ main {
   padding: 80px;
 }
 
+article .post-content {
+  margin-top: 60px;
+}
+
 .posts-container ul {
   list-style: none;
 }

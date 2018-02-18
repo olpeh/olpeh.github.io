@@ -1,11 +1,10 @@
 ---
-title: Hello world
+title: Hello world!
 date: 2017-11-19 00:00:00 Z
 layout: post
 excerpt: "Setting up my personal blog and posting my first blog post."
+author: "Olavi Haapala"
 ---
-
-# Hello world!
 
 For a long time, I have been thinking about starting a blog. I have just never got it done. Last week I was participating in a `Thought Leadership Workshop` at work and got the boost needed for starting a blog. So, now, finally my blog sees the daylight! Amazing.
 
@@ -79,7 +78,7 @@ At this point my "blog" was served over HTTPS but the only thing missing was the
 Next thing in my todo-list is to make the design of my blog better, but I'll just start off with some basic stylings and a simple looking blog.
 
 
-# Acknowledgements
+## Acknowledgements
 
 - Thanks to [Ossi Hanhinen](https://futurice.com/people/ossi-hanhinen) for giving me good hints on how to setup basic jekyll based static site. Reused the structure from: [elmtown.audio](https://github.com/elmtown/elmtown.github.io) which is made by Ossi
 - Thanks to my wonderful colleagues at [Futurice](https://futurice.com/) for arranging a Thought Leadership Workshop where I got the boost needed in order to start blogging
