@@ -1,11 +1,17 @@
 html,
 body {
   width: 100%;
-  height: 100;
+  height: 100%;
   margin: 0;
   padding: 0;
   background: rgb(243, 240, 240);
   color: rgb(54, 54, 54);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 img {
@@ -16,8 +22,6 @@ header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  position: fixed;
-  top: 0;
   width: 100%;
   min-height: 70px;
   background: rgb(54, 54, 54);
@@ -56,7 +60,12 @@ nav a {
 }
 
 main {
-  padding: 80px 40px;
+  width: 100%;
+  flex: 1;
+}
+
+.main-content {
+  padding: 40px;
   max-width: 860px;
   margin: 0 auto;
 }
@@ -67,8 +76,16 @@ main {
 
 .post-list .post a {
   text-decoration: none;
+  box-shadow: 4px 4px 16px 0px rgb(134, 138, 138);
+  padding: 40px;
+  display: block;
+  background: white;
 }
 
+.post-list .post a .post-title {
+  margin-top: 10px;
+}
+4
 article .post-content {
   margin-top: 60px;
 }
@@ -80,14 +97,51 @@ article .post-content {
 footer {
   text-align: center;
   padding: 8px 0;
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 footer a {
   text-decoration: none;
   margin: 8px;
   font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 567px) {
+  header {
+    min-height: 180px;
+  }
+
+  header .page-logo {
+    margin-left: 20px;
+    margin-right: 0;
+    height: 140px;
+  }
+
+  header .page-logo img {
+    height: 140px;
+    min-width: 154px;
+  }
+
+  nav a {
+    display: block;
+    height: auto;
+  }
+
+  .main-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .post-list {
+    padding: 0;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+
+@media screen and (max-width: 362px) {
+  header .page-logo {
+    display: none;
+  }
 }
