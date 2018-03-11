@@ -131,7 +131,8 @@ article .post-content {
   margin-top: 60px;
 }
 
-article .post-content pre {
+article .post-content pre,
+article .post-content blockquote {
   background: white;
   box-shadow: 4px 4px 16px 0px rgb(134, 138, 138);
 }
