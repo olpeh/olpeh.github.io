@@ -4,6 +4,7 @@ date: 2018-03-10 00:00:00 Z
 layout: post
 excerpt: "An introduction to Cycle.js and a story of what I learned while building Meeting Price Calculator"
 author: "Olavi Haapala"
+author_twitter: "0lpeh"
 thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
 ---
 

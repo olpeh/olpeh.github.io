@@ -74,7 +74,7 @@ main {
   color: rgb(54, 54, 54);
 }
 
-.post-list .post a {
+.post-list .post .post-full-page-link {
   text-decoration: none;
   box-shadow: 4px 4px 16px 0px rgb(134, 138, 138);
   padding: 40px;
@@ -82,7 +82,7 @@ main {
   background: white;
 }
 
-.post-list .post a .post-title {
+.post-list .post .post-full-page-link .post-title {
   margin-top: 0;
   font-size: 3rem;
   line-height: 3.5rem;
