@@ -98,6 +98,8 @@ main {
   border-radius: 100%;
   display: block;
   min-width: 200px;
+  min-height: 200px;
+  width: 200px;
   height: 200px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -189,7 +191,7 @@ footer a {
   }
 
   header .page-logo img {
-    height: 140px;
+    min-height: 140px;
     min-width: 154px;
   }
 
