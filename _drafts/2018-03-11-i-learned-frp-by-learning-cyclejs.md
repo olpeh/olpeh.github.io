@@ -25,9 +25,8 @@ I first about Cycle.js in 2015 when I started as a summer employee at [Futurice]
 
 So, back to what Cycle.js is. Let's see what the official documentation describes it like:
 
->A functional and reactive JavaScript framework for predictable code
-
-Source: [cycle.js.org](http://cycle.js.org/)
+>"A functional and reactive JavaScript framework for predictable code" <br/>
+> – From [cycle.js.org](http://cycle.js.org/)
 
 
 In order to understand what that means, you have to understand the following three concepts:
@@ -63,11 +62,23 @@ FP is of course a lot more than this and I'm no hard-core-FP-enthusiast, but for
 
 ### What is Reactive Programming (RP)?
 
-Reactive Programming is a programming paradigm based on using asynchronous streams.
+Reactive Programming is a programming paradigm based on using asynchronous events streams, meaning sequences of events happening over time. You can think of streams like an array that will receive values over time. An example stream could be a click stream, which will receive events when the user clicks something on a page. In your code you can then decide how to react to those future events. Streams may also have an end. In Cycle.js these event streams are referred to as `Observables`.
 
-A good example of reactivity is using formulas in Excel. The visible values are immediately reacting to the changes in the data. You don't have to call any update functions to update the calculations, but in contrary the cells react to changes in the data.
+A good example of reactivity is using formulas in Excel spreadsheets. The visible values are immediately reacting to the changes in the data. You don't have to call any update functions to update the calculations, but the cells react to changes in the data.
 
-Another good example of RP is when you are listening to a presentation, you are `subscribing` to the presentation. When the presentation ends, the presenter does not need to tell you to go get coffee or something else. In stead, you react to the event of the presentation ending and you decide for yourself how to react to that event, what to do next.
+In RP modules are responsible for reacting to changes and not responsible for changing other modules. This is visualized in the image below where `Bar` is reacting to a event happening in `Foo` instead of `Foo` poking `Bar` for a change.
+
+![Reactive Foo and Bar visualization]({{ "/images/02-frp-cyclejs/reactive-foo-bar.svg" | absolute_url }})
+Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
+
+This is why In RP, understanding how a module works is a lot easier than in passive programming. You only need to look at the code for that module, because all its future is defined there. No remote modules will change it. The only changes happening are declared in the module and these changes can be based on events emitted by other modules.
+
+The opposite of RP, passive programming is when the change to a module is defined somewhere else. I have been there, struggling with looking for who's responsible for sending emails after a successful payment in an E-comerce plaftorm. In the end I found out that the payment module was handling the email sending after receiving a successful payment. What would have happened if the payment module was replaced with something else?
+
+> "Whenever the module being changed is responsible for defining that change." <br/>
+– *Andre Staltz* about the definition of Reactive Programming
+
+There is lot more to RP than what I could explain in a blog post. Take a look at [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming) if you want to learn more. On a side-note, the documentations for Cycle.js are well formulated and kept up-to-date.
 
 ### What is FRP then?
 
@@ -75,15 +86,29 @@ FRP is simply combines both functional and reactive paradigms, picking the best 
 
 ### Predictable code?
 
-It's probably a bit controversial and subjective to say that some code is predictable and something is not. However, using FRP paradigms consistently may result in easily testable and predictable code. This is the case with Cycle.js. You can see the interaction and data flow by reading the code, without having to think about global state or event listeners defined in another file etc. In reactive code, you can see the interactions happening in because you control how to react to different events and not the other way round like in imperative programming.
+In order to say that Cycle.js code is predictable we need to understand what unpredictable code means.
 
-Of course, in the end it's up to you how organized and predictable code you write. One of the good things with Cycle.js code is that it's basically just TypeScript (or JS), but that's also a horrible thing on the other hand as you might know if you have used JS/TS for a while.
+Having your code full of global variables and impure functions results in unpredictable code. You can never be sure what the output of a function is if it depends on some global state or variable or has side-effects.
+
+In other words predictable code means writing code that you can reason about. Functions that are pure will always have the same output with a given input, no matter how many times you call it or how the stars are aligned at the time of calling that function. This is the case with Cycle.js. You can see the interaction and data flow by reading the code, without having to think about global state or event listeners defined in another file etc. In reactive code, you can see the interactions happening in because you control how to react to different events and not the other way round like in imperative programming.
+
+Predictability comes from moving side effects away from your modules and only having pure functions. This way you can predict the result will be when you call a function in your code. Global variables etc. do not affect the result of a function.
+
+Of course, in the end it's up to you how organized and predictable code you write. One of the good things with Cycle.js code is that it's basically just TypeScript (or JS), but that's also a horrible thing on the other hand as you might know if you have used JS/TS for a while. There is no strict language level enforcement for good practices.
 
 ## What is Cycle.js and why is it different?
 
-So, now that we have the required background knowledge, we'll dip deeper into explaining what Cycle.js is and why it's different from the other frameworks out there.
+So, now that we have the required background knowledge, let's dip deeper into explaining what Cycle.js is and why it's different from the other frameworks out there.
+
+In Cycle.js the side effects and the logic are separated. The logic part is purely functional and reactive code without side effects and side effects happen in the so-called `drivers`.
+
+![Main - DOM - Side effects]({{ "/images/02-frp-cyclejs/main-domdriver-side-effects.svg" | absolute_url }})
+Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 TODO: Write about the basics of Cycle.js
+
+![Nested component model in Cycle.js]({{ "/images/02-frp-cyclejs/nested-components.svg" | absolute_url }})
+Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 ### How does it look like?
 
@@ -132,7 +157,7 @@ State management is well-known as one of the biggest challenges in web developme
 
 However, In my experience, setting up Redux might feel quite confusing and the code verbose and full of boiler-plate.
 
-In Cycle.js, the [almost official](https://github.com/cyclejs/cyclejs/issues/620) state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify). , I'm also using it in my application for state handling.
+In Cycle.js, the [soon official](https://github.com/cyclejs/cyclejs/issues/620) state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify). , I'm also using it in my application for state handling.
 
 TODO: Write more about onionify, lenses etc.
 
@@ -170,10 +195,16 @@ In addition to the community members, Cycle.js is maintained by the core team me
 
 You can also support Cycle.js.
 
+## Interested in learning more? Check out these resources
+
+- [PolyConf 16 / Dynamics of change: why reactivity matters/ Andre Staltz](https://www.youtube.com/watch?v=v68ppDlvHqs)
+- [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+
 ## Acknowledgements
 
 - Thanks to my employer [Futurice](https://futurice.com/) for sponsoring open source development through [Spice Program](https://spiceprogram.org/oss-sponsorship/)
 - Thanks to [Andre Staltz](https://staltz.com/) for reviewing my code and  helping me simplify the state handling in my app
 - Thanks to the awesome Cycle.js community members who are always willing to help when needed
+- Thanks to [Andre Staltz](https://staltz.com/) for reviewing this blog post and suggesting improvements to it
 
 
