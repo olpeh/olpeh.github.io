@@ -1,14 +1,10 @@
 <section class='posts-container'>
-  <h2>! blog post drafts !</h2>
-  <ul>
-    {% for post in site.drafts %}
+  <h1>! blog post drafts !</h1>
+  <ul class="post-list">
+    {% for page in site.drafts %}
     <li class='post'>
-      <a href="{{ post.url }}">
-        <div>
-          <span class='date'>{{ post.date | date: "%b %-d, %Y" }}</span>
-          <h4>{{ post.title }}</h4>
-          <p>{{ post.excerpt }}</p>
-        </div>
+      <a href="{{ page.url }}">
+        {% include post-header.html %}
       </a>
     </li>
     {% endfor %}

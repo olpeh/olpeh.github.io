@@ -1,18 +1,10 @@
 <section class='posts-container'>
   <h2>olpe.fi blog posts</h2>
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% for page in site.posts %}
     <li class='post'>
-      <a href="{{ post.url }}">
-        <div>
-          <h2 class="post-title">{{ post.title }}</h2>
-          <div class="post-meta">
-            <p>{{ post.excerpt }}</p>
-            <hr>
-            <span class='date'>{{ post.date | date: "%b %-d, %Y" }}</span>
-            <span>by {{ post.author }}</span>
-          </div>
-        </div>
+      <a href="{{ page.url }}">
+        {% include post-header.html %}
       </a>
     </li>
     {% endfor %}

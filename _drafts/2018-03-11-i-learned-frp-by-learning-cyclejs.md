@@ -1,14 +1,15 @@
 ---
-title: Learning Functional Reactive Programming with Cycle.js
+title: I Learned Functional Reactive Programming by Learning Cycle.js
 date: 2018-03-10 00:00:00 Z
 layout: post
-excerpt: "A story of what I learned while learning Cycle.js"
+excerpt: "An introduction to Cycle.js and a story of what I learned while building Meeting Price Calculator"
 author: "Olavi Haapala"
+thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
 ---
 
-In this post, I will write about my experiences in learning Functional Reactive Programming (FRP) by trying to learn Cycle.js. First I'll try to explain the basics of Cycle.js and FRP. Later on in the blog post I will write about my learnings while building [Meeting Price Calculator](https://mpc.olpe.fi/) using Cycle.js. The examples in this blog post are from the above mentioned application that I have been building. When I started learning Cycle.js, I did not know what Reactive Programming is and I had not been doing any Functional Programming either.
+In this post, I will write about my experiences in learning Functional Reactive Programming (FRP) by writing an application in Cycle.js. First I'll try to explain the basics of Cycle.js and FRP. Later on in the blog post I will write about my learnings while building [Meeting Price Calculator](https://mpc.olpe.fi/) using Cycle.js. When I started learning Cycle.js, I did not know what Reactive Programming was and I had not been doing any Functional Programming either.
 
-<img src="{{ "/images/logos/cyclejs.svg" | absolute_url }}" width="120">
+<img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | absolute_url }}" width="120" aria-hidden="true">
 
 ## What is Cycle.js?
 If you know what Cycle.js is, you can easily skip this chapter.
@@ -124,11 +125,11 @@ In testing Meeting Price Calculator specifically, it has been proven useful that
 
 In March 2017, I wanted to learn Cycle.js and started literally by "building something" as you can see from the first commit message in the below screenshot.
 
-![Start building something]({{ "/images/screenshots/mpc-start-building-something.png" | absolute_url }})
+![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | absolute_url }})
 
 The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/) or by the gif below.
 
-![Meeting Price Calculator GIF]({{ "/images/gifs/meeting-price-calculator.gif" | absolute_url }})
+![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | absolute_url }})
 
 The idea for the application came from my personal frustration in long meetings at work. Sometimes meetings are useful and worth the cost, but most of the meetings are too long and ineffective or just useless. The idea is to have this calculator on a big screen during a meeting in order to make everyone more effective and aware of the actual cost of multiple persons sitting in a room and discussing. I haven't actually dared to do that during a real meeting yet.
 
