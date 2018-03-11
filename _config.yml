@@ -13,7 +13,6 @@ plugins:
 - jekyll-paginate
 highlighter: rouge
 markdown: kramdown
-url: https://olpe.fi
 email: olavi.haapala@futurice.com
 author: Olavi Haapala
 description: A personal blog about development
