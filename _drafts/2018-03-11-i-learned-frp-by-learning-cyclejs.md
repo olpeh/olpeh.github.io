@@ -10,7 +10,7 @@ thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
 
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP) by writing an application in Cycle.js. First I will try to explain the basics of Cycle.js and FRP. Later on in the blog post, I will write about my learnings while building [Meeting Price Calculator](https://mpc.olpe.fi/) in Cycle.js. When I started learning Cycle.js, I did not know what Reactive Programming was and I had not done almost any Functional Programming either.
 
-<img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | absolute_url }}" width="120" aria-hidden="true">
+<img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | prepend: site.baseurl }}" width="120" aria-hidden="true">
 
 ## Background
 
@@ -70,7 +70,7 @@ A good example of reactivity is using formulas in Excel spreadsheets. The visibl
 
 In RP, modules are responsible for reacting to changes and not responsible for changing other modules like in traditional, so-called passive programming. This is visualized in the image below where `Bar` is reacting to a event happening in `Foo` instead of `Foo` poking `Bar` for a change.
 
-![Reactive Foo and Bar visualization]({{ "/images/02-frp-cyclejs/reactive-foo-bar.svg" | absolute_url }})
+![Reactive Foo and Bar visualization]({{ "/images/02-frp-cyclejs/reactive-foo-bar.svg" | prepend: site.baseurl }})
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 This is why In RP, understanding how a module works is a lot easier than in passive programming. You only need to look at the code for that module, and not all over the codebase. All of its future is defined there. No remote modules will change it. The only changes happening are declared in the module and these changes can be based on events emitted by other modules.
@@ -108,12 +108,12 @@ In Cycle.js, the side effects and the application logic are separated. The logic
 
 Side effects happen in the so-called `drivers`.
 
-![Main - DOM - Side effects]({{ "/images/02-frp-cyclejs/main-domdriver-side-effects.svg" | absolute_url }})
+![Main - DOM - Side effects]({{ "/images/02-frp-cyclejs/main-domdriver-side-effects.svg" | prepend: site.baseurl }})
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 TODO: Write about the basics of Cycle.js
 
-![Nested component model in Cycle.js]({{ "/images/02-frp-cyclejs/nested-components.svg" | absolute_url }})
+![Nested component model in Cycle.js]({{ "/images/02-frp-cyclejs/nested-components.svg" | prepend: site.baseurl }})
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 ### How does it look like?
@@ -182,11 +182,11 @@ TODO: Write more about testing, property based testing and the available helpers
 
 In March 2017, I wanted to learn Cycle.js and started literally by "building something" as you can see from the first commit message in the below screenshot.
 
-![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | absolute_url }})
+![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | prepend: site.baseurl }})
 
 The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/) or by the gif below.
 
-![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | absolute_url }})
+![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | prepend: site.baseurl }})
 
 The idea for the application came from my personal frustration in long meetings at work. Sometimes meetings are useful and worth the cost, but most of the meetings are too long and ineffective or just useless. The idea is to have this calculator on a big screen during a meeting to make everyone more effective and aware of the real cost of multiple persons sitting in a room and discussing. I haven't actually dared to do that during a real meeting yet.
 

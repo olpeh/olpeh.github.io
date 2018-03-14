@@ -20,7 +20,7 @@ First step for me was to setup a custom domain (olpe.fi) to point to my github p
 
 In the settings page for my repository in GitHub I could easily set up a custom domain for the github page as seen in the screenshot below.
 
-![GitHub pages settings]({{ "/images/01-hello-world/gh-pages.png" | absolute_url }})
+![GitHub pages settings]({{ "/images/01-hello-world/gh-pages.png" | prepend: site.baseurl }})
 
 This was not enough though. Had to read the page behind the [Learn more](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) link. In my opinion that page is quite confusing and I did not know what to do really.
 
@@ -38,11 +38,11 @@ In the end I found out that [this](https://help.github.com/articles/setting-up-a
 
 So I went ahead and set up the correct `A` type records at my providers' page. See the screenshot below for the DNS records for the root domain `olpe.fi`. I also set up the same rules for `www.olpe.fi` in order to also support `www.olpe.fi`.
 
-![DNS rules]({{ "/images/01-hello-world/dns-louhi.png" | absolute_url }})
+![DNS rules]({{ "/images/01-hello-world/dns-louhi.png" | prepend: site.baseurl }})
 
 This was enough to make my GitHub page (olpeh.github.io) available at [olpe.fi](olpe.fi) and [www.olpe.fi](www.olpe.fi). I was happy for a moment and tweeted this:
 
-![DNS rules applied]({{ "/images/01-hello-world/tweet-dns-http.png" | absolute_url }})
+![DNS rules applied]({{ "/images/01-hello-world/tweet-dns-http.png" | prepend: site.baseurl }})
 
 ## Next step - HTTPS
 
@@ -50,7 +50,7 @@ Next step was to enable and force using HTTPS in stead of HTTP on olpe.fi. Shoul
 
 However, it turns out GitHub does not support HTTPS for custom domains (yet)!
 
-![No https support]({{ "/images/01-hello-world/tweet-no-https.png" | absolute_url }})
+![No https support]({{ "/images/01-hello-world/tweet-no-https.png" | prepend: site.baseurl }})
 
 Well luckily I'm [not](https://github.com/isaacs/github/issues/156) the [only one](https://gist.github.com/coolaj86/e07d42f5961c68fc1fc8) wanting this feature and there are some workarounds available. I found a few nice tutorials about how to set up HTTPS for GitHub page with custom domain using Cloudfare (for free): [As a gist](https://gist.github.com/cvan/8630f847f579f90e0c014dc5199c337b) and a [blog post](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/) and [another](https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/) and [one more](https://hackernoon.com/set-up-ssl-on-github-pages-with-custom-domains-for-free-a576bdf51bc).
 
@@ -58,17 +58,17 @@ I tried following those instructions pretty carefully but ended up redirecting f
 
 In the end my working setup looked like this:
 
-![Cloudfare crypto settings]({{ "/images/01-hello-world/cloudfare-crypto.png" | absolute_url }})
+![Cloudfare crypto settings]({{ "/images/01-hello-world/cloudfare-crypto.png" | prepend: site.baseurl }})
 
-![Cloudfare page rules]({{ "/images/01-hello-world/cloudfare-page-rules.png" | absolute_url }})
+![Cloudfare page rules]({{ "/images/01-hello-world/cloudfare-page-rules.png" | prepend: site.baseurl }})
 
 `Nimipalvelin` means `name server` in Finnish.
 
-![Louhi name servers]({{ "/images/01-hello-world/louhi-name-servers.png" | absolute_url }})
+![Louhi name servers]({{ "/images/01-hello-world/louhi-name-servers.png" | prepend: site.baseurl }})
 
 So now my site was available via [HTTPS](https://olpe.fi/) and [dat](dat://olpe.fi/) as seen in the screenshot below.
 
-![HTTPS FTW]({{ "/images/01-hello-world/tweet-https-dat.png" | absolute_url }})
+![HTTPS FTW]({{ "/images/01-hello-world/tweet-https-dat.png" | prepend: site.baseurl }})
 
 Dat support was something that I had configured earlier with the help of [this blog post](https://handbook.protozoa.nz/experiments/p2p_github_pages.html). P2P websites are available using [Beaker browser](https://beakerbrowser.com/) I will try to write more about P2P in a future blog post. In the meantime you can read about [Secure Scuttlebutt](https://www.scuttlebutt.nz/) and probably try it out using [Patchwork](https://github.com/ssbc/patchwork).
 
