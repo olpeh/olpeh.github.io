@@ -522,6 +522,7 @@ You can also support Cycle.js.
 - [Understand Reactive Programming using RxJS](https://egghead.io/lessons/rxjs-understand-reactive-programming-using-rxjs)
 - [Using Cycle.js to view real-time satellite test data](https://futurice.com/blog/using-cycle-dot-js-to-view-real-time-satellite-test-data)
 - [Awesome Cycle.js](https://github.com/cyclejs-community/awesome-cyclejs)
+- [The Repository for Meeting Price Calculator](https://github.com/olpeh/meeting-price-calculator)
 
 ## Acknowledgements
 
