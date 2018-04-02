@@ -1,8 +1,8 @@
 ---
 title: I Learned Functional Reactive Programming by Learning Cycle.js
-date: 2018-03-11 00:00:00 Z
+date: 2018-04-02 00:00:00 Z
 layout: post
-excerpt: "An introduction to Cycle.js and a story of what I learned building Meeting Price Calculator in Cycle.js"
+excerpt: "An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js"
 author: "Olavi Haapala"
 author_twitter: "0lpeh"
 thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
@@ -11,7 +11,7 @@ thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP).
 First, I will try to explain the basics of Cycle.js and FRP.
 Later on in the blog post, I write about my learnings while building [Meeting Price Calculator](https://mpc.olpe.fi/) in Cycle.js.
-When I started learning Cycle.js, I did not know what Reactive Programming was and I had not done almost any Functional Programming before.
+When I started learning Cycle.js, I did not know what Reactive Programming was and I had almost no experience in Functional Programming.
 
 <img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | prepend: site.baseurl }}" width="120" aria-hidden="true">
 
@@ -45,15 +45,15 @@ Let's see what the official documentation describes it like:
 
 In order to understand what that means, we have to understand the following three concepts:
 
-1. Functional Programming (FP)
-1. Reactive Programming (RP)
+1. Functional Programming
+1. Reactive Programming
 1. Predictable code
 
 I will do my best in trying to explain what these mean in a simple and understandable way.
 
-### What is Functional Programming (FP)?
+### Functional Programming
 
-Functional Programming is a popular programming paradigm where the main idea is to avoid using global state, mutable data or side effects.
+Functional Programming (FP) is a popular programming paradigm where the main idea is to avoid using global state, mutable data or side effects.
 In FP, data flows through `pure functions`, meaning that the function has no side effects.
 Side effects in this context means changing something outside the function scope, like changing a global variable or sending a HTTP request.
 A pure function should only have inputs and return some outputs, without mutations.
@@ -79,13 +79,13 @@ The main difference here is that the first example mutates a global variable as 
 
 FP is of course a lot more than this and I'm no hard-core-FP-enthusiast, but for now understanding the basic ideology is enough.
 Learning functional programming will help you write code that is easy to test and maintain.
-Testing a pure function is easy, since you don't usually need to mock anything.
+Testing a pure function is easy, since you don't need to care about the world outside of the function you are testing.
 Just pass the inputs and check if the outputs are as expected.
 More about testing Cycle.js applications later in this blog post.
 
-### What is Reactive Programming (RP)?
+### Reactive Programming
 
-Reactive Programming is a programming paradigm based on asynchronous events streams, meaning sequences of events happening over time.
+Reactive Programming (RP) is a programming paradigm based on asynchronous events streams, meaning sequences of events happening over time.
 If the concept of streams is unfamiliar to you, you can think of streams as an array that will receive values over time.
 An example stream could be a click stream, which receives events when the user clicks something on a page.
 In your code you can then define how to react to those events happening over time.
@@ -129,12 +129,12 @@ There is a lot more to RP than what I am able explain in a blog post.
 Take a look at [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming), if you want to learn more.
 On a side-note, the documentations for Cycle.js are well formulated and kept up-to-date.
 
-### What is FRP then?
+### Functional Reactive Programming
 
-FRP simply combines both functional and reactive paradigms, picking the best of both worlds.
+Functional Reactive Programming (FRP) simply combines both functional and reactive paradigms, picking the best of both worlds.
 Cycle.js is a nice example of combining these two.
 
-### Predictable code?
+### Predictable Code
 
 In order to say that Cycle.js code is predictable we need to understand what predictable and unpredictable code means.
 
@@ -154,11 +154,12 @@ Global variables or global state do not affect the result of a function, only th
 Of course, in the end it's up to you how organized and predictable code you write.
 One of the best things about Cycle.js code is that it's basically just TypeScript (or JS), but on the other hand, that's also the worst part of it as you might know if you have used JS/TS for a while. There is no strict language level enforcement for good practices or protection against runtime crashes.
 However, writing my code using TypeScript instead of plain JavaScript has helped me a lot in figuring out how to work with `Streams`.
-More about that later in the post.
 
-## What is Cycle.js and why is it different?
+## Cycle.js And Why It Is Different
 
 So, now that we have the required background knowledge, let's focus on explaining what Cycle.js is and how it differs from the other frameworks out there.
+
+### Separation of Concerns
 
 In Cycle.js, the side effects and the application logic are separated.
 The logic part is purely functional and reactive code without side effects.
@@ -178,63 +179,214 @@ Reads from DOM can be user intents like click events or input events.
 ![Main - DOM - Side effects]({{ "/images/02-frp-cyclejs/main-domdriver-side-effects.svg" | prepend: site.baseurl }}) <br/>
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
+### Component Model
+
 In Cycle.js, an application is just a function.
 This means that you can easily nest functions inside a functions.
 That's how easy it is to create nested components in Cycle.js.
 In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html) the components from each others.
-This way you can easily create a reusable component without thinking about conflicting namespaces and selectors.
-In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput), that I use twice in my application with slightly different parameters or so-called `props` in the React-bubble.
+This way you can easily create a reusable components without thinking about conflicting namespaces and selectors.
+In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput).
+It is used twice in my application with slightly different input parameter streams or so-called `props` in the React-world.
 
 ![Nested component model in Cycle.js]({{ "/images/02-frp-cyclejs/nested-components.svg" | prepend: site.baseurl }}) <br/>
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 
-## Model-View-Intent (MVI)
+### Model-View-Intent
 
-TODO: Explain MVI
+Model-View-Controller pattern does not really work nicely for reactive programming due to it's nature.
+In MVC, the controller is imperatively controlling other components.
+What would the controller even be needed for in RP?
+That's why in Cycle.js we [keep the MVC idea while avoiding a proactive Controller](https://cycle.js.org/model-view-intent.html#model-view-intent-what-mvc-is-really-about).
+Instead of the Controller, we have something that's called `Intent`.
 
-### How does it look like?
+#### Model
+
+* Input: user interaction events from the Intent.
+* Output: data events.
+
+#### View
+
+* Input: data events from the Model.
+* Output: a Virtual DOM rendering of the model, and raw user input events (such as clicks, keyboard typing, accelerometer events, etc).
+
+#### Intent
+
+* Input: raw user input events from the View.
+* Output: model-friendly user intention events.
+
+MVI is a pattern that works well with Cycle.js.
+In fact, this is actually what the [main idea of Cycle.js is based on](https://futurice.com/blog/reactive-mvc-and-the-virtual-dom).
+
+### Code Examples
 
 Now you might be wondering, how does Cycle.js code look like.
 I'll use the previously mentioned [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput) component as an example.
 
-Here is a simple example application:
+I have split the component code into 5 different files, following the MVI-pattern:
 
-```JS
-import xs from "xstream";
-import { run } from "@cycle/run";
-import { div, input, p, makeDOMDriver } from "@cycle/dom";
+* index.ts
+* model.ts
+* view.ts
+* intent.ts
+* styles.ts
 
-function main(sources) {
-  const sinks = {
-    DOM: sources.DOM.select("input")
-      .events("change")
-      .map(ev => ev.target.checked)
-      .startWith(false)
-      .map(toggled =>
-        div([
-          input({ attrs: { type: "checkbox" } }),
-          "Toggle me",
-          p(toggled ? "ON" : "off")
-        ])
-      )
-  };
-  return sinks;
+Where of `styles.ts` is not very important at this point.
+It simply contains the styles for the component.
+
+Let's see how the code looks like, starting from the `view.ts` which is a function that receives a `State` stream and returns a stream of `VNode`s, that will then get rendered in the DOM.
+
+`view.ts`:
+
+```TS
+import xs from 'xstream';
+import { VNode, div, input, span, label } from '@cycle/dom';
+import { State } from './index';
+import { styles } from './styles';
+
+export default function view(state$: xs<State>): xs<VNode> {
+  return state$.map(({ description, unit, min, max, step, value }) =>
+    div(`.${styles.sliderInput}`, [
+      label(description),
+      input(`.SliderInput-input .${styles.numberInput}`, {
+        attrs: {
+          type: 'number',
+          min,
+          max,
+          step
+        },
+        props: { value }
+      }),
+      span(`.${styles.sliderInputUnit}`, unit),
+      input('.SliderInput-input', {
+        attrs: {
+          type: 'range',
+          min,
+          max,
+          step
+        },
+        props: { value }
+      })
+    ])
+  );
 }
 
-const drivers = {
-  DOM: makeDOMDriver("#app")
-};
+```
+Below is a screenshot of how a `SliderInput` component might look like in the current design.
 
-run(main, drivers);
+![SliderInput view]({{ "/images/02-frp-cyclejs/sliderinput.png" | prepend: site.baseurl }})
+
+The view function maps the state stream into a stream of `VNode`s.
+It picks the interesting value from the state object and ouputs a div containing two inputs; one slider and one number input field.
+
+So, where does the state stream come from and who's calling the view function?
+
+We can see in the `index.ts` the components "main" function, `SliderInput`, which looks like this that it is responsible for calling the view function:
+
+```TS
+export default function SliderInput(sources: Sources): Sinks {
+  const actions: SliderInputActions = intent(sources.DOM);
+  const reducer$: xs<Reducer> = model(actions);
+
+  const state$: xs<State> = (sources.onion.state$ as any) as xs<State>;
+  const vdom$: xs<VNode> = view(state$);
+
+  const sinks: Sinks = {
+    DOM: vdom$,
+    onion: reducer$
+  };
+
+  return sinks;
+}
+```
+
+This follows the basic MVI-pattern in Cycle.js using [cycle-onionify](https://github.com/staltz/cycle-onionify) for state management.
+More about that in the next chapter. The above example component code could be simplified into the following piece of code, if we did not use onionify and did not care about readability:
+
+```TS
+export default function SliderInput(sources: Sources): Sinks {
+  return {
+    DOM: view(model(intent(sources.DOM)));
+  }
+}
 
 ```
 
-TODO: Walk through the example code
+This means that the view is a function of the model and the intent.
+The output of of the function will also be the input of the function, thus the `Cycle`.
 
-## State management in Cycle.js
+Let's see how the model and intent look like in order to understand what the state stream consists of.
 
-State management is well-known as one of the biggest challenges in web development.
+Intent means basically the users intentions or user actions or HTTP responses or similar.
+In this case Intent is responsible for mapping user input stream into a actions object which contains action streams.
+
+`intent.ts`:
+
+```TS
+import xs from 'xstream';
+
+export interface SliderInputActions {
+  ValueChangeAction$: xs<number>;
+}
+
+export default function intent(domSource): SliderInputActions {
+  const ValueChangeAction$ = domSource
+    .select('.SliderInput-input')
+    .events('input')
+    .map(inputEv => parseInt((inputEv.target as HTMLInputElement).value));
+
+  return {
+    ValueChangeAction$
+  };
+}
+```
+
+This function selects the elements that have the class `SliderInput-input` and maps all the `input` events into the value of the input field as an integer.
+The returned object contains a stream that contains all the future values of the input field with that particular class.
+Please note that due to using the same class for both the input fields, range and number field, the change event is emitted if either of the input fields receive a input event.
+
+The model is then reacting to these value changes and updating the state accordingly.
+
+`model.ts`:
+
+```TS
+import xs from 'xstream';
+import { State, Reducer } from './index';
+import { SliderInputActions } from './intent';
+
+export default function model(actions: SliderInputActions): xs<Reducer> {
+  const defaultReducer$: xs<Reducer> = xs.of(
+    (prev?: State): State =>
+      prev !== undefined
+        ? prev
+        : {
+            description: 'description',
+            unit: 'unit',
+            min: 1,
+            max: 100,
+            step: 1,
+            value: 100
+          }
+  );
+
+  const valueChangeReducer$: xs<Reducer> = actions.ValueChangeAction$.map(
+    value => (prevState: State): State => ({
+      ...prevState,
+      value
+    })
+  );
+
+  return xs.merge(defaultReducer$, valueChangeReducer$);
+}
+```
+
+We can see that the `valueChangeReducer$` is responsible for updating the state when it receives a value change actions event.
+The default reducer sets the default state for the component, so that it can render something if no values is passed to it.
+
+### State management in Cycle.js
+
+State management is well-known to be one of the biggest challenges in web development.
 There are tens of libraries which try to simplify state handling and help creating high quality web applications easily.
 Two of my favorite libraries (for React) are: [MobX](https://github.com/mobxjs/mobx) and probably the most popular one, [Redux](https://redux.js.org/).
 
@@ -243,24 +395,96 @@ However, In my experience, setting up Redux might feel quite confusing and the c
 In Cycle.js, the [soon official](https://github.com/cyclejs/cyclejs/issues/620) state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify).
 I'm also using it in my application for state handling.
 
-TODO: Write more about onionify, lenses etc.
-
 Note: In this blog post, I will not try to compare Redux, MobX and cycle-onionify.
 That might end up in another blog post at an undefined time.
+I will simply write about my experiences using cycle-onionify.
 
-## Testing Cycle.js applications
+State in the above mentioned `SliderInput` component's case looks like this:
 
-Testing Cycle.js application is quite easy, since most of your functions are pure functions.
+```TS
+export interface State {
+  description: string;
+  unit: string;
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+}
+```
+
+This can not be the whole state of my application, right?
+No it's not.
+It's just the inner state of this isolated component.
+Using lenses, we can "zoom" in and out in the Application state, exposing as little as possible of the internal structure of a component to the outer components.
+In my case the top-level application state looks like this:
+
+```TS
+export interface State {
+  startTime: moment.Moment;
+  duration: number;
+  currency: string;
+  personAmount: number;
+  avgPrice: number;
+}
+```
+
+From that top-level state I pass down the relevant parts to the child components using lenses.
+The components then update the relevant parts of the top-level state when needed.
+
+An example of this can be seen in a component called `controls` which receive the `AppState` and pass down parts of it to the `SliderInput` components and vice versa.
+
+```TS
+export const lens = {
+  get: (state: AppState): State => ({
+    currency: state.currency,
+    personAmount: state.personAmount,
+    avgPrice: state.avgPrice
+  }),
+
+  set: (state: AppState, childState: State) => ({
+    ...state,
+    currency: childState.currency,
+    personAmount: childState.personAmount,
+    avgPrice: childState.avgPrice
+  })
+};
+```
+
+In the above example, the `personAmount` and `avgPrice` parts of the `childState` are parts of the states of `SliderInput` components.
+This can be seen in the lens below:
+
+```TS
+export const personAmountLens = {
+  get: (state: AppState): State => ({
+    description: 'Person amount',
+    unit: state.personAmount > 1 ? 'persons' : 'person',
+    min: 1,
+    max: 100,
+    step: 1,
+    value: state.personAmount
+  }),
+
+  set: (state: AppState, childState: State) => ({
+    ...state,
+    personAmount: childState.value
+  })
+};
+```
+
+This means that even though the component needs a state that consists of multiple values, it only needs to expose the "final" result, the value, to the component above it.
+
+### Testing Cycle.js applications
+
+Testing Cycle.js applications is quite easy, since most of your functions are pure functions.
 Testing a pure function is easy since you know nothing outside of the function affects the output of the function and the function does not affect the outside world.
 
 In testing Meeting Price Calculator specifically, it has been proven useful that in Cycle.js, time is just a dependency and you can inject or pass that to your functions.
 This makes testing a lot simpler.
-
-TODO: Write more about testing, property based testing and the available helpers etc.
+I am using `jest` for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like) in combination with [jsverify](https://github.com/jsverify/jsverify) and property-based testing for verifying that the views work correctly with any input values.
 
 ## Meeting Price Calculator
 
-In March 2017, I wanted to learn Cycle.js.
+In March 2017, I seriously wanted to learn Cycle.js.
 I started literally by "building something" as you can see from the first commit message in the below screenshot.
 
 ![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | prepend: site.baseurl }})
@@ -276,9 +500,13 @@ I haven't actually dared to do that during a real meeting yet.
 
 ## Recap
 
-Key take aways
+Key take aways:
 
-TODO: Write these
+1. Cycle.js is a fully featured, mature framework for building web applications
+1. FRP might help you in writing predictable, easily testable code
+1. By keeping your functions pure, you make testing them easy
+1. MVI is a nice pattern, in which it's also easy to split your files according to the pattern
+
 
 ## Supporting Cycle.js
 
@@ -291,6 +519,9 @@ You can also support Cycle.js.
 
 - [PolyConf 16 / Dynamics of change: why reactivity matters/ Andre Staltz](https://www.youtube.com/watch?v=v68ppDlvHqs)
 - [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+- [Understand Reactive Programming using RxJS](https://egghead.io/lessons/rxjs-understand-reactive-programming-using-rxjs)
+- [Using Cycle.js to view real-time satellite test data](https://futurice.com/blog/using-cycle-dot-js-to-view-real-time-satellite-test-data)
+- [Awesome Cycle.js](https://github.com/cyclejs-community/awesome-cyclejs)
 
 ## Acknowledgements
 
