@@ -9,13 +9,36 @@ thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
 ---
 
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP).
-First, I will try to explain the basics of Cycle.js and FRP.
-Later on in the blog post, I write about my learnings while building [Meeting Price Calculator](https://mpc.olpe.fi/) in Cycle.js.
+I will try to explain the basics of Cycle.js and FRP and what I have learned while building [Meeting Price Calculator](https://mpc.olpe.fi/) in Cycle.js.
 When I started learning Cycle.js, I did not know what Reactive Programming was and I had almost no experience in Functional Programming.
 
 <img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | prepend: site.baseurl }}" width="120" aria-hidden="true">
 
 ## Background
+
+I first heard about Cycle.js in 2015 when I started as a summer employee at [Futurice](https://futurice.com).
+[Andre Staltz](https://staltz.com/about.html), the creator of Cycle.js, used to work at Futurice and was demoing it in a WWWeeklies presentation.
+I got interested in it and tried it out for a bit.
+Later that summer I was also part of an internal project where we started using Cycle.js.
+However, it was not until March 2017 that I really started building something with Cycle.js.
+
+### Meeting Price Calculator
+
+In March 2017, I seriously wanted to learn Cycle.js.
+I started literally by "building something" as you can see from the first commit message in the below screenshot.
+
+![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | prepend: site.baseurl }})
+
+The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/) or by the gif below.
+
+![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | prepend: site.baseurl }})
+
+The idea for the application came from my personal frustration in long meetings at work.
+Sometimes meetings are useful and worth the cost, but most of the meetings are too long and ineffective or just useless.
+The idea is to have this calculator on a big screen during a meeting to make everyone more effective and aware of the real cost of multiple persons sitting in a room and discussing.
+I haven't actually dared to do that during a real meeting yet.
+
+## Cycle.js Basics
 
 You might not have heard about Cycle.js, since it is not as popular as React or Vue or others.
 However, it's a proper and mature JS Framework used in production by several projects.
@@ -25,19 +48,10 @@ However, it's a proper and mature JS Framework used in production by several pro
 That's not the case with Cycle.js.
 It's different.
 It's not like any other framework out there.
-Later in this post, I'll try to explain Cycle.js and why it's different.
-
-I first heard about Cycle.js in 2015 when I started as a summer employee at [Futurice](https://futurice.com).
-[Andre Staltz](https://staltz.com/about.html), the creator of Cycle.js, used to work at Futurice and was demoing it in a WWWeeklies presentation.
-I got interested in it and tried it out for a bit.
-Later that summer I was also part of an internal project where we started using Cycle.js.
-However, it was not before March 2017 that I really started building something with Cycle.js.
-More about that later in this post.
 
 Please note that I'm no expert in Cycle.js or FRP, but I'll try to explain things as I understand them and how I learned them.
 If you have any feedback on the content of this blog post, I'll gladly hear about that.
 
-So, back to what Cycle.js is.
 Let's see what the official documentation describes it like:
 
 >"A functional and reactive JavaScript framework for predictable code" <br/>
@@ -78,10 +92,10 @@ Curly braces or return statement are not needed for single-line function bodies.
 The main difference here is that the first example mutates a global variable as opposed to the second example, which takes a variable called `counter` and returns a *new variable* that is the `counter` incremented by one.
 
 FP is of course a lot more than this and I'm no hard-core-FP-enthusiast, but for now understanding the basic ideology is enough.
-Learning functional programming will help you write code that is easy to test and maintain.
+Learning FP will help you write code that is easy to test and maintain.
 Testing a pure function is easy, since you don't need to care about the world outside of the function you are testing.
 Just pass the inputs and check if the outputs are as expected.
-More about testing Cycle.js applications later in this blog post.
+We will see how this gives us some nice properties when testing Cycle.js applications later in this post.
 
 ### Reactive Programming
 
@@ -182,16 +196,15 @@ Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 ### Component Model
 
 In Cycle.js, an application is just a function.
-This means that you can easily nest functions inside a functions.
+This means that you can easily nest functions inside a function.
 That's how easy it is to create nested components in Cycle.js.
-In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html) the components from each others.
-This way you can easily create a reusable components without thinking about conflicting namespaces and selectors.
+In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html) the components from each other.
+This way you can easily create reusable components without thinking about conflicting namespaces and selectors.
 In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput).
 It is used twice in my application with slightly different input parameter streams or so-called `props` in the React-world.
 
 ![Nested component model in Cycle.js]({{ "/images/02-frp-cyclejs/nested-components.svg" | prepend: site.baseurl }}) <br/>
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
-
 
 ### Model-View-Intent
 
@@ -200,6 +213,7 @@ In MVC, the controller is imperatively controlling other components.
 What would the controller even be needed for in RP?
 That's why in Cycle.js we [keep the MVC idea while avoiding a proactive Controller](https://cycle.js.org/model-view-intent.html#model-view-intent-what-mvc-is-really-about).
 Instead of the Controller, we have something that's called `Intent`.
+The pattern that emerges is thus Model-View-Intent (MVI), with the following constituents:
 
 #### Model
 
@@ -221,7 +235,7 @@ In fact, this is actually what the [main idea of Cycle.js is based on](https://f
 
 ### Code Examples
 
-Now you might be wondering, how does Cycle.js code look like.
+Now you might be wondering what Cycle.js code looks like.
 I'll use the previously mentioned [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput) component as an example.
 
 I have split the component code into 5 different files, following the MVI-pattern:
@@ -232,10 +246,10 @@ I have split the component code into 5 different files, following the MVI-patter
 * intent.ts
 * styles.ts
 
-Where of `styles.ts` is not very important at this point.
+Where `styles.ts` is not very important at this point.
 It simply contains the styles for the component.
 
-Let's see how the code looks like, starting from the `view.ts` which is a function that receives a `State` stream and returns a stream of `VNode`s, that will then get rendered in the DOM.
+Let's see what the code looks like, starting from the `view.ts` which is a function that receives a `State` stream and returns a stream of `VNode`s, that will then get rendered in the DOM.
 
 `view.ts`:
 
@@ -273,7 +287,7 @@ export default function view(state$: xs<State>): xs<VNode> {
 }
 
 ```
-Below is a screenshot of how a `SliderInput` component might look like in the current design.
+Below is a screenshot of how a `SliderInput` component might look in the current design.
 
 ![SliderInput view]({{ "/images/02-frp-cyclejs/sliderinput.png" | prepend: site.baseurl }})
 
@@ -316,10 +330,10 @@ export default function SliderInput(sources: Sources): Sinks {
 This means that the view is a function of the model and the intent.
 The output of of the function will also be the input of the function, thus the `Cycle`.
 
-Let's see how the model and intent look like in order to understand what the state stream consists of.
+Let's see how the model and intent look in order to understand what the state stream consists of.
 
-Intent means basically the users intentions or user actions or HTTP responses or similar.
-In this case Intent is responsible for mapping user input stream into a actions object which contains action streams.
+Intent means basically the user's intentions, user actions, HTTP responses or similar.
+In this case, Intent is responsible for mapping the user input stream into an actions object which contains action streams.
 
 `intent.ts`:
 
@@ -382,13 +396,13 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
 ```
 
 We can see that the `valueChangeReducer$` is responsible for updating the state when it receives a value change actions event.
-The default reducer sets the default state for the component, so that it can render something if no values is passed to it.
+The default reducer sets the default state for the component, so that it can render something if no values are passed to it.
 
 ### State management in Cycle.js
 
 State management is well-known to be one of the biggest challenges in web development.
 There are tens of libraries which try to simplify state handling and help creating high quality web applications easily.
-Two of my favorite libraries (for React) are: [MobX](https://github.com/mobxjs/mobx) and probably the most popular one, [Redux](https://redux.js.org/).
+Two of my favorite libraries (for React) are [MobX](https://github.com/mobxjs/mobx) and probably the most popular one, [Redux](https://redux.js.org/).
 
 However, In my experience, setting up Redux might feel quite confusing and the code verbose and full of boiler-plate.
 
@@ -412,11 +426,11 @@ export interface State {
 }
 ```
 
-This can not be the whole state of my application, right?
+This cannot be the whole state of my application, right?
 No it's not.
 It's just the inner state of this isolated component.
 Using lenses, we can "zoom" in and out in the Application state, exposing as little as possible of the internal structure of a component to the outer components.
-In my case the top-level application state looks like this:
+In my case, the top-level application state looks like this:
 
 ```TS
 export interface State {
@@ -431,7 +445,7 @@ export interface State {
 From that top-level state I pass down the relevant parts to the child components using lenses.
 The components then update the relevant parts of the top-level state when needed.
 
-An example of this can be seen in a component called `controls` which receive the `AppState` and pass down parts of it to the `SliderInput` components and vice versa.
+An example of this can be seen in a component called `controls` which receives the `AppState` and passes down parts of it to the `SliderInput` components and vice-versa.
 
 ```TS
 export const lens = {
@@ -480,33 +494,16 @@ Testing a pure function is easy since you know nothing outside of the function a
 
 In testing Meeting Price Calculator specifically, it has been proven useful that in Cycle.js, time is just a dependency and you can inject or pass that to your functions.
 This makes testing a lot simpler.
-I am using `jest` for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like) in combination with [jsverify](https://github.com/jsverify/jsverify) and property-based testing for verifying that the views work correctly with any input values.
-
-## Meeting Price Calculator
-
-In March 2017, I seriously wanted to learn Cycle.js.
-I started literally by "building something" as you can see from the first commit message in the below screenshot.
-
-![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | prepend: site.baseurl }})
-
-The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/) or by the gif below.
-
-![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | prepend: site.baseurl }})
-
-The idea for the application came from my personal frustration in long meetings at work.
-Sometimes meetings are useful and worth the cost, but most of the meetings are too long and ineffective or just useless.
-The idea is to have this calculator on a big screen during a meeting to make everyone more effective and aware of the real cost of multiple persons sitting in a room and discussing.
-I haven't actually dared to do that during a real meeting yet.
+[I am using](https://github.com/olpeh/meeting-price-calculator/tree/master/test) [jest](https://github.com/facebook/jest) for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like) in combination with [jsverify](https://github.com/jsverify/jsverify) and property-based testing for verifying that the views work correctly with any input values.
 
 ## Recap
 
 Key take aways:
 
 1. Cycle.js is a fully featured, mature framework for building web applications
-1. FRP might help you in writing predictable, easily testable code
+1. FRP can help you in writing predictable, easily testable code
 1. By keeping your functions pure, you make testing them easy
-1. MVI is a nice pattern, in which it's also easy to split your files according to the pattern
-
+1. MVI is a nice pattern, which gives you ways to split up files and responsibilities in code
 
 ## Supporting Cycle.js
 
@@ -530,3 +527,4 @@ You can also support Cycle.js.
 - Thanks to [Andre Staltz](https://staltz.com/) for reviewing my code and  helping me simplify the state handling in my app
 - Thanks to the awesome Cycle.js community members who are always willing to help when needed
 - Thanks to [Andre Staltz](https://staltz.com/) for reviewing this blog post and suggesting improvements to it
+- Thanks to my colleague [Fotis](https://twitter.com/f_papado) for proofreading this blog post and suggesting improvements to it
