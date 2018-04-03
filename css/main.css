@@ -70,6 +70,10 @@ main {
   margin: 0 auto;
 }
 
+.post-list .post {
+  margin-bottom: 40px;
+}
+
 .post-list .post .post-title {
   color: rgb(54, 54, 54);
 }
