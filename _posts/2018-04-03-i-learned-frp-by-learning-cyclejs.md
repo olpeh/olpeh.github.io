@@ -398,7 +398,7 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
 We can see that the `valueChangeReducer$` is responsible for updating the state when it receives a value change actions event.
 The default reducer sets the default state for the component, so that it can render something if no values are passed to it.
 
-### State management in Cycle.js
+### State Management in Cycle.js
 
 State management is well-known to be one of the biggest challenges in web development.
 There are tens of libraries which try to simplify state handling and help creating high quality web applications easily.
@@ -487,7 +487,7 @@ export const personAmountLens = {
 
 This means that even though the component needs a state that consists of multiple values, it only needs to expose the "final" result, the value, to the component above it.
 
-### Testing Cycle.js applications
+### Testing Cycle.js Applications
 
 Testing Cycle.js applications is quite easy, since most of your functions are pure functions.
 Testing a pure function is easy since you know nothing outside of the function affects the output of the function and the function does not affect the outside world.
@@ -512,7 +512,9 @@ The project is funded by [Open Collective contributions](https://opencollective.
 
 You can also support Cycle.js.
 
-## Interested in learning more? Check out these resources
+## Learn More
+
+If you are interested in learning more, check out these resources:
 
 - [PolyConf 16 / Dynamics of change: why reactivity matters/ Andre Staltz](https://www.youtube.com/watch?v=v68ppDlvHqs)
 - [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
