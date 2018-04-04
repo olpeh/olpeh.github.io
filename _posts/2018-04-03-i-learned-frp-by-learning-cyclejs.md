@@ -358,7 +358,7 @@ export default function intent(domSource): SliderInputActions {
 
 This function selects the elements that have the class `SliderInput-input` and maps all the `input` events into the value of the input field as an integer.
 The returned object contains a stream that contains all the future values of the input field with that particular class.
-Please note that due to using the same class for both the input fields, range and number field, the change event is emitted if either of the input fields receive a input event.
+Please note that due to using the same class for both the input fields, range and number field, the change event is emitted if either of the input fields receive an input event.
 
 The model is then reacting to these value changes and updating the state accordingly.
 
