@@ -5,7 +5,7 @@ layout: post
 excerpt: "An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js"
 author: "Olavi Haapala"
 author_twitter: "0lpeh"
-thumbnail: "/images/02-frp-cyclejs/cyclejs.svg"
+thumbnail: "/images/02-frp-cyclejs/cyclejs.png"
 ---
 
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP).
