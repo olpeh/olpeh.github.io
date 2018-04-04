@@ -74,14 +74,14 @@ A pure function should only have inputs and return some outputs, without mutatio
 
 A super simple example of a function that does *not* follow the functional paradigm:
 
-```JS
+```typescript
 let counter = 0
 const incrementCounter = () => counter += 1;
 ```
 
 The same function as a pure function that has no side effects:
 
-```JS
+```typescript
 const incrementCounter = counter => counter + 1;
 ```
 
@@ -253,7 +253,7 @@ Let's see what the code looks like, starting from the `view.ts` which is a funct
 
 `view.ts`:
 
-```javascript
+```typescript
 import xs from 'xstream';
 import { VNode, div, input, span, label } from '@cycle/dom';
 import { State } from './index';
@@ -298,7 +298,7 @@ So, where does the state stream come from and who's calling the view function?
 
 We can see in the `index.ts` the components "main" function, `SliderInput`, which looks like this that it is responsible for calling the view function:
 
-```javascript
+```typescript
 export default function SliderInput(sources: Sources): Sinks {
   const actions: SliderInputActions = intent(sources.DOM);
   const reducer$: xs<Reducer> = model(actions);
@@ -318,7 +318,7 @@ export default function SliderInput(sources: Sources): Sinks {
 This follows the basic MVI-pattern in Cycle.js using [cycle-onionify](https://github.com/staltz/cycle-onionify) for state management.
 More about that in the next chapter. The above example component code could be simplified into the following piece of code, if we did not use onionify and did not care about readability:
 
-```javascript
+```typescript
 export default function SliderInput(sources: Sources): Sinks {
   return {
     DOM: view(model(intent(sources.DOM)));
@@ -337,7 +337,7 @@ In this case, Intent is responsible for mapping the user input stream into an ac
 
 `intent.ts`:
 
-```javascript
+```typescript
 import xs from 'xstream';
 
 export interface SliderInputActions {
@@ -364,7 +364,7 @@ The model is then reacting to these value changes and updating the state accordi
 
 `model.ts`:
 
-```javascript
+```typescript
 import xs from 'xstream';
 import { State, Reducer } from './index';
 import { SliderInputActions } from './intent';
@@ -415,7 +415,7 @@ I will simply write about my experiences using cycle-onionify.
 
 State in the above mentioned `SliderInput` component's case looks like this:
 
-```javascript
+```typescript
 export interface State {
   description: string;
   unit: string;
@@ -432,7 +432,7 @@ It's just the inner state of this isolated component.
 Using lenses, we can "zoom" in and out in the Application state, exposing as little as possible of the internal structure of a component to the outer components.
 In my case, the top-level application state looks like this:
 
-```javascript
+```typescript
 export interface State {
   startTime: moment.Moment;
   duration: number;
@@ -447,7 +447,7 @@ The components then update the relevant parts of the top-level state when needed
 
 An example of this can be seen in a component called `controls` which receives the `AppState` and passes down parts of it to the `SliderInput` components and vice-versa.
 
-```javascript
+```typescript
 export const lens = {
   get: (state: AppState): State => ({
     currency: state.currency,
@@ -467,7 +467,7 @@ export const lens = {
 In the above example, the `personAmount` and `avgPrice` parts of the `childState` are parts of the states of `SliderInput` components.
 This can be seen in the lens below:
 
-```javascript
+```typescript
 export const personAmountLens = {
   get: (state: AppState): State => ({
     description: 'Person amount',
