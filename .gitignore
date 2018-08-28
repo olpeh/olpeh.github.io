@@ -3,3 +3,6 @@ dat.json
 Gemfile\.lock
 
 \.vscode/
+node_modules
+
+package-lock\.json
