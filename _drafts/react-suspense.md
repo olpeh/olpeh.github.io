@@ -2,15 +2,15 @@
 title: Using React Suspense in production
 date: 2018-11-07 00:00:00 Z
 layout: post
-excerpt: "React 16.6. introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project"
-author: "Olavi Haapala"
-author_twitter: "0lpeh"
-thumbnail: "/images/03-react-suspense/react.png"
+excerpt: 'React 16.6. introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project'
+author: 'Olavi Haapala'
+author_twitter: '0lpeh'
+thumbnail: '/images/03-react-suspense/react.png'
 ---
 
 The React dev community is going crazy about React Hooks, which is an experimental proposed feature in React 16.7-alpha.
 Hooks look super interesting and show great promise.
-The only downside is that you *can not* and *should not* start using them. Not just yet.
+The only downside is that you _can not_ and _should not_ start using them. Not just yet.
 
 In the midst of all the hype around the experimental features, some people may have forgotten that React 16.6 included some cool new features as well.
 And they are in a stable version of React, which means they should be production ready.
@@ -23,7 +23,7 @@ React lazy allows you to use the dynamically imported component as if it was a n
 
 Suspense, on the other hand, is a feature that allows displaying a fallback content in place of a component if the component's module is not loaded yet.
 
-If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="_blank"}.
+If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="\_blank"}.
 The React docs are great, by the way.
 
 I wanted to give these features a try in a real world project.
@@ -31,7 +31,7 @@ My plan was to try it out in one project and if it would improve the performance
 At my current project work, we have 4 projects using React.
 
 The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
-Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="_blank"}.
+Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}.
 
 Additionally, Suspense is going to be about more than just about asyncronously loading rendering components in the future releases of React.
 
@@ -42,9 +42,9 @@ But let's stick to the stable version of React.
 Getting started was easy:
 
 ![Get started with React Suspense]({{ "/images/03-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
-[Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="_blank"}
+[Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}
 
-You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="_blank"}
+You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}
 
 But, then again, in a real world project things aren't always that simple.
 Before doing anything I had to upgrade bunch of npm packages and then start trying to use `React.lazy`.
@@ -53,6 +53,7 @@ The first thing that struck me when trying to use lazy was a typing error:
 ```typescript
 .../node_modules/@types/react/index has no exported member 'lazy'
 ```
+
 And similarly for `Suspense`, of course.
 
 Apparently `@types/react` does not include types for the newest React version yet.
@@ -114,7 +115,7 @@ So, everything seemed to work well locally.
 The dynamic imports worked, the code splitting seemed to works, the application seemed to work and tests were passing.
 Additionally, my co-workers had at this point reviewed my PR and added a few improvement suggestions and comments.
 
-Everything looked good and I proceeded with deploying this feature to our testing environment, which uses (of course) webpack production mode.
+Everything looked good and I proceeded with deploying this feature to our testing environment, which (of course) uses webpack in production mode.
 
 After deploying it to test environment, the test site was totally blank.
 Nothing showed up, a fatal error prevented the app from rendering.
@@ -169,30 +170,58 @@ bootstrap:83 Uncaught (in promise) TypeError: Cannot read property 'call' of und
     at i (bootstrap:83)
 ```
 
+This issue was quite difficult to find a reason for.
+I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"} who is one of the contributors of WebPack.
+He pointed out that the reason for this issue was not in my `ts-loader` or in my dynamic imports.
+Rather, the cause for this issue was in my `css-loader` config, obviously.
+
 ## Further Configuring WebPack :/
 
-I had to replace extract-text-webpack-plugin (which apparently is deprecated in wp4) with mini-css-extract-plugin. And that required some tuning to get it working.
-Finally, I had a working version, but the bundle sizes were huge. I got it figured out yesterday after asking publicly in Twitter:
-https://twitter.com/0lpeh/status/1059479032146915328
+Juho told me that `extract-text-webpack-plugin` is deprecated in WebPack 4 and using it is not recommended anymore.
+
+I had to replace `extract-text-webpack-plugin` with `mini-css-extract-plugin`.
+And that required some tuning to get it working.
+
+Finally, after some hours of trying different config combinations, I had a working version.
+However, the bundle sizes were huge, more than double the size of our bundles in production.
+
+Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"} helped, I got some nice pointers and finally figured out the reason for increased bundle sizes.
+
+The reason was, that in my config, I had replaced the default `minimizer` config in order to minimize the CSS in production mode.
+The fact that I did not understand was that now webpack was not optimizing my JS bundles (because I did not tell it to do so).
+
 So, having only
+
+```javascript
 optimization: {
     minimizer: [new OptimizeCSSAssetsPlugin({})],
+    ...
+}
+```
 
+Only minimizes and optimizes CSS, not JS bundles.
 
-Only minimizes and optimizes CSS, not JS bundles
+In stead, I wanted to have:
+
+```javascript
+optimization: {
+    minimizer: [new UglifyJsPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    ...
+}
+```
 
 ## Route-based Code Splitting
 
 As my trial of using Suspense was basically just a proof-of-concept, I did not think about where to use code splitting.
 I just wanted to use it around some `big` components, that I thought were causing the bundle sizes to grow.
-Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="_blank"} where route-based code splitting is suggested.
+Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="\_blank"} where route-based code splitting is suggested.
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
 
-Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="_blank"} may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="_blank"} as you can see in the screenshot below.
+Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"} may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"} as you can see in the screenshot below.
 
-![Get started with React Suspense]({{ "/images/03-react-suspense/wsokra.png" | prepend: site.baseurl }})
-[Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="_blank"}
+![Use bundle analyzer]({{ "/images/03-react-suspense/wsokra.png" | prepend: site.baseurl }})
+[Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="\_blank"}
 
 ### Real-world example
 
@@ -245,8 +274,35 @@ render() {
 }
 ```
 
+This may look a bit uggly, and in fact, I could just have everything wrapped in a single `<Suspense>` component.
+
+## Results
+
+So, you may be interested in the results.
+How much did our application get faster?
+Does it feel faster?
+Was it worth the effort?
+
+Here is a screenshot of the network tab before using `Suspense`:
+![Bundles before Suspense]({{ "/images/03-react-suspense/bundles-before-suspense.png" | prepend: site.baseurl }})
+
+And here is how it looks like after taking React.lazy and Suspense into use:
+![Bundles with Suspense]({{ "/images/03-react-suspense/bundles-with-suspense.png" | prepend: site.baseurl }})
+
+Here is a screenshot of the network tab before using `Suspense`:
+![Lighthouse before Suspense]({{ "/images/03-react-suspense/lighthouse-before-suspense.png" | prepend: site.baseurl }})
+
+And here is how it looks like after taking React.lazy and Suspense into use:
+![Lighthouse with Suspense]({{ "/images/03-react-suspense/lighthouse-with-suspense.png" | prepend: site.baseurl }})
+
+As you can see from the screenshots, our component code is splitted into more chunks, while the total JS stays roughly the same.
+However, the lighthouse performance score did not improve, in fact it went down by 6 points.
+This may just have been caused by small variations in lighthouse results, but the user experience is way more important than some performance scores.
+The site now feels slightly faster (on slow connections) since component code is now loaded in chunks and a placeholder spinner is displayed if the loading takes long.
 
 ## A Working Webpack Config
+
+Here, you can see the contents of our current working `webpack.config.js` file:
 
 ```javascript
 const webpack = require('webpack');
@@ -385,15 +441,14 @@ module.exports = {
     net: 'empty'
   }
 };
-
 ```
 
 ## Learn More
 
-If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="_blank"} where the new features are introduced briefly.
+If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="\_blank"} where the new features are introduced briefly.
 
-My colleague, [Margarita](https://twitter.com/riittagirl){:target="_blank"} has written a super nice and easily understandable blog post about configuring webpack.
-[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="_blank"}.
+My colleague, [Margarita](https://twitter.com/riittagirl){:target="\_blank"} has written a super nice and easily understandable blog post about configuring webpack.
+[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}.
 And you definitely should read it!
 
 The best way to learn a new thing is to try it out yourself.
@@ -402,6 +457,6 @@ You'll probably learn a lot more than you learn by reading blog posts.
 
 ## Acknowledgements
 
-- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="_blank"} for helping me out with my broken WebPack config
-- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="_blank"}
-- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="_blank"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="_blank"} about how to configure WebPack 4
+- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"} for helping me out with my broken WebPack config
+- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="\_blank"}
+- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"} about how to configure WebPack 4

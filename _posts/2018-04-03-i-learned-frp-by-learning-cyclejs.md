@@ -2,22 +2,22 @@
 title: I Learned Functional Reactive Programming by Learning Cycle.js
 date: 2018-04-03 00:00:00 Z
 layout: post
-excerpt: "An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js"
-author: "Olavi Haapala"
-author_twitter: "0lpeh"
-thumbnail: "/images/02-frp-cyclejs/cyclejs.png"
+excerpt: 'An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js'
+author: 'Olavi Haapala'
+author_twitter: '0lpeh'
+thumbnail: '/images/02-frp-cyclejs/cyclejs.png'
 ---
 
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP).
-I will try to explain the basics of Cycle.js and FRP and what I have learned while building [Meeting Price Calculator](https://mpc.olpe.fi/){:target="_blank"} in Cycle.js.
+I will try to explain the basics of Cycle.js and FRP and what I have learned while building [Meeting Price Calculator](https://mpc.olpe.fi/){:target="\_blank"} in Cycle.js.
 When I started learning Cycle.js, I did not know what Reactive Programming was and I had almost no experience in Functional Programming.
 
 <img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | prepend: site.baseurl }}" width="120" aria-hidden="true">
 
 ## Background
 
-I first heard about Cycle.js in 2015 when I started as a summer employee at [Futurice](https://futurice.com){:target="_blank"}.
-[Andre Staltz](https://staltz.com/about.html){:target="_blank"}, the creator of Cycle.js, used to work at Futurice and was demoing it in a WWWeeklies presentation.
+I first heard about Cycle.js in 2015 when I started as a summer employee at [Futurice](https://futurice.com){:target="\_blank"}.
+[Andre Staltz](https://staltz.com/about.html){:target="\_blank"}, the creator of Cycle.js, used to work at Futurice and was demoing it in a WWWeeklies presentation.
 I got interested in it and tried it out for a bit.
 Later that summer I was also part of an internal project where we started using Cycle.js.
 However, it was not until March 2017 that I really started building something with Cycle.js.
@@ -29,7 +29,7 @@ I started literally by "building something" as you can see from the first commit
 
 ![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | prepend: site.baseurl }})
 
-The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/){:target="_blank"} or by the gif below.
+The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/){:target="\_blank"} or by the gif below.
 
 ![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | prepend: site.baseurl }})
 
@@ -54,8 +54,8 @@ If you have any feedback on the content of this blog post, I'll gladly hear abou
 
 Let's see what the official documentation describes it like:
 
->"A functional and reactive JavaScript framework for predictable code" <br/>
-> – Source: [cycle.js.org](http://cycle.js.org/){:target="_blank"}
+> "A functional and reactive JavaScript framework for predictable code" <br/>
+> – Source: [cycle.js.org](http://cycle.js.org/){:target="\_blank"}
 
 In order to understand what that means, we have to understand the following three concepts:
 
@@ -72,24 +72,24 @@ In FP, data flows through `pure functions`, meaning that the function has no sid
 Side effects in this context means changing something outside the function scope, like changing a global variable or sending a HTTP request.
 A pure function should only have inputs and return some outputs, without mutations.
 
-A super simple example of a function that does *not* follow the functional paradigm:
+A super simple example of a function that does _not_ follow the functional paradigm:
 
 ```typescript
-let counter = 0
-const incrementCounter = () => counter += 1;
+let counter = 0;
+const incrementCounter = () => (counter += 1);
 ```
 
 The same function as a pure function that has no side effects:
 
 ```typescript
-const incrementCounter = counter => counter + 1;
+const incrementCounter = (counter) => counter + 1;
 ```
 
 If the ES6 arrow function syntax is unfamiliar to you, the first example means a function that takes no parameters and after the arrow (`=>`) is the function body.
 In the second example, the function takes one parameter and returns that parameter incremented by one.
 Curly braces or return statement are not needed for single-line function bodies.
 
-The main difference here is that the first example mutates a global variable as opposed to the second example, which takes a variable called `counter` and returns a *new variable* that is the `counter` incremented by one.
+The main difference here is that the first example mutates a global variable as opposed to the second example, which takes a variable called `counter` and returns a _new variable_ that is the `counter` incremented by one.
 
 FP is of course a lot more than this and I'm no hard-core-FP-enthusiast, but for now understanding the basic ideology is enough.
 Learning FP will help you write code that is easy to test and maintain.
@@ -105,12 +105,12 @@ An example stream could be a click stream, which receives events when the user c
 In your code you can then define how to react to those events happening over time.
 Streams have a start and they may also have an end.
 Cycle.js supports using different stream libraries, but there is one that is designed for the exact purpose of Cycle.js.
-It's called [xstream](http://staltz.github.io/xstream/){:target="_blank"}.
+It's called [xstream](http://staltz.github.io/xstream/){:target="\_blank"}.
 I'm using xstream in my application.
 
 > "In short, a Stream in xstream is an event stream which can emit zero or more events, and may or may not finish.
 > If it finishes, then it does so by either emitting an error or a special “complete” event." <br/>
-> – Source: [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming){:target="_blank"}
+> – Source: [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming){:target="\_blank"}
 
 A good example of reactivity is using formulas in Excel spreadsheets.
 The visible values are immediately reacting to the changes in the data.
@@ -120,7 +120,7 @@ In RP, modules are responsible for reacting to changes and not responsible for c
 This is visualized in the image below where `Bar` is reacting to an event happening in `Foo` instead of `Foo` poking `Bar` for a change.
 
 ![Reactive Foo and Bar visualization]({{ "/images/02-frp-cyclejs/reactive-foo-bar.svg" | prepend: site.baseurl }})
-Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:target="_blank"}
+Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:target="\_blank"}
 
 This is why In RP, understanding how a module works is a lot easier than in passive programming.
 You only need to look at the code for that module, and not all over the codebase.
@@ -137,10 +137,10 @@ What would have happened if the payment module was replaced with something else?
 Who would have thought that the payment module was actually responsible for sending the emails as well?
 
 > "Whenever the module being changed is responsible for defining that change." <br/>
-– *Andre Staltz* about the [definition of Reactive Programming](https://www.youtube.com/watch?v=v68ppDlvHqs){:target="_blank"}
+> – _Andre Staltz_ about the [definition of Reactive Programming](https://www.youtube.com/watch?v=v68ppDlvHqs){:target="\_blank"}
 
 There is a lot more to RP than what I am able explain in a blog post.
-Take a look at [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming){:target="_blank"}, if you want to learn more.
+Take a look at [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming){:target="\_blank"}, if you want to learn more.
 On a side-note, the documentations for Cycle.js are well formulated and kept up-to-date.
 
 ### Functional Reactive Programming
@@ -191,60 +191,60 @@ In the example below, we can see the `DOM Driver` which handles writing to the D
 Reads from DOM can be user intents like click events or input events.
 
 ![Main - DOM - Side effects]({{ "/images/02-frp-cyclejs/main-domdriver-side-effects.svg" | prepend: site.baseurl }}) <br/>
-Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:target="_blank"}
+Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:target="\_blank"}
 
 ### Component Model
 
 In Cycle.js, an application is just a function.
 This means that you can easily nest functions inside a function.
 That's how easy it is to create nested components in Cycle.js.
-In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html){:target="_blank"} the components from each other.
+In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html){:target="\_blank"} the components from each other.
 This way you can easily create reusable components without thinking about conflicting namespaces and selectors.
-In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="_blank"}.
+In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="\_blank"}.
 It is used twice in my application with slightly different input parameter streams or so-called `props` in the React-world.
 
 ![Nested component model in Cycle.js]({{ "/images/02-frp-cyclejs/nested-components.svg" | prepend: site.baseurl }}) <br/>
-Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:target="_blank"}
+Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:target="\_blank"}
 
 ### Model-View-Intent
 
 Model-View-Controller pattern does not really work nicely for reactive programming due to it's nature.
 In MVC, the controller is imperatively controlling other components.
 What would the controller even be needed for in RP?
-That's why in Cycle.js we [keep the MVC idea while avoiding a proactive Controller](https://cycle.js.org/model-view-intent.html#model-view-intent-what-mvc-is-really-about){:target="_blank"}.
+That's why in Cycle.js we [keep the MVC idea while avoiding a proactive Controller](https://cycle.js.org/model-view-intent.html#model-view-intent-what-mvc-is-really-about){:target="\_blank"}.
 Instead of the Controller, we have something that's called `Intent`.
 The pattern that emerges is thus Model-View-Intent (MVI), with the following constituents:
 
 #### Model
 
-* Input: user interaction events from the Intent.
-* Output: data events.
+- Input: user interaction events from the Intent.
+- Output: data events.
 
 #### View
 
-* Input: data events from the Model.
-* Output: a Virtual DOM rendering of the model, and raw user input events (such as clicks, keyboard typing, accelerometer events, etc).
+- Input: data events from the Model.
+- Output: a Virtual DOM rendering of the model, and raw user input events (such as clicks, keyboard typing, accelerometer events, etc).
 
 #### Intent
 
-* Input: raw user input events from the View.
-* Output: model-friendly user intention events.
+- Input: raw user input events from the View.
+- Output: model-friendly user intention events.
 
 MVI is a pattern that works well with Cycle.js.
-In fact, this is actually what the [main idea of Cycle.js is based on](https://futurice.com/blog/reactive-mvc-and-the-virtual-dom){:target="_blank"}.
+In fact, this is actually what the [main idea of Cycle.js is based on](https://futurice.com/blog/reactive-mvc-and-the-virtual-dom){:target="\_blank"}.
 
 ### Code Examples
 
 Now you might be wondering what Cycle.js code looks like.
-I'll use the previously mentioned [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="_blank"} component as an example.
+I'll use the previously mentioned [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="\_blank"} component as an example.
 
 I have split the component code into 5 different files, following the MVI-pattern:
 
-* index.ts
-* model.ts
-* view.ts
-* intent.ts
-* styles.ts
+- index.ts
+- model.ts
+- view.ts
+- intent.ts
+- styles.ts
 
 Where `styles.ts` is not very important at this point.
 It simply contains the styles for the component.
@@ -285,8 +285,8 @@ export default function view(state$: xs<State>): xs<VNode> {
     ])
   );
 }
-
 ```
+
 Below is a screenshot of how a `SliderInput` component might look in the current design.
 
 ![SliderInput view]({{ "/images/02-frp-cyclejs/sliderinput.png" | prepend: site.baseurl }})
@@ -315,7 +315,7 @@ export default function SliderInput(sources: Sources): Sinks {
 }
 ```
 
-This follows the basic MVI-pattern in Cycle.js using [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="_blank"} for state management.
+This follows the basic MVI-pattern in Cycle.js using [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="\_blank"} for state management.
 More about that in the next chapter. The above example component code could be simplified into the following piece of code, if we did not use onionify and did not care about readability:
 
 ```typescript
@@ -324,7 +324,6 @@ export default function SliderInput(sources: Sources): Sinks {
     DOM: view(model(intent(sources.DOM)));
   }
 }
-
 ```
 
 This means that the view is a function of the model and the intent.
@@ -348,7 +347,7 @@ export default function intent(domSource): SliderInputActions {
   const ValueChangeAction$ = domSource
     .select('.SliderInput-input')
     .events('input')
-    .map(inputEv => parseInt((inputEv.target as HTMLInputElement).value));
+    .map((inputEv) => parseInt((inputEv.target as HTMLInputElement).value));
 
   return {
     ValueChangeAction$
@@ -385,7 +384,7 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
   );
 
   const valueChangeReducer$: xs<Reducer> = actions.ValueChangeAction$.map(
-    value => (prevState: State): State => ({
+    (value) => (prevState: State): State => ({
       ...prevState,
       value
     })
@@ -402,11 +401,11 @@ The default reducer sets the default state for the component, so that it can ren
 
 State management is well-known to be one of the biggest challenges in web development.
 There are tens of libraries which try to simplify state handling and help creating high quality web applications easily.
-Two of my favorite libraries (for React) are [MobX](https://github.com/mobxjs/mobx){:target="_blank"} and probably the most popular one, [Redux](https://redux.js.org/){:target="_blank"}.
+Two of my favorite libraries (for React) are [MobX](https://github.com/mobxjs/mobx){:target="\_blank"} and probably the most popular one, [Redux](https://redux.js.org/){:target="\_blank"}.
 
 However, In my experience, setting up Redux might feel quite confusing and the code verbose and full of boiler-plate.
 
-In Cycle.js, the [soon official](https://github.com/cyclejs/cyclejs/issues/620){:target="_blank"} state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="_blank"}.
+In Cycle.js, the [soon official](https://github.com/cyclejs/cyclejs/issues/620){:target="\_blank"} state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="\_blank"}.
 I'm also using it in my application for state handling.
 
 Note: In this blog post, I will not try to compare Redux, MobX and cycle-onionify.
@@ -494,7 +493,7 @@ Testing a pure function is easy since you know nothing outside of the function a
 
 In testing Meeting Price Calculator specifically, it has been proven useful that in Cycle.js, time is just a dependency and you can inject or pass that to your functions.
 This makes testing a lot simpler.
-[I am using](https://github.com/olpeh/meeting-price-calculator/tree/master/test){:target="_blank"} [jest](https://github.com/facebook/jest){:target="_blank"} for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like){:target="_blank"} in combination with [jsverify](https://github.com/jsverify/jsverify){:target="_blank"} and property-based testing for verifying that the views work correctly with any input values.
+[I am using](https://github.com/olpeh/meeting-price-calculator/tree/master/test){:target="\_blank"} [jest](https://github.com/facebook/jest){:target="\_blank"} for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like){:target="\_blank"} in combination with [jsverify](https://github.com/jsverify/jsverify){:target="\_blank"} and property-based testing for verifying that the views work correctly with any input values.
 
 ## Recap
 
@@ -508,7 +507,7 @@ Key take aways:
 ## Supporting Cycle.js
 
 In addition to the community members, Cycle.js is maintained by the core team members.
-The project is funded by [Open Collective contributions](https://opencollective.com/cyclejs#contributors){:target="_blank"}.
+The project is funded by [Open Collective contributions](https://opencollective.com/cyclejs#contributors){:target="\_blank"}.
 
 You can also support Cycle.js.
 
@@ -516,17 +515,17 @@ You can also support Cycle.js.
 
 If you are interested in learning more, check out these resources:
 
-- [PolyConf 16 / Dynamics of change: why reactivity matters/ Andre Staltz](https://www.youtube.com/watch?v=v68ppDlvHqs){:target="_blank"}
-- [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754){:target="_blank"}
-- [Understand Reactive Programming using RxJS](https://egghead.io/lessons/rxjs-understand-reactive-programming-using-rxjs){:target="_blank"}
-- [Using Cycle.js to view real-time satellite test data](https://futurice.com/blog/using-cycle-dot-js-to-view-real-time-satellite-test-data){:target="_blank"}
-- [Awesome Cycle.js](https://github.com/cyclejs-community/awesome-cyclejs){:target="_blank"}
-- [The Repository for Meeting Price Calculator](https://github.com/olpeh/meeting-price-calculator){:target="_blank"}
+- [PolyConf 16 / Dynamics of change: why reactivity matters/ Andre Staltz](https://www.youtube.com/watch?v=v68ppDlvHqs){:target="\_blank"}
+- [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754){:target="\_blank"}
+- [Understand Reactive Programming using RxJS](https://egghead.io/lessons/rxjs-understand-reactive-programming-using-rxjs){:target="\_blank"}
+- [Using Cycle.js to view real-time satellite test data](https://futurice.com/blog/using-cycle-dot-js-to-view-real-time-satellite-test-data){:target="\_blank"}
+- [Awesome Cycle.js](https://github.com/cyclejs-community/awesome-cyclejs){:target="\_blank"}
+- [The Repository for Meeting Price Calculator](https://github.com/olpeh/meeting-price-calculator){:target="\_blank"}
 
 ## Acknowledgements
 
-- Thanks to my employer [Futurice](https://futurice.com/){:target="_blank"} for sponsoring open source development through [Spice Program](https://spiceprogram.org/oss-sponsorship/){:target="_blank"}
-- Thanks to [Andre Staltz](https://staltz.com/){:target="_blank"} for reviewing my code and  helping me simplify the state handling in my app
+- Thanks to my employer [Futurice](https://futurice.com/){:target="\_blank"} for sponsoring open source development through [Spice Program](https://spiceprogram.org/oss-sponsorship/){:target="\_blank"}
+- Thanks to [Andre Staltz](https://staltz.com/){:target="\_blank"} for reviewing my code and helping me simplify the state handling in my app
 - Thanks to the awesome Cycle.js community members who are always willing to help when needed
-- Thanks to [Andre Staltz](https://staltz.com/){:target="_blank"} for reviewing this blog post and suggesting improvements to it
-- Thanks to my colleague [Fotis](https://twitter.com/f_papado){:target="_blank"} for proofreading this blog post and suggesting improvements to it
+- Thanks to [Andre Staltz](https://staltz.com/){:target="\_blank"} for reviewing this blog post and suggesting improvements to it
+- Thanks to my colleague [Fotis](https://twitter.com/f_papado){:target="\_blank"} for proofreading this blog post and suggesting improvements to it
