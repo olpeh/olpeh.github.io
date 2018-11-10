@@ -33,6 +33,10 @@ At my current project work, we have 4 projects using React.
 The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
 Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0).
 
+Additionally, Suspense is going to be about more than just about asyncronously loading rendering components in the future releases of React.
+
+But let's stick to the stable version of React.
+
 ## Getting Started with Suspense
 
 Getting started was easy:
@@ -185,13 +189,13 @@ Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-spli
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
 
-[webpack analyzer]() may be a valid option for analyzing your Webpack bundles, as suggested by ?? [on Twitter](twitt) as you can see in the screenshot below.
+Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer) may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra/status/1059475054419881984) as you can see in the screenshot below.
 
-KUVA TWIITISTÄ
+![Get started with React Suspense]({{ "/images/03-react-suspense/wsokra.png" | prepend: site.baseurl }})
 
 ### Real-world example
 
-Here is a code snippet of our projects' root component where the routes are defined.
+Here is a code snippet of our projects' `Root` component where the routes are defined.
 The imports for different components are using React.lazy for dynamic importing.
 We are using TypeScript in our project, but as you can see from the snippet, the typings for React do not contain Suspense and lazy yet.
 As a workaround, to ignore the type errors, you can just tell the TypeScript compiler that React is of type `any` and it will ignore errors when accessing properties or methods that should not exist according to the type definitions.
@@ -385,16 +389,18 @@ module.exports = {
 
 ## Learn More
 
-If you want to learn more about the future of React, you shoul
+If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html) where the new features are introduced briefly.
 
-My colleague, [Margarit]() has written a super nice blogpost about configuring webpack.
-You should definitely read it!
+My colleague, [Margarita](https://twitter.com/riittagirl) has written a super nice and easily understandable blog post about configuring webpack.
+[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1).
+And you definitely should read it!
 
-Try it out!
+The best way to learn a new thing is to try it out yourself.
+So, go ahead and try it out!
 You'll probably learn a lot more than you learn by reading blog posts.
 
 ## Acknowledgements
 
-- Thanks to [riittagirl](https://twitter.com/riittagir) for reviewing my code and  helping me simplify the state handling in my app
-- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw) for helping me out with
-- Thanks to everyone who helped me in this thread in Twitter, including Dan Abramov, Kent C. Dodds,
+- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw) for helping me out with my broken WebPack config
+- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408)
+- Thanks to [riittagirl](https://twitter.com/riittagirl) for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1) about how to configure WebPack 4
