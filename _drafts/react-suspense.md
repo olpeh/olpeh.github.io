@@ -297,6 +297,12 @@ However, the lighthouse performance score did not improve, in fact it went down 
 This may just have been caused by small variations in lighthouse results, but the user experience is way more important than some performance scores.
 The site now feels slightly faster (on slow connections) since component code is now loaded in chunks and a placeholder spinner is displayed if the loading takes long.
 
+As an answer to the question "Was it worth the effort?", I would say yes, definitely.
+The actual code changes were small, but we needed to update our config quite a lot.
+Our current config is now more optimized and cleaner.
+We now have support for dynamic imports in our config, which makes it easier to use new features in the future.
+Also, updating packages always good.
+
 ## A Working Webpack Config
 
 Here, you can see the contents of our current working `webpack.config.js` file:
