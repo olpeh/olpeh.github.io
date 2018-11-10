@@ -38,7 +38,6 @@ At my current project work, we have 4 projects using React.
 ## Getting Started with Suspense
 
 Getting started was easy:
-
 ![Get started with React Suspense]({{ "/images/03-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}
 

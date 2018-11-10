@@ -16,6 +16,7 @@ body {
 
 img {
   max-width: 100%;
+  margin: 10px 0;
 }
 
 header {
@@ -54,7 +55,7 @@ nav a {
   text-decoration: none;
   margin: 15px;
   text-transform: uppercase;
-  font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 900;
   line-height: 40px;
 }
@@ -109,7 +110,7 @@ main {
   margin-bottom: 20px;
   padding: 3px;
   background: rgb(243, 240, 240);
-  box-shadow: 0 1px 2px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .post-full-page .post-header {
@@ -141,9 +142,8 @@ article .post-content blockquote {
 }
 
 article .post-content pre code {
-  color: #505050
+  color: #505050;
 }
-
 
 .post-footer {
   margin-top: 60px;
@@ -163,7 +163,7 @@ footer {
 footer a {
   text-decoration: none;
   margin: 8px;
-  font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 @media screen and (max-width: 900px) {
