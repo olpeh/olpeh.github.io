@@ -16,7 +16,6 @@ body {
 
 img {
   max-width: 100%;
-  margin: 10px 0;
 }
 
 header {
@@ -133,6 +132,10 @@ main {
 
 article .post-content {
   margin-top: 60px;
+}
+
+article .post-content img {
+  margin: 10px 0;
 }
 
 article .post-content pre,
