@@ -23,7 +23,7 @@ React lazy allows you to use the dynamically imported component as if it was a n
 
 Suspense, on the other hand, is a feature that allows displaying a fallback content in place of a component if the component's module is not loaded yet.
 
-If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy).
+If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="_blank"}.
 The React docs are great, by the way.
 
 I wanted to give these features a try in a real world project.
@@ -31,7 +31,7 @@ My plan was to try it out in one project and if it would improve the performance
 At my current project work, we have 4 projects using React.
 
 The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
-Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0).
+Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="_blank"}.
 
 Additionally, Suspense is going to be about more than just about asyncronously loading rendering components in the future releases of React.
 
@@ -42,9 +42,9 @@ But let's stick to the stable version of React.
 Getting started was easy:
 
 ![Get started with React Suspense]({{ "/images/03-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
-[Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729)
+[Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="_blank"}
 
-You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136)
+You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="_blank"}
 
 But, then again, in a real world project things aren't always that simple.
 Before doing anything I had to upgrade bunch of npm packages and then start trying to use `React.lazy`.
@@ -185,13 +185,14 @@ Only minimizes and optimizes CSS, not JS bundles
 
 As my trial of using Suspense was basically just a proof-of-concept, I did not think about where to use code splitting.
 I just wanted to use it around some `big` components, that I thought were causing the bundle sizes to grow.
-Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting) where route-based code splitting is suggested.
+Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="_blank"} where route-based code splitting is suggested.
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
 
-Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer) may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra/status/1059475054419881984) as you can see in the screenshot below.
+Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="_blank"} may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="_blank"} as you can see in the screenshot below.
 
 ![Get started with React Suspense]({{ "/images/03-react-suspense/wsokra.png" | prepend: site.baseurl }})
+[Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="_blank"}
 
 ### Real-world example
 
@@ -389,10 +390,10 @@ module.exports = {
 
 ## Learn More
 
-If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html) where the new features are introduced briefly.
+If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="_blank"} where the new features are introduced briefly.
 
-My colleague, [Margarita](https://twitter.com/riittagirl) has written a super nice and easily understandable blog post about configuring webpack.
-[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1).
+My colleague, [Margarita](https://twitter.com/riittagirl){:target="_blank"} has written a super nice and easily understandable blog post about configuring webpack.
+[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="_blank"}.
 And you definitely should read it!
 
 The best way to learn a new thing is to try it out yourself.
@@ -401,6 +402,6 @@ You'll probably learn a lot more than you learn by reading blog posts.
 
 ## Acknowledgements
 
-- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw) for helping me out with my broken WebPack config
-- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408)
-- Thanks to [riittagirl](https://twitter.com/riittagirl) for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1) about how to configure WebPack 4
+- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="_blank"} for helping me out with my broken WebPack config
+- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="_blank"}
+- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="_blank"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="_blank"} about how to configure WebPack 4
