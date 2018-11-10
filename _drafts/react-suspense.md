@@ -10,7 +10,9 @@ thumbnail: '/images/03-react-suspense/react.png'
 
 The React dev community is going crazy about React Hooks, which is an experimental proposed feature in React 16.7-alpha.
 Hooks look super interesting and show great promise.
-The only downside is that you _can not_ and _should not_ start using them. Not just yet.
+The only downside is that you _can not_ and _should not_ start using them.
+Not just yet.
+The API is still under development and consideration and may change.
 
 In the midst of all the hype around the experimental features, some people may have forgotten that React 16.6 included some cool new features as well.
 And they are in a stable version of React, which means they should be production ready.
@@ -20,22 +22,18 @@ And they are in a stable version of React, which means they should be production
 React 16.6., which was released on October 23, 2018 came with built-in support for code splitting using dynamic imports.
 The feature for lazily importing components is called react lazy.
 React lazy allows you to use the dynamically imported component as if it was a normal component.
-
 Suspense, on the other hand, is a feature that allows displaying a fallback content in place of a component if the component's module is not loaded yet.
 
 If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="\_blank"}.
 The React docs are great, by the way.
+The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
+Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}.
+Additionally, Suspense is going to be about more than just about asyncronously loading rendering components in the future releases of React.
+But let's stick to the stable version of React.
 
 I wanted to give these features a try in a real world project.
 My plan was to try it out in one project and if it would improve the performance or the user experience, I would take it into use in other projects as well.
 At my current project work, we have 4 projects using React.
-
-The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
-Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}.
-
-Additionally, Suspense is going to be about more than just about asyncronously loading rendering components in the future releases of React.
-
-But let's stick to the stable version of React.
 
 ## Getting Started with Suspense
 
@@ -44,7 +42,7 @@ Getting started was easy:
 ![Get started with React Suspense]({{ "/images/03-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}
 
-You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}
+You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}.
 
 But, then again, in a real world project things aren't always that simple.
 Before doing anything I had to upgrade bunch of npm packages and then start trying to use `React.lazy`.
@@ -55,7 +53,6 @@ The first thing that struck me when trying to use lazy was a typing error:
 ```
 
 And similarly for `Suspense`, of course.
-
 Apparently `@types/react` does not include types for the newest React version yet.
 Which, in my opinion is super weird.
 
@@ -68,7 +65,7 @@ const lazy = (React as any).lazy;
 ```
 
 Obviously, this is not recommended, and thus the TODO comment.
-At least it works.
+But hey, at least it works.
 
 After this, the obvious error in my setup was, that our config did not support dynamic imports.
 I had to make the following change to our `tsconfig.json` file:
@@ -82,6 +79,10 @@ I had to make the following change to our `tsconfig.json` file:
 -    "module": "es6",
 +    "module": "esnext",
 ```
+
+Please note that in this particular project we are pretty lucky.
+We only need to support the newest desktop browsers.
+This means that we can easily have esnext as our compilation target.
 
 After that, I was able to get further, until the next error struck me:
 
@@ -109,19 +110,18 @@ rules: [
 Additionally, because of upgrading most of the npm packages used by the project, I had a few deprecation warnings and the tests were not passing at this point.
 These were easy to fix, since the deprecation warnings usually tell you what to do and the test failure error was pretty easy to DuckDuckGo.
 
+While writing this blog post, I realized, that I probably broke the hot loader feature in this project.
+
 ## Testing React lazy and Suspense in a production-like environment
 
 So, everything seemed to work well locally.
 The dynamic imports worked, the code splitting seemed to works, the application seemed to work and tests were passing.
 Additionally, my co-workers had at this point reviewed my PR and added a few improvement suggestions and comments.
-
 Everything looked good and I proceeded with deploying this feature to our testing environment, which (of course) uses webpack in production mode.
 
 After deploying it to test environment, the test site was totally blank.
 Nothing showed up, a fatal error prevented the app from rendering.
-
 In fact, if you looked closely, the React app was actually bootsrapped and it was able to render something until it hit the first Suspended component and everything crashed.
-
 The console looked like this:
 
 ```typescript
@@ -178,19 +178,16 @@ Rather, the cause for this issue was in my `css-loader` config, obviously.
 ## Further Configuring WebPack :/
 
 Juho told me that `extract-text-webpack-plugin` is deprecated in WebPack 4 and using it is not recommended anymore.
-
 I had to replace `extract-text-webpack-plugin` with `mini-css-extract-plugin`.
 And that required some tuning to get it working.
 
 Finally, after some hours of trying different config combinations, I had a working version.
 However, the bundle sizes were huge, more than double the size of our bundles in production.
-
 Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"} helped, I got some nice pointers and finally figured out the reason for increased bundle sizes.
-
 The reason was, that in my config, I had replaced the default `minimizer` config in order to minimize the CSS in production mode.
 The fact that I did not understand was that now webpack was not optimizing my JS bundles (because I did not tell it to do so).
 
-So, having only
+So, having only:
 
 ```javascript
 optimization: {
@@ -289,10 +286,10 @@ Here is a screenshot of the network tab before using `Suspense`:
 And here is how it looks like after taking React.lazy and Suspense into use:
 ![Bundles with Suspense]({{ "/images/03-react-suspense/bundles-with-suspense.png" | prepend: site.baseurl }})
 
-Here is a screenshot of the network tab before using `Suspense`:
+Here is a screenshot of the lighthouse results before using `Suspense`:
 ![Lighthouse before Suspense]({{ "/images/03-react-suspense/lighthouse-before-suspense.png" | prepend: site.baseurl }})
 
-And here is how it looks like after taking React.lazy and Suspense into use:
+And here are the same results when using React.lazy and Suspense:
 ![Lighthouse with Suspense]({{ "/images/03-react-suspense/lighthouse-with-suspense.png" | prepend: site.baseurl }})
 
 As you can see from the screenshots, our component code is splitted into more chunks, while the total JS stays roughly the same.
