@@ -5,7 +5,7 @@ layout: post
 excerpt: 'React 16.6. introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-thumbnail: '/images/03-react-suspense/react.png'
+thumbnail: '/images/04-react-suspense/react.png'
 ---
 
 The React dev community is going crazy about React Hooks, which is an experimental proposed feature in React 16.7-alpha.
@@ -38,7 +38,7 @@ At my current project work, we have 4 projects using React.
 ## Getting Started with Suspense
 
 Getting started was easy:
-![Get started with React Suspense]({{ "/images/03-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
+![Get started with React Suspense]({{ "/images/04-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}
 
 You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}.
@@ -216,7 +216,7 @@ Further on, you should analyze your bundles in order to figure out what causes t
 
 Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"} may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"} as you can see in the screenshot below.
 
-![Use bundle analyzer]({{ "/images/03-react-suspense/wsokra.png" | prepend: site.baseurl }})
+![Use bundle analyzer]({{ "/images/04-react-suspense/wsokra.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="\_blank"}
 
 ### Real-world example
@@ -280,16 +280,16 @@ Does it feel faster?
 Was it worth the effort?
 
 Here is a screenshot of the network tab before using `Suspense`:
-![Bundles before Suspense]({{ "/images/03-react-suspense/bundles-before-suspense.png" | prepend: site.baseurl }})
+![Bundles before Suspense]({{ "/images/04-react-suspense/bundles-before-suspense.png" | prepend: site.baseurl }})
 
 And here is how it looks like after taking React.lazy and Suspense into use:
-![Bundles with Suspense]({{ "/images/03-react-suspense/bundles-with-suspense.png" | prepend: site.baseurl }})
+![Bundles with Suspense]({{ "/images/04-react-suspense/bundles-with-suspense.png" | prepend: site.baseurl }})
 
 Here is a screenshot of the lighthouse results before using `Suspense`:
-![Lighthouse before Suspense]({{ "/images/03-react-suspense/lighthouse-before-suspense.png" | prepend: site.baseurl }})
+![Lighthouse before Suspense]({{ "/images/04-react-suspense/lighthouse-before-suspense.png" | prepend: site.baseurl }})
 
 And here are the same results when using React.lazy and Suspense:
-![Lighthouse with Suspense]({{ "/images/03-react-suspense/lighthouse-with-suspense.png" | prepend: site.baseurl }})
+![Lighthouse with Suspense]({{ "/images/04-react-suspense/lighthouse-with-suspense.png" | prepend: site.baseurl }})
 
 As you can see from the screenshots, our component code is splitted into more chunks, while the total JS stays roughly the same.
 However, the lighthouse performance score did not improve, in fact it went down by 6 points.
