@@ -1,3 +1,0 @@
-[submodule "test/puppeteer-visual-diff"]
-	path = test/puppeteer-visual-diff
-	url = https://github.com/olpeh/puppeteer-visual-diff.git

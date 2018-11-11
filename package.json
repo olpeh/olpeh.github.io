@@ -1,23 +1,26 @@
 {
-    "name": "olpeh.github.io",
-    "version": "1.0.0",
-    "description": "Personal blog – olpe.fi",
-    "scripts": {
-        "build": "bundle exec jekyll build",
-        "deploy": "npm run build && npm run dat",
-        "dat": "rimraf ~/Sites/olpeh.github.io && cp -r _site/ ~/Sites/olpeh.github.io"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/olpeh/olpeh.github.io.git"
-    },
-    "author": "Olavi Haapala",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/olpeh/olpeh.github.io/issues"
-    },
-    "homepage": "https://github.com/olpeh/olpeh.github.io#readme",
-    "devDependencies": {
-        "rimraf": "^2.6.2"
-    }
+  "name": "olpeh.github.io",
+  "version": "1.0.0",
+  "description": "Personal blog – olpe.fi",
+  "scripts": {
+    "build": "bundle exec jekyll build",
+    "deploy": "npm run build && npm run dat",
+    "dat": "rimraf ~/Sites/olpeh.github.io && cp -r _site/ ~/Sites/olpeh.github.io",
+    "test": "mocha test/ --timeout 35000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olpeh/olpeh.github.io.git"
+  },
+  "author": "Olavi Haapala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/olpeh/olpeh.github.io/issues"
+  },
+  "homepage": "https://github.com/olpeh/olpeh.github.io#readme",
+  "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "rimraf": "^2.6.2",
+    "visual-regression": "^0.1.0"
+  }
 }
