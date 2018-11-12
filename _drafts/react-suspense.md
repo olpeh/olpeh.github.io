@@ -8,11 +8,11 @@ author_twitter: '0lpeh'
 thumbnail: '/images/04-react-suspense/react.png'
 ---
 
-The React dev community is going crazy about React Hooks, which is an experimental proposed feature in React 16.7-alpha.
+The React dev community is currently going crazy about [React Hooks](https://reactjs.org/docs/hooks-intro.html){:target="\_blank"}, which is an experimental proposed feature in React 16.7-alpha.
 Hooks look super interesting and show great promise.
 The only downside is that you _can not_ and _should not_ start using them.
 Not just yet.
-The API is still under development and consideration and may change.
+The API is still under development and subject to changes.
 
 In the midst of all the hype around the experimental features, some people may have forgotten that React 16.6 included some cool new features as well.
 And they are in a stable version of React, which means they should be production ready.
@@ -20,7 +20,7 @@ And they are in a stable version of React, which means they should be production
 ## React lazy and Suspense
 
 React 16.6., which was released on October 23, 2018 came with built-in support for code splitting using dynamic imports.
-The feature for lazily importing components is called react lazy.
+The feature for lazily importing component code is called react lazy.
 React lazy allows you to use the dynamically imported component as if it was a normal component.
 Suspense, on the other hand, is a feature that allows displaying a fallback content in place of a component if the component's module is not loaded yet.
 
@@ -33,7 +33,7 @@ But let's stick to the stable version of React.
 
 I wanted to give these features a try in a real world project.
 My plan was to try it out in one project and if it would improve the performance or the user experience, I would take it into use in other projects as well.
-At my current project work, we have 4 projects using React.
+At my current project work, we have 4 different projects of varying sizes using React.
 
 ## Getting Started with Suspense
 
@@ -41,11 +41,11 @@ Getting started was easy:
 ![Get started with React Suspense]({{ "/images/04-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}
 
-You could literally get started in 60 seconds as you can see from [this 60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}.
+You could literally get started in 60 seconds as you can see from this [60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}.
 
 But, then again, in a real world project things aren't always that simple.
-Before doing anything I had to upgrade bunch of npm packages and then start trying to use `React.lazy`.
-The first thing that struck me when trying to use lazy was a typing error:
+Before doing anything I had to upgrade a bunch of npm packages and then get started trying to use `React.lazy`.
+The first thing that struck me when trying to use lazy was an error with types:
 
 ```typescript
 .../node_modules/@types/react/index has no exported member 'lazy'
@@ -81,7 +81,7 @@ I had to make the following change to our `tsconfig.json` file:
 
 Please note that in this particular project we are pretty lucky.
 We only need to support the newest desktop browsers.
-This means that we can easily have esnext as our compilation target.
+This means that we can easily have esnext as our compilation target and use the newest of the new ES/TS features.
 
 After that, I was able to get further, until the next error struck me:
 
@@ -109,7 +109,7 @@ rules: [
 Additionally, because of upgrading most of the npm packages used by the project, I had a few deprecation warnings and the tests were not passing at this point.
 These were easy to fix, since the deprecation warnings usually tell you what to do and the test failure error was pretty easy to DuckDuckGo.
 
-While writing this blog post, I realized, that I probably broke the hot loader feature in this project.
+Side note: while writing this blog post, I realized, that I probably broke the hot loader feature in this project.
 
 ## Testing React lazy and Suspense in a production-like environment
 
@@ -170,7 +170,7 @@ bootstrap:83 Uncaught (in promise) TypeError: Cannot read property 'call' of und
 ```
 
 This issue was quite difficult to find a reason for.
-I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"} who is one of the contributors of WebPack.
+I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}, who is one of the contributors of WebPack.
 He pointed out that the reason for this issue was not in my `ts-loader` or in my dynamic imports.
 Rather, the cause for this issue was in my `css-loader` config, obviously.
 
@@ -179,10 +179,11 @@ Rather, the cause for this issue was in my `css-loader` config, obviously.
 Juho told me that `extract-text-webpack-plugin` is deprecated in WebPack 4 and using it is not recommended anymore.
 I had to replace `extract-text-webpack-plugin` with `mini-css-extract-plugin`.
 And that required some tuning to get it working.
-
 Finally, after some hours of trying different config combinations, I had a working version.
+
 However, the bundle sizes were huge, more than double the size of our bundles in production.
-Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"} helped, I got some nice pointers and finally figured out the reason for increased bundle sizes.
+Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"} helped.
+I got some nice pointers and finally figured out the reason for increased bundle sizes.
 The reason was, that in my config, I had replaced the default `minimizer` config in order to minimize the CSS in production mode.
 The fact that I did not understand was that now webpack was not optimizing my JS bundles (because I did not tell it to do so).
 
@@ -206,10 +207,13 @@ optimization: {
 }
 ```
 
+>So, the lesson here is that modifying the default config values changes the default config values.<br/>
+> – Me, November 2018
+
 ## Route-based Code Splitting
 
-As my trial of using Suspense was basically just a proof-of-concept, I did not think about where to use code splitting.
-I just wanted to use it around some `big` components, that I thought were causing the bundle sizes to grow.
+As my trial of using Suspense was basically a proof-of-concept, I did not think thoroughly about where to use code splitting.
+I just wanted to use it around some `large` components, that I thought were causing the bundle sizes to grow.
 Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="\_blank"} where route-based code splitting is suggested.
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
@@ -239,7 +243,7 @@ const MetricsView = lazy(() => import('app/containers/MetricsView'));
 const FAQ = lazy(() => import('app/components/FAQ'));
 ```
 
-Further on in the render part of our root component, we wrap all of the different routes with `<Suspense>` and give it a spinner component as the fallback.
+Further down in the render part of our root component, we wrap all of the different routes with `<Suspense>` and give it a spinner component as the fallback.
 The spinner will be displayed if loading the component code is slow.
 This may or may not be good from the user experience point of view.
 
@@ -291,9 +295,10 @@ Here is a screenshot of the lighthouse results before using `Suspense`:
 And here are the same results when using React.lazy and Suspense:
 ![Lighthouse with Suspense]({{ "/images/04-react-suspense/lighthouse-with-suspense.png" | prepend: site.baseurl }})
 
-As you can see from the screenshots, our component code is splitted into more chunks, while the total JS stays roughly the same.
+As you can see from the screenshots, our component code is now splitted into more chunks, while the total JS stays roughly the same.
 However, the lighthouse performance score did not improve, in fact it went down by 6 points.
 This may just have been caused by small variations in lighthouse results, but the user experience is way more important than some performance scores.
+On the other hand, the `First Contentful Paint` metric had improved by 800ms, which is nice, but then again `Time To Interactive` got worse.
 The site now feels slightly faster (on slow connections) since component code is now loaded in chunks and a placeholder spinner is displayed if the loading takes long.
 
 As an answer to the question "Was it worth the effort?", I would say yes, definitely.
