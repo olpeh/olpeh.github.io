@@ -7,10 +7,15 @@
 <meta name="keywords" content="{{ page.categories | join: ', ' }}">{% endif %}
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-<style>
+
+{% capture styles %}
     {% include /css/pixyll.css %}
     {% include /css/main.css %}
     {% if page.layout == 'post' %}
         {% include /css/highlight.css %}
     {% endif %}
+{% endcapture %}
+
+<style>
+{{ styles | scssify }}
 </style>

@@ -22,3 +22,5 @@ include: ['.well-known']
 exclude: ['test', 'node_modules']
 url: https://olpe.fi
 enforce_ssl: olpe.fi
+sass:
+  style: compressed
