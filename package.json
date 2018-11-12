@@ -4,6 +4,7 @@
   "description": "Personal blog – olpe.fi",
   "scripts": {
     "build": "bundle exec jekyll build",
+    "dev": "bundle exec jekyll serve",
     "deploy": "npm run build && npm run dat",
     "dat": "npm run build && rimraf ~/Sites/olpeh.github.io && cp -r _site/ ~/Sites/olpeh.github.io",
     "test": "mocha test/ --timeout 35000"
