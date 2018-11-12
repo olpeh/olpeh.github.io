@@ -7,9 +7,10 @@
 <meta name="keywords" content="{{ page.categories | join: ', ' }}">{% endif %}
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-<!-- Custom CSS -->
-<link rel="stylesheet" href="{{ " /css/pixyll.css " | prepend: site.baseurl }}" type="text/css">
-<link rel="stylesheet" href="{{ " /css/main.css " | prepend: site.baseurl }}" type="text/css">
-{% if page.layout == 'post' %}
-<link rel="stylesheet" href="{{ " /css/highlight.css " | prepend: site.baseurl }}" type="text/css">
-{% endif %}
+<style>
+    {% include /css/pixyll.css %}
+    {% include /css/main.css %}
+    {% if page.layout == 'post' %}
+        {% include /css/highlight.css %}
+    {% endif %}
+</style>
