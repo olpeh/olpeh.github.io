@@ -19,16 +19,16 @@ And they are in a stable version of React, which means they should be production
 
 ## React lazy and Suspense
 
-React 16.6., which was released on October 23, 2018 came with built-in support for code splitting using dynamic imports.
+React 16.6., which was released on October 23, 2018, came with built-in support for code splitting using dynamic imports.
 The feature for lazily importing component code is called react lazy.
 React lazy allows you to use the dynamically imported component as if it was a normal component.
-Suspense, on the other hand, is a feature that allows displaying a fallback content in place of a component if the component's module is not loaded yet.
+Suspense, on the other hand, is a feature that allows displaying fallback content in place of a component if the component's module is not loaded yet.
 
 If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="\_blank"}.
 The React docs are great, by the way.
 The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
-Take a look at the release notes [here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}.
-Additionally, Suspense is going to be about more than just about asyncronously loading rendering components in the future releases of React.
+[Take a look at the release notes here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}.
+Eventually, Suspense is going to be about more than just asynchronously loading and rendering components, in the future releases of React.
 But let's stick to the stable version of React.
 
 I wanted to give these features a try in a real world project.
@@ -53,7 +53,7 @@ The first thing that struck me when trying to use lazy was an error with types:
 
 And similarly for `Suspense`, of course.
 Apparently `@types/react` does not include types for the newest React version yet.
-Which, in my opinion is super weird.
+Which, happens because the types are maintained by the community and not React Developers at Facebook.
 
 A TypeScript hack to work around this issue is telling the TypeScript compiler that React is of type `any`.
 
@@ -91,7 +91,7 @@ Module build failed (from ../node_modules/babel-loader/lib/index.js):
 Error: .plugins must be an array, or undefined
 ```
 
-This error I was able to fix by modifying our WebPack config for loading TypeScript files by simplyfying it to always use ts-loader.
+This error I was able to fix by modifying our webpack config for loading TypeScript files by simplifying it to always use ts-loader.
 As my colleague pointed out, we were using babel, even though we actually did not need it in a TypeScript project.
 
 ```diff
@@ -114,13 +114,13 @@ Side note: while writing this blog post, I realized, that I probably broke the h
 ## Testing React lazy and Suspense in a production-like environment
 
 So, everything seemed to work well locally.
-The dynamic imports worked, the code splitting seemed to works, the application seemed to work and tests were passing.
+The dynamic imports worked, the code splitting seemed to work, the application seemed to work and tests were passing.
 Additionally, my co-workers had at this point reviewed my PR and added a few improvement suggestions and comments.
 Everything looked good and I proceeded with deploying this feature to our testing environment, which (of course) uses webpack in production mode.
 
 After deploying it to test environment, the test site was totally blank.
 Nothing showed up, a fatal error prevented the app from rendering.
-In fact, if you looked closely, the React app was actually bootsrapped and it was able to render something until it hit the first Suspended component and everything crashed.
+In fact, if you looked closely, the React app was actually bootstrapped and it was able to render something until it hit the first Suspended component and everything crashed.
 The console looked like this:
 
 ```typescript
@@ -170,13 +170,13 @@ bootstrap:83 Uncaught (in promise) TypeError: Cannot read property 'call' of und
 ```
 
 This issue was quite difficult to find a reason for.
-I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}, who is one of the contributors of WebPack.
+I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}, who is one of the contributors of webpack.
 He pointed out that the reason for this issue was not in my `ts-loader` or in my dynamic imports.
 Rather, the cause for this issue was in my `css-loader` config, obviously.
 
-## Further Configuring WebPack :/
+## Further Configuring webpack :/
 
-Juho told me that `extract-text-webpack-plugin` is deprecated in WebPack 4 and using it is not recommended anymore.
+Juho told me that `extract-text-webpack-plugin` is deprecated in webpack 4 and using it is not recommended anymore.
 I had to replace `extract-text-webpack-plugin` with `mini-css-extract-plugin`.
 And that required some tuning to get it working.
 Finally, after some hours of trying different config combinations, I had a working version.
@@ -207,7 +207,7 @@ optimization: {
 }
 ```
 
->So, the lesson here is that modifying the default config values changes the default config values.<br/>
+> So, the lesson here is that modifying the default config values changes the default config values.<br/>
 > – Me, November 2018
 
 ## Route-based Code Splitting
@@ -218,14 +218,14 @@ Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-spli
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
 
-Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"} may be a good option for analyzing your Webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"} as you can see in the screenshot below.
+Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"} may be a good option for analyzing your webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"} as you can see in the screenshot below.
 
 ![Use bundle analyzer]({{ "/images/04-react-suspense/wsokra.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="\_blank"}
 
 ### Real-world example
 
-Here is a code snippet of our projects' `Root` component where the routes are defined.
+Here is a code snippet of our project's `Root` component where the routes are defined.
 The imports for different components are using React.lazy for dynamic importing.
 We are using TypeScript in our project, but as you can see from the snippet, the typings for React do not contain Suspense and lazy yet.
 As a workaround, to ignore the type errors, you can just tell the TypeScript compiler that React is of type `any` and it will ignore errors when accessing properties or methods that should not exist according to the type definitions.
@@ -255,18 +255,12 @@ render() {
         <div className={style.container}>
             <Suspense fallback={<Spinner />}>
                 <TopBar />
-            </Suspense>
-            <Suspense fallback={<Spinner />}>
                 <Route exact path={`${matcher.url}/`} component={MainView} />
-            </Suspense>
-            <Suspense fallback={<Spinner />}>
                 <Route
-                exact
-                path={`${matcher.url}/metrics`}
-                component={MetricsView}
+                  exact
+                  path={`${matcher.url}/metrics`}
+                  component={MetricsView}
                 />
-            </Suspense>
-            <Suspense fallback={<Spinner />}>
                 <Route exact path={`${matcher.url}/faq`} component={FAQ} />
             </Suspense>
         </div>
@@ -274,7 +268,8 @@ render() {
 }
 ```
 
-This may look a bit uggly, and in fact, I could just have everything wrapped in a single `<Suspense>` component.
+The way I wrote it initially was quite ugly, because I thought I had to wrap every component with Suspense.
+Later on, I read some of the documentation and realized, it's possible to wrap multiple components inside a single `<Suspense>` component.
 
 ## Results
 
@@ -307,9 +302,10 @@ Our current config is now more optimized and cleaner.
 We now have support for dynamic imports in our config, which makes it easier to use new features in the future.
 Also, updating packages always good.
 
-## A Working Webpack Config
+## A Working webpack Config
 
-Here, you can see the contents of our current working `webpack.config.js` file:
+Below, you can see the contents of our current working `webpack.config.js` file.
+Bear in mind though, that this is the whole config file for our project, and includes more than just supporting dynamic imports and our TypeScript config.
 
 ```javascript
 const webpack = require('webpack');
@@ -321,8 +317,8 @@ const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, '../public');
 
 // plugins
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const wtmlWebpackPlpack = require('html-webpack-plugin');
+const webpackCleanupPlpack = require('webpack-cleanup-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -418,15 +414,15 @@ module.exports = {
     runtimeChunk: true
   },
   plugins: [
-    new WebpackCleanupPlugin(),
+    new webpackCleanupPlpack(),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
+      // Options similar to the same options in webpackOptpack.output
       path: outPath,
       filename: isProduction ? '[name].[hash].css' : '[name].css',
       chunkFilename: isProduction ? '[id].[hash].css' : '[id].css',
       publicPath: '/'
     }),
-    new HtmlWebpackPlugin({
+    new wtmlWebpackPlpack({
       template: 'assets/index.html',
       favicon: 'assets/favicon.ico'
     })
@@ -464,6 +460,7 @@ You'll probably learn a lot more than you learn by reading blog posts.
 
 ## Acknowledgements
 
-- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"} for helping me out with my broken WebPack config
+- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"} for helping me out with my broken webpack config
 - Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="\_blank"}
-- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"} about how to configure WebPack 4
+- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"} about how to configure webpack 4
+- Thanks to [Fotis](https://twitter.com/f_papado){:target="\_blank"} for proofreading this blog post and suggesting improvements to it
