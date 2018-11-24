@@ -2,7 +2,7 @@
 title: Using React Suspense in production
 date: 2018-11-13 00:00:00 Z
 layout: post
-excerpt: 'React 16.6. introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project'
+excerpt: 'React 16.6 introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 thumbnail: '/images/04-react-suspense/react.png'
@@ -19,7 +19,7 @@ And they are in a stable version of React, which means they should be production
 
 ## React lazy and Suspense
 
-React 16.6., which was released on October 23, 2018, came with built-in support for code splitting using dynamic imports.
+React 16.6, which was released on October 23, 2018, came with built-in support for code splitting using dynamic imports.
 The feature for lazily importing component code is called react lazy.
 React lazy allows you to use the dynamically imported component as if it was a normal component.
 Suspense, on the other hand, is a feature that allows displaying fallback content in place of a component if the component's module is not loaded yet.
