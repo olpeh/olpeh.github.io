@@ -7,10 +7,12 @@
   </a>
 </footer>
 
-<script type="module">
-  import quicklink from '/js/quicklink.mjs';
-  const links = [...document.getElementsByTagName('a')].filter(a => {
-    return a.hostname === window.location.hostname;
+<script src="/js/quicklink.js"></script>
+<script>
+  window.addEventListener('load', () => {
+    const links = [...document.getElementsByTagName('a')].filter((a) => {
+      return a.hostname === window.location.hostname;
+    });
+    quicklink({ urls: links });
   });
-  quicklink({urls:links});
 </script>
