@@ -11,7 +11,10 @@
 <script>
   window.addEventListener('load', () => {
     const links = [...document.getElementsByTagName('a')].filter((a) => {
-      return a.hostname === window.location.hostname;
+      return (
+        a.hostname === window.location.hostname &&
+        a.getAttribute('href') !== window.location.pathname
+      );
     });
     quicklink({ urls: links });
   });
