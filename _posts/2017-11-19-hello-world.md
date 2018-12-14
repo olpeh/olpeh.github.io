@@ -40,7 +40,7 @@ So I went ahead and set up the correct `A` type records at my providers' page. S
 
 ![DNS rules]({{ "/images/01-hello-world/dns-louhi.png" | prepend: site.baseurl }})
 
-This was enough to make my GitHub page (olpeh.github.io) available at [olpe.fi](olpe.fi){:target="\_blank"} and [www.olpe.fi](www.olpe.fi){:target="\_blank"}. I was happy for a moment and tweeted this:
+This was enough to make my GitHub page (olpeh.github.io) available at [olpe.fi](https://olpe.fi){:target="\_blank"} and [www.olpe.fi](https://www.olpe.fi){:target="\_blank"}. I was happy for a moment and tweeted this:
 
 ![DNS rules applied]({{ "/images/01-hello-world/tweet-dns-http.png" | prepend: site.baseurl }})
 

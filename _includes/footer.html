@@ -1,6 +1,16 @@
 <footer>
-  <div class="footnote">! Please note that this site is a work in progress !</div>
+  <div class="footnote">
+    ! Please note that this site is a work in progress !
+  </div>
   <a href="https://github.com/olpeh/olpeh.github.io" target="_blank">
     This repository on GitHub
   </a>
 </footer>
+
+<script type="module">
+  import quicklink from '/js/quicklink.mjs';
+  const links = [...document.getElementsByTagName('a')].filter(a => {
+    return a.hostname === window.location.hostname;
+  });
+  quicklink({urls:links});
+</script>
