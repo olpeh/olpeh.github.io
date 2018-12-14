@@ -8,7 +8,7 @@ collections:
     title: Drafts
     output: true
 excerpt_separator: ''
-plugins:
+plugins_src:
   - jekyll-paginate
 markdown: kramdown
 kramdown:
