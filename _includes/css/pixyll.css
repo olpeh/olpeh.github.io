@@ -14,10 +14,11 @@
 */
 
 body {
-  font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", serif;
+  font-family: 'Merriweather', 'PT Serif', Georgia, 'Times New Roman', serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -27,25 +28,26 @@ html, body {
 }
 
 .site-wrap:after {
-  content: "";
+  content: '';
   display: block;
 }
 
-.footer, .site-wrap:after {
+.footer,
+.site-wrap:after {
   height: 100px;
 }
 
 body {
   font-size: 1.5rem;
 
-          box-sizing: border-box;
-     -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 
 .gist,
 .gist .highlight .p {
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .gist .lines {
@@ -90,13 +92,13 @@ body {
 
 .posts .post {
   margin-bottom: 1rem;
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
   border-bottom: thin solid #f3f3f3;
 }
 
 .posts .post:last-child {
   border-bottom: none;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   padding-bottom: 0;
 }
 
@@ -118,7 +120,8 @@ body {
   display: none;
 }
 
-.pagination a:hover, .pagination a:focus {
+.pagination a:hover,
+.pagination a:focus {
   background: white;
   color: #477dca;
 }
@@ -137,8 +140,8 @@ body {
   font-size: 1rem;
   font-weight: 300;
   margin: 0;
-  padding: .25rem 0;
-  color: #7a7a7a;
+  padding: 0.25rem 0;
+  color: #333;
   font-style: italic;
 }
 
@@ -176,8 +179,9 @@ p {
   color: #333;
 }
 
-pre, code {
-  font-family: Menlo, Monaco, "Courier New", monospace
+pre,
+code {
+  font-family: Menlo, Monaco, 'Courier New', monospace;
 }
 
 code {
@@ -204,7 +208,7 @@ blockquote {
 }
 
 blockquote footer {
-  font-size: .85rem;
+  font-size: 0.85rem;
   font-style: normal;
   background-color: #fff;
   color: #7a7a7a;
@@ -214,7 +218,7 @@ blockquote footer {
 h1,
 h2,
 h3 {
-  font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 900;
   margin-top: 3rem;
 }
@@ -222,7 +226,7 @@ h3 {
 h4,
 h5,
 h6 {
-  font-family: "Lato", 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 900;
   margin-top: 1rem;
 }
@@ -290,7 +294,7 @@ h6 {
 
   .posts .post:last-child {
     border-bottom: none;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     padding-bottom: 0;
   }
 }
@@ -309,11 +313,11 @@ h6 {
   }
 
   .posts .post-meta {
-    padding-bottom: .25rem;
+    padding-bottom: 0.25rem;
   }
 
   .post-link .post-title {
-    margin-top: .25rem;
+    margin-top: 0.25rem;
   }
 
   .posts .post {
@@ -327,22 +331,4 @@ h6 {
     margin-bottom: 1rem;
     padding-bottom: 0;
   }
-}
-
-footer {
-  border-top: thin solid #f3f3f3;
-}
-
-footer,
-footer .wrap {
-  color: #7a7a7a;
-  background-color: #fafafa;
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
-  font-weight: 300;
-  clear: both;
-}
-
-footer:after {
-  content: "";
-  display: block;
 }

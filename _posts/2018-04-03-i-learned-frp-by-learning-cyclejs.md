@@ -6,6 +6,7 @@ excerpt: 'An introduction to Cycle.js and a story of what I have learned buildin
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 thumbnail: '/images/02-frp-cyclejs/cyclejs.png'
+altText: 'CycleJS logo'
 ---
 
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP).

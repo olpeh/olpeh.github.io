@@ -1,12 +1,16 @@
 <div class="post-header">
-    <img class="thumbnail" src="{{ page.thumbnail |  prepend: site.baseurl }}" />
-    <div class="rest">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <div class="post-meta">
-            <p>{{ page.excerpt }}</p>
-            <hr>
-            <span class='date'>{{ page.date | date: "%b %-d, %Y" }}</span>
-            <span>by {{ page.author }}</span>
-        </div>
+  <img
+    class="thumbnail"
+    alt="{{ page.altText }}"
+    src="{{ page.thumbnail | prepend: site.baseurl }}"
+  />
+  <div class="rest">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <p>{{ page.excerpt }}</p>
+      <hr />
+      <span class="date">{{ page.date | date: '%b %-d, %Y' }}</span>
+      <span>by {{ page.author }}</span>
     </div>
+  </div>
 </div>

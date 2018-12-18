@@ -6,6 +6,7 @@ excerpt: 'Setting up my personal blog and posting my first blog post'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 thumbnail: '/images/01-hello-world/thumbnail.png'
+altText: 'Screenshot of olpeh.github.io github page being published at olpe.fi'
 ---
 
 For a long time, I have been thinking about starting a blog. I have just never got it done. Last week I was participating in a `Thought Leadership Workshop` at work and got the boost needed for starting a blog. So, now, finally my blog sees the daylight! Amazing.

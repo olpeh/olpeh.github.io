@@ -6,6 +6,7 @@ excerpt: 'React 16.6 introduced React.lazy and React.Suspense for dynamic code s
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 thumbnail: '/images/04-react-suspense/react.png'
+altText: 'React logo'
 ---
 
 The React dev community is currently going crazy about [React Hooks](https://reactjs.org/docs/hooks-intro.html){:target="\_blank"}, which is an experimental proposed feature in React 16.7-alpha.

@@ -157,15 +157,19 @@ article .post-content pre code {
 }
 
 footer {
+  border-top: thin solid #f3f3f3;
+  background-color: #fafafa;
   text-align: center;
   padding: 8px 0;
   width: 100%;
   font-size: 12px;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 footer a {
   text-decoration: none;
   margin: 8px;
+  color: #333;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
