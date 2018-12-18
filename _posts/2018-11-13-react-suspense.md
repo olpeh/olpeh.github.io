@@ -9,7 +9,7 @@ thumbnail: '/images/04-react-suspense/react.png'
 altText: 'React logo'
 ---
 
-The React dev community is currently going crazy about [React Hooks](https://reactjs.org/docs/hooks-intro.html){:target="\_blank"}, which is an experimental proposed feature in React 16.7-alpha.
+The React dev community is currently going crazy about [React Hooks](https://reactjs.org/docs/hooks-intro.html){:target="\_blank"}{:rel="noopener"} , which is an experimental proposed feature in React 16.7-alpha.
 Hooks look super interesting and show great promise.
 The only downside is that you _can not_ and _should not_ start using them.
 Not just yet.
@@ -25,10 +25,10 @@ The feature for lazily importing component code is called react lazy.
 React lazy allows you to use the dynamically imported component as if it was a normal component.
 Suspense, on the other hand, is a feature that allows displaying fallback content in place of a component if the component's module is not loaded yet.
 
-If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="\_blank"}.
+If you want to read more about React lazy and Suspense, go check out the [official documentation](https://reactjs.org/docs/code-splitting.html#reactlazy){:target="\_blank"}{:rel="noopener"} .
 The React docs are great, by the way.
 The 16.6 release contains other interesting features as well, such as `React.memo()`, which I haven't tried out yet.
-[Take a look at the release notes here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}.
+[Take a look at the release notes here](https://github.com/facebook/react/releases/tag/v16.6.0){:target="\_blank"}{:rel="noopener"} .
 Eventually, Suspense is going to be about more than just asynchronously loading and rendering components, in the future releases of React.
 But let's stick to the stable version of React.
 
@@ -40,9 +40,9 @@ At my current project work, we have 4 different projects of varying sizes using 
 
 Getting started was easy:
 ![Get started with React Suspense]({{ "/images/04-react-suspense/dan-abramov-on-twitter.png" | prepend: site.baseurl }})
-[Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}
+[Link to the original tweet](https://twitter.com/dan_abramov/status/1054940536161865729){:target="\_blank"}{:rel="noopener"}
 
-You could literally get started in 60 seconds as you can see from this [60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}.
+You could literally get started in 60 seconds as you can see from this [60s video](https://twitter.com/siddharthkp/status/1055063531328987136){:target="\_blank"}{:rel="noopener"} .
 
 But, then again, in a real world project things aren't always that simple.
 Before doing anything I had to upgrade a bunch of npm packages and then get started trying to use `React.lazy`.
@@ -171,7 +171,7 @@ bootstrap:83 Uncaught (in promise) TypeError: Cannot read property 'call' of und
 ```
 
 This issue was quite difficult to find a reason for.
-I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}, who is one of the contributors of webpack.
+I asked around for help, and finally got help from [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}{:rel="noopener"} , who is one of the contributors of webpack.
 He pointed out that the reason for this issue was not in my `ts-loader` or in my dynamic imports.
 Rather, the cause for this issue was in my `css-loader` config, obviously.
 
@@ -183,7 +183,7 @@ And that required some tuning to get it working.
 Finally, after some hours of trying different config combinations, I had a working version.
 
 However, the bundle sizes were huge, more than double the size of our bundles in production.
-Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"} helped.
+Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"}{:rel="noopener"}  helped.
 I got some nice pointers and finally figured out the reason for increased bundle sizes.
 The reason was, that in my config, I had replaced the default `minimizer` config in order to minimize the CSS in production mode.
 The fact that I did not understand was that now webpack was not optimizing my JS bundles (because I did not tell it to do so).
@@ -215,14 +215,14 @@ optimization: {
 
 As my trial of using Suspense was basically a proof-of-concept, I did not think thoroughly about where to use code splitting.
 I just wanted to use it around some `large` components, that I thought were causing the bundle sizes to grow.
-Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="\_blank"} where route-based code splitting is suggested.
+Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="\_blank"}{:rel="noopener"}  where route-based code splitting is suggested.
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
 
-Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"} may be a good option for analyzing your webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"} as you can see in the screenshot below.
+Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"}{:rel="noopener"}  may be a good option for analyzing your webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"}{:rel="noopener"}  as you can see in the screenshot below.
 
 ![Use bundle analyzer]({{ "/images/04-react-suspense/wsokra.png" | prepend: site.baseurl }})
-[Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="\_blank"}
+[Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="\_blank"}{:rel="noopener"}
 
 ### Real-world example
 
@@ -449,10 +449,10 @@ module.exports = {
 
 ## Learn More
 
-If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="\_blank"} where the new features are introduced briefly.
+If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="\_blank"}{:rel="noopener"}  where the new features are introduced briefly.
 
-My colleague, [Margarita](https://twitter.com/riittagirl){:target="\_blank"} has written a super nice and easily understandable blog post about configuring webpack.
-[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}.
+My colleague, [Margarita](https://twitter.com/riittagirl){:target="\_blank"}{:rel="noopener"}  has written a super nice and easily understandable blog post about configuring webpack.
+[You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}{:rel="noopener"} .
 And you definitely should read it!
 
 The best way to learn a new thing is to try it out yourself.
@@ -461,7 +461,7 @@ You'll probably learn a lot more than you learn by reading blog posts.
 
 ## Acknowledgements
 
-- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"} for helping me out with my broken webpack config
-- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="\_blank"}
-- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"} about how to configure webpack 4
-- Thanks to [Fotis](https://twitter.com/f_papado){:target="\_blank"} for proofreading this blog post and suggesting improvements to it
+- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}{:rel="noopener"}  for helping me out with my broken webpack config
+- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="\_blank"}{:rel="noopener"}
+- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"}{:rel="noopener"}  for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}{:rel="noopener"}  about how to configure webpack 4
+- Thanks to [Fotis](https://twitter.com/f_papado){:target="\_blank"}{:rel="noopener"}  for proofreading this blog post and suggesting improvements to it
