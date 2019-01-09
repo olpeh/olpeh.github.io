@@ -1,5 +1,8 @@
 # olpe.fi
 
+[![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/olpeh/olpeh.github.io/blob/master/LICENSE)
+[![Lighthouse score: 100/100](https://lighthouse-badge.appspot.com/?score=100)](https://github.com/olpeh/olpeh.github.io)
+
 Personal blog about development: [olpe.fi](https://olpe.fi)
 
 Site setup inspired by [elmtown.audio](https://github.com/elmtown/elmtown.github.io)
