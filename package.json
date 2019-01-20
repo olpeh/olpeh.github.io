@@ -1,7 +1,7 @@
 {
   "name": "olpeh.github.io",
   "version": "1.0.0",
-  "description": "Personal blog – olpe.fi",
+  "description": "Personal blog – olavihaapala.fi",
   "scripts": {
     "build": "bundle exec jekyll build",
     "dev": "bundle exec jekyll serve",

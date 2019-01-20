@@ -1,4 +1,4 @@
-title: olpe.fi
+title: olavihaapala.fi
 timezone: UTC
 collections:
   posts:
@@ -20,7 +20,7 @@ description: A personal blog about development
 paginate: 50
 include: ['.well-known']
 exclude: ['test', 'node_modules']
-url: https://olpe.fi
-enforce_ssl: olpe.fi
+url: https://olavihaapala.fi
+enforce_ssl: olavihaapala.fi
 sass:
   style: compressed
