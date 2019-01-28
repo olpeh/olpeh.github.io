@@ -4,7 +4,6 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: rgb(243, 240, 240);
   color: rgb(54, 54, 54);
 }
 
@@ -62,6 +61,7 @@ nav a {
 main {
   width: 100%;
   flex: 1;
+  background-image: linear-gradient(rgb(243, 240, 240), rgb(233, 230, 230));
 }
 
 .main-content {
@@ -160,15 +160,18 @@ footer {
   border-top: thin solid #f3f3f3;
   background-color: #fafafa;
   text-align: center;
-  padding: 8px 0;
-  width: 100%;
-  font-size: 12px;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 140px;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
 footer a {
   text-decoration: none;
-  margin: 8px;
+  padding: 32px;
   color: #333;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
 }
@@ -220,6 +223,11 @@ footer a {
     padding: 0;
     margin-left: -10px;
     margin-right: -10px;
+  }
+
+  footer {
+    flex-direction: column;
+    min-height: 50%;
   }
 }
 
