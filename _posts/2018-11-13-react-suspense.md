@@ -1,5 +1,5 @@
 ---
-title: Using React Suspense in production
+title: Using React Suspense in Production
 date: 2018-11-13 00:00:00 Z
 layout: post
 excerpt: 'React 16.6 introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project'
