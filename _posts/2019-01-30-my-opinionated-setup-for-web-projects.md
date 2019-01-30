@@ -208,7 +208,7 @@ Automated formatting will make reviewing PRs much easier and save your team a to
 
 For Elm, use [elm-format](https://github.com/avh4/elm-format){:target="\_blank"}{:rel="noopener"} and for almost everything else, use [Prettier](https://prettier.io/){:target="\_blank"}{:rel="noopener"}.
 Seriously, just do it.
-And if you did not know, Prettier has support for multiple languages, including `JS, TS, CSS, HTML, MD` and others.
+And if you did not know, Prettier has support for multiple languages, including `JS, JSON, TS, CSS, HTML, MD` and others.
 
 Prettier is an opinionated and almost zero configuration formatter.
 However, I like to configure it just a bit.
@@ -233,7 +233,7 @@ Additionally add `format` as an NPM script:
 ```json
 "scripts": {
     ...
-    "format": "prettier --write 'src/**/*.{ts,js,css,md,html}'",
+    "format": "prettier --write 'src/**/*.{ts,js,json,css,md,html}'",
     ...
 }
 ```
