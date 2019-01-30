@@ -24,7 +24,7 @@ And the backend will be a Scala Play application.
 
 ## Backend
 
-A typical web project concists of a backend and a frontend.
+A typical web project consists of a backend and a frontend.
 I think it is a good solution to have them both in a single git repository under different folders.
 
 For backend, use whatever technology fits you best.
