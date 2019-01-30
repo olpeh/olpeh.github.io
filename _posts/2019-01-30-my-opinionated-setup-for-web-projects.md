@@ -221,7 +221,15 @@ My `.prettierrc` file typically looks like this:
   "useTabs": false,
   "tabWidth": 2,
   "bracketSpacing": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.{scss,css,html}",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }
 ```
 
