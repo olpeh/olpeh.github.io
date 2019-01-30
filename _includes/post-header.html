@@ -10,7 +10,9 @@
       <p>{{ page.excerpt }}</p>
       <hr />
       <span class="date">{{ page.date | date: '%b %-d, %Y' }}</span>
-      <span>by {{ page.author }}</span>
+      <span>by {{ page.author }}</span> {% if page.credits %}<span></span>
+        – {{ page.credits }}{% endif %}</span
+      >
     </div>
   </div>
 </div>
