@@ -198,7 +198,7 @@ footer a {
   }
 }
 
-@media screen and (max-width: 567px) {
+@media screen and (max-width: 572px) {
   header {
     min-height: 186px;
   }
