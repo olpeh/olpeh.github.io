@@ -13,7 +13,7 @@ altText: 'Jest output'
 
 In my [previous blog post](/2019/01/30/my-opinionated-setup-for-web-projects.html), I explained my preferred project setup.
 I mentioned about using Jest for testing, but not about how to set it up.
-In this blog post I will explain about how to set up Jest.
+In this blog post I will explain how to set up Jest with TypeScript.
 
 [Jest](https://jestjs.io/){:target="\_blank"}{:rel="noopener"} is a testing framework made by FB and it is popular in React based projects. One of the reasons for its popularity is that [create-react-app, CRA](https://github.com/facebook/create-react-app){:target="\_blank"}{:rel="noopener"} uses it. CRA is a good option for quickly getting a React project up and running.
 
@@ -250,7 +250,7 @@ Additionally, I had to install these dependencies:
 npm i -D identity-obj-proxy preact-testing-library
 ```
 
-## Step #5 Try Again
+## Step #5 – Try Again
 
 Now with the copied configuration, we should be good to go, right?
 
@@ -289,7 +289,7 @@ Now, we get this nice looking output and can continue adding more tests.
 
 ![Successful run of Jest]({{ "/images/06-jest/success.jpg" | prepend: site.baseurl }})
 
-## Step #6 Additional Steps
+## Step #6 – Additional Steps
 
 It is recommended to setup a prepush hook for verifying that tests are passing before pushing to remote.
 
