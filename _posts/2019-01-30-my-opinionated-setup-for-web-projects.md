@@ -6,7 +6,7 @@ excerpt: 'During the past few years, I have worked on multiple smaller and large
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 thumbnail: '/images/05-project-setup/tools.png'
-altText: 'React logo'
+altText: 'Tools'
 credits: 'Photo by Fleur Treurniet on Unsplash'
 ---
 
