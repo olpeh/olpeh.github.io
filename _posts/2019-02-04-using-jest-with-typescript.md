@@ -71,11 +71,11 @@ This works fine.
 
 However, that was JS, and we want to be able to write tests in TS.
 
-Moving to TS requires type definitions for jest and `jest-ts`.
+Moving to TS requires type definitions for jest and `ts-jest`.
 Install them:
 
 ```bash
-npm install --save-dev @types/jest jest-ts
+npm install --save-dev @types/jest ts-jest
 ```
 
 Alright, the test is now called test.ts.
