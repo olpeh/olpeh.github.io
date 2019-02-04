@@ -9,7 +9,7 @@ thumbnail: '/images/06-jest/jest.jpg'
 altText: 'Jest output'
 ---
 
-# What is jest?
+# What is Jest?
 
 In my [previous blog post](/2019/01/30/my-opinionated-setup-for-web-projects.html), I explained my preferred project setup.
 I mentioned about using Jest for testing, but not about how to set it up.
