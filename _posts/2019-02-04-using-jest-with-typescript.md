@@ -22,7 +22,7 @@ Jest is easy to use, has a nice watch mode, snapshot testing, coverage reporting
 ## Step #0 – Getting Started
 
 Search for how to get started with `jest`.
-You will most probably end up in the [jest documentation](https://jestjs.io/){:target="\_blank"}{:rel="noopener"}
+You will most probably end up in the [jest documentation](https://jestjs.io/){:target="\_blank"}{:rel="noopener"}.
 
 First things that you will see on the page are:
 
