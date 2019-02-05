@@ -61,7 +61,7 @@ nav a {
   text-decoration: none;
   margin: 15px;
   text-transform: uppercase;
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 900;
   line-height: 40px;
 }
@@ -176,7 +176,6 @@ article .post-content pre code {
   margin: 0 auto;
 }
 
-
 .post-footer .post-footer-content p {
   color: #f3f0f0;
 }
@@ -193,7 +192,7 @@ article .post-content pre code {
 footer {
   background-color: #fafafa;
   text-align: center;
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -207,7 +206,7 @@ footer a {
   text-decoration: none;
   padding: 32px;
   color: #333;
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @media screen and (max-width: 900px) {

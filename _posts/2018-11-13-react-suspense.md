@@ -183,7 +183,7 @@ And that required some tuning to get it working.
 Finally, after some hours of trying different config combinations, I had a working version.
 
 However, the bundle sizes were huge, more than double the size of our bundles in production.
-Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"}{:rel="noopener"}  helped.
+Asking [publicly about my problem in Twitter](https://twitter.com/0lpeh/status/1059479032146915328){:target="\_blank"}{:rel="noopener"} helped.
 I got some nice pointers and finally figured out the reason for increased bundle sizes.
 The reason was, that in my config, I had replaced the default `minimizer` config in order to minimize the CSS in production mode.
 The fact that I did not understand was that now webpack was not optimizing my JS bundles (because I did not tell it to do so).
@@ -215,11 +215,11 @@ optimization: {
 
 As my trial of using Suspense was basically a proof-of-concept, I did not think thoroughly about where to use code splitting.
 I just wanted to use it around some `large` components, that I thought were causing the bundle sizes to grow.
-Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="\_blank"}{:rel="noopener"}  where route-based code splitting is suggested.
+Luckily my co-worker pointed me to [the docs](https://reactjs.org/docs/code-splitting.html#route-based-code-splitting){:target="\_blank"}{:rel="noopener"} where route-based code splitting is suggested.
 This allows a simple way of splitting the bundles based on different views and is probably a good starting point for getting started with dynamic code splitting.
 Further on, you should analyze your bundles in order to figure out what causes their sizes to become large and what could be possible opportunities for improvements.
 
-Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"}{:rel="noopener"}  may be a good option for analyzing your webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"}{:rel="noopener"}  as you can see in the screenshot below.
+Using a tool, such as [webpack-bundle-analyser](https://github.com/webpack-contrib/webpack-bundle-analyzer){:target="\_blank"}{:rel="noopener"} may be a good option for analyzing your webpack bundles and their sizes, as suggested by [Tobias Kopperson](https://twitter.com/wSokra){:target="\_blank"}{:rel="noopener"} as you can see in the screenshot below.
 
 ![Use bundle analyzer]({{ "/images/04-react-suspense/wsokra.png" | prepend: site.baseurl }})
 [Link to the original tweet](https://twitter.com/wSokra/status/1059475054419881984){:target="\_blank"}{:rel="noopener"}
@@ -449,9 +449,9 @@ module.exports = {
 
 ## Learn More
 
-If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="\_blank"}{:rel="noopener"}  where the new features are introduced briefly.
+If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html){:target="\_blank"}{:rel="noopener"} where the new features are introduced briefly.
 
-My colleague, [Margarita](https://twitter.com/riittagirl){:target="\_blank"}{:rel="noopener"}  has written a super nice and easily understandable blog post about configuring webpack.
+My colleague, [Margarita](https://twitter.com/riittagirl){:target="\_blank"}{:rel="noopener"} has written a super nice and easily understandable blog post about configuring webpack.
 [You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}{:rel="noopener"} .
 And you definitely should read it!
 
@@ -461,7 +461,7 @@ You'll probably learn a lot more than you learn by reading blog posts.
 
 ## Acknowledgements
 
-- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}{:rel="noopener"}  for helping me out with my broken webpack config
+- Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw){:target="\_blank"}{:rel="noopener"} for helping me out with my broken webpack config
 - Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408){:target="\_blank"}{:rel="noopener"}
-- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"}{:rel="noopener"}  for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}{:rel="noopener"}  about how to configure webpack 4
-- Thanks to [Fotis](https://twitter.com/f_papado){:target="\_blank"}{:rel="noopener"}  for proofreading this blog post and suggesting improvements to it
+- Thanks to [riittagirl](https://twitter.com/riittagirl){:target="\_blank"}{:rel="noopener"} for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1){:target="\_blank"}{:rel="noopener"} about how to configure webpack 4
+- Thanks to [Fotis](https://twitter.com/f_papado){:target="\_blank"}{:rel="noopener"} for proofreading this blog post and suggesting improvements to it

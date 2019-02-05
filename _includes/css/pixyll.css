@@ -14,7 +14,7 @@
 */
 
 body {
-  font-family: 'Merriweather', 'PT Serif', Georgia, 'Times New Roman', serif;
+  font-family: "Merriweather", "PT Serif", Georgia, "Times New Roman", serif;
 }
 
 html,
@@ -28,7 +28,7 @@ body {
 }
 
 .site-wrap:after {
-  content: '';
+  content: "";
   display: block;
 }
 
@@ -111,7 +111,7 @@ body {
 .pagination,
 .button {
   font-size: 16px;
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 300;
   text-align: center;
 }
@@ -163,7 +163,7 @@ body {
 }
 
 form {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 300;
   font-size: 1rem;
 }
@@ -180,7 +180,7 @@ p {
 
 pre,
 code {
-  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-family: Menlo, Monaco, "Courier New", monospace;
 }
 
 code {
@@ -217,7 +217,7 @@ blockquote footer {
 h1,
 h2,
 h3 {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 900;
   margin-top: 3rem;
 }
@@ -225,7 +225,7 @@ h3 {
 h4,
 h5,
 h6 {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 900;
   margin-top: 1rem;
 }

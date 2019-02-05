@@ -1,29 +1,37 @@
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>{% if page.title %}{{ page.title }}– {% endif %}{{ site.title }}</title>
-<meta property="og:title" content="{% if page.title %}{{ page.title }}– {% endif %}{{ site.title }}">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description | strip_html }}{% endif %}">
-<meta content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description | strip_html }}{% endif %}" property="og:description">
+<meta
+  property="og:title"
+  content="{% if page.title %}{{ page.title }}– {% endif %}{{ site.title }}"
+/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta
+  name="description"
+  content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description | strip_html }}{% endif %}"
+/>
+<meta
+  content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description | strip_html }}{% endif %}"
+  property="og:description"
+/>
 {% if page.thumbnail %}
-<meta content="{{ page.thumbnail | prepend: site.url }}" property="og:image">
-<meta content="250" property="og:image:width">
-<meta content="250" property="og:image:height">
+<meta content="{{ page.thumbnail | prepend: site.url }}" property="og:image" />
+<meta content="250" property="og:image:width" />
+<meta content="250" property="og:image:height" />
 {% endif %}
 
-<meta name="author" content="{{ site.author }}"> {% if page.categories %}
-<meta name="keywords" content="{{ page.categories | join: ', ' }}">{% endif %}
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<meta name="author" content="{{ site.author }}" /> {% if page.categories %}
+<meta name="keywords" content="{{ page.categories | join: ', ' }}" />{% endif %}
+<link
+  rel="canonical"
+  href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+/>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
-{% capture styles %}
-    {% include /css/pixyll.css %}
-    {% include /css/main.css %}
-    {% if page.layout == 'post' %}
-        {% include /css/highlight.css %}
-    {% endif %}
-{% endcapture %}
+{% capture styles %} {% include /css/pixyll.css %} {% include /css/main.css %}
+{% if page.layout == 'post' %} {% include /css/highlight.css %} {% endif %} {%
+endcapture %}
 
 <style>
-{{ styles | scssify }}
+  {{ styles | scssify }}
 </style>

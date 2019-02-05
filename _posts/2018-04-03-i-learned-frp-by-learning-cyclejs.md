@@ -10,7 +10,7 @@ altText: 'CycleJS logo'
 ---
 
 In this blog post, I will be writing about my experiences learning Functional Reactive Programming (FRP).
-I will try to explain the basics of Cycle.js and FRP and what I have learned while building [Meeting Price Calculator](https://mpc.olpe.fi/){:target="\_blank"}{:rel="noopener"}  in Cycle.js.
+I will try to explain the basics of Cycle.js and FRP and what I have learned while building [Meeting Price Calculator](https://mpc.olpe.fi/){:target="\_blank"}{:rel="noopener"} in Cycle.js.
 When I started learning Cycle.js, I did not know what Reactive Programming was and I had almost no experience in Functional Programming.
 
 <img src="{{ "/images/02-frp-cyclejs/cyclejs.svg" | prepend: site.baseurl }}" width="120" aria-hidden="true">
@@ -30,7 +30,7 @@ I started literally by "building something" as you can see from the first commit
 
 ![Start building something]({{ "/images/02-frp-cyclejs/first-commit.png" | prepend: site.baseurl }})
 
-The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/){:target="\_blank"}{:rel="noopener"}  or by the gif below.
+The current functionality and look of the application is best described by visiting [the site](https://mpc.olpe.fi/){:target="\_blank"}{:rel="noopener"} or by the gif below.
 
 ![Meeting Price Calculator GIF]({{ "/images/02-frp-cyclejs/meeting-price-calculator.gif" | prepend: site.baseurl }})
 
@@ -199,7 +199,7 @@ Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html){:tar
 In Cycle.js, an application is just a function.
 This means that you can easily nest functions inside a function.
 That's how easy it is to create nested components in Cycle.js.
-In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html){:target="\_blank"}{:rel="noopener"}  the components from each other.
+In addition to this, Cycle.js provides a way to [isolate](https://cycle.js.org/api/isolate.html){:target="\_blank"}{:rel="noopener"} the components from each other.
 This way you can easily create reusable components without thinking about conflicting namespaces and selectors.
 In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="\_blank"}{:rel="noopener"} .
 It is used twice in my application with slightly different input parameter streams or so-called `props` in the React-world.
@@ -237,7 +237,7 @@ In fact, this is actually what the [main idea of Cycle.js is based on](https://f
 ### Code Examples
 
 Now you might be wondering what Cycle.js code looks like.
-I'll use the previously mentioned [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="\_blank"}{:rel="noopener"}  component as an example.
+I'll use the previously mentioned [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput){:target="\_blank"}{:rel="noopener"} component as an example.
 
 I have split the component code into 5 different files, following the MVI-pattern:
 
@@ -316,7 +316,7 @@ export default function SliderInput(sources: Sources): Sinks {
 }
 ```
 
-This follows the basic MVI-pattern in Cycle.js using [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="\_blank"}{:rel="noopener"}  for state management.
+This follows the basic MVI-pattern in Cycle.js using [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="\_blank"}{:rel="noopener"} for state management.
 More about that in the next chapter. The above example component code could be simplified into the following piece of code, if we did not use onionify and did not care about readability:
 
 ```typescript
@@ -402,11 +402,11 @@ The default reducer sets the default state for the component, so that it can ren
 
 State management is well-known to be one of the biggest challenges in web development.
 There are tens of libraries which try to simplify state handling and help creating high quality web applications easily.
-Two of my favorite libraries (for React) are [MobX](https://github.com/mobxjs/mobx){:target="\_blank"}{:rel="noopener"}  and probably the most popular one, [Redux](https://redux.js.org/){:target="\_blank"}{:rel="noopener"} .
+Two of my favorite libraries (for React) are [MobX](https://github.com/mobxjs/mobx){:target="\_blank"}{:rel="noopener"} and probably the most popular one, [Redux](https://redux.js.org/){:target="\_blank"}{:rel="noopener"} .
 
 However, In my experience, setting up Redux might feel quite confusing and the code verbose and full of boiler-plate.
 
-In Cycle.js, the [soon official](https://github.com/cyclejs/cyclejs/issues/620){:target="\_blank"}{:rel="noopener"}  state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="\_blank"}{:rel="noopener"} .
+In Cycle.js, the [soon official](https://github.com/cyclejs/cyclejs/issues/620){:target="\_blank"}{:rel="noopener"} state management solution is called [cycle-onionify](https://github.com/staltz/cycle-onionify){:target="\_blank"}{:rel="noopener"} .
 I'm also using it in my application for state handling.
 
 Note: In this blog post, I will not try to compare Redux, MobX and cycle-onionify.
@@ -494,7 +494,7 @@ Testing a pure function is easy since you know nothing outside of the function a
 
 In testing Meeting Price Calculator specifically, it has been proven useful that in Cycle.js, time is just a dependency and you can inject or pass that to your functions.
 This makes testing a lot simpler.
-[I am using](https://github.com/olpeh/meeting-price-calculator/tree/master/test){:target="\_blank"}{:rel="noopener"}  [jest](https://github.com/facebook/jest){:target="\_blank"}{:rel="noopener"}  for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like){:target="\_blank"}{:rel="noopener"}  in combination with [jsverify](https://github.com/jsverify/jsverify){:target="\_blank"}{:rel="noopener"}  and property-based testing for verifying that the views work correctly with any input values.
+[I am using](https://github.com/olpeh/meeting-price-calculator/tree/master/test){:target="\_blank"}{:rel="noopener"} [jest](https://github.com/facebook/jest){:target="\_blank"}{:rel="noopener"} for running tests and snapshot tests as well as [html-looks-like](https://github.com/staltz/html-looks-like){:target="\_blank"}{:rel="noopener"} in combination with [jsverify](https://github.com/jsverify/jsverify){:target="\_blank"}{:rel="noopener"} and property-based testing for verifying that the views work correctly with any input values.
 
 ## Recap
 
@@ -525,8 +525,8 @@ If you are interested in learning more, check out these resources:
 
 ## Acknowledgements
 
-- Thanks to my employer [Futurice](https://futurice.com/){:target="\_blank"}{:rel="noopener"}  for sponsoring open source development through [Spice Program](https://spiceprogram.org/oss-sponsorship/){:target="\_blank"}{:rel="noopener"}
-- Thanks to [Andre Staltz](https://staltz.com/){:target="\_blank"}{:rel="noopener"}  for reviewing my code and helping me simplify the state handling in my app
+- Thanks to my employer [Futurice](https://futurice.com/){:target="\_blank"}{:rel="noopener"} for sponsoring open source development through [Spice Program](https://spiceprogram.org/oss-sponsorship/){:target="\_blank"}{:rel="noopener"}
+- Thanks to [Andre Staltz](https://staltz.com/){:target="\_blank"}{:rel="noopener"} for reviewing my code and helping me simplify the state handling in my app
 - Thanks to the awesome Cycle.js community members who are always willing to help when needed
-- Thanks to [Andre Staltz](https://staltz.com/){:target="\_blank"}{:rel="noopener"}  for reviewing this blog post and suggesting improvements to it
-- Thanks to my colleague [Fotis](https://twitter.com/f_papado){:target="\_blank"}{:rel="noopener"}  for proofreading this blog post and suggesting improvements to it
+- Thanks to [Andre Staltz](https://staltz.com/){:target="\_blank"}{:rel="noopener"} for reviewing this blog post and suggesting improvements to it
+- Thanks to my colleague [Fotis](https://twitter.com/f_papado){:target="\_blank"}{:rel="noopener"} for proofreading this blog post and suggesting improvements to it
