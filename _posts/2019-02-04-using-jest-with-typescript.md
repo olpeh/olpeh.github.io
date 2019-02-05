@@ -9,6 +9,46 @@ thumbnail: '/images/06-jest/jest.jpg'
 altText: 'Jest output'
 ---
 
+# EDIT – Feb 5, 2019
+
+As a few helpful people pointed out, there is a much simpler way than what I explain in this blog post.
+
+I was able to achieve the same result with this, a lot simpler config:
+
+Package.json:
+
+```json
+"scripts": {
+  ...
+  "pretest": "npm run lint",
+  "test": "jest --verbose",
+  "watch": "jest --verbose --watchAll",
+  "no-watch-test": "jest --verbose"
+},
+"jest": {
+  "preset": "ts-jest",
+  "testMatch": ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)"],
+  "moduleNameMapper": {
+    "^.+\\.css$": "identity-obj-proxy",
+    "^(app/.+)$": "<rootDir>/src/$1/",
+    "^(components/.+)$": "<rootDir>/src/$1/",
+    "^(stores/.+)$": "<rootDir>/src/$1/",
+    "^(views/.+)$": "<rootDir>/src/$1/",
+    "^(assets/.+)$": "<rootDir>/src/$1/",
+    "^(models/.+)$": "<rootDir>/src/$1/"
+  },
+  "setupFiles": ["./scripts/setupJest.js"]
+}
+```
+
+This way, I'm able to use the newest version of jest, and ts-jest takes care of the ts support.
+
+Additionally, I realized the `--verbose` flag gives a pretty nice output from jest when running tests.
+
+You can, however read the blog post if you want.
+
+<hr/>
+
 # What is Jest?
 
 In my [previous blog post](/2019/01/30/my-opinionated-setup-for-web-projects.html), I explained my preferred project setup.
