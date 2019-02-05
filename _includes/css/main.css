@@ -17,6 +17,10 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: #054d7d;
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -84,7 +88,7 @@ main {
 
 .post-list .post .post-full-page-link {
   text-decoration: none;
-  box-shadow: 4px 4px 16px 0px rgb(134, 138, 138);
+  box-shadow: 4px 4px 12px 0px #858888;
   padding: 40px;
   display: block;
   background: white;
@@ -120,6 +124,7 @@ main {
   background: white;
   justify-content: space-around;
   padding: 60px 120px;
+  box-shadow: 0px 4px 12px 0 #858888;
 }
 
 .post-full-page .post-header .post-title {
@@ -145,7 +150,15 @@ article .post-content img {
 article .post-content pre,
 article .post-content blockquote {
   background: white;
-  box-shadow: 4px 4px 16px 0px rgb(134, 138, 138);
+  box-shadow: 4px 4px 12px 0px #858888;
+}
+
+article .post-content code.highlighter-rouge {
+  color: #d14;
+  padding: 3px 6px 2px 6px;
+  background-color: white;
+  border-radius: 4px;
+  border: solid 1px #cccccc;
 }
 
 article .post-content pre code {
@@ -153,7 +166,24 @@ article .post-content pre code {
 }
 
 .post-footer {
-  margin-top: 60px;
+  background-color: #363636;
+  box-shadow: 0 9px 22px 9px #858888;
+}
+
+.post-footer .post-footer-content {
+  padding: 56px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+
+.post-footer .post-footer-content p {
+  color: #f3f0f0;
+}
+
+.post-footer .post-footer-content a {
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .posts-container ul {
@@ -161,7 +191,6 @@ article .post-content pre code {
 }
 
 footer {
-  border-top: thin solid #f3f3f3;
   background-color: #fafafa;
   text-align: center;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
