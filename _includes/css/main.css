@@ -147,6 +147,12 @@ article .post-content img {
   margin: 10px 0;
 }
 
+article .post-content img[src$=".jpg"],
+article .post-content img[src$=".jpeg"],
+article .post-content img[src$=".png"] {
+  box-shadow: 4px 4px 12px 0px #858888;
+}
+
 article .post-content pre,
 article .post-content blockquote {
   background: white;
