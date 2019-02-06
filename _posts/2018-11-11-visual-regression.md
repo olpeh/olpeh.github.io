@@ -5,7 +5,7 @@ layout: post
 excerpt: 'A tool for automated testing against visual regressions'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-thumbnail: '/images/03-visual-regression/npm.png'
+image: '/images/03-visual-regression/npm.png'
 altText: 'Screenshot visual regression npm page showing version 0.1.1 is published'
 ---
 

@@ -5,7 +5,7 @@ layout: post
 excerpt: 'React 16.6 introduced React.lazy and React.Suspense for dynamic code splitting – I tried it out in a real world project'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-thumbnail: '/images/04-react-suspense/react.png'
+image: '/images/04-react-suspense/react.png'
 altText: 'React logo'
 ---
 

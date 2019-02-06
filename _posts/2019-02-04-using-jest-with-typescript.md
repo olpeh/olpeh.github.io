@@ -5,7 +5,7 @@ layout: post
 excerpt: 'Jest is a nice testing framework for frontend projects. However, sometimes it’s a PITA to set up in projects using TypeScript. This time I decided to write down the steps required to get it running.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-thumbnail: '/images/06-jest/jest.jpg'
+image: '/images/06-jest/jest.jpg'
 altText: 'Jest output'
 ---
 

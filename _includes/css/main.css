@@ -189,6 +189,20 @@ article .post-content pre code {
   list-style: none;
 }
 
+.blog-posts-title-and-feed {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.blog-posts-title-and-feed .rss-feed {
+  width: 30px;
+  height: 30px;
+  background: url(images/rss.svg) no-repeat center center;
+  fill: red;
+  margin-top: 4rem;
+}
+
 footer {
   background-color: #fafafa;
   text-align: center;

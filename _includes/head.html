@@ -14,8 +14,8 @@
   content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{ site.description | strip_html }}{% endif %}"
   property="og:description"
 />
-{% if page.thumbnail %}
-<meta content="{{ page.thumbnail | prepend: site.url }}" property="og:image" />
+{% if page.image %}
+<meta content="{{ page.image | prepend: site.url }}" property="og:image" />
 <meta content="250" property="og:image:width" />
 <meta content="250" property="og:image:height" />
 {% endif %}

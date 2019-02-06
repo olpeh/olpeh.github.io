@@ -24,3 +24,7 @@ url: https://olavihaapala.fi
 enforce_ssl: olavihaapala.fi
 sass:
   style: compressed
+plugins:
+  - jekyll-feed
+feed:
+  path: feed.xml
