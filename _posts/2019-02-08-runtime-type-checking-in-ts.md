@@ -164,7 +164,7 @@ if (districtOption.isSome()) {
 
 ### Missing Pieces
 
-So, now the only missing peace is pattern matching.
+So, now the only missing piece is pattern matching.
 I mean, it would be nice to have something like this in TS:
 
 ```ts
