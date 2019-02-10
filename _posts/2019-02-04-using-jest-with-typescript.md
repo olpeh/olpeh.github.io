@@ -1,6 +1,7 @@
 ---
 title: 'Using Jest with TypeScript '
 date: 2019-02-04 00:00:00 Z
+updated: 2019-02-05 00:00:00 Z
 layout: post
 excerpt: 'Jest is a nice testing framework for frontend projects. However, sometimes it’s a PITA to set up in projects using TypeScript. This time I decided to write down the steps required to get it running.'
 author: 'Olavi Haapala'

@@ -1,6 +1,7 @@
 ---
 title: 'Runtime Type Safety And More in TypeScript Projects Using io-ts'
 date: 2019-02-08 00:00:00 Z
+updated: 2019-02-10 00:00:00 Z
 layout: post
 excerpt: 'TypeScript will only bring you type checking on compile time, when compiling to JavaScript. On runtime, your code is JS and anything can happen. However, there is a solution to this problem.'
 author: 'Olavi Haapala'
@@ -82,22 +83,23 @@ export interface District {
 };
 */
 ```
+
 The type `District` is an alias so that we don't have to pass around the type:
 
 ```ts
 const District: t.TypeC<{
-    id: t.NumberC;
-    name: t.StringC;
-}>
+  id: t.NumberC;
+  name: t.StringC;
+}>;
 ```
 
 Instead we now have:
 
 ```ts
 type District = {
-    id: number;
-    name: string;
-}
+  id: number;
+  name: string;
+};
 ```
 
 And then when fetching `District`s from the backend, we are able to validate those against the schema:
@@ -108,10 +110,7 @@ const validDistricts = res
   .map((q) => TDistrict.decode(q))
   .filter((v) => {
     if (v.isLeft()) {
-      console.warn(
-        'District validation failed',
-        PathReporter.report(v)
-      );
+      console.warn('District validation failed', PathReporter.report(v));
       return false;
     }
     return v.isRight();
@@ -153,7 +152,9 @@ And when calling it, I would check the return value like this:
 ```ts
 import { Option, none, some } from 'fp-ts/lib/Option';
 
-const districtOption: Option<District> = districtStore.getDistrictByID(districId);
+const districtOption: Option<District> = districtStore.getDistrictByID(
+  districId
+);
 
 if (districtOption.isSome()) {
   // districtOption now has a value
@@ -170,9 +171,27 @@ I mean, it would be nice to have something like this in TS:
 ```ts
 districtOption match {
   case some(district: District) => console.log('Do something with the district')
-  case _ => console.warn(`District with id ${districtId}} was not found`)
+  case _ => console.warn(`District with id ${districtId} was not found`)
 }
 ```
 
 Or maybe there is a solution for that in `io-ts` or in some other library that I just haven't discovered yet?
 Please let me know.
+
+## Update: Pattern Matching Using io-ts
+
+As the author of io-ts helpfully pointed out, there is a way to do pattern matching with io-ts.
+It can be done using `fold` or `foldL`, which is the lazy version of fold.
+
+[![The author of io-ts tweeting me how to do pattern matching.]({{ "/images/07-io-ts/pattern-matching.png" | prepend: site.baseurl }})](https://twitter.com/GiulioCanti/status/1093874633269526528){:target="\_blank"}{:rel="noopener"}
+
+So, my example using `foldL` looks like this, then:
+
+```ts
+districtOption.foldL(
+  () => console.warn(`District with id ${districtId} was not found`),
+  (district) => console.log(`Do something with the district ${district.name}`)
+);
+```
+
+Amazing!
