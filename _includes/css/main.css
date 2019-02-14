@@ -202,11 +202,22 @@ article .post-content pre code {
 }
 
 .blog-posts-title-and-feed .rss-feed {
-  width: 30px;
-  height: 30px;
+  color: black;
+  text-transform:  uppercase;
+  font-weight: bold;
+  font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.blog-posts-title-and-feed .rss-feed-icon {
+  display: inline-block;
   background: url(images/rss.svg) no-repeat center center;
-  fill: red;
-  margin-top: 4rem;
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+  margin-bottom: 1px;
+  vertical-align: middle;
 }
 
 footer {
