@@ -14,13 +14,13 @@ altText: 'Sparks coming from a bonfire, taken with a long exposure time.'
 [![4 times 100 in the lighthouse audit.]({{ "/images/08-blazing-fast/100.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/100.png" | prepend: site.baseurl }}){:target="\_blank"}
 
 Isn't this a beautiful sight.
-This screenshot is from the [Lighthouse](https://developers.google.com/web/tools/lighthouse/){:target="\_blank"}{:rel="noopener"} audit result for my webpage.
 
+This screenshot is from the [Lighthouse](https://developers.google.com/web/tools/lighthouse/){:target="\_blank"}{:rel="noopener"} audit result for my webpage.
 Lighthouse is an amazing tool for _quickly_ auditing the performance of a website.
 It may give you useful hints when trying to find the performance bottlenecks in loading a webpage.
 However, the results are not absolute and they should be taken with a grain of salt.
-But, I think everyone agrees seeing 4 times 100/100 feels good.
-And, as the most important measurement of performance, my site feels fast to use even on mobile devices and slower connections.
+But, I think everyone agrees seeing 4 times `100/100` feels good.
+And, as the most important measurement of performance, my site _feels_ fast to use even on mobile devices and slower connections.
 
 ## How Browsers Render Webpages
 
@@ -30,13 +30,17 @@ Additionally, I do not understand everything that happens in between navigating 
 
 ### The Client-server Architecture of the Web
 
-[![The client-server architecture of the web.]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }}){:target="\_blank"}
+The World Wide Web is based on the client-server architecture.
+Typically, the client refers to a web browser and the server is returning the HTML documents and other resources when clients request them.
 
-The above figure shows a simplified version of what happens when a user accesses a traditional server rendered webpage.
+The figure below shows a simplified version of what happens when a user accesses a traditional server rendered webpage.
 Only a successful case is covered in this example.
+
+[![The client-server architecture of the web.]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }}){:target="\_blank"}
 
 First the user opens a web browser and types in the address or clicks a link on a webpage.
 The browser will do a DNS lookup for the address in order to find the server's IP address.
+In case of HTTPS websites, the browser and the server will do a TLS handshake in order to establish a secure connection.
 The browser will then send a HTTP GET request to the server, which the address points to.
 The server will return the HTML file for that webpage.
 When the browser receives the response, it starts parsing it and may notice resources that need to be downloaded, such as `styles.css` and `main.js` in the above example.
@@ -88,7 +92,7 @@ Here is a list of the most common causes for slow webpages:
 - Ineffective caching
 - Slow backends
 
-The list is not complete, and not a scientific result, but rather how I feel about the topic.
+The list is not complete, and not a scientific result, rather a representation of how I feel about the topic.
 But as you can see, I put the slow backends as last on the list.
 In my experience backend is typically not the bottleneck, but rather the frontend is.
 
@@ -109,6 +113,7 @@ Facts contributing to a blazing fast experience on my webpage:
 - Optimized and small images using [squoosh.app](https://squoosh.app/){:target="\_blank"}{:rel="noopener"}
   - However, I only optimize the images on the first page, not the additional images that are in the blog posts
   - Should probably automate the process somehow
+  - Typically I'm able to get ~60% smaller image sizes without loozing visual too much information that the human I can see
 - Cloudflare used as a CDN, and minimizes assets
   - read more about [my blog setup here]({{ "/2017/11/19/hello-world.html" | prepend: site.baseurl }})
 - Pages are prefetched for faster subsequent page loads
@@ -143,10 +148,10 @@ Here is a nice visualization that shows what the different metrics refer to.
 
 Image source: [User-centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics){:target="\_blank"}{:rel="noopener"}.
 
-As you can see from the lighthouse results, the First Contentfu Page and First Meaningful Paint are happening almost at the same moment.
+As you can see from the lighthouse results, the First Contentful Paint and First Meaningful Paint are happening almost at the same moment.
 In fact, quite often Lighthouse reports same results for them when running the audit for my site.
 The Lighthouse results usually vary slightly between runs.
-What this result means, is that the browser is able to render meaningful content instead of placeholder or empty content whenever it gets to starting rendering.
+What this result means, is that the as soon as the browser is able to render something, it is meaningful content instead of placeholder or empty content whenever it gets to starting rendering.
 
 One important metric is the Time To Interactive.
 For my site, Lighthouse reported it at `1.2s` which is a very good result.
