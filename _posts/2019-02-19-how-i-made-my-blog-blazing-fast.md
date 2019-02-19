@@ -28,7 +28,7 @@ In order to understand what typically slows down a website's loading performance
 The following explanation will be a simplified version of reality in order to keep the blog post relatively short and easy to read.
 Additionally, I do not understand everything that happens in between navigating to a URL and a fully loaded and rendered web page showing on the screen.
 
-### The Client-server Architecture of the Web
+### The Client-Server Architecture of the Web
 
 The World Wide Web is based on the client-server architecture.
 Typically, the client refers to a web browser and the server is returning the HTML documents and other resources when clients request them.
@@ -63,7 +63,7 @@ As the visualization nicely shows, the browser has to rebuild the DOM and when i
 This is due to the fact that CSS and JS can change the DOM structure and styles.
 
 Browser vendors are doing a great job in optimizing the rendering.
-Pre-lookahead parser quickly scans the document for external resources, and tries to fire the most important requests with high priority.
+Lookahead pre-parser quickly scans the document for external resources, and tries to fire the most important requests with high priority.
 Additionally, developers are able to give priority hints to the browser in order to help it prioritize critical resources for improved loading performance.
 
 However, most of the time, developers can also do more by reducing the amount and the duration of the required steps in the Critical Rendering Path.
@@ -74,7 +74,7 @@ Here is a list of the most common causes for slow webpages:
 
 - Render blocking resources:
   - External CSS, browser needs to stop rendering and wait for them to arrive
-  - Similarly, (web) fonts may be render blocking if not an effective font-loading strategy is used
+  - Similarly, (web) fonts may be render blocking if an effective font-loading strategy is not used
   - JavaScript, because it has to be executed before rendering due to the fact that JS can change the contents in DOM and
 - Analytics etc.
 - Advertisement libraries
@@ -106,7 +106,7 @@ Facts contributing to a blazing fast experience on my webpage:
 - Optimized and small images using [squoosh.app](https://squoosh.app/){:target="\_blank"}{:rel="noopener"}
   - However, I only optimize the images on the first page, not the additional images that are in the blog posts
   - Should probably automate the process somehow
-  - Typically I'm able to get ~60% smaller image sizes without loozing visual too much information that the human I can see
+  - Typically I'm able to get ~60% smaller image sizes without losing too much visual information, that the human eye can see
 - Cloudflare used as a CDN, and minimizes assets
   - read more about [my blog setup here]({{ "/2017/11/19/hello-world.html" | prepend: site.baseurl }})
 - Pages are prefetched for faster subsequent page loads
