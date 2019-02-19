@@ -1,6 +1,6 @@
 ---
 title: 'How I made my blog blazing fast'
-date: 2019-02-17 00:00:00 Z
+date: 2019-02-19 00:00:00 Z
 layout: post
 excerpt: 'Have you noticed how fast my website loads? In this blog post I will explain what usually slows down web pages and how I was able to improve the performance of my website.'
 author: 'Olavi Haapala'
