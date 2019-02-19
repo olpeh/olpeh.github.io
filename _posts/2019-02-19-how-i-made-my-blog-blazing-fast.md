@@ -1,8 +1,8 @@
 ---
-title: 'How I made my blog blazing fast'
+title: 'How I Made My Blog Blazing Fast'
 date: 2019-02-19 00:00:00 Z
 layout: post
-excerpt: 'Have you noticed how fast my website loads? In this blog post I will explain what usually slows down web pages and how I was able to improve the performance of my website.'
+excerpt: 'Have you noticed how fast my website loads? In this blog post, I will explain what usually slows down web pages, and how I was able to improve the performance of my website.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 image: '/images/08-blazing-fast/bonfire.jpg'
@@ -13,13 +13,13 @@ altText: 'Sparks coming from a bonfire, taken with a long exposure time.'
 
 [![4 times 100 in the lighthouse audit.]({{ "/images/08-blazing-fast/100.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/100.png" | prepend: site.baseurl }}){:target="\_blank"}
 
-Isn't this a beautiful sight.
+Isn't this a beautiful sight üòç.
 
 This screenshot is from the [Lighthouse](https://developers.google.com/web/tools/lighthouse/){:target="\_blank"}{:rel="noopener"} audit result for my webpage.
 Lighthouse is an amazing tool for _quickly_ auditing the performance of a website.
 It may give you useful hints when trying to find the performance bottlenecks in loading a webpage.
 However, the results are not absolute and they should be taken with a grain of salt.
-But, I think everyone agrees seeing 4 times `100/100` feels good.
+Yet, I think everyone agrees seeing a score of 4 times `100/100` feels good.
 And, as the most important measurement of performance, my site _feels_ fast to use even on mobile devices and slower connections.
 
 ## How Browsers Render Webpages
@@ -38,8 +38,8 @@ Only a successful case is covered in this example.
 
 [![The client-server architecture of the web.]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }}){:target="\_blank"}
 
-First the user opens a web browser and types in the address or clicks a link on a webpage.
-The browser will do a DNS lookup for the address in order to find the server's IP address.
+First, the user opens a web browser and types in the address or clicks a link on a webpage.
+The browser will then do a DNS lookup for the address in order to find the server's IP address.
 In case of HTTPS websites, the browser and the server will do a TLS handshake in order to establish a secure connection.
 The browser will then send a HTTP GET request to the server, which the address points to.
 The server will return the HTML file for that webpage.
@@ -49,27 +49,19 @@ Finally, as early as possible, the webpage content will be rendered on the user‚
 
 ### Critical Rendering Path
 
-The above mentioned render-blocking steps before rendering a webpage are commonly referred to as the [Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/){:target="\_blank"}{:rel="noopener"}.
+The above mentioned steps before a webpage is rendered are commonly referred to as the [Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/){:target="\_blank"}{:rel="noopener"}.
 It consists of the steps required before the browser is able to display the contents of the webpage on your screen.
 
-Simplified version includes these steps:
+Simplified version can be understood by looking at the following visualization by [Luis Vieira](https://medium.com/@luisvieira_gmr):
 
-1. DNS lookup
-1. Browser connects to the server
-1. TCP connection establishment
-1. TLS handshake
-1. Browser sends the GET request for the page contents
-1. Browser receives the HTML document
-1. Browser parses the response
-1. Pre-lookahead parser scans the document and fires some requests for critical resources
-1. Browser starts rendering
-1. Browser sees render-blocking resources
-1. Browser fetches render-blocking resources and waits for them to arrive
-1. Browser parses and executes render-blocking JS and applies new CSS styles
-1. Browser continues rendering
-1. Fully rendered webpage
+[![Critical Rendering Path visualized.]({{ "/images/08-blazing-fast/critical-rendering-path.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/critical-rendering-path.png" | prepend: site.baseurl }}){:target="\_blank"}
 
-As you understand, there are a lot of steps required in order to render a webpage.
+Image source: [Understanding the critical rendering path, rendering pages in 1 second](https://medium.com/@luisvieira_gmr/understanding-the-critical-rendering-path-rendering-pages-in-1-second-735c6e45b47a){:target="\_blank"}{:rel="noopener"}.
+
+CSSOM in the image refers to the CSS Object Model and DOM to the Document Object Model.
+As the visualization nicely shows, the browser has to rebuild the DOM and when it has receives CSS, or synchronous JavaScript.
+This is due to the fact that CSS and JS can change the DOM structure and styles.
+
 Browser vendors are doing a great job in optimizing the rendering.
 Pre-lookahead parser quickly scans the document for external resources, and tries to fire the most important requests with high priority.
 Additionally, developers are able to give priority hints to the browser in order to help it prioritize critical resources for improved loading performance.
@@ -110,6 +102,7 @@ Facts contributing to a blazing fast experience on my webpage:
 - Critical CSS is inlined in the HTML, which is a good idea for achieving a fast First Paint experience
   - In my case, all the CSS is inlined
   - The HTML size remains still small: `3.8 KB` GZIPed
+  - Small size is crucial for achieving a fast experience on mobile
 - Optimized and small images using [squoosh.app](https://squoosh.app/){:target="\_blank"}{:rel="noopener"}
   - However, I only optimize the images on the first page, not the additional images that are in the blog posts
   - Should probably automate the process somehow
