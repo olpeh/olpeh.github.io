@@ -59,7 +59,7 @@ Simplified version can be understood by looking at the following visualization b
 Image source: [Understanding the critical rendering path, rendering pages in 1 second](https://medium.com/@luisvieira_gmr/understanding-the-critical-rendering-path-rendering-pages-in-1-second-735c6e45b47a){:target="\_blank"}{:rel="noopener"}.
 
 CSSOM in the image refers to the CSS Object Model and DOM to the Document Object Model.
-As the visualization nicely shows, the browser has to rebuild the DOM and when it has receives CSS, or synchronous JavaScript.
+As the visualization nicely shows, the browser has to rebuild the DOM and when it receives CSS, or synchronous JavaScript.
 This is due to the fact that CSS and JS can change the DOM structure and styles.
 
 Browser vendors are doing a great job in optimizing the rendering.
