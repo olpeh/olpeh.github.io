@@ -3,7 +3,13 @@
 [![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/olpeh/olpeh.github.io/blob/master/LICENSE)
 [![Lighthouse score: 100/100](https://lighthouse-badge.appspot.com/?score=100)](https://github.com/olpeh/olpeh.github.io)
 
-Personal blog about development: [olavihaapala.fi](https://olavihaapala.fi)
+A blazing fast personal blog about development: [olavihaapala.fi](https://olavihaapala.fi).
+
+Read about [how I set up my blog](https://olavihaapala.fi/2017/11/19/hello-world.html).
+
+Read about [how I made my blog blazing fast](https://olavihaapala.fi/2019/02/19/how-i-made-my-blog-blazing-fast.html).
+
+[![4 times 100 in the lighthouse audit.](/images/08-blazing-fast/100.png)](/images/08-blazing-fast/100.png)
 
 Site setup inspired by [elmtown.audio](https://github.com/elmtown/elmtown.github.io)
 
