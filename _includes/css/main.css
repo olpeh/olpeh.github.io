@@ -303,3 +303,7 @@ footer a {
     display: none;
   }
 }
+
+.profile-image {
+  box-shadow: 2px 6px 30px -4px #858888;
+}
