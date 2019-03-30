@@ -38,36 +38,36 @@ header {
   background: rgb(54, 54, 54);
   color: rgb(243, 240, 240);
   text-align: center;
-}
-
-header a {
-  height: 70px;
-  margin-right: 20px;
+  justify-content: space-around;
 }
 
 header .page-logo {
-  min-width: 77px;
-}
-
-header a img {
   width: 77px;
+  min-width: 77px;
   height: 70px;
+  background: url("/images/logo.jpg") no-repeat center center;
+  background-size: cover;
 }
 
 nav {
-  padding: 0;
-  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 nav a {
   color: rgb(243, 240, 240);
   font-size: 28px;
   text-decoration: none;
-  margin: 15px;
   text-transform: uppercase;
   font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 900;
   line-height: 40px;
+  padding: 10px;
+}
+
+nav a:not(:last-child) {
+  margin-right: 10px;
 }
 
 main {
@@ -127,7 +127,7 @@ main {
 /* removing the text-decoration and using the
   border highlight */
 .post-header.teaser:focus-within {
-  box-shadow: 0 0 0 0.25rem #0458e7;
+  box-shadow: inset 0 0 0 0.25rem #0458e7;
 }
 
 .post-header.teaser:focus-within .post-full-page-link:focus {
@@ -227,9 +227,15 @@ article .post-content pre code {
 }
 
 .blog-posts-title-and-feed {
+  height: 80px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.blog-posts-title-and-feed .blog-posts-title {
+  margin: 0;
 }
 
 .blog-posts-title-and-feed .rss-feed {
@@ -239,6 +245,7 @@ article .post-content pre code {
   font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
   font-size: 18px;
   line-height: 18px;
+  padding: 10px;
 }
 
 .blog-posts-title-and-feed .rss-feed-icon {
@@ -294,14 +301,10 @@ footer a {
   }
 
   header .page-logo {
-    margin-left: 20px;
-    margin-right: 0;
-    height: 140px;
-  }
-
-  header .page-logo img {
-    min-height: 140px;
+    width: 215px;
     min-width: 154px;
+    height: 140px;
+    margin-left: 20px;
   }
 
   nav a {
@@ -328,7 +331,7 @@ footer a {
   }
 }
 
-@media screen and (max-width: 362px) {
+@media screen and (max-width: 400px) {
   header .page-logo {
     display: none;
   }
