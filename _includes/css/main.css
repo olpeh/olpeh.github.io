@@ -88,10 +88,7 @@ main {
 
 .post-list .post .post-full-page-link {
   text-decoration: none;
-  box-shadow: 4px 4px 12px 0px #858888;
-  padding: 40px;
   display: block;
-  background: white;
 }
 
 .post-list .post .post-full-page-link .post-title {
@@ -104,6 +101,13 @@ main {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background: white;
+}
+
+.post-header.teaser {
+  box-shadow: 4px 4px 12px 0px #858888;
+  padding: 40px;
+  cursor: pointer;
 }
 
 .post-header .thumbnail {
@@ -121,7 +125,6 @@ main {
 }
 
 .post-full-page .post-header {
-  background: white;
   justify-content: space-around;
   padding: 60px 120px 120px 120px;
   box-shadow: 0px 4px 12px 0 #858888;

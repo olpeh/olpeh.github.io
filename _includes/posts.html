@@ -8,9 +8,7 @@
   <ul class="post-list">
     {% for page in site.posts %}
     <li class="post">
-      <a class="post-full-page-link" href="{{ page.url }}">
-        {% include post-header.html %}
-      </a>
+      {% include post-teaser.html %}
     </li>
     {% endfor %}
   </ul>

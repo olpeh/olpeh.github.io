@@ -1,7 +1,9 @@
-<div class="post-header">
+<div class="post-header teaser" onclick="window.location='{{ page.url }}'">
   <img class="thumbnail" alt="{{ page.altText }}" src="{{ page.image }}" />
   <div class="rest">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <a class="post-full-page-link" href="{{ page.url }}">
+      <h1 class="post-title">{{ page.title }}</h1>
+    </a>
     <div class="post-meta">
       <p>{{ page.excerpt }}</p>
       <hr />
