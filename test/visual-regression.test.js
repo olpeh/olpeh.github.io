@@ -1,14 +1,7 @@
 const visualRegression = require('visual-regression');
 
-//    What this configuration means is:
-//
-//    0px       480px       768px       1024px      >9000px
-//    \__________/\__________/\__________/\____________...
-//       "tiny"      "small"    "medium"      "large"
-//       <-480       481-768    769-1024       1025->
-
 // Probably stupid to use a "big enough height" here...
-const height = 2500;
+const height = 1200;
 const viewportConfigs = [
   {
     width: 380,
@@ -52,14 +45,14 @@ const viewportConfigs = [
   }
 ];
 
-describe('olpe.fi looks ok', () => {
+describe('olavihaapala.fi looks ok', () => {
   const options = {
-    baseUrl: 'https://olpe.fi',
+    baseUrl: 'https://olavihaapala.fi',
     testPaths: [
       '/',
       '/projects/',
       '/contact/',
-      '/2018/04/03/i-learned-frp-by-learning-cyclejs.html'
+      '/2018/11/11/visual-regression.html'
     ],
     viewportConfigs,
     baseScreenshotDirPath: 'visual-regression-screenshots',
