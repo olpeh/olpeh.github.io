@@ -25,6 +25,10 @@ a:hover {
   text-decoration: underline;
 }
 
+a:focus {
+  outline: 0.25rem solid #0458e7;
+}
+
 header {
   display: flex;
   justify-content: flex-start;
@@ -91,6 +95,10 @@ main {
   display: block;
 }
 
+.post-full-page-link:hover {
+  text-decoration: underline;
+}
+
 .post-list .post .post-full-page-link .post-title {
   margin-top: 0;
   font-size: 3rem;
@@ -108,6 +116,25 @@ main {
   box-shadow: 4px 4px 12px 0px #858888;
   padding: 40px;
   cursor: pointer;
+}
+
+/* If focus-within is not supported, and focusing the link, give it an underline */
+.post-full-page-link:focus {
+  text-decoration: underline;
+}
+
+/* If focus-within is supported, enhance by */
+/* removing the text-decoration and using the
+  border highlight */
+.post-header.teaser:focus-within {
+  box-shadow: 0 0 0 0.25rem #0458e7;
+}
+
+.post-header.teaser:focus-within .post-full-page-link:focus {
+  /* Remove the outline, because we enhance it */
+  outline: none;
+  /* Ditto for text-decoration */
+  text-decoration: none;
 }
 
 .post-header .thumbnail {
