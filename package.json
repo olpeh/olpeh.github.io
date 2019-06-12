@@ -4,6 +4,7 @@
   "description": "Personal blog – olavihaapala.fi",
   "scripts": {
     "build": "bundle exec jekyll build",
+    "start": "bundle exec jekyll serve",
     "dev": "bundle exec jekyll serve",
     "deploy": "npm run build && npm run dat",
     "dat": "npm run build && rimraf ~/Sites/olpeh.github.io && cp -r _site/ ~/Sites/olpeh.github.io",
