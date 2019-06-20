@@ -1,5 +1,5 @@
 ---
-title: 'How to create and deploy a slack bot'
+title: 'How to Create and Deploy a Slack Bot'
 date: 2019-06-20 00:00:00 Z
 layout: post
 excerpt: 'Recently, I wanted to create and deploy a simple Slack bot. It turned out to be more difficult than I expected and I decided to write about why. I was expecting it to take me 30 minutes but it took me 8.5h.'
