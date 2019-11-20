@@ -9,14 +9,23 @@ image: '/images/10-slack-bot/slack.png'
 altText: 'Slack logo'
 ---
 
-## The World Wide Web in 2019
+## How the Web Looks Like in 2019
 
-The web as we know it, consists of web pages and web applications built with a variety of technologies.
-One thing they all have in common though, and that is HTML.
+The web as we know it, consists of web pages and applications built with a variety of technologies.
+However, there is onne thing all web pages have in common, and that is HyperText Markup Language (HTML).
+All technologies that create some visible content in the end produce more or less HTML that then gets painted on the screen by the web browser.
 Most of the web pages also use Cascading Style Sheets (CSS) for styling and JavaScript (JS) for dynamic functionality.
-Some web pages are built as JS Single Page Applications (SPA) that rely heavily on the JS runtime for rendering content on the screen.
-In the end all of them end up creating the webpage content as HTML that gets rendered on the screen.
-However, technologies for how the page is constructed are varying.
+More and more modern web pages are built as JS Single Page Applications (SPA) that rely heavily on the JS runtime for rendering content on the screen.
+This does not necessarily mean writing all the code as JS, but compile-to-js languages and tools are available and most commonly known is TypeScript (TS).
+
+In the end all of the web technologies end up creating the webpage content as HTML that gets rendered on the screen.
+There is however, huge variations in the page "weights" as in how heavy and low performing the different web pages are.
+Performance is directly connected with how likely your users are to return to your web page and if you are selling something, bad performance will directly affect your sales.
+
+Sadly the situation does not seem to get better even though one could thing that the evolution of technology and tools would make the web a better place for everyone, and most importantly on the increasing amount of mobile devices that are used.
+In fact, based on HTTPArchive (citation needed!), the amount of web traffic from mobile and tablet devices surpassed the traffic from desktop devices already in 2016 globally.
+Based on the HTTPArchive stats, web pages got ~20% heavier and slower on almost all metrics when comparing 2017 to 2018.
+TODO: Cost of JS in 2019 https://v8.dev/blog/cost-of-javascript-2019
 
 ### Definitions First
 
