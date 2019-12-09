@@ -23,29 +23,40 @@ There is however, huge variations in the page "weights" as in how heavy and low 
 Performance is directly connected with how likely your users are to return to your web page and if you are selling something, bad performance will directly affect your sales.
 
 Sadly the situation does not seem to get better even though one could thing that the evolution of technology and tools would make the web a better place for everyone, and most importantly on the increasing amount of mobile devices that are used.
-In fact, based on HTTPArchive (citation needed!), the amount of web traffic from mobile and tablet devices surpassed the traffic from desktop devices already in 2016 globally.
-Based on the HTTPArchive stats, web pages got ~20% heavier and slower on almost all metrics when comparing 2017 to 2018.
+In fact, based on HTTP Archive (citation needed!), the amount of web traffic from mobile and tablet devices surpassed the traffic from desktop devices already in 2016 globally.
+Based on [the HTTP Archive stats](https://httparchive.org/reports/page-weight?start=2017_05_01&end=2018_05_15&view=list){:target="\_blank"}{:rel="noopener"}, web pages got ~20% heavier and slower on almost all metrics when comparing 2017 to 2018.
+
 TODO: Cost of JS in 2019 https://v8.dev/blog/cost-of-javascript-2019
 
 ### Definitions First
 
-Let's look at some of the commonly used terms and their definitions before we dive deeper into the main topic of this blog post.
+Let's look at some of the commonly used terms and their definitions before diving deeper into the main topic of this blog post.
 
 ## Server Side Rendering
 
 In a Server Side Rendered (SSR) web page, the web server returns an HTML document that already contains the content as HTML.
-The browser will then render the document contents on the screen whenever it receives the document and parses it from top to bottom.
+The browser will render the document contents on the screen whenever it receives the document and parses it from top to bottom.
 
 ## Client Side Rendering
 
 Client Side Rendering on the other hand refers to a technique where the server only returns a skeleton of the application in the HTML document.
+The HTML only acts as a template and has a link to the JS application bunldle, which the browser downloads, parses, and excecutes.
+The JS application then renders the contents by hooking itself into a root div that is part of of the server rendered HTML contents.
+Usually this means something like:
+
+```html
+<body>
+  <div id="app"></div>
+</body>
+```
 
 ## Isomorphic Rendering
 
-Isomorphic Rendering refers to a technique where both SSR and CSR are combined in a web application.
-The server renders the document content and the application state into HTML.
+Isomorphic Rendering on the other hand, refers to a technique where both SSR and CSR are combined in a web application.
+The server renders the document contents as well as the initial application state as JSON in the HTML.
 After rendering the SSR content on the screen and loading the JavaScript bundle, the JS application then reads the initial state from the server rendered response and boots up the JS application.
-This is called rehydration, the static server rendered HTML document gets hydrated into a JavaScript SPA.
+This phase is called rehydration, the static server rendered HTML document gets hydrated into a JavaScript SPA.
+This approach tries to achieve the best of both worlds by achieving a fast first paint because of SSR content and fast SPA navigations after the application has been rehydrated.
 
 ## A Simplified History of the Web
 
