@@ -1,6 +1,6 @@
 ---
 title: 'We have gone full circle'
-date: 2019-11-14 00:00:00 Z
+date: 2019-12-10 00:00:00 Z
 layout: post
 excerpt: 'Why is Server Side Rendering highly relevant in the golden age of JavaScript Single Page Applications?'
 author: 'Olavi Haapala'
