@@ -1,8 +1,8 @@
 ---
 title: 'We have gone full circle'
-date: 2019-12-10 00:00:00 Z
+date: 2019-12-11 08:00:00 Z
 layout: post
-excerpt: 'Why is Server Side Rendering again highly relevant in the golden age of JavaScript Single Page Applications?'
+excerpt: 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 image: '/images/11-ssr/thomas-lambert-unsplash.jpg'
@@ -10,29 +10,45 @@ altText: 'Aerial photo of a circle road in nature'
 credits: 'Photo by Thomas Lambert on Unsplash'
 ---
 
-## How the Web Looks Like in 2019
+### Author's notice
 
-The web as we know it, consists of web pages and applications built with a variety of technologies.
-However, there is onne thing all web pages have in common, and that is HyperText Markup Language (HTML).
-All technologies that create some visible content in the end produce more or less HTML that then gets painted on the screen by the web browser.
-Most of the web pages also use Cascading Style Sheets (CSS) for styling and JavaScript (JS) for dynamic functionality.
-More and more modern web pages are built as JS Single Page Applications (SPA) that rely heavily on the JS runtime for rendering content on the screen.
-This does not necessarily mean writing all the code as JS, but compile-to-js languages and tools are available and most commonly known is TypeScript (TS).
+This blog post is based on one of my recent tech talks "Why is SSR relevant in 2019" and represents my limited view on the topic.
+Please bare that in mind when reading this blog post.
+My view on the history of the web may have mistakes and is certainly not covering all aspects.
+In the beginning of this post I'm trying to explain some of the key concepts and how the web works before diving deeper into why Server Side Rendering is relevant today.
+This blog post is highly opinionated, read at your own risk!
 
+<hr/>
+
+## How the Web Looks Like Today
+
+The web as we know it, consists of web pages and applications built with a huge variety of technologies.
+However, there is one thing all web pages have in common, HyperText Markup Language (HTML).
 In the end all of the web technologies end up creating the webpage content as HTML that gets rendered on the screen.
-There is however, huge variations in the page "weights" as in how heavy and low performing the different web pages are.
-Performance is directly connected with how likely your users are to return to your web page and if you are selling something, bad performance will directly affect your sales.
+Most of the web pages also use Cascading Style Sheets (CSS) for styling and JavaScript (JS) for dynamic functionality.
+More and more modern web pages are built as JS Single Page Applications (SPA) that rely heavily on the JS runtime for rendering content on the screen and handling the application logic and navigations.
+This does not necessarily mean writing all the code as JS directly, but there are multiple compile-to-js languages and tools available.
+Most commonly known is TypeScript (TS).
 
-Sadly the situation does not seem to get better even though one could thing that the evolution of technology and tools would make the web a better place for everyone, and most importantly on the increasing amount of mobile devices that are used.
+Even though all web pages are quite similar from technical point of view, there are huge variations in the page "weights" as in how heavy and slow performing the different web pages are.
+Performance is directly connected with how likely your users are to return to your web page.
+If you are running an e-commerce business, and trying to sell something, a bad performance will directly affect your sales.
+
+Sadly the situation does not seem to get better over time even with the evolution of technology and web development tools.
+One could easily assume better tools and tech would make the web a better place for everyone, and most importantly for the increasing amount of users browsing on mobile devices.
+
 In fact, based on HTTP Archive, the amount of web traffic from mobile and tablet devices surpassed the traffic from desktop devices already in 2016 globally.
 This can bee seen in the below image.
 
 [![Global internet usage stats from 2009 to 2016.]({{ "/images/11-ssr/internet_usage_2009_2016_ww.png" | prepend: site.baseurl }})]({{ "/images/11-ssr/internet_usage_2009_2016_ww.png" | prepend: site.baseurl }}){:target="\_blank"}
 
 Based on [the HTTP Archive stats](https://httparchive.org/reports/page-weight?start=2017_05_01&end=2018_05_15&view=list){:target="\_blank"}{:rel="noopener"}, web pages got ~20% heavier and slower on almost all metrics when comparing 2017 to 2018.
+Most of the increase in page weight and slowness can be explained by the increasing amount of JS on web pages.
+On the other hand, many web pages are a lot more complex nowadays than they used to (or need to!) be.
+
 If you like to read more about heavy webpages and the biggest reason for slow webpages, go ahead and read [The Cost Of JavaScript In 2018](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4){:target="\_blank"}{:rel="noopener"} (sorry, Medium link!) and [The Cost of JS in 2019](https://v8.dev/blog/cost-of-javascript-2019){:target="\_blank"}{:rel="noopener"}.
 
-## Definitions First
+## Some Definitions
 
 Let's look at some of the commonly used terms and their definitions before diving deeper into the main topic of this blog post.
 
@@ -67,19 +83,50 @@ This approach tries to achieve the best of both worlds by achieving a fast first
 The web was invented for about 30 years ago.
 In the beginning everything was fully server side rendered web pages.
 First web pages were documents containing text and links, images were added a bit later.
-
 More and more interactivive elements were aded as part of the web when JavaScript invented.
+Interactive elements suc as Flash, Quicktime, RealPlayer, and Shockwave came along.
+Still, at this time most of the web pages were built using SSR with mostly PHP and friends.
 
-Interactive elements (Flash, Quicktime, RealPlayer, Shockwave etc.)
-Mostly SSR (PHP and friends)
-JS libraries (MooTools, jQuery, Backbone etc.)
-React and friends -> Client Side Rendering
-PWAs etc.
-Back to SSR?
+### JS Fatique
 
-## AMP
+A multitude JS libraries started popping up such as MooTools, jQuery, and Backbone.
+These allowed developers to create interactive web applications more easily using JS instead of Flash or other old school tools.
+Later on, Angular.js was published and in around 2014 React was published.
+This started a new era in the web development scene.
+Suddenly "everyone" was doing client side rendered JS based SPAs.
+This caused web pages to get heavier and slower.
+Something needed to be done.
 
-Even AMP,
+Progressive Web Applicationss got introduced.
+Along other features, they provided an additional cache layer on the client level using Service Workers.
+However, in my opinion this is a wrong solution to the problem of slow web pages.
+
+### Back to the Roots
+
+Recently the web development community has started realizing that going full on with client side rendering was a mistake and ruined the web performance, especially on cheaper and slower devices.
+Now, suddenly "everyone" is talking about SSR again and many frameworks and platforms provide solutions for that.
+This is a good direction from web performance point of view.
+
+## Accelerated Mobile Pages
+
+Accelerated Mobile Pages (AMP) is Google's iniative for making the web faster on mobile devices.
+I think the initiative in itself is good, but I don't like the way Google tries to enforce it and take the ownership of the web and its contents by serving pages from their own cache servers.
+Google is also misusing its huge position in the market by prioritizing AMP pages in Google search results.
+Sadly most of the people are using Google for searching, which forces companies to start considering using AMP in order to achieve good positions in search results.
+Due to the above mentioned reasons, I would not recommend supporting or using AMP at all.
+
+AMP in itself is a good library for creating web pages, because it limits the possibilities in which you are able to create horrible user experiences on the web.
+
+Even AMP recently announced a revolutionary new technology called SSR in the AMP library as you can see in the below screenshot of Ricky Mondello's sarcastic tweet:
+
+[![Screenshot of Ricky Mondello's tweet: https://twitter.com/rmondello/status/1160201903566802949]({{ "/images/11-ssr/rmondello.png" | prepend: site.baseurl }})](https://twitter.com/rmondello/status/1160201903566802949){:target="\_blank"}{:rel="noopener"}
+
+I agree with Ricky, that this is ridiculous.
+We have had HTML and SSR for 30 years, what do we need AMP for?
+
+Okay, time to move to the _actual_ topic of this blog post.
+
+<hr />
 
 ## 5 reasons why SSR is highly relevant in 2019
 
