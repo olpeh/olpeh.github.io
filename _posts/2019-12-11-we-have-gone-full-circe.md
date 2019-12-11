@@ -1,5 +1,5 @@
 ---
-title: 'We have gone full circle'
+title: 'Server Side Rendering: Why We Have Gone Full Circle'
 date: 2019-12-11 06:40:00 Z
 layout: post
 excerpt: 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?'
