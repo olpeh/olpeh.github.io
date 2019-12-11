@@ -1,6 +1,7 @@
 ---
 title: 'Server Side Rendering: Why We Have Gone Full Circle'
 date: 2019-12-11 06:40:00 Z
+updated: 2019-12-11 15:35:00 Z
 layout: post
 excerpt: 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?'
 author: 'Olavi Haapala'
@@ -156,7 +157,8 @@ With this approach, it is possible to achieve
 Google and other search engines most probably will not run the JS on your web page when indexing the web.
 There are rumours that Google is running the JS, but with a 2 weeks delay.
 For most of the businesses where a good SEO is critical, a 2 weeks delay is not acceptable.
-And as a cherry on top, Google reportedly runs your JS with an ancient version of Chrome, which is even worse than IE9.
+~~And as a cherry on top, Google reportedly runs your JS with an ancient version of Chrome, which is even worse than IE9.~~ _Edit_: This was not true anymore, [Google bot now uses the latest version of Chromium](https://searchengineland.com/google-will-ensure-googlebot-runs-the-latest-version-of-chromium-316534){:target="\_blank"}{:rel="noopener"}.
+
 So, if you care about good SEO, use SSR.
 However, if you have a fully functional SPA and don't want to invest time in implementing SSR, there are ready made services that does the SSR for you.
 At least Netlify has SSR as a service that you can start using if you are hosting in Netlify.
