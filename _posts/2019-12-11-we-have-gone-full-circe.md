@@ -1,6 +1,6 @@
 ---
 title: 'We have gone full circle'
-date: 2019-12-11 08:00:00 Z
+date: 2019-12-11 06:40:00 Z
 layout: post
 excerpt: 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?'
 author: 'Olavi Haapala'
@@ -16,6 +16,9 @@ This blog post is based on one of my recent tech talks "Why is SSR relevant in 2
 Please bare that in mind when reading this blog post.
 My view on the history of the web may have mistakes and is certainly not covering all aspects.
 In the beginning of this post I'm trying to explain some of the key concepts and how the web works before diving deeper into why Server Side Rendering is relevant today.
+
+I almost got carried away and did not get into writing about the main topic until late in this post, so please feel free to jump over the first half of the post and start reading from [4 Reasons Why SSR is Highly Relevant Today](#4-reasons-why-ssr-is-highly-relevant-today).
+
 This blog post is highly opinionated, read at your own risk!
 
 <hr/>
@@ -128,9 +131,9 @@ Okay, time to move to the _actual_ topic of this blog post.
 
 <hr />
 
-## 5 reasons why SSR is highly relevant in 2019
+## 4 Reasons Why SSR is Highly Relevant Today
 
-Here are my 4 reasons for using SSR in 2019.
+Here are my 4 reasons for using SSR today.
 
 ### 1. Performance
 
