@@ -12,3 +12,5 @@ elm-stuff/
 dist/
 .cache/
 gen/
+
+gen/
