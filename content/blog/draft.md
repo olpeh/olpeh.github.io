@@ -5,6 +5,7 @@
   'title': 'A Draft Blog Post',
   'description': "I'm not quite ready to share this post with the world",
   'image': '/images/article-covers/mountains.jpg',
+  'altText': 'A picture of mountains',
   'draft': true,
   'published': '2019-09-21',
 }

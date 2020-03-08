@@ -210,7 +210,7 @@ pageView model siteMetadata page viewForPage =
                             ]
                             :: (publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ])
                             :: Palette.blogHeading metadata.title
-                            :: articleImageView metadata.image
+                            :: articleImageView metadata.image metadata.altText
                             :: [ viewForPage ]
                         )
                     ]
@@ -247,11 +247,11 @@ pageView model siteMetadata page viewForPage =
             }
 
 
-articleImageView : ImagePath Pages.PathKey -> Element msg
-articleImageView articleImage =
+articleImageView : ImagePath Pages.PathKey -> String -> Element msg
+articleImageView articleImage altText =
     Element.image [ Element.width Element.fill ]
         { src = ImagePath.toString articleImage
-        , description = "Article cover photo"
+        , description = altText
         }
 
 
