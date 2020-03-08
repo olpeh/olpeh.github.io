@@ -211,6 +211,7 @@ pageView model siteMetadata page viewForPage =
                             :: (publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ])
                             :: Palette.blogHeading metadata.title
                             :: articleImageView metadata.image metadata.altText
+                            :: imageCreditsView metadata.credits
                             :: [ viewForPage ]
                         )
                     ]
@@ -253,6 +254,17 @@ articleImageView articleImage altText =
         { src = ImagePath.toString articleImage
         , description = altText
         }
+
+
+imageCreditsView : Maybe String -> Element msg
+imageCreditsView credits =
+    case credits of
+        Just str ->
+            Element.text str
+
+        Nothing ->
+            -- TODO: is there a better way than empty string
+            Element.text ""
 
 
 header : PagePath Pages.PathKey -> Element msg
