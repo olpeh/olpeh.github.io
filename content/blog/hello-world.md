@@ -24,7 +24,7 @@ In the settings page for my repository in GitHub I could easily set up a custom 
 
 ![GitHub pages settings](/images/hello-world/gh-pages.png)
 
-This was not enough though. Had to read the page behind the [Learn more](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) {:rel="noopener"} link. In my opinion that page is quite confusing and I did not know what to do really.
+This was not enough though. Had to read the page behind the [Learn more](https://help.github.com/articles/using-a-custom-domain-with-github-pages/) link. In my opinion that page is quite confusing and I did not know what to do really.
 
 In the end I found out that [this](https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider/) was the page with the information that I needed:
 
