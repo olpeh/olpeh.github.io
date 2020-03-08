@@ -6,7 +6,7 @@
   'description': 'An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js',
   'image': '/images/frp-cyclejs/cyclejs.png',
   'altText': 'CycleJS logo',
-  'published': '2017-11-19',
+  'published': '2018-04-03',
 }
 ---
 
