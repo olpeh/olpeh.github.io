@@ -18,7 +18,7 @@ Yay!
 It's a tool for testing websites against visual regressions.
 You can see it in action in the gif below:
 
-![visual-regression in action](/images/03-visual-regression/visual-regression.gif)
+![visual-regression in action](/images/visual-regression/visual-regression.gif)
 
 `npm i visual-regression`
 
@@ -123,4 +123,4 @@ But it works for my use and it may work for somebody else as well.
 
 ## Acknowledgements
 
-- Thanks to [Monica Dinculescu](https://github.com/notwaldorf) for writing [this blog post](https://meowni.ca/posts/2017-puppeteer-tests/) , which has obviously been my main inspiration for creating this tool.
+- Thanks to [Monica Dinculescu](https://github.com/notwaldorf) for writing [this blog post](https://meowni.ca/posts/2017-puppeteer-tests/), which has obviously been my main inspiration for creating this tool.

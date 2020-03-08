@@ -449,9 +449,9 @@ module.exports = {
 
 ## Learn More
 
-If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html)where the new features are introduced briefly.
+If you want to learn more about the new features in React version 16.6, check out [this post](https://reactjs.org/blog/2018/10/23/react-v-16-6.html) where the new features are introduced briefly.
 
-My colleague, [Margarita](https://twitter.com/riittagirl)has written a super nice and easily understandable blog post about configuring webpack.
+My colleague, [Margarita](https://twitter.com/riittagirl) has written a super nice and easily understandable blog post about configuring webpack.
 [You can read it here](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1).
 And you definitely should read it!
 
@@ -462,5 +462,6 @@ You'll probably learn a lot more than you learn by reading blog posts.
 ## Acknowledgements
 
 - Thanks to [Juho Vepsäläinen](https://twitter.com/bebraw)for helping me out with my broken webpack config
-- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408)- Thanks to [riittagirl](https://twitter.com/riittagirl)for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1)about how to configure webpack 4
-- Thanks to [Fotis](https://twitter.com/f_papado)for proofreading this blog post and suggesting improvements to it
+- Thanks to everyone who helped me [in this thread in Twitter](https://twitter.com/0lpeh/status/1059421088160145408)
+- Thanks to [riittagirl](https://twitter.com/riittagirl) for writing an awesome [blog post](https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1) about how to configure webpack 4
+- Thanks to [Fotis](https://twitter.com/f_papado) for proofreading this blog post and suggesting improvements to it

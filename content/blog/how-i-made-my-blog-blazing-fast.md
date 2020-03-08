@@ -12,7 +12,7 @@
 
 ## 4 x 100
 
-[![4 times 100 in the lighthouse audit.](/images/blazing-fast/100.png)](/images/blazing-fast/100.png)
+[![4 times 100 in the lighthouse audit.](/images/blazing-fast/all-100.png)](/images/blazing-fast/all-100.png)
 
 Isn't this a beautiful sight 😍.
 
@@ -109,7 +109,7 @@ Facts contributing to a blazing fast experience on my webpage:
   - Should probably automate the process somehow
   - Typically I'm able to get ~60% smaller image sizes without losing too much visual information, that the human eye can see
 - Cloudflare used as a CDN, and minimizes assets
-  - read more about [my blog setup here]({{ "/2017/11/19/hello-world.html)
+  - read more about [my blog setup here](/blog/hello-world)
 - Pages are prefetched for faster subsequent page loads
   - When navigating to another page, the page contents are already available in the cache
   - I use [Quicklink](https://github.com/GoogleChromeLabs/quicklink) to do this for me automatically

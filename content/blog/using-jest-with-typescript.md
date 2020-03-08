@@ -52,7 +52,7 @@ You can, however read the blog post if you want.
 
 # What is Jest?
 
-In my [previous blog post](/2019/01/30/my-opinionated-setup-for-web-projects.html), I explained my preferred project setup.
+In my [previous blog post](/blog/my-opinionated-setup-for-web-projects), I explained my preferred project setup.
 I mentioned about using Jest for testing, but not about how to set it up.
 In this blog post I will explain how to set up Jest with TypeScript.
 

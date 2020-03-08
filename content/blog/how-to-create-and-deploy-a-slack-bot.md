@@ -176,7 +176,7 @@ As seen in the image below:
 This was driving me nuts because I was not sure whether I had the correct token or if the error was somewhere else.
 You can see my frustration in my tweets here (click the image to see the original tweet):
 
-[![Screenshot of my tweet where I'm frustrated about the above error.](/images/slack-bot/tweet.png)]({{ "https://twitter.com/0lpeh/status/1136518208993841153" }})
+[![Screenshot of my tweet where I'm frustrated about the above error.](/images/slack-bot/tweet.png)](https://twitter.com/0lpeh/status/1136518208993841153)
 
 After fighting with this for a while, I found out that my request payload was sent as a string instead of as JSON.
 This caused the problem.
@@ -194,6 +194,6 @@ I had to avoid avoid duplicates by checking the event ID and ignoring the event 
 
 Here is a GIF of how my bot looks like and how it works:
 
-[![GIF of my slack bot and how it works.](/images/slack-bot/peek.gif)](https://twitter.com/0lpeh/status/1138154635351461888")
+[![GIF of my slack bot and how it works.](/images/slack-bot/peek.gif)](https://twitter.com/0lpeh/status/1138154635351461888)
 
 This bot is not publicly distributed for now.

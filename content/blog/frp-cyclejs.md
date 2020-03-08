@@ -14,7 +14,7 @@ In this blog post, I will be writing about my experiences learning Functional Re
 I will try to explain the basics of Cycle.js and FRP and what I have learned while building [Meeting Price Calculator](https://mpc.olpe.fi/) in Cycle.js.
 When I started learning Cycle.js, I did not know what Reactive Programming was and I had almost no experience in Functional Programming.
 
-<img src="/images/frp-cyclejs/cyclejs.svg" width="120" aria-hidden="true">
+![Cycle.js logo](/images/frp-cyclejs/cyclejs.svg)
 
 ## Background
 
