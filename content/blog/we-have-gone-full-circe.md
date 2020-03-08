@@ -1,14 +1,14 @@
 ---
-title: 'Server Side Rendering: Why We Have Gone Full Circle'
-date: 2019-12-11 06:40:00 Z
-updated: 2019-12-11 15:35:00 Z
-layout: post
-excerpt: 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?'
-author: 'Olavi Haapala'
-author_twitter: '0lpeh'
-image: '/images/11-ssr/thomas-lambert-unsplash.jpg'
-altText: 'Aerial photo of a circle road in nature'
-credits: 'Photo by Thomas Lambert on Unsplash'
+{
+  'type': 'blog',
+  'author': 'Olavi Haapala',
+  'title': 'Server Side Rendering: Why We Have Gone Full Circle',
+  'description': 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?',
+  'image': '/images/ssr/thomas-lambert-unsplash.jpg',
+  'altText': 'Aerial photo of a circle road in nature',
+  'credits': 'Photo by Thomas Lambert on Unsplash',
+  'published': '2019-12-11',
+}
 ---
 
 ### Author's notice
@@ -21,8 +21,6 @@ In the beginning of this post I'm trying to explain some of the key concepts and
 I almost got carried away and did not get into writing about the main topic until late in this post, so please feel free to jump over the first half of the post and start reading from [4 Reasons Why SSR is Highly Relevant Today](#4-reasons-why-ssr-is-highly-relevant-today).
 
 This blog post is highly opinionated, read at your own risk!
-
-<hr/>
 
 ## How the Web Looks Like Today
 
@@ -44,13 +42,13 @@ One could easily assume better tools and tech would make the web a better place 
 In fact, based on HTTP Archive, the amount of web traffic from mobile and tablet devices surpassed the traffic from desktop devices already in 2016 globally.
 This can bee seen in the below image.
 
-[![Global internet usage stats from 2009 to 2016.]({{ "/images/11-ssr/internet_usage_2009_2016_ww.png" | prepend: site.baseurl }})]({{ "/images/11-ssr/internet_usage_2009_2016_ww.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![Global internet usage stats from 2009 to 2016.](/images/ssr/internet_usage_2009_2016_ww.png)](/images/ssr/internet_usage_2009_2016_ww.png)
 
-Based on [the HTTP Archive stats](https://httparchive.org/reports/page-weight?start=2017_05_01&end=2018_05_15&view=list){:target="\_blank"}{:rel="noopener"}, web pages got ~20% heavier and slower on almost all metrics when comparing 2017 to 2018.
+Based on [the HTTP Archive stats](https://httparchive.org/reports/page-weight?start=2017_05_01&end=2018_05_15&view=list), web pages got ~20% heavier and slower on almost all metrics when comparing 2017 to 2018.
 Most of the increase in page weight and slowness can be explained by the increasing amount of JS on web pages.
 On the other hand, many web pages are a lot more complex nowadays than they used to (or need to!) be.
 
-If you like to read more about heavy webpages and the biggest reason for slow webpages, go ahead and read [The Cost Of JavaScript In 2018](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4){:target="\_blank"}{:rel="noopener"} (sorry, Medium link!) and [The Cost of JS in 2019](https://v8.dev/blog/cost-of-javascript-2019){:target="\_blank"}{:rel="noopener"}.
+If you like to read more about heavy webpages and the biggest reason for slow webpages, go ahead and read [The Cost Of JavaScript In 2018](https://medium.com/@addyosmani/the-cost-of-javascript-in-2018-7d8950fbb5d4) (sorry, Medium link!) and [The Cost of JS in 2019](https://v8.dev/blog/cost-of-javascript-2019).
 
 ## Some Definitions
 
@@ -123,14 +121,12 @@ AMP in itself is a good library for creating web pages, because it limits the po
 
 Even AMP recently announced a revolutionary new technology called SSR in the AMP library as you can see in the below screenshot of Ricky Mondello's sarcastic tweet:
 
-[![Screenshot of Ricky Mondello's tweet: https://twitter.com/rmondello/status/1160201903566802949]({{ "/images/11-ssr/rmondello.png" | prepend: site.baseurl }})](https://twitter.com/rmondello/status/1160201903566802949){:target="\_blank"}{:rel="noopener"}
+[![Screenshot of Ricky Mondello's tweet: https://twitter.com/rmondello/status/1160201903566802949](/images/ssr/rmondello.png)](https://twitter.com/rmondello/status/1160201903566802949)
 
 I agree with Ricky, that this is ridiculous.
 We have had HTML and SSR for 30 years, what do we need AMP for?
 
 Okay, time to move to the _actual_ topic of this blog post.
-
-<hr />
 
 ## 4 Reasons Why SSR is Highly Relevant Today
 
@@ -141,9 +137,9 @@ Here are my 4 reasons for using SSR today.
 Web pages that are rendered only on the client side tend to have quite slow time to First Paint (FP) and First Meaningful Paint (FMP), because the browser has to first download, parse, and excecute the JS bundle before it can paint the contents on the screen.
 The below screenshot tries to visualize what these different metrics means.
 
-[![Timeline that explains the different performance metrics.]({{ "/images/11-ssr/perf-metrics-load-timeline.png" | prepend: site.baseurl }})]({{ "/images/11-ssr/perf-metrics-load-timeline.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![Timeline that explains the different performance metrics.](/images/ssr/perf-metrics-load-timeline.png)](/images/ssr/perf-metrics-load-timeline.png)
 
-Image source: [User-centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics){:target="\_blank"}{:rel="noopener"}.
+Image source: [User-centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics).
 
 In order to achieve a good user experience, try to move these events as close to the left as possible, meaning as fast after navigation start as possible.
 Additionally Time To Interactive (TTI) is an important metric, because before that moment in time, your users can't start interacting with the interactive parts of your site.
@@ -157,7 +153,7 @@ With this approach, it is possible to achieve
 Google and other search engines most probably will not run the JS on your web page when indexing the web.
 There are rumours that Google is running the JS, but with a 2 weeks delay.
 For most of the businesses where a good SEO is critical, a 2 weeks delay is not acceptable.
-~~And as a cherry on top, Google reportedly runs your JS with an ancient version of Chrome, which is even worse than IE9.~~ _Edit_: This was not true anymore, [Google bot now uses the latest version of Chromium](https://searchengineland.com/google-will-ensure-googlebot-runs-the-latest-version-of-chromium-316534){:target="\_blank"}{:rel="noopener"}.
+~~And as a cherry on top, Google reportedly runs your JS with an ancient version of Chrome, which is even worse than IE9.~~ _Edit_: This was not true anymore, [Google bot now uses the latest version of Chromium](https://searchengineland.com/google-will-ensure-googlebot-runs-the-latest-version-of-chromium-316534).
 
 So, if you care about good SEO, use SSR.
 However, if you have a fully functional SPA and don't want to invest time in implementing SSR, there are ready made services that does the SSR for you.

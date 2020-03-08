@@ -1,13 +1,13 @@
 ---
-title: 'Using Jest with TypeScript '
-date: 2019-02-04 00:00:00 Z
-updated: 2019-02-05 00:00:00 Z
-layout: post
-excerpt: 'Jest is a nice testing framework for frontend projects. However, sometimes it’s a PITA to set up in projects using TypeScript. This time I decided to write down the steps required to get it running.'
-author: 'Olavi Haapala'
-author_twitter: '0lpeh'
-image: '/images/06-jest/jest.jpg'
-altText: 'Jest output'
+{
+  'type': 'blog',
+  'author': 'Olavi Haapala',
+  'title': 'Using Jest with TypeScript',
+  'description': 'Jest is a nice testing framework for frontend projects. However, sometimes it’s a PITA to set up in projects using TypeScript. This time I decided to write down the steps required to get it running.',
+  'image': '/images/jest/jest.jpg',
+  'altText': 'Jest output',
+  'published': '2019-02-04',
+}
 ---
 
 # EDIT – Feb 5, 2019
@@ -56,21 +56,21 @@ In my [previous blog post](/2019/01/30/my-opinionated-setup-for-web-projects.htm
 I mentioned about using Jest for testing, but not about how to set it up.
 In this blog post I will explain how to set up Jest with TypeScript.
 
-[Jest](https://jestjs.io/){:target="\_blank"}{:rel="noopener"} is a testing framework made by FB and it is popular in React based projects. One of the reasons for its popularity is that [create-react-app, CRA](https://github.com/facebook/create-react-app){:target="\_blank"}{:rel="noopener"} uses it. CRA is a good option for quickly getting a React project up and running.
+[Jest](https://jestjs.io/) is a testing framework made by FB and it is popular in React based projects. One of the reasons for its popularity is that [create-react-app, CRA](https://github.com/facebook/create-react-app) uses it. CRA is a good option for quickly getting a React project up and running.
 
 Jest is easy to use, has a nice watch mode, snapshot testing, coverage reporting and other useful features. However, getting it set up for a TypeScript project has provent to be quite a PITA. This blog post will list the steps required for seting jest up and how to solve the problems during the setup.
 
 ## Step #0 – Getting Started
 
 Search for how to get started with `jest`.
-You will most probably end up in the [jest documentation](https://jestjs.io/){:target="\_blank"}{:rel="noopener"}.
+You will most probably end up in the [jest documentation](https://jestjs.io/).
 
 First things that you will see on the page are:
 
 - “It works with TypeScript” – Oh, well let’s see about that
 - “Zero config” – Ok, cool
 
-There is [a guide for getting started](https://jestjs.io/docs/en/getting-started){:target="\_blank"}{:rel="noopener"}, which lists the first steps for getting started.
+There is [a guide for getting started](https://jestjs.io/docs/en/getting-started), which lists the first steps for getting started.
 
 Install the library:
 
@@ -142,7 +142,7 @@ describe('SoMeWrapper', () => {
 ```
 
 Where `SoMeWrapper` is just a simple wrapper component.
-As you can see, we are using `preact` in combination with [preact-testing-library](https://github.com/antsmartian/preact-testing-library){:target="\_blank"}{:rel="noopener"}.
+As you can see, we are using `preact` in combination with [preact-testing-library](https://github.com/antsmartian/preact-testing-library).
 Here we try to render the component and compare it to a saved snapshot of the output.
 If the snapshot file does not exist, jest will create it on the first run.
 Snapshots are stored as JSON.
@@ -328,10 +328,10 @@ Downgrading helped.
 
 Now, we get this nice looking output and can continue adding more tests.
 
-![Successful run of Jest]({{ "/images/06-jest/success.jpg" | prepend: site.baseurl }})
+![Successful run of Jest](/images/jest/success.jpg)
 
 ## Step #6 – Additional Steps
 
 It is recommended to setup a prepush hook for verifying that tests are passing before pushing to remote.
 
-Read more in my [previous blog post](/2019/01/30/my-opinionated-setup-for-web-projects.html).
+Read more in my [previous blog post](/blog/my-opinionated-setup-for-web-projects).

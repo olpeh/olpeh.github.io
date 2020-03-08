@@ -1,14 +1,14 @@
 ---
-title: 'Runtime Type Safety And More in TypeScript Projects Using io-ts'
-date: 2019-02-08 00:00:00 Z
-updated: 2019-02-10 00:00:00 Z
-layout: post
-excerpt: 'TypeScript will only bring you type checking on compile time, when compiling to JavaScript. On runtime, your code is JS and anything can happen. However, there is a solution to this problem.'
-author: 'Olavi Haapala'
-author_twitter: '0lpeh'
-image: '/images/07-io-ts/fire.jpg'
-altText: 'Fireman at work'
-credits: 'Photo by Hush Naidoo on Unsplash'
+{
+  'type': 'blog',
+  'author': 'Olavi Haapala',
+  'title': 'Runtime Type Safety And More in TypeScript Projects Using io-ts',
+  'description': 'TypeScript will only bring you type checking on compile time, when compiling to JavaScript. On runtime, your code is JS and anything can happen. However, there is a solution to this problem.',
+  'image': '/images/io-ts/fire.jpg',
+  'altText': 'Fireman at work.',
+  'credits': 'Photo by Hush Naidoo on Unsplash',
+  'published': '2019-02-08',
+}
 ---
 
 # The Problem
@@ -55,10 +55,10 @@ This is frustrating.
 
 ## A Solution
 
-I had heard many people recommend using [io-ts](https://github.com/gcanti/io-ts){:target="\_blank"}{:rel="noopener"} for tackling this problem.
+I had heard many people recommend using [io-ts](https://github.com/gcanti/io-ts) for tackling this problem.
 Last Friday I tried it for the first time and my mind was blown.
 
-[![Me Tweeting about how I felt using io-ts for the first time.]({{ "/images/07-io-ts/io-ts-tweet.png" | prepend: site.baseurl }})](https://twitter.com/0lpeh/status/1091343933551140864){:target="\_blank"}{:rel="noopener"}
+[![Me Tweeting about how I felt using io-ts for the first time.](/images/io-ts/io-ts-tweet.png)](https://twitter.com/0lpeh/status/1091343933551140864)
 
 With `io-ts`, you are able to validate types during runtime.
 I'm not an expert on this topic yet, but here is an example of how we currently use it in our project.
@@ -183,7 +183,7 @@ Please let me know.
 As the author of io-ts helpfully pointed out, there is a way to do pattern matching with io-ts.
 It can be done using `fold` or `foldL`, which is the lazy version of fold.
 
-[![The author of io-ts tweeting me how to do pattern matching.]({{ "/images/07-io-ts/pattern-matching.png" | prepend: site.baseurl }})](https://twitter.com/GiulioCanti/status/1093874633269526528){:target="\_blank"}{:rel="noopener"}
+[![The author of io-ts tweeting me how to do pattern matching.](/images/io-ts/pattern-matching.png)](https://twitter.com/GiulioCanti/status/1093874633269526528)
 
 So, my example using `foldL` looks like this, then:
 

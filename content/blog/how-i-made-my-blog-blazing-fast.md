@@ -1,21 +1,22 @@
 ---
-title: 'How I Made My Blog Blazing Fast'
-date: 2019-02-19 00:00:00 Z
-layout: post
-excerpt: 'Have you noticed how fast my website loads? In this blog post, I will explain what usually slows down web pages, and how I was able to improve the performance of my website.'
-author: 'Olavi Haapala'
-author_twitter: '0lpeh'
-image: '/images/08-blazing-fast/bonfire.jpg'
-altText: 'Sparks coming from a bonfire, taken with a long exposure time.'
+{
+  'type': 'blog',
+  'author': 'Olavi Haapala',
+  'title': 'How I Made My Blog Blazing Fast',
+  'description': 'Have you noticed how fast my website loads? In this blog post, I will explain what usually slows down web pages, and how I was able to improve the performance of my website.',
+  'image': '/images/blazing-fast/bonfire.jpg',
+  'altText': 'Sparks coming from a bonfire, taken with a long exposure time.',
+  'published': '2019-02-19',
+}
 ---
 
 ## 4 x 100
 
-[![4 times 100 in the lighthouse audit.]({{ "/images/08-blazing-fast/100.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/100.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![4 times 100 in the lighthouse audit.](/images/blazing-fast/100.png)](/images/blazing-fast/100.png)
 
 Isn't this a beautiful sight üòç.
 
-This screenshot is from the [Lighthouse](https://developers.google.com/web/tools/lighthouse/){:target="\_blank"}{:rel="noopener"} audit result for my webpage.
+This screenshot is from the [Lighthouse](https://developers.google.com/web/tools/lighthouse/) audit result for my webpage.
 Lighthouse is an amazing tool for _quickly_ auditing the performance of a website.
 It may give you useful hints when trying to find the performance bottlenecks in loading a webpage.
 However, the results are not absolute and they should be taken with a grain of salt.
@@ -36,7 +37,7 @@ Typically, the client refers to a web browser and the server is returning the HT
 The figure below shows a simplified version of what happens when a user accesses a traditional server rendered webpage.
 Only a successful case is covered in this example.
 
-[![The client-server architecture of the web.]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/client-server.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![The client-server architecture of the web.](/images/blazing-fast/client-server.png)](/images/blazing-fast/client-server.png)
 
 First, the user opens a web browser and types in the address or clicks a link on a webpage.
 The browser will then do a DNS lookup for the address in order to find the server's IP address.
@@ -49,14 +50,14 @@ Finally, as early as possible, the webpage content will be rendered on the user‚
 
 ### Critical Rendering Path
 
-The above mentioned steps before a webpage is rendered are commonly referred to as the [Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/){:target="\_blank"}{:rel="noopener"}.
+The above mentioned steps before a webpage is rendered are commonly referred to as the [Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/).
 It consists of the steps required before the browser is able to display the contents of the webpage on your screen.
 
 Simplified version can be understood by looking at the following visualization by [Luis Vieira](https://medium.com/@luisvieira_gmr):
 
-[![Critical Rendering Path visualized.]({{ "/images/08-blazing-fast/critical-rendering-path.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/critical-rendering-path.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![Critical Rendering Path visualized.](/images/blazing-fast/critical-rendering-path.png)](/images/blazing-fast/critical-rendering-path.png)
 
-Image source: [Understanding the critical rendering path, rendering pages in 1 second](https://medium.com/@luisvieira_gmr/understanding-the-critical-rendering-path-rendering-pages-in-1-second-735c6e45b47a){:target="\_blank"}{:rel="noopener"}.
+Image source: [Understanding the critical rendering path, rendering pages in 1 second](https://medium.com/@luisvieira_gmr/understanding-the-critical-rendering-path-rendering-pages-in-1-second-735c6e45b47a).
 
 CSSOM in the image refers to the CSS Object Model and DOM to the Document Object Model.
 As the visualization nicely shows, the browser has to rebuild the DOM and when it receives CSS, or synchronous JavaScript.
@@ -103,15 +104,15 @@ Facts contributing to a blazing fast experience on my webpage:
   - In my case, all the CSS is inlined
   - The HTML size remains still small: `3.8 KB` GZIPed
   - Small size is crucial for achieving a fast experience on mobile
-- Optimized and small images using [squoosh.app](https://squoosh.app/){:target="\_blank"}{:rel="noopener"}
+- Optimized and small images using [squoosh.app](https://squoosh.app/)
   - However, I only optimize the images on the first page, not the additional images that are in the blog posts
   - Should probably automate the process somehow
   - Typically I'm able to get ~60% smaller image sizes without losing too much visual information, that the human eye can see
 - Cloudflare used as a CDN, and minimizes assets
-  - read more about [my blog setup here]({{ "/2017/11/19/hello-world.html" | prepend: site.baseurl }})
+  - read more about [my blog setup here]({{ "/2017/11/19/hello-world.html)
 - Pages are prefetched for faster subsequent page loads
   - When navigating to another page, the page contents are already available in the cache
-  - I use [Quicklink](https://github.com/GoogleChromeLabs/quicklink){:target="\_blank"}{:rel="noopener"} to do this for me automatically
+  - I use [Quicklink](https://github.com/GoogleChromeLabs/quicklink) to do this for me automatically
   - My Quicklink usage can be seen in the bottom of the page and it looks like this:
 
 ```html
@@ -133,13 +134,13 @@ Facts contributing to a blazing fast experience on my webpage:
 
 The results of these optimizations as measured by Lighthouse can be in the screenshot below.
 
-[![Screenshot of the lighthouse audit results for my page.]({{ "/images/08-blazing-fast/lighthouse.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/lighthouse.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![Screenshot of the lighthouse audit results for my page.](/images/blazing-fast/lighthouse.png)](/images/blazing-fast/lighthouse.png)
 
 Here is a nice visualization that shows what the different metrics refer to.
 
-[![Timeline that explains the different performance metrics.]({{ "/images/08-blazing-fast/perf-metrics-load-timeline.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/perf-metrics-load-timeline.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![Timeline that explains the different performance metrics.](/images/blazing-fast/perf-metrics-load-timeline.png)](/images/blazing-fast/perf-metrics-load-timeline.png)
 
-Image source: [User-centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics){:target="\_blank"}{:rel="noopener"}.
+Image source: [User-centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics).
 
 As you can see from the lighthouse results, the First Contentful Paint and First Meaningful Paint are happening almost at the same moment.
 In fact, quite often Lighthouse reports same results for them when running the audit for my site.
@@ -152,14 +153,14 @@ This is achieved by not having heavy JavaScript resources on the page.
 
 ### WebPageTest Results
 
-Another way to measure the performance is to run a few test on [WebPageTest](https://www.webpagetest.org){:target="\_blank"}{:rel="noopener"}.
+Another way to measure the performance is to run a few test on [WebPageTest](https://www.webpagetest.org).
 It is an amazing (and free!) tool for performance audits.
 
 Here, you can see a screenshot of the WPT results for my page on February 17, 2019.
 
-[![Screenshot of WebPageTest results page for my site.]({{ "/images/08-blazing-fast/webpagetest.png" | prepend: site.baseurl }})]({{ "/images/08-blazing-fast/webpagetest.png" | prepend: site.baseurl }}){:target="\_blank"}
+[![Screenshot of WebPageTest results page for my site.](/images/blazing-fast/webpagetest.png)](/images/blazing-fast/webpagetest.png)
 
-[Link to the original results](https://www.webpagetest.org/result/190217_Z4_9211511cd7fce5ea4a7d3e867b1d2cb7/){:target="\_blank"}{:rel="noopener"}, where you can see more details.
+[Link to the original results](https://www.webpagetest.org/result/190217_Z4_9211511cd7fce5ea4a7d3e867b1d2cb7/), where you can see more details.
 
 The results from WPT look quite similar to the Lighthouse results, but for some reason the Lighthhouse score reported by WPT is not 100.
 I don't know the reason for this.
@@ -177,4 +178,4 @@ In order to get useful results, you may need to actually reach out to your users
 ## Learn More
 
 If you are interested in learning more about web performance, I have collected a list of links to useful resources on this topic.
-You can find [the list in this repository on GitHub](https://github.com/olpeh/notes-and-lists/blob/master/web-dev-interesting-links.md#web-performance){:target="\_blank"}{:rel="noopener"}.
+You can find [the list in this repository on GitHub](https://github.com/olpeh/notes-and-lists/blob/master/web-dev-interesting-links.md#web-performance).

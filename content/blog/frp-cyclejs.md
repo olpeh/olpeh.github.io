@@ -56,7 +56,7 @@ If you have any feedback on the content of this blog post, I'll gladly hear abou
 
 Let's see what the official documentation describes it like:
 
-> "A functional and reactive JavaScript framework for predictable code" <br/>
+> "A functional and reactive JavaScript framework for predictable code"
 > – Source: [cycle.js.org](http://cycle.js.org/)
 
 In order to understand what that means, we have to understand the following three concepts:
@@ -84,7 +84,7 @@ const incrementCounter = () => (counter += 1);
 The same function as a pure function that has no side effects:
 
 ```typescript
-const incrementCounter = counter => counter + 1;
+const incrementCounter = (counter) => counter + 1;
 ```
 
 If the ES6 arrow function syntax is unfamiliar to you, the first example means a function that takes no parameters and after the arrow (`=>`) is the function body.
@@ -111,7 +111,7 @@ It's called [xstream](http://staltz.github.io/xstream/) .
 I'm using xstream in my application.
 
 > "In short, a Stream in xstream is an event stream which can emit zero or more events, and may or may not finish.
-> If it finishes, then it does so by either emitting an error or a special “complete” event." <br/>
+> If it finishes, then it does so by either emitting an error or a special “complete” event."
 > – Source: [Cycle.js documentation about RP](https://cycle.js.org/streams.html#streams-reactive-programming)
 
 A good example of reactivity is using formulas in Excel spreadsheets.
@@ -138,7 +138,7 @@ In the end I found out that the payment module was handling the email sending af
 What would have happened if the payment module was replaced with something else?
 Who would have thought that the payment module was actually responsible for sending the emails as well?
 
-> "Whenever the module being changed is responsible for defining that change." <br/>
+> "Whenever the module being changed is responsible for defining that change."
 > – _Andre Staltz_ about the [definition of Reactive Programming](https://www.youtube.com/watch?v=v68ppDlvHqs)
 
 There is a lot more to RP than what I am able explain in a blog post.
@@ -192,7 +192,7 @@ Side effects happen in the so-called `drivers`.
 In the example below, we can see the `DOM Driver` which handles writing to the DOM and reading from the DOM.
 Reads from DOM can be user intents like click events or input events.
 
-![Main - DOM - Side effects](/images/frp-cyclejs/main-domdriver-side-effects.svg) <br/>
+![Main - DOM - Side effects](/images/frp-cyclejs/main-domdriver-side-effects.svg)
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 ### Component Model
@@ -205,7 +205,7 @@ This way you can easily create reusable components without thinking about confli
 In my application I used this technique in order to create a reusable component called [sliderInput](https://github.com/olpeh/meeting-price-calculator/tree/master/src/components/sliderInput) .
 It is used twice in my application with slightly different input parameter streams or so-called `props` in the React-world.
 
-![Nested component model in Cycle.js](/images/frp-cyclejs/nested-components.svg) <br/>
+![Nested component model in Cycle.js](/images/frp-cyclejs/nested-components.svg)
 Source: [Cycle.js documentation](https://cycle.js.org/getting-started.html)
 
 ### Model-View-Intent
@@ -349,7 +349,7 @@ export default function intent(domSource): SliderInputActions {
   const ValueChangeAction$ = domSource
     .select('.SliderInput-input')
     .events('input')
-    .map(inputEv => parseInt((inputEv.target as HTMLInputElement).value));
+    .map((inputEv) => parseInt((inputEv.target as HTMLInputElement).value));
 
   return {
     ValueChangeAction$
@@ -386,7 +386,7 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
   );
 
   const valueChangeReducer$: xs<Reducer> = actions.ValueChangeAction$.map(
-    value => (prevState: State): State => ({
+    (value) => (prevState: State): State => ({
       ...prevState,
       value
     })

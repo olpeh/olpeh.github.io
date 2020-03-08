@@ -1,13 +1,14 @@
 ---
-title: 'My Opinionated Setup for Web Projects'
-date: 2019-01-30 00:00:00 Z
-layout: post
-excerpt: 'During the past few years, I have worked on multiple smaller and larger projects. In this blog post I explain my default project setup for a typical web frontend project.'
-author: 'Olavi Haapala'
-author_twitter: '0lpeh'
-image: '/images/05-project-setup/tools.png'
-altText: 'Tools'
-credits: 'Photo by Fleur Treurniet on Unsplash'
+{
+  'type': 'blog',
+  'author': 'Olavi Haapala',
+  'title': 'My Opinionated Setup for Web Projects',
+  'description': 'During the past few years, I have worked on multiple smaller and larger projects. In this blog post I explain my default project setup for a typical web frontend project.',
+  'image': '/images/project-setup/tools.png',
+  'altText': 'Tools',
+  'credits': 'Photo by Fleur Treurniet on Unsplash',
+  'published': '2019-01-30',
+}
 ---
 
 Imagine starting a new frontend project from "scratch".
@@ -19,7 +20,7 @@ What does your basic setup look like?
 I will explain my basic setup, as I am currently in a situation where we are starting a new project.
 I have used this setup on multiple projects of varying sizes ranging from single-person side projects to 15+ developers larger project.
 
-The only things we have decided for this new project is that we will use [Preact](https://preactjs.com/){:target="\_blank"}{:rel="noopener"} instead of React and we will use [MobX](https://mobx.js.org/){:target="\_blank"}{:rel="noopener"} for state management.
+The only things we have decided for this new project is that we will use [Preact](https://preactjs.com/) instead of React and we will use [MobX](https://mobx.js.org/) for state management.
 And the backend will be a Scala Play application.
 
 ## Backend
@@ -81,10 +82,10 @@ It is by far better than JS and more popular and robust than Flow.
 TypeScript will not force you to write bug-free code, but at least it may detect the most common errors on compile-time.
 Typings act as a kind of documentation as well making it easier for new joiners to understand the codebase.
 
-However, if you can, stay away from JavaScript and TypeScript all together and use something like [Elm](https://elm-lang.org/){:target="\_blank"}{:rel="noopener"} that promises "No Runtime Exceptions", which is true, by the way.
+However, if you can, stay away from JavaScript and TypeScript all together and use something like [Elm](https://elm-lang.org/) that promises "No Runtime Exceptions", which is true, by the way.
 
-> "No Runtime Exceptions" <br/>
-> – [Elm Docs](https://elm-lang.org/){:target="\_blank"}{:rel="noopener"}
+> "No Runtime Exceptions"
+> – [Elm Docs](https://elm-lang.org/)
 
 ### TypeScript and TSLint
 
@@ -206,7 +207,7 @@ Do not rely on coding conventions.
 Someone on your team will either forget to follow them or just ignore them.
 Automated formatting will make reviewing PRs much easier and save your team a ton of time from unnecessary discussions about code formatting.
 
-For Elm, use [elm-format](https://github.com/avh4/elm-format){:target="\_blank"}{:rel="noopener"} and for almost everything else, use [Prettier](https://prettier.io/){:target="\_blank"}{:rel="noopener"}.
+For Elm, use [elm-format](https://github.com/avh4/elm-format) and for almost everything else, use [Prettier](https://prettier.io/).
 Seriously, just do it.
 And if you did not know, Prettier has support for multiple languages, including `JS, JSON, TS, CSS, HTML, MD` and others.
 
@@ -310,13 +311,13 @@ This will then save the exact versions of the packages when installing them also
 This way you gain more control over packages as they will not be upgraded.
 Only upgrade packages when you explicitely want to upgrade them.
 But remember to do it regurarly and remember to check the output of `npm audit` and upgrade packages when needed.
-I like to use [npm-check-updates](https://github.com/tjunnone/npm-check-updates){:target="\_blank"}{:rel="noopener"} for checking for updates and upgrading them.
+I like to use [npm-check-updates](https://github.com/tjunnone/npm-check-updates) for checking for updates and upgrading them.
 
-Additionally, remember [npmplease.com](http://npmplease.com/){:target="\_blank"}{:rel="noopener"} it will quite often save your day, unfortunately.
+Additionally, remember [npmplease.com](http://npmplease.com/) it will quite often save your day, unfortunately.
 
 ### State Management
 
-Use [MobX](https://mobx.js.org/){:target="\_blank"}{:rel="noopener"} for state handling.
+Use [MobX](https://mobx.js.org/) for state handling.
 It works.
 It is easy to get started with.
 We have used it in many projects and have not hit any limitations in those and are fairly comfortable with using it.
@@ -324,12 +325,12 @@ Just remember to enable the strict mode.
 
 ### Testing
 
-Use [Jest](https://jestjs.io/){:target="\_blank"}{:rel="noopener"} as a test runner.
+Use [Jest](https://jestjs.io/) as a test runner.
 Use Jest snapshot tests, but don't overuse it.
 Do not create too large snapshots.
 Remember, that you can take snapshots of data as well, it does not need to be components.
 
-Use [react-testing-ĺibrary](https://github.com/kentcdodds/react-testing-library){:target="\_blank"}{:rel="noopener"} for writing test.
+Use [react-testing-ĺibrary](https://github.com/kentcdodds/react-testing-library) for writing test.
 
 Have your CI run the tests and report failures.
 Make sure your deploy pipeline runs tests and only continues if tests are passing.
@@ -347,13 +348,13 @@ Have one CSS file for global styles and one file for defining variables as CSS C
 ### Git GUI
 
 I highly recommend using a graphical user interface for git, especially when working in a larger team.
-I personally use [GitKraken](https://www.gitkraken.com/){:target="\_blank"}{:rel="noopener"} and enjoy using it, although there are some rough edges still.
+I personally use [GitKraken](https://www.gitkraken.com/) and enjoy using it, although there are some rough edges still.
 Sometimes I still need to run some command from the command line.
 It is nice to see visually what other people in your team have been working on.
 Rebasing, resetting, merging, and even "undoing" is super easy using GitKraken.
 GitKraken has some nice colors as well as you can see from the screenshot below.
 
-![Screenshot of GitKraken]({{ "/images/05-project-setup/gitkraken.png" | prepend: site.baseurl }})
+![Screenshot of GitKraken](/images/project-setup/gitkraken.png)
 
 ### Terminal
 
@@ -369,24 +370,24 @@ This allows me to have:
 Tmux also works like `screen` and remains your sessions.
 Learning the keyboard shortcuts may take a while though.
 I personally am not using the default keybindings.
-You can see my [tmux.conf here](https://github.com/olpeh/dotfiles/blob/master/.tmux.conf){:target="\_blank"}{:rel="noopener"}.
+You can see my [tmux.conf here](https://github.com/olpeh/dotfiles/blob/master/.tmux.conf).
 
-Use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh){:target="\_blank"}{:rel="noopener"}.
+Use [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
-![Screenshot of my typical terminal layout]({{ "/images/05-project-setup/terminal.png" | prepend: site.baseurl }})
+![Screenshot of my typical terminal layout](/images/project-setup/terminal.png)
 Screenshot of my typical terminal layout.
 
 ### Final Tips
 
-Use [npm-quick-run](https://github.com/bahmutov/npm-quick-run){:target="\_blank"}{:rel="noopener"}!
+Use [npm-quick-run](https://github.com/bahmutov/npm-quick-run)!
 It's the most useful NPM package in the whole NPM.
 I don't understand why it does not have more GitHub stars and users.
 
-Use `AutoJump` because [cd is wasting your time](https://olivierlacan.com/posts/cd-is-wasting-your-time/){:target="\_blank"}{:rel="noopener"}.
+Use `AutoJump` because [cd is wasting your time](https://olivierlacan.com/posts/cd-is-wasting-your-time/).
 
 Use `ctrl + r` for reverse history search in terminal.
 This helps you in finding commands that you have used before.
-My colleague [Juhis recommends using McFly](https://dev.to/hamatti/better-bash-history-search-with-mcfly-3kck){:target="\_blank"}{:rel="noopener"}.
+My colleague [Juhis recommends using McFly](https://dev.to/hamatti/better-bash-history-search-with-mcfly-3kck).
 I have not tried it, as I am happy with the default history search.
 
-Use [patch-package](https://github.com/ds300/patch-package){:target="\_blank"}{:rel="noopener"} to fix problems in libraries/modules without having to wait for a patch to be released.
+Use [patch-package](https://github.com/ds300/patch-package) to fix problems in libraries/modules without having to wait for a patch to be released.
