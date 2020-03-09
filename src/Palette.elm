@@ -6,8 +6,10 @@ import Element.Region
 
 
 color =
-    { primary = Element.rgb255 5 117 230
-    , secondary = Element.rgb255 0 242 96
+    { primary = Element.rgb255 54 54 54
+    , secondary = Element.rgb255 243 240 240
+    , primaryBackground = Element.rgb255 255 255 255
+    , secondaryBackground = Element.rgb255 243 240 240
     }
 
 

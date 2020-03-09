@@ -157,6 +157,7 @@ view siteMetadata page =
                             , Font.size 20
                             , Font.family [ Font.typeface "Roboto" ]
                             , Font.color (Element.rgba255 0 0 0 0.8)
+                            , Element.Background.color Palette.color.secondaryBackground
                             ]
                 }
         , head = head page.frontmatter
@@ -177,6 +178,7 @@ pageView model siteMetadata page viewForPage =
                     ]
                     [ viewForPage
                     ]
+                , footer
                 ]
                     |> Element.textColumn
                         [ Element.width Element.fill
@@ -213,6 +215,7 @@ pageView model siteMetadata page viewForPage =
                             :: imageCreditsView metadata.credits
                             :: [ viewForPage ]
                         )
+                    , footer
                     ]
             }
 
@@ -234,15 +237,19 @@ pageView model siteMetadata page viewForPage =
                         , Author.view [] author
                         , Element.paragraph [ Element.centerX, Font.center ] [ viewForPage ]
                         ]
+                    , footer
                     ]
             }
 
         Metadata.BlogIndex ->
             { title = "olavihaapala.fi – a personal blog"
             , body =
-                Element.column [ Element.width Element.fill ]
+                Element.column
+                    [ Element.width Element.fill
+                    ]
                     [ header page.path
                     , Element.column [ Element.padding 20, Element.centerX ] [ Index.view siteMetadata ]
+                    , footer
                     ]
             }
 
@@ -268,35 +275,32 @@ imageCreditsView credits =
 
 header : PagePath Pages.PathKey -> Element msg
 header currentPath =
-    Element.column [ Element.width Element.fill ]
-        [ Element.el
-            [ Element.height (Element.px 4)
-            , Element.width Element.fill
-            , Element.Background.gradient
-                { angle = 0.2
-                , steps =
-                    [ Element.rgb255 0 242 96
-                    , Element.rgb255 5 117 230
-                    ]
-                }
-            ]
-            Element.none
-        , Element.row
-            [ Element.paddingXY 250 40
+    Element.row
+        [ Element.padding 40
+        , Element.spaceEvenly
+        , Element.width Element.fill
+        , Element.Region.navigation
+        , Element.Background.color Palette.color.primary
+        ]
+        [ Element.wrappedRow
+            [ Element.padding 16
             , Element.spaceEvenly
-            , Element.width Element.fill
-            , Element.Region.navigation
-            , Element.Border.widthEach { bottom = 1, left = 0, right = 0, top = 0 }
-            , Element.Border.color (Element.rgba255 40 80 40 0.4)
+            , Element.centerX
+            , Element.width
+                (Element.fill
+                    |> Element.maximum 650
+                )
             ]
-            [ Element.link []
+            [ Element.link
+                [ Font.color Palette.color.secondary
+                , Font.bold
+                ]
                 { url = "/"
-                , label = Element.text "Home"
+                , label = Element.text (String.toUpper "Home")
                 }
             , highlightableLink currentPath pages.blog.directory "Blog"
             , highlightableLink currentPath pages.contact.directory "Contact"
             , highlightableLink currentPath pages.projects.directory "Projects"
-            , githubRepoLink
             ]
         ]
 
@@ -314,14 +318,15 @@ highlightableLink currentPath linkDirectory displayName =
     Element.link
         (if isHighlighted then
             [ Font.underline
-            , Font.color Palette.color.primary
+            , Font.color Palette.color.secondary
             ]
 
          else
-            []
+            [ Font.color Palette.color.secondary
+            ]
         )
         { url = linkDirectory |> Directory.indexPath |> PagePath.toString
-        , label = Element.text displayName
+        , label = Element.text (String.toUpper displayName)
         }
 
 
@@ -449,14 +454,40 @@ publishedDateView metadata =
         )
 
 
-githubRepoLink : Element msg
-githubRepoLink =
-    Element.newTabLink []
-        { url = "https://github.com/olpeh/olpeh.github.io"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.github, description = "Github repo for this page" }
+footer : Element msg
+footer =
+    Element.row
+        [ Element.padding 80
+        , Element.spaceEvenly
+        , Element.width Element.fill
+        , Element.Region.footer
+        , Element.Background.color Palette.color.primaryBackground
+        ]
+        [ Element.wrappedRow
+            [ Element.spaceEvenly
+            , Element.centerX
+            , Element.width
+                (Element.fill
+                    |> Element.maximum 650
+                )
+            ]
+            [ footerLink "/blog/feed.xml" "RSS Feed"
+            , footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub"
+            , footerLink "https://twitter.com/0lpeh" "Twitter"
+            , footerLink "https://twitter.com/0lpeh" "Twitter"
+            , footerLink "mailto:contact@olavihaapala.fi" "Email"
+            , footerLink "https://www.linkedin.com/in/olavi-haapala-b7b752162" "LinkedIn"
+            ]
+        ]
+
+
+footerLink : String -> String -> Element msg
+footerLink href displayName =
+    Element.link
+        [ Element.padding 16
+        , Font.color
+            Palette.color.primary
+        ]
+        { url = href
+        , label = Element.text (String.toUpper displayName)
         }
