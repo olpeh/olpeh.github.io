@@ -3,7 +3,6 @@ module Main exposing (main)
 import Color
 import Data.Author as Author
 import Date
-import DocumentSvg
 import Element exposing (Element)
 import Element.Background
 import Element.Border
@@ -239,7 +238,7 @@ pageView model siteMetadata page viewForPage =
             }
 
         Metadata.BlogIndex ->
-            { title = "elm-pages blog"
+            { title = "olavihaapala.fi – a personal blog"
             , body =
                 Element.column [ Element.width Element.fill ]
                     [ header page.path
@@ -283,7 +282,7 @@ header currentPath =
             ]
             Element.none
         , Element.row
-            [ Element.paddingXY 25 4
+            [ Element.paddingXY 250 40
             , Element.spaceEvenly
             , Element.width Element.fill
             , Element.Region.navigation
@@ -292,17 +291,12 @@ header currentPath =
             ]
             [ Element.link []
                 { url = "/"
-                , label =
-                    Element.row [ Font.size 30, Element.spacing 16 ]
-                        [ DocumentSvg.view
-                        , Element.text "elm-pages-starter"
-                        ]
+                , label = Element.text "Home"
                 }
-            , Element.row [ Element.spacing 15 ]
-                [ elmDocsLink
-                , githubRepoLink
-                , highlightableLink currentPath pages.blog.directory "Blog"
-                ]
+            , highlightableLink currentPath pages.blog.directory "Blog"
+            , highlightableLink currentPath pages.contact.directory "Contact"
+            , highlightableLink currentPath pages.projects.directory "Projects"
+            , githubRepoLink
             ]
         ]
 
@@ -458,24 +452,11 @@ publishedDateView metadata =
 githubRepoLink : Element msg
 githubRepoLink =
     Element.newTabLink []
-        { url = "https://github.com/dillonkearns/elm-pages"
+        { url = "https://github.com/olpeh/olpeh.github.io"
         , label =
             Element.image
                 [ Element.width (Element.px 22)
                 , Font.color Palette.color.primary
                 ]
-                { src = ImagePath.toString Pages.images.github, description = "Github repo" }
-        }
-
-
-elmDocsLink : Element msg
-elmDocsLink =
-    Element.newTabLink []
-        { url = "https://package.elm-lang.org/packages/dillonkearns/elm-pages/latest/"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.elmLogo, description = "Elm Package Docs" }
+                { src = ImagePath.toString Pages.images.github, description = "Github repo for this page" }
         }
