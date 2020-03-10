@@ -1,19 +1,11 @@
 {
   "name": "olpeh.github.io",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Personal blog – olavihaapala.fi",
   "scripts": {
-    "build": "bundle exec jekyll build",
-    "start": "bundle exec jekyll serve",
-    "dev": "bundle exec jekyll serve",
-    "deploy": "npm run build && npm run dat",
-    "dat": "npm run build && rimraf ~/Sites/olpeh.github.io && cp -r _site/ ~/Sites/olpeh.github.io",
-    "test": "mocha test/ --timeout 35000",
-    "format": "prettier --write '{,!(node_modules|_site|js)/**/}*.{ts,js,css,md,html}'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/olpeh/olpeh.github.io.git"
+    "start": "elm-pages develop",
+    "serve": "npm run build && http-server ./dist -a localhost -p 3000 -c-1",
+    "build": "elm-pages build"
   },
   "author": "Olavi Haapala",
   "license": "MIT",
@@ -21,25 +13,14 @@
     "url": "https://github.com/olpeh/olpeh.github.io/issues"
   },
   "homepage": "https://github.com/olpeh/olpeh.github.io#readme",
+  "dependencies": {
+    "elm-pages": "1.2.10",
+    "highlight.js": "^9.15.10",
+    "node-sass": "^4.12.0"
+  },
   "devDependencies": {
-    "@types/mocha": "^5.2.5",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.3",
-    "prettier": "^1.16.4",
-    "rimraf": "^2.6.2",
-    "visual-regression": "^0.2.4"
-  },
-  "lint-staged": {
-    "linters": {
-      "*.{ts,js,css,md,html}": [
-        "prettier --write",
-        "git add"
-      ]
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "elm": "latest-0.19.1",
+    "elm-format": "^0.8.2",
+    "http-server": "^0.11.1"
   }
 }

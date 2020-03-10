@@ -1,27 +1,33 @@
-# olavihaapala.fi
+# elm-pages-starter
 
-[![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/olpeh/olpeh.github.io/blob/master/LICENSE)
-[![Lighthouse score: 100/100](https://lighthouse-badge.appspot.com/?score=100)](https://github.com/olpeh/olpeh.github.io)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/dillonkearns/elm-pages-starter)
 
-A blazing fast personal blog about development: [olavihaapala.fi](https://olavihaapala.fi).
+This is an example repo to get you up and running with `elm-pages`.
 
-Read about [how I set up my blog](https://olavihaapala.fi/2017/11/19/hello-world.html).
+The entrypoint file is `index.js`. That file imports `src/Main.elm`. The `content` folder is turned into your static pages. The rest is mostly determined by logic in the Elm code! Learn more with the resources below.
 
-Read about [how I made my blog blazing fast](https://olavihaapala.fi/2019/02/19/how-i-made-my-blog-blazing-fast.html).
+## Setup Instructions
 
-![4 times 100 in the lighthouse audit.](/images/08-blazing-fast/100.png)
+Click "Use this template" on this Github page to fork the repo.
 
-Site setup inspired by [elmtown.audio](https://github.com/elmtown/elmtown.github.io)
+Or git clone it:
 
-## Running the site locally
+```
+git clone git@github.com:dillonkearns/elm-pages-starter.git
+```
 
-1. Install ruby, bundler and jekyll
-1. Go to the project directory on the terminal
-1. Run `bundle install` to install deps
-1. Install npm dependencies: `yarn`
-1. Run `npm run dev` to serve the site locally
+Then install and run the dev server
 
-## Testing
+```
+cd elm-pages-starter
+npm install
+npm start # starts a local dev server using `elm-pages develop`
+```
 
-Run `npm test`, which currently only runs a test against "production" version for visual regression.
-The idea is to run this test before deploying changes that should not affect layout and then run it again after deploying those changes to verify that no visual regression took place.
+From there you can tweak the `content` folder or change the `src/Main.elm` file.
+
+## Learn more about `elm-pages`
+
+- Documentation site: https://elm-pages.com
+- [Elm Package docs](https://package.elm-lang.org/packages/dillonkearns/elm-pages/latest/)
+- [`elm-pages` blog](https://elm-pages.com/blog)
