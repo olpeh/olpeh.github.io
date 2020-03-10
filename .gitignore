@@ -1,16 +1,11 @@
 dat.json
 /_site
 Gemfile\.lock
-
 \.vscode/
 node_modules
-
 package-lock\.json
-
 visual-regression-screenshots
 elm-stuff/
 dist/
 .cache/
-gen/
-
 gen/
