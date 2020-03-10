@@ -9,7 +9,7 @@ Read about [how I set up my blog](https://olavihaapala.fi/2017/11/19/hello-world
 
 Read about [how I made my blog blazing fast](https://olavihaapala.fi/2019/02/19/how-i-made-my-blog-blazing-fast.html).
 
-![4 times 100 in the lighthouse audit.](/images/08-blazing-fast/100.png)
+![4 times 100 in the lighthouse audit.](/images/blazing-fast/all-100.png)
 
 Site setup based on [elm-pages-starter](github.com:dillonkearns/elm-pages-starter.git)
 
