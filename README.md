@@ -1,30 +1,30 @@
-# elm-pages-starter
+# olavihaapala.fi
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/dillonkearns/elm-pages-starter)
+[![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/olpeh/olpeh.github.io/blob/master/LICENSE)
+[![Lighthouse score: 100/100](https://lighthouse-badge.appspot.com/?score=100)](https://github.com/olpeh/olpeh.github.io)
 
-This is an example repo to get you up and running with `elm-pages`.
+A blazing fast personal blog about development: [olavihaapala.fi](https://olavihaapala.fi).
 
-The entrypoint file is `index.js`. That file imports `src/Main.elm`. The `content` folder is turned into your static pages. The rest is mostly determined by logic in the Elm code! Learn more with the resources below.
+Read about [how I set up my blog](https://olavihaapala.fi/2017/11/19/hello-world.html).
 
-## Setup Instructions
+Read about [how I made my blog blazing fast](https://olavihaapala.fi/2019/02/19/how-i-made-my-blog-blazing-fast.html).
 
-Click "Use this template" on this Github page to fork the repo.
+![4 times 100 in the lighthouse audit.](/images/08-blazing-fast/100.png)
 
-Or git clone it:
+Site setup based on [elm-pages-starter](github.com:dillonkearns/elm-pages-starter.git)
 
-```
-git clone git@github.com:dillonkearns/elm-pages-starter.git
-```
-
-Then install and run the dev server
+## Development
 
 ```
-cd elm-pages-starter
-npm install
-npm start # starts a local dev server using `elm-pages develop`
+yarn
+yarn start # starts a local dev server using `elm-pages develop`
 ```
 
-From there you can tweak the `content` folder or change the `src/Main.elm` file.
+## Deployment
+
+```
+git push
+```
 
 ## Learn more about `elm-pages`
 
