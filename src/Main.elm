@@ -237,39 +237,40 @@ headerView currentPath =
             [ class "max-w-xl mx-auto" ]
             [ ul [ class "flex justify-evenly" ]
                 [ li []
-                    [ a
-                        [ class "text-secondary text-2xl font-bold"
-                        , href "/"
-                        ]
-                        [ text (String.toUpper "Home") ]
-                    ]
+                    [ highlightableLink (currentPath == pages.index) "/" "Home" ]
                 , li []
-                    [ highlightableLink currentPath pages.blog.directory "Blog" ]
+                    [ highlightableElmPagesLink currentPath pages.blog.directory "Blog" ]
                 , li []
-                    [ highlightableLink currentPath pages.contact.directory "Contact" ]
+                    [ highlightableElmPagesLink currentPath pages.contact.directory "Contact" ]
                 , li []
-                    [ highlightableLink currentPath pages.projects.directory "Projects" ]
+                    [ highlightableElmPagesLink currentPath pages.projects.directory "Projects" ]
                 ]
             ]
         ]
 
 
-highlightableLink :
+highlightableElmPagesLink :
     PagePath Pages.PathKey
     -> Directory Pages.PathKey Directory.WithIndex
     -> String
     -> Html msg
-highlightableLink currentPath linkDirectory displayName =
+highlightableElmPagesLink currentPath linkDirectory displayName =
     let
         isCurrent =
             currentPath |> Directory.includes linkDirectory
 
+        linkTo =
+            linkDirectory
+                |> Directory.indexPath
+                |> PagePath.toString
+    in
+    highlightableLink isCurrent linkTo displayName
+
+
+highlightableLink isCurrent linkTo displayName =
+    let
         defaultAttributes =
-            [ href
-                (linkDirectory
-                    |> Directory.indexPath
-                    |> PagePath.toString
-                )
+            [ href linkTo
             , class "text-secondary text-2xl font-bold"
             ]
 
