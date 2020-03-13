@@ -1,6 +1,7 @@
 module Main exposing (main)
 
 import Accessibility as Html exposing (..)
+import Accessibility.Aria exposing (currentPage)
 import Color
 import Data.Author as Author
 import Date
@@ -260,17 +261,30 @@ highlightableLink :
     -> Html msg
 highlightableLink currentPath linkDirectory displayName =
     let
-        isHighlighted =
+        isCurrent =
             currentPath |> Directory.includes linkDirectory
+
+        defaultAttributes =
+            [ href
+                (linkDirectory
+                    |> Directory.indexPath
+                    |> PagePath.toString
+                )
+            , class "text-secondary text-2xl font-bold"
+            ]
+
+        attributes =
+            if isCurrent then
+                defaultAttributes
+                    ++ [ currentPage
+                       , class "border-b-4"
+                       ]
+
+            else
+                defaultAttributes
     in
     a
-        [ class "text-secondary text-2xl font-bold"
-        , href
-            (linkDirectory
-                |> Directory.indexPath
-                |> PagePath.toString
-            )
-        ]
+        attributes
         [ text (String.toUpper displayName) ]
 
 
