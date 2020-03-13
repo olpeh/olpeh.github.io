@@ -1,7 +1,13 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#363636',
+        secondary: '#ffffff',
+        footer: '#fafafa'
+      }
+    }
   },
   variants: {},
-  plugins: [],
-}
+  plugins: []
+};

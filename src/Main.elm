@@ -7,7 +7,7 @@ import Date
 import Feed
 import Head
 import Head.Seo as Seo
-import Html.Attributes exposing (class, href, src, style)
+import Html.Attributes exposing (class, href, src, target)
 import Index
 import Markdown
 import Metadata exposing (Metadata)
@@ -153,7 +153,7 @@ pageView model siteMetadata page viewForPage =
         Metadata.Page metadata ->
             { title = metadata.title
             , body =
-                div []
+                div [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
                     , main_ []
                         [ viewForPage
@@ -165,7 +165,9 @@ pageView model siteMetadata page viewForPage =
         Metadata.Article metadata ->
             { title = metadata.title
             , body =
-                div []
+                div
+                    [ class "flex min-h-screen flex-col"
+                    ]
                     [ headerView page.path
                     , main_ []
                         [ div []
@@ -188,7 +190,7 @@ pageView model siteMetadata page viewForPage =
             { title = author.name
             , body =
                 div
-                    []
+                    [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
                     , main_
                         []
@@ -204,7 +206,7 @@ pageView model siteMetadata page viewForPage =
             { title = "olavihaapala.fi – a personal blog"
             , body =
                 div
-                    []
+                    [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
                     , Index.view siteMetadata
                     , footerView
@@ -229,15 +231,25 @@ imageCreditsView credits =
 
 headerView : PagePath Pages.PathKey -> Html msg
 headerView currentPath =
-    main_ []
-        [ a
-            [ class "mb-16"
-            , href "/"
+    header [ class "bg-primary py-8" ]
+        [ nav
+            [ class "max-w-xl mx-auto" ]
+            [ ul [ class "flex justify-evenly" ]
+                [ li []
+                    [ a
+                        [ class "text-secondary text-2xl font-bold"
+                        , href "/"
+                        ]
+                        [ text (String.toUpper "Home") ]
+                    ]
+                , li []
+                    [ highlightableLink currentPath pages.blog.directory "Blog" ]
+                , li []
+                    [ highlightableLink currentPath pages.contact.directory "Contact" ]
+                , li []
+                    [ highlightableLink currentPath pages.projects.directory "Projects" ]
+                ]
             ]
-            [ text (String.toUpper "Home") ]
-        , highlightableLink currentPath pages.blog.directory "Blog"
-        , highlightableLink currentPath pages.contact.directory "Contact"
-        , highlightableLink currentPath pages.projects.directory "Projects"
         ]
 
 
@@ -252,7 +264,7 @@ highlightableLink currentPath linkDirectory displayName =
             currentPath |> Directory.includes linkDirectory
     in
     a
-        [ class "mb-16"
+        [ class "text-secondary text-2xl font-bold"
         , href
             (linkDirectory
                 |> Directory.indexPath
@@ -388,14 +400,18 @@ publishedDateView metadata =
 
 footerView : Html msg
 footerView =
-    footer
-        []
-        [ footerLink "/blog/feed.xml" "RSS Feed"
-        , footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub"
-        , footerLink "https://twitter.com/0lpeh" "Twitter"
-        , footerLink "https://twitter.com/0lpeh" "Twitter"
-        , footerLink "mailto:contact@olavihaapala.fi" "Email"
-        , footerLink "https://www.linkedin.com/in/olavi-haapala-b7b752162" "LinkedIn"
+    footer [ class "bg-footer py-16" ]
+        [ nav
+            [ class "max-w-5xl mx-auto" ]
+            [ ul [ class "flex justify-evenly" ]
+                [ li [] [ footerLink "/blog/feed.xml" "RSS Feed" ]
+                , li [] [ footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub" ]
+                , li [] [ footerLink "https://twitter.com/0lpeh" "Twitter" ]
+                , li [] [ footerLink "https://twitter.com/0lpeh" "Twitter" ]
+                , li [] [ footerLink "mailto:contact@olavihaapala.fi" "Email" ]
+                , li [] [ footerLink "https://www.linkedin.com/in/olavi-haapala-b7b752162" "LinkedIn" ]
+                ]
+            ]
         ]
 
 
@@ -403,6 +419,8 @@ footerLink : String -> String -> Html msg
 footerLink linkTo displayName =
     a
         [ href linkTo
+        , class "text-primary text-xl font-bold"
+        , target "_blank"
         ]
         [ text (String.toUpper displayName)
         ]
