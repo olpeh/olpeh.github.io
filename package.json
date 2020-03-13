@@ -3,9 +3,10 @@
   "version": "2.0.0",
   "description": "Personal blog – olavihaapala.fi",
   "scripts": {
-    "start": "elm-pages develop",
+    "start": "npm run build-tw && elm-pages develop",
     "serve": "npm run build && http-server ./dist -a localhost -p 3000 -c-1",
-    "build": "elm-pages build"
+    "build": "npm run build-tw && elm-pages build",
+    "build-tw": "postcss -o dist/style.css style.css"
   },
   "author": "Olavi Haapala",
   "license": "MIT",
@@ -16,13 +17,16 @@
   "dependencies": {
     "elm-pages": "1.2.10",
     "highlight.js": "9.15.10",
-    "node-sass": "4.12.0"
+    "node-sass": "4.12.0",
+    "tailwindcss": "1.2.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "2.1.0",
     "elm": "0.19.1",
     "elm-format": "0.8.2",
     "http-server": "0.11.1",
-    "postcss-elm-tailwind": "0.6.0",
+    "postcss": "7.0.27",
+    "postcss-cli": "7.1.0",
     "tailwind": "4.0.0"
   }
 }
