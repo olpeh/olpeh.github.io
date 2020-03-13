@@ -1,20 +1,14 @@
 module Main exposing (main)
 
+import Accessibility as Html exposing (..)
 import Color
 import Data.Author as Author
 import Date
-import Element exposing (Element)
-import Element.Background
-import Element.Border
-import Element.Font as Font
-import Element.Region
 import Feed
 import Head
 import Head.Seo as Seo
-import Html exposing (Html)
-import Html.Attributes as Attr
+import Html.Attributes exposing (class, href, src, style)
 import Index
-import Json.Decode
 import Markdown
 import Metadata exposing (Metadata)
 import MySitemap
@@ -27,7 +21,6 @@ import Pages.Manifest.Category
 import Pages.PagePath as PagePath exposing (PagePath)
 import Pages.Platform exposing (Page)
 import Pages.StaticHttp as StaticHttp
-import Palette
 
 
 manifest : Manifest.Config Pages.PathKey
@@ -47,7 +40,7 @@ manifest =
 
 
 type alias Rendered =
-    Element Msg
+    Html Msg
 
 
 
@@ -97,10 +90,7 @@ markdownDocument =
         , metadata = Metadata.decoder
         , body =
             \markdownBody ->
-                Html.div [] [ Markdown.toHtml [] markdownBody ]
-                    |> Element.html
-                    |> List.singleton
-                    |> Element.paragraph [ Element.width Element.fill ]
+                div [] [ Markdown.toHtml [] markdownBody ]
                     |> Ok
         }
 
@@ -152,156 +142,102 @@ view siteMetadata page =
                 { title = title
                 , body =
                     body
-                        |> Element.layout
-                            [ Element.width Element.fill
-                            , Font.size 20
-                            , Font.family [ Font.typeface "Roboto" ]
-                            , Font.color (Element.rgba255 0 0 0 0.8)
-                            , Element.Background.color Palette.color.secondaryBackground
-                            ]
                 }
         , head = head page.frontmatter
         }
 
 
-pageView : Model -> List ( PagePath Pages.PathKey, Metadata ) -> { path : PagePath Pages.PathKey, frontmatter : Metadata } -> Rendered -> { title : String, body : Element Msg }
+pageView : Model -> List ( PagePath Pages.PathKey, Metadata ) -> { path : PagePath Pages.PathKey, frontmatter : Metadata } -> Rendered -> { title : String, body : Html Msg }
 pageView model siteMetadata page viewForPage =
     case page.frontmatter of
         Metadata.Page metadata ->
             { title = metadata.title
             , body =
-                [ header page.path
-                , Element.column
-                    [ Element.padding 50
-                    , Element.spacing 60
-                    , Element.Region.mainContent
-                    ]
-                    [ viewForPage
-                    ]
-                , footer
-                ]
-                    |> Element.textColumn
-                        [ Element.width Element.fill
+                div []
+                    [ headerView page.path
+                    , main_ []
+                        [ viewForPage
                         ]
+                    , footerView
+                    ]
             }
 
         Metadata.Article metadata ->
             { title = metadata.title
             , body =
-                Element.column [ Element.width Element.fill ]
-                    [ header page.path
-                    , Element.column
-                        [ Element.padding 30
-                        , Element.spacing 40
-                        , Element.Region.mainContent
-                        , Element.width (Element.fill |> Element.maximum 800)
-                        , Element.centerX
-                        ]
-                        (Element.column [ Element.spacing 10 ]
-                            [ Element.row [ Element.spacing 10 ]
-                                [ Author.view [] metadata.author
-                                , Element.column [ Element.spacing 10, Element.width Element.fill ]
-                                    [ Element.paragraph [ Font.bold, Font.size 24 ]
-                                        [ Element.text metadata.author.name
-                                        ]
-                                    , Element.paragraph [ Font.size 16 ]
-                                        [ Element.text metadata.author.bio ]
-                                    ]
-                                ]
+                div []
+                    [ headerView page.path
+                    , main_ []
+                        [ div []
+                            [ Author.view metadata.author
+                            , text metadata.author.name
+                            , p []
+                                [ Html.text metadata.author.bio ]
                             ]
-                            :: (publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ])
-                            :: Palette.blogHeading metadata.title
-                            :: articleImageView metadata.image metadata.altText
-                            :: imageCreditsView metadata.credits
-                            :: [ viewForPage ]
-                        )
-                    , footer
+                        , publishedDateView metadata
+                        , text metadata.title
+                        , articleImageView metadata.image metadata.altText
+                        , imageCreditsView metadata.credits
+                        , viewForPage
+                        ]
+                    , footerView
                     ]
             }
 
         Metadata.Author author ->
             { title = author.name
             , body =
-                Element.column
-                    [ Element.width Element.fill
-                    ]
-                    [ header page.path
-                    , Element.column
-                        [ Element.padding 30
-                        , Element.spacing 20
-                        , Element.Region.mainContent
-                        , Element.width (Element.fill |> Element.maximum 800)
-                        , Element.centerX
+                div
+                    []
+                    [ headerView page.path
+                    , main_
+                        []
+                        [ text author.name
+                        , Author.view author
+                        , div [] [ viewForPage ]
                         ]
-                        [ Palette.blogHeading author.name
-                        , Author.view [] author
-                        , Element.paragraph [ Element.centerX, Font.center ] [ viewForPage ]
-                        ]
-                    , footer
+                    , footerView
                     ]
             }
 
         Metadata.BlogIndex ->
             { title = "olavihaapala.fi – a personal blog"
             , body =
-                Element.column
-                    [ Element.width Element.fill
-                    ]
-                    [ header page.path
-                    , Element.column [ Element.padding 20, Element.centerX ] [ Index.view siteMetadata ]
-                    , footer
+                div
+                    []
+                    [ headerView page.path
+                    , Index.view siteMetadata
+                    , footerView
                     ]
             }
 
 
-articleImageView : ImagePath Pages.PathKey -> String -> Element msg
+articleImageView : ImagePath Pages.PathKey -> String -> Html msg
 articleImageView articleImage altText =
-    Element.image [ Element.width Element.fill ]
-        { src = ImagePath.toString articleImage
-        , description = altText
-        }
+    img altText [ src (ImagePath.toString articleImage) ]
 
 
-imageCreditsView : Maybe String -> Element msg
+imageCreditsView : Maybe String -> Html msg
 imageCreditsView credits =
     case credits of
         Just str ->
-            Element.text str
+            Html.text str
 
         Nothing ->
-            -- TODO: is there a better way than empty string
-            Element.text ""
+            Html.text ""
 
 
-header : PagePath Pages.PathKey -> Element msg
-header currentPath =
-    Element.row
-        [ Element.padding 40
-        , Element.spaceEvenly
-        , Element.width Element.fill
-        , Element.Region.navigation
-        , Element.Background.color Palette.color.primary
-        ]
-        [ Element.wrappedRow
-            [ Element.padding 16
-            , Element.spaceEvenly
-            , Element.centerX
-            , Element.width
-                (Element.fill
-                    |> Element.maximum 650
-                )
+headerView : PagePath Pages.PathKey -> Html msg
+headerView currentPath =
+    main_ []
+        [ a
+            [ class "mb-16"
+            , href "/"
             ]
-            [ Element.link
-                [ Font.color Palette.color.secondary
-                , Font.bold
-                ]
-                { url = "/"
-                , label = Element.text (String.toUpper "Home")
-                }
-            , highlightableLink currentPath pages.blog.directory "Blog"
-            , highlightableLink currentPath pages.contact.directory "Contact"
-            , highlightableLink currentPath pages.projects.directory "Projects"
-            ]
+            [ text (String.toUpper "Home") ]
+        , highlightableLink currentPath pages.blog.directory "Blog"
+        , highlightableLink currentPath pages.contact.directory "Contact"
+        , highlightableLink currentPath pages.projects.directory "Projects"
         ]
 
 
@@ -309,25 +245,21 @@ highlightableLink :
     PagePath Pages.PathKey
     -> Directory Pages.PathKey Directory.WithIndex
     -> String
-    -> Element msg
+    -> Html msg
 highlightableLink currentPath linkDirectory displayName =
     let
         isHighlighted =
             currentPath |> Directory.includes linkDirectory
     in
-    Element.link
-        (if isHighlighted then
-            [ Font.underline
-            , Font.color Palette.color.secondary
-            ]
-
-         else
-            [ Font.color Palette.color.secondary
-            ]
-        )
-        { url = linkDirectory |> Directory.indexPath |> PagePath.toString
-        , label = Element.text (String.toUpper displayName)
-        }
+    a
+        [ class "mb-16"
+        , href
+            (linkDirectory
+                |> Directory.indexPath
+                |> PagePath.toString
+            )
+        ]
+        [ text (String.toUpper displayName) ]
 
 
 commonHeadTags : List (Head.Tag Pages.PathKey)
@@ -448,46 +380,29 @@ siteTagline =
 
 
 publishedDateView metadata =
-    Element.text
+    Html.text
         (metadata.published
             |> Date.format "MMMM ddd, yyyy"
         )
 
 
-footer : Element msg
-footer =
-    Element.row
-        [ Element.padding 80
-        , Element.spaceEvenly
-        , Element.width Element.fill
-        , Element.Region.footer
-        , Element.Background.color Palette.color.primaryBackground
-        ]
-        [ Element.wrappedRow
-            [ Element.spaceEvenly
-            , Element.centerX
-            , Element.width
-                (Element.fill
-                    |> Element.maximum 650
-                )
-            ]
-            [ footerLink "/blog/feed.xml" "RSS Feed"
-            , footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub"
-            , footerLink "https://twitter.com/0lpeh" "Twitter"
-            , footerLink "https://twitter.com/0lpeh" "Twitter"
-            , footerLink "mailto:contact@olavihaapala.fi" "Email"
-            , footerLink "https://www.linkedin.com/in/olavi-haapala-b7b752162" "LinkedIn"
-            ]
+footerView : Html msg
+footerView =
+    footer
+        []
+        [ footerLink "/blog/feed.xml" "RSS Feed"
+        , footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub"
+        , footerLink "https://twitter.com/0lpeh" "Twitter"
+        , footerLink "https://twitter.com/0lpeh" "Twitter"
+        , footerLink "mailto:contact@olavihaapala.fi" "Email"
+        , footerLink "https://www.linkedin.com/in/olavi-haapala-b7b752162" "LinkedIn"
         ]
 
 
-footerLink : String -> String -> Element msg
-footerLink href displayName =
-    Element.link
-        [ Element.padding 16
-        , Font.color
-            Palette.color.primary
+footerLink : String -> String -> Html msg
+footerLink linkTo displayName =
+    a
+        [ href linkTo
         ]
-        { url = href
-        , label = Element.text (String.toUpper displayName)
-        }
+        [ text (String.toUpper displayName)
+        ]

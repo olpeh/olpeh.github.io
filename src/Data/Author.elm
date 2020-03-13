@@ -1,6 +1,6 @@
 module Data.Author exposing (Author, all, decoder, view)
 
-import Element exposing (Element)
+import Accessibility as Html exposing (..)
 import Html.Attributes as Attr
 import Json.Decode as Decode exposing (Decoder)
 import List.Extra
@@ -38,11 +38,7 @@ decoder =
             )
 
 
-view : List (Element.Attribute msg) -> Author -> Element msg
-view attributes author =
-    Element.image
-        (Element.width (Element.px 70)
-            :: Element.htmlAttribute (Attr.class "avatar")
-            :: attributes
-        )
-        { src = ImagePath.toString author.avatar, description = author.name }
+view : Author -> Html msg
+view author =
+    img author.name
+        [ Attr.src (ImagePath.toString author.avatar), Attr.width 70, Attr.class "avatar" ]
