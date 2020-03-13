@@ -156,7 +156,7 @@ pageView model siteMetadata page viewForPage =
             , body =
                 div [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , main_ []
+                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
                         [ viewForPage
                         ]
                     , footerView
@@ -170,7 +170,7 @@ pageView model siteMetadata page viewForPage =
                     [ class "flex min-h-screen flex-col"
                     ]
                     [ headerView page.path
-                    , main_ []
+                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
                         [ div []
                             [ Author.view metadata.author
                             , text metadata.author.name
@@ -193,8 +193,7 @@ pageView model siteMetadata page viewForPage =
                 div
                     [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , main_
-                        []
+                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
                         [ text author.name
                         , Author.view author
                         , div [] [ viewForPage ]
@@ -209,7 +208,8 @@ pageView model siteMetadata page viewForPage =
                 div
                     [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , Index.view siteMetadata
+                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
+                        [ Index.view siteMetadata ]
                     , footerView
                     ]
             }
@@ -417,7 +417,7 @@ footerView : Html msg
 footerView =
     footer [ class "bg-footer py-16" ]
         [ nav
-            [ class "max-w-5xl mx-auto" ]
+            [ class "p-16 mx-auto" ]
             [ ul [ class "flex justify-evenly" ]
                 [ li [] [ footerLink "/blog/feed.xml" "RSS Feed" ]
                 , li [] [ footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub" ]

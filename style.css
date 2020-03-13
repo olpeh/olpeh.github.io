@@ -11,12 +11,12 @@ body {
   margin: 0;
   padding: 0;
   color: rgb(54, 54, 54);
+  background-color: #f3f0f0;
 }
 
 main {
   width: 100%;
   flex: 1;
-  background-image: linear-gradient(#f3f0f0, #e9e6e6);
 }
 
 .visually-hidden {
@@ -26,4 +26,10 @@ main {
   overflow: hidden;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px);
+}
+
+.layered-box-shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+    0 8px 16px rgba(0, 0, 0, 0.11);
 }

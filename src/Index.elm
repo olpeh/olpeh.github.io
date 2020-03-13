@@ -3,7 +3,7 @@ module Index exposing (view)
 import Accessibility as Html exposing (..)
 import Data.Author
 import Date
-import Html.Attributes as Attr
+import Html.Attributes as Attr exposing (class, href)
 import Metadata exposing (Metadata)
 import Pages
 import Pages.PagePath as PagePath exposing (PagePath)
@@ -14,7 +14,7 @@ view :
     List ( PagePath Pages.PathKey, Metadata )
     -> Html msg
 view posts =
-    div [ Attr.class "flex" ]
+    div [ Attr.class "flex flex-col" ]
         (posts
             |> List.filterMap
                 (\( path, metadata ) ->
@@ -62,13 +62,13 @@ linkToPost postPath content =
 
 title : String -> Html msg
 title str =
-    h2 [ Attr.class "mb-16" ] [ text str ]
+    h2 [ Attr.class "text-3xl font-bold mb-8" ] [ text str ]
 
 
 articleIndex : Metadata.ArticleMetadata -> Html msg
 articleIndex metadata =
-    div
-        []
+    article
+        [ class "bg-secondary mb-8 layered-box-shadow" ]
         [ postPreview metadata ]
 
 
@@ -78,15 +78,15 @@ readMoreLink =
 
 postPreview : Metadata.ArticleMetadata -> Html msg
 postPreview post =
-    article
-        []
+    div
+        [ class "p-8" ]
         [ title post.title
-        , div []
-            [ Data.Author.view post.author
-            , Html.text post.author.name
-            , Html.text "•"
-            , Html.text (post.published |> Date.format "MMMM ddd, yyyy")
+        , div [ class "mb-8" ]
+            [ div [ class "text-xl" ] [ text post.description ]
+            , Html.hr [ class "my-4" ] []
+            , text (post.published |> Date.format "MMMM ddd, yyyy")
+            , text " by "
+            , text post.author.name
             ]
-        , text post.description
         , readMoreLink
         ]
