@@ -42,7 +42,7 @@ decoder =
 
 view : Author -> Html msg
 view author =
-    div [ Attr.class "flex bg-tertiary p-4 border-b border-primary" ]
+    div [ Attr.class "flex bg-tertiary p-4 border-b-4 border-primary" ]
         [ img author.name
             [ Attr.src (ImagePath.toString author.avatar), Attr.width 70, Attr.height 70, Attr.class "rounded-full layered-box-shadow" ]
         , div [ Attr.class "flex flex-col justify-center ml-4" ]
