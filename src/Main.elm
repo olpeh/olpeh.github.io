@@ -427,7 +427,7 @@ publishedDateView metadata =
 
 footerView : Html msg
 footerView =
-    footer [ class "bg-footer py-16 border-t-4 border-primary" ]
+    footer [ class "bg-footer py-16 border-t border-primary" ]
         [ nav
             [ class "p-16 mx-auto" ]
             [ ul [ class "flex justify-evenly" ]
