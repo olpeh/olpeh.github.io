@@ -49,7 +49,7 @@ view author =
             [ h2 [ Attr.class "text-xl font-bold" ]
                 [ text author.name
                 , text " | "
-                , a [ Attr.class "underline", Attr.href ("https://twitter.com/" ++ author.twitterHandle), Attr.target "_blank" ]
+                , a [ Attr.class "underline", Attr.href ("https://twitter.com/" ++ author.twitterHandle), Attr.target "_blank", Attr.rel "noopener" ]
                     [ text ("@" ++ author.twitterHandle)
                     ]
                 ]

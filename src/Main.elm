@@ -8,7 +8,7 @@ import Date
 import Feed
 import Head
 import Head.Seo as Seo
-import Html.Attributes exposing (class, href, src, target)
+import Html.Attributes exposing (class, href, rel, src, target)
 import Index
 import Markdown
 import Metadata exposing (Metadata)
@@ -448,6 +448,7 @@ footerLink linkTo displayName =
         [ href linkTo
         , class "text-primary text-xl font-bold"
         , target "_blank"
+        , rel "noopener"
         ]
         [ text (String.toUpper displayName)
         ]
