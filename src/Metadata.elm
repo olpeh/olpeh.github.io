@@ -46,9 +46,10 @@ decoder =
                         Decode.succeed BlogIndex
 
                     "author" ->
-                        Decode.map3 Data.Author.Author
+                        Decode.map4 Data.Author.Author
                             (Decode.field "name" Decode.string)
                             (Decode.field "avatar" imageDecoder)
+                            (Decode.field "twitterHandle" Decode.string)
                             (Decode.field "bio" Decode.string)
                             |> Decode.map Author
 

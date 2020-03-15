@@ -4,6 +4,7 @@ module.exports = {
       colors: {
         primary: '#363636',
         secondary: '#ffffff',
+        tertiary: '#cccccc',
         footer: '#fafafa'
       }
     }

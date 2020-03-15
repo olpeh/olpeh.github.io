@@ -156,7 +156,7 @@ pageView model siteMetadata page viewForPage =
             , body =
                 div [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
+                    , main_ [ class "max-w-4xl p-16 mx-auto bg-secondary" ]
                         [ viewForPage
                         ]
                     , footerView
@@ -170,18 +170,21 @@ pageView model siteMetadata page viewForPage =
                     [ class "flex min-h-screen flex-col"
                     ]
                     [ headerView page.path
-                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
-                        [ div []
-                            [ Author.view metadata.author
-                            , text metadata.author.name
-                            , p []
-                                [ Html.text metadata.author.bio ]
+                    , main_ [ class "max-w-4xl mx-auto bg-secondary layered-box-shadow my-16" ]
+                        [ Author.view metadata.author
+                        , div
+                            []
+                            [ div [ class "flex items-center px-8 py-16" ]
+                                [ articleImageView metadata.image metadata.altText
+                                , div [ class "ml-8" ]
+                                    [ h1 [ class "text-4xl" ] [ text metadata.title ]
+                                    , hr [ class "my-4 mr-8" ] []
+                                    , publishedDateView metadata
+                                    , imageCreditsView metadata.credits
+                                    ]
+                                ]
+                            , div [ class "px-16 pb-16" ] [ viewForPage ]
                             ]
-                        , publishedDateView metadata
-                        , text metadata.title
-                        , articleImageView metadata.image metadata.altText
-                        , imageCreditsView metadata.credits
-                        , viewForPage
                         ]
                     , footerView
                     ]
@@ -193,7 +196,7 @@ pageView model siteMetadata page viewForPage =
                 div
                     [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
+                    , main_ [ class "max-w-4xl py-16 mx-auto bg-secondary" ]
                         [ text author.name
                         , Author.view author
                         , div [] [ viewForPage ]
@@ -217,14 +220,14 @@ pageView model siteMetadata page viewForPage =
 
 articleImageView : ImagePath Pages.PathKey -> String -> Html msg
 articleImageView articleImage altText =
-    img altText [ src (ImagePath.toString articleImage) ]
+    img altText [ src (ImagePath.toString articleImage), class "rounded-full layered-box-shadow" ]
 
 
 imageCreditsView : Maybe String -> Html msg
 imageCreditsView credits =
     case credits of
         Just str ->
-            Html.text str
+            Html.text (" | " ++ str)
 
         Nothing ->
             Html.text ""
