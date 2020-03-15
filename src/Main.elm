@@ -156,8 +156,11 @@ pageView model siteMetadata page viewForPage =
             , body =
                 div [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , main_ [ class "max-w-4xl p-16 mx-auto bg-secondary" ]
-                        [ viewForPage
+                    , main_ [ class "max-w-4xl p-16 mx-auto bg-secondary layered-box-shadow my-16" ]
+                        [ div [ class "flex -mt-16 -mx-16 mb-8 bg-tertiary p-4 border-b-4 border-primary" ]
+                            [ h1 [ class "text-2xl font-bold" ] [ text metadata.title ]
+                            ]
+                        , viewForPage
                         ]
                     , footerView
                     ]
@@ -196,7 +199,7 @@ pageView model siteMetadata page viewForPage =
                 div
                     [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
-                    , main_ [ class "max-w-4xl py-16 mx-auto bg-secondary" ]
+                    , main_ [ class "max-w-4xl py-16 mx-auto bg-secondary layered-box-shadow my-16" ]
                         [ text author.name
                         , Author.view author
                         , div [] [ viewForPage ]
@@ -206,13 +209,19 @@ pageView model siteMetadata page viewForPage =
             }
 
         Metadata.BlogIndex ->
-            { title = "olavihaapala.fi – a personal blog"
+            let
+                title =
+                    "olavihaapala.fi – personal blog"
+            in
+            { title = title
             , body =
                 div
                     [ class "flex min-h-screen flex-col" ]
                     [ headerView page.path
                     , main_ [ class "max-w-4xl py-16 mx-auto" ]
-                        [ Index.view siteMetadata ]
+                        [ h1 [ class "visually-hidden" ] [ text title ]
+                        , Index.view siteMetadata
+                        ]
                     , footerView
                     ]
             }
@@ -235,7 +244,7 @@ imageCreditsView credits =
 
 headerView : PagePath Pages.PathKey -> Html msg
 headerView currentPath =
-    header [ class "bg-primary py-8" ]
+    header [ class "bg-primary py-8 layered-box-shadow" ]
         [ nav
             [ class "max-w-xl mx-auto" ]
             [ ul [ class "flex justify-evenly" ]
@@ -418,7 +427,7 @@ publishedDateView metadata =
 
 footerView : Html msg
 footerView =
-    footer [ class "bg-footer py-16" ]
+    footer [ class "bg-footer py-16 border-t border-primary" ]
         [ nav
             [ class "p-16 mx-auto" ]
             [ ul [ class "flex justify-evenly" ]
