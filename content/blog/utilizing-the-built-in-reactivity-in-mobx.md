@@ -1,12 +1,13 @@
 ---
-title: 'Utilizing the built-in reactivity in MobX'
-date: 2019-03-28 00:00:00 Z
-layout: post
-excerpt: 'MobX is an easy-to-use state handling library for web frontend projects, but it also ccomes with powerful features built-in. This blog post show cases using reactions.'
-author: 'Olavi Haapala'
-author_twitter: '0lpeh'
-image: '/images/09-mobx/mobx.png'
-altText: 'MobX logo'
+{
+  'type': 'blog',
+  'author': 'Olavi Haapala',
+  'title': 'Utilizing the built-in reactivity in MobX',
+  'description': 'MobX is an easy-to-use state handling library for web frontend projects, but it also ccomes with powerful features built-in. This blog post show cases using reactions.',
+  'image': '/images/mobx/mobx.png',
+  'altText': 'MobX logo',
+  'published': '2019-03-28',
+}
 ---
 
 ## Background
@@ -50,12 +51,12 @@ This is not optimal and definitely not reactive.
 
 How about utilizing the power of MobX?
 
-MobX comes with built-in reactivity, where you don’t need to think about it too much unless you need to understand MobX in depth. Mobx has multiple ways to react to observables, and [one of them is reactions](https://mobx.js.org/refguide/reaction.html){:target="\_blank"}{:rel="noopener"}.
+MobX comes with built-in reactivity, where you don’t need to think about it too much unless you need to understand MobX in depth. Mobx has multiple ways to react to observables, and [one of them is reactions](https://mobx.js.org/refguide/reaction.html).
 
 From the MobX documentation:
 
-> “It is important to notice that the side effect will only react to data that was accessed in the data expression, which might be less than the data that is actually used in the effect. Also, the side effect will only be triggered when the data returned by the expression has changed. In other words: reaction requires you to produce the things you need in your side effect.” <br/>
-> – Source: [MobX Documentation](https://mobx.js.org/refguide/reaction.html){:target="\_blank"}{:rel="noopener"}
+> “It is important to notice that the side effect will only react to data that was accessed in the data expression, which might be less than the data that is actually used in the effect. Also, the side effect will only be triggered when the data returned by the expression has changed. In other words: reaction requires you to produce the things you need in your side effect.”
+> – Source: [MobX Documentation](https://mobx.js.org/refguide/reaction.html)
 
 In short, a reaction is a way to define a function that gets triggered every time the observable properties defined in the reaction change. A reaction seems to be exactly what we need in order to solve this problem of refreshing data in independent widgets. We created an observable property called `refreshTrigger` which is a `number` in order to easily trigger a change by simply incrementing the number. This flag needs to be in a shared store, in our case `flagStore`.
 

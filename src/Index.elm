@@ -1,21 +1,21 @@
 module Index exposing (view)
 
+import Accessibility as Html exposing (..)
 import Data.Author
 import Date
-import Element exposing (Element)
-import Element.Border
-import Element.Font
+import Html.Attributes as Attr exposing (class, href)
 import Metadata exposing (Metadata)
 import Pages
+import Pages.ImagePath as ImagePath exposing (ImagePath)
 import Pages.PagePath as PagePath exposing (PagePath)
 import Pages.Platform exposing (Page)
 
 
 view :
     List ( PagePath Pages.PathKey, Metadata )
-    -> Element msg
+    -> Html msg
 view posts =
-    Element.column [ Element.spacing 20 ]
+    div [ Attr.class "flex flex-col" ]
         (posts
             |> List.filterMap
                 (\( path, metadata ) ->
@@ -36,86 +36,76 @@ view posts =
                         Metadata.BlogIndex ->
                             Nothing
                 )
+            |> List.sortBy
+                (\( _, metadata ) ->
+                    metadata.published
+                        |> Date.toRataDie
+                )
+            |> List.reverse
             |> List.map postSummary
         )
 
 
 postSummary :
     ( PagePath Pages.PathKey, Metadata.ArticleMetadata )
-    -> Element msg
+    -> Html msg
 postSummary ( postPath, post ) =
     articleIndex post
         |> linkToPost postPath
 
 
-linkToPost : PagePath Pages.PathKey -> Element msg -> Element msg
+linkToPost : PagePath Pages.PathKey -> Html msg -> Html msg
 linkToPost postPath content =
-    Element.link [ Element.width Element.fill ]
-        { url = PagePath.toString postPath, label = content }
+    a [ Attr.href (PagePath.toString postPath) ]
+        [ content
+        ]
 
 
-title : String -> Element msg
-title text =
-    [ Element.text text ]
-        |> Element.paragraph
-            [ Element.Font.size 36
-            , Element.Font.center
-            , Element.Font.family [ Element.Font.typeface "Raleway" ]
-            , Element.Font.semiBold
-            , Element.padding 16
-            ]
+title : String -> Html msg
+title str =
+    h2 [ Attr.class "text-3xl font-bold mb-8" ] [ text str ]
 
 
-articleIndex : Metadata.ArticleMetadata -> Element msg
+articleIndex : Metadata.ArticleMetadata -> Html msg
 articleIndex metadata =
-    Element.el
-        [ Element.centerX
-        , Element.width (Element.maximum 800 Element.fill)
-        , Element.padding 40
-        , Element.spacing 10
-        , Element.Border.width 1
-        , Element.Border.color (Element.rgba255 0 0 0 0.1)
-        , Element.mouseOver
-            [ Element.Border.color (Element.rgba255 0 0 0 1)
-            ]
-        ]
-        (postPreview metadata)
+    article
+        [ class "bg-secondary mb-8 layered-box-shadow" ]
+        [ postPreview metadata ]
 
 
-readMoreLink =
-    Element.text "Continue reading >>"
-        |> Element.el
-            [ Element.centerX
-            , Element.Font.size 18
-            , Element.alpha 0.6
-            , Element.mouseOver [ Element.alpha 1 ]
-            , Element.Font.underline
-            , Element.Font.center
-            ]
-
-
-postPreview : Metadata.ArticleMetadata -> Element msg
+postPreview : Metadata.ArticleMetadata -> Html msg
 postPreview post =
-    Element.textColumn
-        [ Element.centerX
-        , Element.width Element.fill
-        , Element.spacing 30
-        , Element.Font.size 18
-        ]
-        [ title post.title
-        , Element.row [ Element.spacing 10, Element.centerX ]
-            [ Data.Author.view [ Element.width (Element.px 40) ] post.author
-            , Element.text post.author.name
-            , Element.text "•"
-            , Element.text (post.published |> Date.format "MMMM ddd, yyyy")
-            ]
-        , post.description
-            |> Element.text
-            |> List.singleton
-            |> Element.paragraph
-                [ Element.Font.size 22
-                , Element.Font.center
-                , Element.Font.family [ Element.Font.typeface "Raleway" ]
+    div
+        [ class "p-8" ]
+        [ div [ class "md:flex md:justify-start" ]
+            [ div [ class "flex self-center md:flex-1" ]
+                [ postImageView post.image post.altText
                 ]
-        , readMoreLink
+            , div [ class "mt-8 md:ml-8 md:mt-0 md:flex-3" ]
+                [ title post.title
+                , div [ class "mb-8" ]
+                    [ div [ class "text-xl" ] [ text post.description ]
+                    , Html.hr [ class "my-4" ] []
+                    , text (post.published |> Date.format "MMMM ddd, yyyy")
+                    , text " by "
+                    , text post.author.name
+                    , imageCreditsView post.credits
+                    ]
+                ]
+            ]
         ]
+
+
+postImageView : ImagePath Pages.PathKey -> String -> Html msg
+postImageView articleImage altText =
+    img altText [ Attr.src (ImagePath.toString articleImage), Attr.width 200, Attr.height 200, class "rounded-full layered-box-shadow" ]
+
+
+imageCreditsView : Maybe String -> Html msg
+imageCreditsView credits =
+    case credits of
+        Just str ->
+            Html.text (" | " ++ str)
+
+        Nothing ->
+            Html.text ""

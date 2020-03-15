@@ -1,6 +1,6 @@
 module Data.Author exposing (Author, all, decoder, view)
 
-import Element exposing (Element)
+import Accessibility as Html exposing (..)
 import Html.Attributes as Attr
 import Json.Decode as Decode exposing (Decoder)
 import List.Extra
@@ -11,15 +11,17 @@ import Pages.ImagePath as ImagePath exposing (ImagePath)
 type alias Author =
     { name : String
     , avatar : ImagePath Pages.PathKey
+    , twitterHandle : String
     , bio : String
     }
 
 
 all : List Author
 all =
-    [ { name = "Dillon Kearns"
-      , avatar = Pages.images.author.dillon
-      , bio = "Elm developer and educator. Founder of Incremental Elm Consulting."
+    [ { name = "Olavi Haapala"
+      , avatar = Pages.images.author.olavi
+      , twitterHandle = "0lpeh"
+      , bio = "Web software developer with a passion for web performance and accessibility."
       }
     ]
 
@@ -38,11 +40,20 @@ decoder =
             )
 
 
-view : List (Element.Attribute msg) -> Author -> Element msg
-view attributes author =
-    Element.image
-        (Element.width (Element.px 70)
-            :: Element.htmlAttribute (Attr.class "avatar")
-            :: attributes
-        )
-        { src = ImagePath.toString author.avatar, description = author.name }
+view : Author -> Html msg
+view author =
+    div [ Attr.class "flex bg-tertiary p-4 border-b-4 border-primary" ]
+        [ img author.name
+            [ Attr.src (ImagePath.toString author.avatar), Attr.width 70, Attr.height 70, Attr.class "rounded-full layered-box-shadow" ]
+        , div [ Attr.class "flex flex-col justify-center ml-4" ]
+            [ h2 [ Attr.class "text-xl font-bold" ]
+                [ text author.name
+                , text " | "
+                , a [ Attr.class "underline", Attr.href ("https://twitter.com/" ++ author.twitterHandle), Attr.target "_blank", Attr.rel "noopener" ]
+                    [ text ("@" ++ author.twitterHandle)
+                    ]
+                ]
+            , p [ Attr.class "" ]
+                [ Html.text author.bio ]
+            ]
+        ]

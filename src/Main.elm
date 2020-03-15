@@ -1,21 +1,15 @@
 module Main exposing (main)
 
+import Accessibility as Html exposing (..)
+import Accessibility.Aria exposing (currentPage)
 import Color
 import Data.Author as Author
 import Date
-import DocumentSvg
-import Element exposing (Element)
-import Element.Background
-import Element.Border
-import Element.Font as Font
-import Element.Region
 import Feed
 import Head
 import Head.Seo as Seo
-import Html exposing (Html)
-import Html.Attributes as Attr
+import Html.Attributes exposing (class, href, rel, src, target)
 import Index
-import Json.Decode
 import Markdown
 import Metadata exposing (Metadata)
 import MySitemap
@@ -28,7 +22,6 @@ import Pages.Manifest.Category
 import Pages.PagePath as PagePath exposing (PagePath)
 import Pages.Platform exposing (Page)
 import Pages.StaticHttp as StaticHttp
-import Palette
 
 
 manifest : Manifest.Config Pages.PathKey
@@ -48,7 +41,7 @@ manifest =
 
 
 type alias Rendered =
-    Element Msg
+    Html Msg
 
 
 
@@ -98,10 +91,7 @@ markdownDocument =
         , metadata = Metadata.decoder
         , body =
             \markdownBody ->
-                Html.div [] [ Markdown.toHtml [] markdownBody ]
-                    |> Element.html
-                    |> List.singleton
-                    |> Element.paragraph [ Element.width Element.fill ]
+                div [] [ Markdown.toHtml [] markdownBody ]
                     |> Ok
         }
 
@@ -153,170 +143,162 @@ view siteMetadata page =
                 { title = title
                 , body =
                     body
-                        |> Element.layout
-                            [ Element.width Element.fill
-                            , Font.size 20
-                            , Font.family [ Font.typeface "Roboto" ]
-                            , Font.color (Element.rgba255 0 0 0 0.8)
-                            ]
                 }
         , head = head page.frontmatter
         }
 
 
-pageView : Model -> List ( PagePath Pages.PathKey, Metadata ) -> { path : PagePath Pages.PathKey, frontmatter : Metadata } -> Rendered -> { title : String, body : Element Msg }
+pageView : Model -> List ( PagePath Pages.PathKey, Metadata ) -> { path : PagePath Pages.PathKey, frontmatter : Metadata } -> Rendered -> { title : String, body : Html Msg }
 pageView model siteMetadata page viewForPage =
     case page.frontmatter of
         Metadata.Page metadata ->
             { title = metadata.title
             , body =
-                [ header page.path
-                , Element.column
-                    [ Element.padding 50
-                    , Element.spacing 60
-                    , Element.Region.mainContent
-                    ]
-                    [ viewForPage
-                    ]
-                ]
-                    |> Element.textColumn
-                        [ Element.width Element.fill
+                div [ class "flex min-h-screen flex-col" ]
+                    [ headerView page.path
+                    , main_ [ class "max-w-4xl p-16 mx-auto bg-secondary layered-box-shadow my-16" ]
+                        [ div [ class "flex -mt-16 -mx-16 mb-8 bg-tertiary p-4 border-b-4 border-primary" ]
+                            [ h1 [ class "text-2xl font-bold" ] [ text metadata.title ]
+                            ]
+                        , viewForPage
                         ]
+                    , footerView
+                    ]
             }
 
         Metadata.Article metadata ->
             { title = metadata.title
             , body =
-                Element.column [ Element.width Element.fill ]
-                    [ header page.path
-                    , Element.column
-                        [ Element.padding 30
-                        , Element.spacing 40
-                        , Element.Region.mainContent
-                        , Element.width (Element.fill |> Element.maximum 800)
-                        , Element.centerX
-                        ]
-                        (Element.column [ Element.spacing 10 ]
-                            [ Element.row [ Element.spacing 10 ]
-                                [ Author.view [] metadata.author
-                                , Element.column [ Element.spacing 10, Element.width Element.fill ]
-                                    [ Element.paragraph [ Font.bold, Font.size 24 ]
-                                        [ Element.text metadata.author.name
-                                        ]
-                                    , Element.paragraph [ Font.size 16 ]
-                                        [ Element.text metadata.author.bio ]
+                div
+                    [ class "flex min-h-screen flex-col"
+                    ]
+                    [ headerView page.path
+                    , main_ [ class "max-w-4xl mx-auto bg-secondary layered-box-shadow my-16" ]
+                        [ Author.view metadata.author
+                        , div
+                            []
+                            [ div [ class "flex items-center px-8 py-16" ]
+                                [ articleImageView metadata.image metadata.altText
+                                , div [ class "ml-8" ]
+                                    [ h1 [ class "text-4xl" ] [ text metadata.title ]
+                                    , hr [ class "my-4 mr-8" ] []
+                                    , publishedDateView metadata
+                                    , imageCreditsView metadata.credits
                                     ]
                                 ]
+                            , div [ class "px-16 pb-16" ] [ viewForPage ]
                             ]
-                            :: (publishedDateView metadata |> Element.el [ Font.size 16, Font.color (Element.rgba255 0 0 0 0.6) ])
-                            :: Palette.blogHeading metadata.title
-                            :: articleImageView metadata.image
-                            :: [ viewForPage ]
-                        )
+                        ]
+                    , footerView
                     ]
             }
 
         Metadata.Author author ->
             { title = author.name
             , body =
-                Element.column
-                    [ Element.width Element.fill
-                    ]
-                    [ header page.path
-                    , Element.column
-                        [ Element.padding 30
-                        , Element.spacing 20
-                        , Element.Region.mainContent
-                        , Element.width (Element.fill |> Element.maximum 800)
-                        , Element.centerX
+                div
+                    [ class "flex min-h-screen flex-col" ]
+                    [ headerView page.path
+                    , main_ [ class "max-w-4xl py-16 mx-auto bg-secondary layered-box-shadow my-16" ]
+                        [ text author.name
+                        , Author.view author
+                        , div [] [ viewForPage ]
                         ]
-                        [ Palette.blogHeading author.name
-                        , Author.view [] author
-                        , Element.paragraph [ Element.centerX, Font.center ] [ viewForPage ]
-                        ]
+                    , footerView
                     ]
             }
 
         Metadata.BlogIndex ->
-            { title = "elm-pages blog"
+            let
+                title =
+                    "olavihaapala.fi – personal blog"
+            in
+            { title = title
             , body =
-                Element.column [ Element.width Element.fill ]
-                    [ header page.path
-                    , Element.column [ Element.padding 20, Element.centerX ] [ Index.view siteMetadata ]
+                div
+                    [ class "flex min-h-screen flex-col" ]
+                    [ headerView page.path
+                    , main_ [ class "max-w-4xl py-16 mx-auto" ]
+                        [ h1 [ class "visually-hidden" ] [ text title ]
+                        , Index.view siteMetadata
+                        ]
+                    , footerView
                     ]
             }
 
 
-articleImageView : ImagePath Pages.PathKey -> Element msg
-articleImageView articleImage =
-    Element.image [ Element.width Element.fill ]
-        { src = ImagePath.toString articleImage
-        , description = "Article cover photo"
-        }
+articleImageView : ImagePath Pages.PathKey -> String -> Html msg
+articleImageView articleImage altText =
+    img altText [ src (ImagePath.toString articleImage), class "rounded-full layered-box-shadow" ]
 
 
-header : PagePath Pages.PathKey -> Element msg
-header currentPath =
-    Element.column [ Element.width Element.fill ]
-        [ Element.el
-            [ Element.height (Element.px 4)
-            , Element.width Element.fill
-            , Element.Background.gradient
-                { angle = 0.2
-                , steps =
-                    [ Element.rgb255 0 242 96
-                    , Element.rgb255 5 117 230
-                    ]
-                }
-            ]
-            Element.none
-        , Element.row
-            [ Element.paddingXY 25 4
-            , Element.spaceEvenly
-            , Element.width Element.fill
-            , Element.Region.navigation
-            , Element.Border.widthEach { bottom = 1, left = 0, right = 0, top = 0 }
-            , Element.Border.color (Element.rgba255 40 80 40 0.4)
-            ]
-            [ Element.link []
-                { url = "/"
-                , label =
-                    Element.row [ Font.size 30, Element.spacing 16 ]
-                        [ DocumentSvg.view
-                        , Element.text "elm-pages-starter"
-                        ]
-                }
-            , Element.row [ Element.spacing 15 ]
-                [ elmDocsLink
-                , githubRepoLink
-                , highlightableLink currentPath pages.blog.directory "Blog"
+imageCreditsView : Maybe String -> Html msg
+imageCreditsView credits =
+    case credits of
+        Just str ->
+            Html.text (" | " ++ str)
+
+        Nothing ->
+            Html.text ""
+
+
+headerView : PagePath Pages.PathKey -> Html msg
+headerView currentPath =
+    header [ class "bg-primary py-8 layered-box-shadow" ]
+        [ nav
+            [ class "max-w-xl mx-auto" ]
+            [ ul [ class "flex justify-evenly" ]
+                [ li []
+                    [ highlightableLink (currentPath == pages.index) "/" "Home" ]
+                , li []
+                    [ highlightableElmPagesLink currentPath pages.blog.directory "Blog" ]
+                , li []
+                    [ highlightableElmPagesLink currentPath pages.contact.directory "Contact" ]
+                , li []
+                    [ highlightableElmPagesLink currentPath pages.projects.directory "Projects" ]
                 ]
             ]
         ]
 
 
-highlightableLink :
+highlightableElmPagesLink :
     PagePath Pages.PathKey
     -> Directory Pages.PathKey Directory.WithIndex
     -> String
-    -> Element msg
-highlightableLink currentPath linkDirectory displayName =
+    -> Html msg
+highlightableElmPagesLink currentPath linkDirectory displayName =
     let
-        isHighlighted =
+        isCurrent =
             currentPath |> Directory.includes linkDirectory
+
+        linkTo =
+            linkDirectory
+                |> Directory.indexPath
+                |> PagePath.toString
     in
-    Element.link
-        (if isHighlighted then
-            [ Font.underline
-            , Font.color Palette.color.primary
+    highlightableLink isCurrent linkTo displayName
+
+
+highlightableLink isCurrent linkTo displayName =
+    let
+        defaultAttributes =
+            [ href linkTo
+            , class "text-secondary text-2xl font-bold"
             ]
 
-         else
-            []
-        )
-        { url = linkDirectory |> Directory.indexPath |> PagePath.toString
-        , label = Element.text displayName
-        }
+        attributes =
+            if isCurrent then
+                defaultAttributes
+                    ++ [ currentPage
+                       , class "border-b-4"
+                       ]
+
+            else
+                defaultAttributes
+    in
+    a
+        attributes
+        [ text (String.toUpper displayName) ]
 
 
 commonHeadTags : List (Head.Tag Pages.PathKey)
@@ -437,33 +419,36 @@ siteTagline =
 
 
 publishedDateView metadata =
-    Element.text
+    Html.text
         (metadata.published
             |> Date.format "MMMM ddd, yyyy"
         )
 
 
-githubRepoLink : Element msg
-githubRepoLink =
-    Element.newTabLink []
-        { url = "https://github.com/dillonkearns/elm-pages"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
+footerView : Html msg
+footerView =
+    footer [ class "bg-footer py-16 border-t border-primary" ]
+        [ nav
+            [ class "p-16 mx-auto" ]
+            [ ul [ class "flex justify-evenly" ]
+                [ li [] [ footerLink "/blog/feed.xml" "RSS Feed" ]
+                , li [] [ footerLink "https://github.com/olpeh/olpeh.github.io" "GitHub" ]
+                , li [] [ footerLink "https://twitter.com/0lpeh" "Twitter" ]
+                , li [] [ footerLink "https://twitter.com/0lpeh" "Twitter" ]
+                , li [] [ footerLink "mailto:contact@olavihaapala.fi" "Email" ]
+                , li [] [ footerLink "https://www.linkedin.com/in/olavi-haapala-b7b752162" "LinkedIn" ]
                 ]
-                { src = ImagePath.toString Pages.images.github, description = "Github repo" }
-        }
+            ]
+        ]
 
 
-elmDocsLink : Element msg
-elmDocsLink =
-    Element.newTabLink []
-        { url = "https://package.elm-lang.org/packages/dillonkearns/elm-pages/latest/"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.elmLogo, description = "Elm Package Docs" }
-        }
+footerLink : String -> String -> Html msg
+footerLink linkTo displayName =
+    a
+        [ href linkTo
+        , class "text-primary text-xl font-bold"
+        , target "_blank"
+        , rel "noopener"
+        ]
+        [ text (String.toUpper displayName)
+        ]
