@@ -54,10 +54,7 @@ describe('olavihaapala.fi looks ok', () => {
       '/contact/',
       '/2018/11/11/visual-regression.html'
     ],
-    viewportConfigs,
-    baseScreenshotDirPath: 'visual-regression-screenshots',
-    goldenScreenshotDirName: 'golden',
-    testScreenshotDirName: 'test'
+    viewportConfigs
   };
   visualRegression.testVisualRegressions(options);
 });
