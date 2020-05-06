@@ -4264,10 +4264,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-visual-regression@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/visual-regression/-/visual-regression-1.0.0.tgz#a0102d7b7c3047705597aa89b12055734fdb89ef"
-  integrity sha512-yHmWBrnhMFVUVj0LD+h5GtUansmDBQYTlHxI6uZ3lQfyv/uZzFeNbyjTLiFE0HnXrNcBygcuBilW4oIchUJiCA==
+visual-regression@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/visual-regression/-/visual-regression-2.0.0.tgz#fb64f78c61ef1afe6643114e21a34e38307f3549"
+  integrity sha512-mXoZC4K+mvFIprGMyYBro2ktOSxtwXfGeWx5n1DYiIBs8oF7YEyLiU0jsJcFcGjUZw8HRl3rcsbAt6AotE+cXQ==
   dependencies:
     jest "^26.0.1"
     jest-image-snapshot "^3.1.0"
