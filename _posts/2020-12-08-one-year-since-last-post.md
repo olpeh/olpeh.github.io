@@ -5,7 +5,7 @@ layout: post
 excerpt: 'No new blog posts in a year. Read why and what is cooking.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-image: '/images/12-one-year-since-last-post/tmilivoj-kuhar-unsplash.jpg'
+image: '/images/12-one-year-since-last-post/milivoj-kuhar-unsplash.jpg'
 altText: 'Photo of an ongoing renovation inside a building'
 credits: 'Photo by Milivoj Kuhar on Unsplash'
 ---
