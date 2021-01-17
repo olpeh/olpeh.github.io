@@ -1,5 +1,5 @@
 ---
-title: 'One year since last post – what is going on?'
+title: 'One Year Since Last Post – What Is Going On?'
 date: 2020-12-08 06:40:00 Z
 layout: post
 excerpt: 'No new blog posts in a year. Read why and what is cooking.'
