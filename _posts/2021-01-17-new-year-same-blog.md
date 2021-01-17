@@ -13,7 +13,7 @@ altText: 'Wintery scene with trees filled with snow and the moon in the backgrou
 
 In [my previous blog post](/2020/12/08/one-year-since-last-post.html), I wrote about how I have been unable to post new blog post because the project stopped working on my computer. Additionally, [my blog rewrite](https://github.com/olpeh/olpeh.github.io/pull/6){:target="\_blank"}{:rel="noopener"} has been on hold for a while now due to the pandemic and lack of time, motivation, and energy. In the previous post, I promised to finalize my blog rewrite soon in order to start publishing more content.
 
-However, since it was a new year, I decided to give my Jekyll based project one more chance – and it works! 🎉 I was able to install all the dependencies and start the project locally without problems. Thus, I'm going to leave my blog rewrite for now, and rather start focusing on prdoucing more content.
+However, since it was a new year, I decided to give my Jekyll based project one more chance – and it works! 🎉 I was able to install all the dependencies and start the project locally without problems. Thus, I'm going to leave my blog rewrite for now, and rather start focusing on producing more content.
 
 I think the Jekyll based setup started working again after [the v1.11.0 release of Nokogiri](https://github.com/sparklemotion/nokogiri/releases/tag/v1.11.0){:target="\_blank"}{:rel="noopener"}. I'm not quite sure though, but I'm glad it is now working on my Ubuntu based laptop.
 
