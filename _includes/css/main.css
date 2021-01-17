@@ -306,7 +306,7 @@ footer nav a {
 
 @media screen and (max-width: 672px) {
   header {
-    min-height: 230px;
+    min-height: 280px;
   }
 
   header .page-logo {
