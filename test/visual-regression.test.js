@@ -57,5 +57,5 @@ describe('olavihaapala.fi looks ok', () => {
     ],
     viewportConfigs
   };
-  visualRegression.testVisualRegressions(options);
+  visualRegression.run(options);
 });
