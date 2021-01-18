@@ -52,6 +52,7 @@ describe('olavihaapala.fi looks ok', () => {
       '/',
       '/projects/',
       '/contact/',
+      '/talks/',
       '/2018/11/11/visual-regression.html'
     ],
     viewportConfigs
