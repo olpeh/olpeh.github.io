@@ -82,16 +82,16 @@ const visualRegression = require('visual-regression');
 const viewportConfigs = [
   {
     width: 480,
-    height: 800
+    height: 800,
   },
   {
     width: 800,
-    height: 600
+    height: 600,
   },
   {
     width: 1024,
-    height: 1024
-  }
+    height: 1024,
+  },
 ];
 
 describe('olpe.fi looks ok', () => {
@@ -101,7 +101,7 @@ describe('olpe.fi looks ok', () => {
     viewportConfigs,
     baseScreenshotDirPath: 'visual-regression-screenshots',
     goldenScreenshotDirName: 'golden',
-    testScreenshotDirName: 'test'
+    testScreenshotDirName: 'test',
   };
   visualRegression.testVisualRegressions(options);
 });

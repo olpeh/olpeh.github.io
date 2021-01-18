@@ -269,9 +269,9 @@ export default function view(state$: xs<State>): xs<VNode> {
           type: 'number',
           min,
           max,
-          step
+          step,
         },
-        props: { value }
+        props: { value },
       }),
       span(`.${styles.sliderInputUnit}`, unit),
       input('.SliderInput-input', {
@@ -279,10 +279,10 @@ export default function view(state$: xs<State>): xs<VNode> {
           type: 'range',
           min,
           max,
-          step
+          step,
         },
-        props: { value }
-      })
+        props: { value },
+      }),
     ])
   );
 }
@@ -309,7 +309,7 @@ export default function SliderInput(sources: Sources): Sinks {
 
   const sinks: Sinks = {
     DOM: vdom$,
-    onion: reducer$
+    onion: reducer$,
   };
 
   return sinks;
@@ -351,7 +351,7 @@ export default function intent(domSource): SliderInputActions {
     .map((inputEv) => parseInt((inputEv.target as HTMLInputElement).value));
 
   return {
-    ValueChangeAction$
+    ValueChangeAction$,
   };
 }
 ```
@@ -380,14 +380,14 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
             min: 1,
             max: 100,
             step: 1,
-            value: 100
+            value: 100,
           }
   );
 
   const valueChangeReducer$: xs<Reducer> = actions.ValueChangeAction$.map(
     (value) => (prevState: State): State => ({
       ...prevState,
-      value
+      value,
     })
   );
 
@@ -452,15 +452,15 @@ export const lens = {
   get: (state: AppState): State => ({
     currency: state.currency,
     personAmount: state.personAmount,
-    avgPrice: state.avgPrice
+    avgPrice: state.avgPrice,
   }),
 
   set: (state: AppState, childState: State) => ({
     ...state,
     currency: childState.currency,
     personAmount: childState.personAmount,
-    avgPrice: childState.avgPrice
-  })
+    avgPrice: childState.avgPrice,
+  }),
 };
 ```
 
@@ -475,13 +475,13 @@ export const personAmountLens = {
     min: 1,
     max: 100,
     step: 1,
-    value: state.personAmount
+    value: state.personAmount,
   }),
 
   set: (state: AppState, childState: State) => ({
     ...state,
-    personAmount: childState.value
-  })
+    personAmount: childState.value,
+  }),
 };
 ```
 

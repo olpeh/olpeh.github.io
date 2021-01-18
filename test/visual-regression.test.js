@@ -5,44 +5,44 @@ const height = 1200;
 const viewportConfigs = [
   {
     width: 380,
-    height
+    height,
   },
   {
     width: 480,
-    height
+    height,
   },
   {
     width: 481,
-    height
+    height,
   },
   {
     width: 768,
-    height
+    height,
   },
   {
     width: 769,
-    height
+    height,
   },
   {
     width: 1024,
-    height
+    height,
   },
   {
     width: 1025,
-    height
+    height,
   },
   {
     width: 1280,
-    height
+    height,
   },
   {
     width: 1600,
-    height
+    height,
   },
   {
     width: 1920,
-    height
-  }
+    height,
+  },
 ];
 
 describe('olavihaapala.fi looks ok', () => {
@@ -53,9 +53,9 @@ describe('olavihaapala.fi looks ok', () => {
       '/projects/',
       '/contact/',
       '/talks/',
-      '/2018/11/11/visual-regression.html'
+      '/2018/11/11/visual-regression.html',
     ],
-    viewportConfigs
+    viewportConfigs,
   };
   visualRegression.run(options);
 });

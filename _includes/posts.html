@@ -7,9 +7,7 @@
   </div>
   <ul class="post-list">
     {% for page in site.posts %}
-    <li class="post">
-      {% include post-teaser.html %}
-    </li>
+    <li class="post">{% include post-teaser.html %}</li>
     {% endfor %}
   </ul>
   {% include pagination.html %}

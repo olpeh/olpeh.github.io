@@ -72,7 +72,7 @@ export type District = t.TypeOf<typeof TDistrict>;
 
 export const TDistrict = t.type({
   id: t.number,
-  name: t.string
+  name: t.string,
 });
 
 /*

@@ -2,9 +2,7 @@
   <h1>! blog post drafts !</h1>
   <ul class="post-list">
     {% for page in site.drafts %}
-    <li class="post">
-      {% include post-teaser.html %}
-    </li>
+    <li class="post">{% include post-teaser.html %}</li>
     {% endfor %}
   </ul>
   {% include pagination.html %}

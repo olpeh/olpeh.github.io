@@ -327,13 +327,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   context: sourcePath,
   entry: {
-    main: './main.tsx'
+    main: './main.tsx',
   },
   output: {
     path: outPath,
     filename: 'bundle.js',
     chunkFilename: '[chunkhash].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   target: 'web',
   resolve: {
@@ -343,15 +343,15 @@ module.exports = {
     mainFields: ['module', 'browser', 'main'],
     alias: {
       app: path.resolve(__dirname, 'src/app/'),
-      assets: path.resolve(__dirname, 'src/assets/')
-    }
+      assets: path.resolve(__dirname, 'src/assets/'),
+    },
   },
   module: {
     rules: [
       // .ts, .tsx
       {
         test: /\.tsx?$/,
-        use: 'ts-loader'
+        use: 'ts-loader',
       },
       // css
       {
@@ -363,8 +363,8 @@ module.exports = {
             options: {
               sourceMap: !isProduction,
               modules: true,
-              localIdentName: '[local]__[hash:base64:5]'
-            }
+              localIdentName: '[local]__[hash:base64:5]',
+            },
           },
           {
             loader: 'postcss-loader',
@@ -376,12 +376,12 @@ module.exports = {
                 require('postcss-cssnext')(),
                 require('postcss-reporter')(),
                 require('postcss-browser-reporter')({
-                  disabled: isProduction
-                })
-              ]
-            }
-          }
-        ]
+                  disabled: isProduction,
+                }),
+              ],
+            },
+          },
+        ],
       },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
@@ -390,11 +390,11 @@ module.exports = {
         use: [
           {
             loader: 'url-loader',
-            options: { limit: 10000, name: 'images/[hash]-[name].[ext]' }
-          }
-        ]
-      }
-    ]
+            options: { limit: 10000, name: 'images/[hash]-[name].[ext]' },
+          },
+        ],
+      },
+    ],
   },
   optimization: {
     minimizer: [new UglifyJsPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -403,16 +403,16 @@ module.exports = {
       cacheGroups: {
         commons: {
           chunks: 'initial',
-          minChunks: 2
+          minChunks: 2,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           chunks: 'all',
-          priority: -10
-        }
-      }
+          priority: -10,
+        },
+      },
     },
-    runtimeChunk: true
+    runtimeChunk: true,
   },
   plugins: [
     new webpackCleanupPlpack(),
@@ -421,29 +421,29 @@ module.exports = {
       path: outPath,
       filename: isProduction ? '[name].[hash].css' : '[name].css',
       chunkFilename: isProduction ? '[id].[hash].css' : '[id].css',
-      publicPath: '/'
+      publicPath: '/',
     }),
     new wtmlWebpackPlpack({
       template: 'assets/index.html',
-      favicon: 'assets/favicon.ico'
-    })
+      favicon: 'assets/favicon.ico',
+    }),
   ],
   devServer: {
     contentBase: sourcePath,
     hot: true,
     inline: true,
     historyApiFallback: {
-      disableDotRule: true
+      disableDotRule: true,
     },
-    stats: 'minimal'
+    stats: 'minimal',
   },
   devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
   node: {
     // workaround for webpack-dev-server issue
     // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
     fs: 'empty',
-    net: 'empty'
-  }
+    net: 'empty',
+  },
 };
 ```
 
