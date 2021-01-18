@@ -1,7 +1,6 @@
 # olavihaapala.fi
 
 [![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/olpeh/olpeh.github.io/blob/master/LICENSE)
-[![Lighthouse score: 100/100](https://lighthouse-badge.appspot.com/?score=100)](https://github.com/olpeh/olpeh.github.io)
 
 A blazing fast personal blog about development: [olavihaapala.fi](https://olavihaapala.fi).
 
