@@ -1,22 +1,20 @@
 <div class="post-header">
-  <div class="post-header-content">
-    <img class="thumbnail" alt="{{ page.altText }}" src="{{ page.image }}" />
-    <div class="rest">
-      <h1 class="post-title">{{ page.title }}</h1>
-      <div class="post-meta">
-        <p>{{ page.excerpt }}</p>
-        <hr />
-        <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
-        {% if page.updated %}
-        <span class="date"
-          >(Updated: {{ page.updated | date: "%b %-d, %Y" }})</span
-        >
-        {% endif %}
-        <span>by {{ page.author }}</span>
-        {% if page.credits %}
-        <span>– {{ page.credits }}</span>
-        {% endif %}
-      </div>
+  <img class="thumbnail" alt="{{ page.altText }}" src="{{ page.image }}" />
+  <div class="rest">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <p>{{ page.excerpt }}</p>
+      <hr />
+      <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
+      {% if page.updated %}
+      <span class="date"
+        >(Updated: {{ page.updated | date: "%b %-d, %Y" }})</span
+      >
+      {% endif %}
+      <span>by {{ page.author }}</span>
+      {% if page.credits %}
+      <span>– {{ page.credits }}</span>
+      {% endif %}
     </div>
   </div>
 </div>
