@@ -1,22 +1,24 @@
 <div class="post-header teaser" onclick="window.location='{{ page.url }}'">
-  <img class="thumbnail" alt="{{ page.altText }}" src="{{ page.image }}" />
-  <div class="rest">
-    <a class="post-full-page-link" href="{{ page.url }}">
-      <h2 class="post-title">{{ page.title }}</h2>
-    </a>
-    <div class="post-meta">
-      <p>{{ page.excerpt }}</p>
-      <hr />
-      <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
-      {% if page.updated %}
-      <span class="date"
-        >(Updated: {{ page.updated | date: "%b %-d, %Y" }})</span
-      >
-      {% endif %}
-      <span>by {{ page.author }}</span>
-      {% if page.credits %}
-      <span>– {{ page.credits }}</span>
-      {% endif %}
+  <div class="post-header-content">
+    <img class="thumbnail" alt="{{ page.altText }}" src="{{ page.image }}" />
+    <div class="rest">
+      <a class="post-full-page-link" href="{{ page.url }}">
+        <h2 class="post-title">{{ page.title }}</h2>
+      </a>
+      <div class="post-meta">
+        <p>{{ page.excerpt }}</p>
+        <hr />
+        <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
+        {% if page.updated %}
+        <span class="date"
+          >(Updated: {{ page.updated | date: "%b %-d, %Y" }})</span
+        >
+        {% endif %}
+        <span>by {{ page.author }}</span>
+        {% if page.credits %}
+        <span>– {{ page.credits }}</span>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
