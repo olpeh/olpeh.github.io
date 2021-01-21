@@ -11,7 +11,7 @@ altText: 'Aerial photo of a circle road in nature'
 credits: 'Photo by Thomas Lambert on Unsplash'
 ---
 
-### Author's notice
+## Author's notice
 
 This blog post is based on one of my recent tech talks "Why is SSR relevant in 2019" and represents my limited view on the topic.
 Please bare that in mind when reading this blog post.
