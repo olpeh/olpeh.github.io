@@ -14,7 +14,7 @@ credits: 'Photo by Milivoj Kuhar on Unsplash'
 
 Hey! Just wanted to give an update on what's going on and why this blog has not received any new posts in almost a year!
 
-In the spring this year, I started writing a new blog post and realized the my current blog, built with Jekyll, [does not work locally anymore](https://twitter.com/0lpeh/status/1231528880739102720){:target="\_blank"}{:rel="noopener"}.
+In the spring this year, I started writing a new blog post and realized the my current blog, built with Jekyll, [does not work locally anymore](https://twitter.com/0lpeh/status/1231528880739102720){:target="\_blank"}{:rel="noopener noreferrer"}.
 
 ## New Blog Coming Up
 

@@ -55,10 +55,10 @@ This is frustrating.
 
 ## A Solution
 
-I had heard many people recommend using [io-ts](https://github.com/gcanti/io-ts){:target="\_blank"}{:rel="noopener"} for tackling this problem.
+I had heard many people recommend using [io-ts](https://github.com/gcanti/io-ts){:target="\_blank"}{:rel="noopener noreferrer"} for tackling this problem.
 Last Friday I tried it for the first time and my mind was blown.
 
-[![Me Tweeting about how I felt using io-ts for the first time.]({{ "/images/07-io-ts/io-ts-tweet.png" | prepend: site.baseurl }})](https://twitter.com/0lpeh/status/1091343933551140864){:target="\_blank"}{:rel="noopener"}
+[![Me Tweeting about how I felt using io-ts for the first time.]({{ "/images/07-io-ts/io-ts-tweet.png" | prepend: site.baseurl }})](https://twitter.com/0lpeh/status/1091343933551140864){:target="\_blank"}{:rel="noopener noreferrer"}
 
 With `io-ts`, you are able to validate types during runtime.
 I'm not an expert on this topic yet, but here is an example of how we currently use it in our project.
@@ -183,7 +183,7 @@ Please let me know.
 As the author of io-ts helpfully pointed out, there is a way to do pattern matching with io-ts.
 It can be done using `fold` or `foldL`, which is the lazy version of fold.
 
-[![The author of io-ts tweeting me how to do pattern matching.]({{ "/images/07-io-ts/pattern-matching.png" | prepend: site.baseurl }})](https://twitter.com/GiulioCanti/status/1093874633269526528){:target="\_blank"}{:rel="noopener"}
+[![The author of io-ts tweeting me how to do pattern matching.]({{ "/images/07-io-ts/pattern-matching.png" | prepend: site.baseurl }})](https://twitter.com/GiulioCanti/status/1093874633269526528){:target="\_blank"}{:rel="noopener noreferrer"}
 
 So, my example using `foldL` looks like this, then:
 

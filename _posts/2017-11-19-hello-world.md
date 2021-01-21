@@ -23,9 +23,9 @@ In the settings page for my repository in GitHub I could easily set up a custom 
 
 ![GitHub pages settings]({{ "/images/01-hello-world/gh-pages.png" | prepend: site.baseurl }})
 
-This was not enough though. Had to read the page behind the [Learn more](https://help.github.com/articles/using-a-custom-domain-with-github-pages/){:target="\_blank"}{:rel="noopener"} {:rel="noopener"} link. In my opinion that page is quite confusing and I did not know what to do really.
+This was not enough though. Had to read the page behind the [Learn more](https://help.github.com/articles/using-a-custom-domain-with-github-pages/){:target="\_blank"}{:rel="noopener noreferrer"} {:rel="noopener noreferrer"} link. In my opinion that page is quite confusing and I did not know what to do really.
 
-In the end I found out that [this](https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider/){:target="\_blank"}{:rel="noopener"} was the page with the information that I needed:
+In the end I found out that [this](https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider/){:target="\_blank"}{:rel="noopener noreferrer"} was the page with the information that I needed:
 
 > 1.  Confirm that you have added a custom domain to your GitHub Pages site.
 >
@@ -41,7 +41,7 @@ So I went ahead and set up the correct `A` type records at my providers' page. S
 
 ![DNS rules]({{ "/images/01-hello-world/dns-louhi.png" | prepend: site.baseurl }})
 
-This was enough to make my GitHub page (olpeh.github.io) available at [olpe.fi](https://olpe.fi){:target="\_blank"}{:rel="noopener"} and [www.olpe.fi](https://www.olpe.fi){:target="\_blank"}{:rel="noopener"} . I was happy for a moment and tweeted this:
+This was enough to make my GitHub page (olpeh.github.io) available at [olpe.fi](https://olpe.fi){:target="\_blank"}{:rel="noopener noreferrer"} and [www.olpe.fi](https://www.olpe.fi){:target="\_blank"}{:rel="noopener noreferrer"} . I was happy for a moment and tweeted this:
 
 ![DNS rules applied]({{ "/images/01-hello-world/tweet-dns-http.png" | prepend: site.baseurl }})
 
@@ -53,7 +53,7 @@ However, it turns out GitHub does not support HTTPS for custom domains (yet)!
 
 ![No https support]({{ "/images/01-hello-world/tweet-no-https.png" | prepend: site.baseurl }})
 
-Well luckily I'm [not](https://github.com/isaacs/github/issues/156){:target="\_blank"}{:rel="noopener"} the [only one](https://gist.github.com/coolaj86/e07d42f5961c68fc1fc8){:target="\_blank"}{:rel="noopener"} wanting this feature and there are some workarounds available. I found a few nice tutorials about how to set up HTTPS for GitHub page with custom domain using Cloudfare (for free): [As a gist](https://gist.github.com/cvan/8630f847f579f90e0c014dc5199c337b){:target="\_blank"}{:rel="noopener"} and a [blog post](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/){:target="\_blank"}{:rel="noopener"} and [another](https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/){:target="\_blank"}{:rel="noopener"} and [one more](https://hackernoon.com/set-up-ssl-on-github-pages-with-custom-domains-for-free-a576bdf51bc){:target="\_blank"}{:rel="noopener"} .
+Well luckily I'm [not](https://github.com/isaacs/github/issues/156){:target="\_blank"}{:rel="noopener noreferrer"} the [only one](https://gist.github.com/coolaj86/e07d42f5961c68fc1fc8){:target="\_blank"}{:rel="noopener noreferrer"} wanting this feature and there are some workarounds available. I found a few nice tutorials about how to set up HTTPS for GitHub page with custom domain using Cloudfare (for free): [As a gist](https://gist.github.com/cvan/8630f847f579f90e0c014dc5199c337b){:target="\_blank"}{:rel="noopener noreferrer"} and a [blog post](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/){:target="\_blank"}{:rel="noopener noreferrer"} and [another](https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/){:target="\_blank"}{:rel="noopener noreferrer"} and [one more](https://hackernoon.com/set-up-ssl-on-github-pages-with-custom-domains-for-free-a576bdf51bc){:target="\_blank"}{:rel="noopener noreferrer"} .
 
 I tried following those instructions pretty carefully but ended up redirecting from `https://www.olpe.fi` to `https://olpe.fi` and from there back to `www`. These steps included creating an account to cloudfare, adding `olpe.fi` as a site there, enabling flexible encryption mode using SSL and adding some redirection rules for forcing https.
 
@@ -67,21 +67,21 @@ In the end my working setup looked like this:
 
 ![Louhi name servers]({{ "/images/01-hello-world/louhi-name-servers.png" | prepend: site.baseurl }})
 
-So now my site was available via [HTTPS](https://olpe.fi/){:target="\_blank"}{:rel="noopener"} and [dat](dat://olpe.fi/){:target="\_blank"}{:rel="noopener"} as seen in the screenshot below.
+So now my site was available via [HTTPS](https://olpe.fi/){:target="\_blank"}{:rel="noopener noreferrer"} and [dat](dat://olpe.fi/){:target="\_blank"}{:rel="noopener noreferrer"} as seen in the screenshot below.
 
 ![HTTPS FTW]({{ "/images/01-hello-world/tweet-https-dat.png" | prepend: site.baseurl }})
 
-Dat support was something that I had configured earlier with the help of [this blog post](https://handbook.protozoa.nz/experiments/p2p_github_pages.html){:target="\_blank"}{:rel="noopener"} . P2P websites are available using [Beaker browser](https://beakerbrowser.com/){:target="\_blank"}{:rel="noopener"} I will try to write more about P2P in a future blog post. In the meantime you can read about [Secure Scuttlebutt](https://www.scuttlebutt.nz/){:target="\_blank"}{:rel="noopener"} and probably try it out using [Patchwork](https://github.com/ssbc/patchwork){:target="\_blank"}{:rel="noopener"} .
+Dat support was something that I had configured earlier with the help of [this blog post](https://handbook.protozoa.nz/experiments/p2p_github_pages.html){:target="\_blank"}{:rel="noopener noreferrer"} . P2P websites are available using [Beaker browser](https://beakerbrowser.com/){:target="\_blank"}{:rel="noopener noreferrer"} I will try to write more about P2P in a future blog post. In the meantime you can read about [Secure Scuttlebutt](https://www.scuttlebutt.nz/){:target="\_blank"}{:rel="noopener noreferrer"} and probably try it out using [Patchwork](https://github.com/ssbc/patchwork){:target="\_blank"}{:rel="noopener noreferrer"} .
 
 ## Last step - the blog
 
-At this point my "blog" was served over HTTPS but the only thing missing was the actual blog. I wanted to stay using a GitHub page based blog so jekyll was a natural choice for a static web page. I got a nice tip from my colleague about [elmtown.audio](https://github.com/elmtown/elmtown.github.io){:target="\_blank"}{:rel="noopener"} which is a simple GitHub page with static content. That setup was pretty much enough for me and I copied most of the setup from there except for the visual outlook.
+At this point my "blog" was served over HTTPS but the only thing missing was the actual blog. I wanted to stay using a GitHub page based blog so jekyll was a natural choice for a static web page. I got a nice tip from my colleague about [elmtown.audio](https://github.com/elmtown/elmtown.github.io){:target="\_blank"}{:rel="noopener noreferrer"} which is a simple GitHub page with static content. That setup was pretty much enough for me and I copied most of the setup from there except for the visual outlook.
 
 Next thing in my todo-list is to make the design of my blog better, but I'll just start off with some basic stylings and a simple looking blog.
 
 ## Acknowledgements
 
-- Thanks to [Ossi Hanhinen](https://futurice.com/people/ossi-hanhinen){:target="\_blank"}{:rel="noopener"} for giving me good hints on how to setup basic jekyll based static site. Reused the structure from: [elmtown.audio](https://github.com/elmtown/elmtown.github.io){:target="\_blank"}{:rel="noopener"} which is made by Ossi
-- Thanks to my wonderful colleagues at [Futurice](https://futurice.com/){:target="\_blank"}{:rel="noopener"} for arranging a Thought Leadership Workshop where I got the boost needed in order to start blogging
+- Thanks to [Ossi Hanhinen](https://futurice.com/people/ossi-hanhinen){:target="\_blank"}{:rel="noopener noreferrer"} for giving me good hints on how to setup basic jekyll based static site. Reused the structure from: [elmtown.audio](https://github.com/elmtown/elmtown.github.io){:target="\_blank"}{:rel="noopener noreferrer"} which is made by Ossi
+- Thanks to my wonderful colleagues at [Futurice](https://futurice.com/){:target="\_blank"}{:rel="noopener noreferrer"} for arranging a Thought Leadership Workshop where I got the boost needed in order to start blogging
 - Thanks to all the people who wrote about how to setup HTTPS using Cloudfare
-- Thanks to [Cloudfare](https://www.cloudflare.com/){:target="\_blank"}{:rel="noopener"} for providing a free plan that has all the most critical features
+- Thanks to [Cloudfare](https://www.cloudflare.com/){:target="\_blank"}{:rel="noopener noreferrer"} for providing a free plan that has all the most critical features

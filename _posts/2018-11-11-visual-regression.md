@@ -21,22 +21,22 @@ You can see it in action in the gif below:
 
 `npm i visual-regression`
 
-[npmjs.com/package/visual-regression](https://www.npmjs.com/package/visual-regression){:target="\_blank"}{:rel="noopener"}
+[npmjs.com/package/visual-regression](https://www.npmjs.com/package/visual-regression){:target="\_blank"}{:rel="noopener noreferrer"}
 
-[olpeh/visual-regression](https://github.com/olpeh/visual-regression){:target="\_blank"}{:rel="noopener"}
+[olpeh/visual-regression](https://github.com/olpeh/visual-regression){:target="\_blank"}{:rel="noopener noreferrer"}
 
 Word of warning: very early release.
 
 ## Longer Version
 
-Earlier this year, I created a test script inspired by [this blog post](https://meowni.ca/posts/2017-puppeteer-tests/){:target="\_blank"}{:rel="noopener"} for testing our site against visual regressions.
+Earlier this year, I created a test script inspired by [this blog post](https://meowni.ca/posts/2017-puppeteer-tests/){:target="\_blank"}{:rel="noopener noreferrer"} for testing our site against visual regressions.
 It did not turn out to be very useful at my current project at work due to dynamically changing content such as ads etc.
 The test for visual regression would fail almost every time and not provide any meaningful value.
 
 However, I was working on my blog recently and doing some changes to formatting on the code, such as adding `target="_blank"` on all links on my blog post.
 This kind of refactorings or modifications should of course not affect the visuals of the site.
 I think we have all seen sometimes templating code appear on a production site.
-I was afraid, that when adding `{:target="\_blank"}{:rel="noopener"}` after each link in markdown on my [jekyll-based blog setup](https://github.com/olpeh/olpeh.github.io){:target="\_blank"}{:rel="noopener"} , it would be displayed on the actual HTML instead of being added as an attribute to the link.
+I was afraid, that when adding `{:target="\_blank"}{:rel="noopener noreferrer"}` after each link in markdown on my [jekyll-based blog setup](https://github.com/olpeh/olpeh.github.io){:target="\_blank"}{:rel="noopener noreferrer"} , it would be displayed on the actual HTML instead of being added as an attribute to the link.
 
 So, how do you make sure you did not break the layout of your site when doing refactoring?
 Of course, I could open up every blog post I have ever published and go through all the links and make sure it looks correct (which in my case would be still doable since there are not that many posts).
@@ -62,10 +62,10 @@ Because this became such a useful tool for my blog project, I was thinking that 
 Thats why I'm now announcing visual-regression v.0.1.1!
 Please note though that this is super early release and may break.
 Additionally the API may break, since naming things is quite hard.
-I'd appreciate any feedback or issues around this tool either in [Twitter](https://twitter.com/0lpeh){:target="\_blank"}{:rel="noopener"} or as [issues in GitHub](https://github.com/olpeh/visual-regression/issues){:target="\_blank"}{:rel="noopener"} .
+I'd appreciate any feedback or issues around this tool either in [Twitter](https://twitter.com/0lpeh){:target="\_blank"}{:rel="noopener noreferrer"} or as [issues in GitHub](https://github.com/olpeh/visual-regression/issues){:target="\_blank"}{:rel="noopener noreferrer"} .
 
 Publishing an NPM package was surprisingly esy.
-Basically, I just had to create an account and then follow [these steps](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages#creating-an-unscoped-public-package){:target="\_blank"}{:rel="noopener"} .
+Basically, I just had to create an account and then follow [these steps](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages#creating-an-unscoped-public-package){:target="\_blank"}{:rel="noopener noreferrer"} .
 Note: It's a recommended to have two-factor-authentication required for publishing and logins in NPM.
 
 ### Usage
@@ -122,4 +122,4 @@ But it works for my use and it may work for somebody else as well.
 
 ## Acknowledgements
 
-- Thanks to [Monica Dinculescu](https://github.com/notwaldorf){:target="\_blank"}{:rel="noopener"} for writing [this blog post](https://meowni.ca/posts/2017-puppeteer-tests/){:target="\_blank"}{:rel="noopener"} , which has obviously been my main inspiration for creating this tool.
+- Thanks to [Monica Dinculescu](https://github.com/notwaldorf){:target="\_blank"}{:rel="noopener noreferrer"} for writing [this blog post](https://meowni.ca/posts/2017-puppeteer-tests/){:target="\_blank"}{:rel="noopener noreferrer"} , which has obviously been my main inspiration for creating this tool.
