@@ -166,7 +166,6 @@ main {
 }
 
 .post-full-page .post-header {
-  justify-content: space-around;
   padding: 80px 120px 120px 120px;
   box-shadow: 0px 4px 12px 0 #858888;
 }
@@ -300,7 +299,7 @@ footer nav a {
 }
 
 @media screen and (max-width: 680px) {
-  .post-header {
+  .post-header-content {
     display: block;
   }
 
