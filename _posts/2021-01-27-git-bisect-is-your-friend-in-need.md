@@ -31,7 +31,7 @@ Git bisect is a powerful tool and I recommend trying it out, especially if the f
 1. Find and check out a commit where the issue happens. Most probably your latest commit has the issue you are investigating
 1. Run `git bisect bad` to mark that commit as bad
 1. Randomly check out an older commit and make sure the particular issue does not appear in it
-1. Mark that commit as good by running `git bisect bad`
+1. Mark that commit as good by running `git bisect good`
 1. Run `git bisect run`
 
 Git will automatically checkout a commit for you using binary search algorithm to effectively help you find the problematic commit. Try reproducting the issue, and mark the commit as either bad or good: `git bisect bad|good`. Now, you should see something like this in your terminal output:
