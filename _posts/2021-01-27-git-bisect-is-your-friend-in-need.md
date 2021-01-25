@@ -1,6 +1,6 @@
 ---
 title: 'Git Bisect Is Your Friend in Need'
-date: 2021-01-27 13:00:00 Z
+date: 2021-01-25 20:44:00 Z
 layout: post
 excerpt: 'A practical story of how using git bisect has several times saved me a lot of time and helped me investigate somewhat mysterious problems in larger code bases.'
 author: 'Olavi Haapala'
