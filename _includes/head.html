@@ -22,6 +22,13 @@
 <meta content="{{ page.image | prepend: site.url }}" property="og:image" />
 <meta content="250" property="og:image:width" />
 <meta content="250" property="og:image:height" />
+{% else %}
+<meta
+  content="{{ '/images/logo.jpg' | prepend: site.url }}"
+  property="og:image"
+/>
+<meta content="154" property="og:image:width" />
+<meta content="140" property="og:image:height" />
 {% endif %}
 
 <meta name="twitter:card" content="summary" />
