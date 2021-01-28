@@ -1,5 +1,6 @@
 <div class="post-header teaser" onclick="window.location='{{ page.url }}'">
   <div class="post-header-content">
+    {% if page.image %}
     <img
       class="thumbnail"
       width="200"
@@ -7,6 +8,7 @@
       alt="{{ page.altText }}"
       src="{{ page.image }}"
     />
+    {% endif %}
     <div class="rest">
       <a class="post-full-page-link" href="{{ page.url }}">
         <h2 class="post-title">{{ page.title }}</h2>

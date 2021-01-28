@@ -1,5 +1,6 @@
 <div class="post-header">
   <div class="post-header-content">
+    {% if page.image %}
     <img
       class="thumbnail"
       width="200"
@@ -7,6 +8,7 @@
       alt="{{ page.altText }}"
       src="{{ page.image }}"
     />
+    {% endif %}
     <div class="rest">
       <h1 class="post-title">{{ page.title }}</h1>
       <div class="post-meta">
