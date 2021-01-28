@@ -24,8 +24,21 @@
 <meta content="250" property="og:image:height" />
 {% endif %}
 
-<meta name="author" content="{{ site.author }}" /> {% if page.categories %}
-<meta name="keywords" content="{{ page.categories | join: ', ' }}" />{% endif %}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@0lpeh" />
+<meta
+  name="twitter:creator"
+  content="{% if page.author_twitter %}{{ page.author_twitter }}{% else %}@0lpeh{% endif %}"
+/>
+<meta
+  property="og:url"
+  content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+/>
+
+<meta name="author" content="{{ site.author }}" />
+{% if page.categories %}
+<meta name="keywords" content="{{ page.categories | join: ', ' }}" />
+{% endif %}
 <link
   rel="canonical"
   href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
