@@ -2,7 +2,7 @@
 title: Hello World!
 date: 2017-11-19 00:00:00 Z
 layout: post
-excerpt: 'Setting up my personal blog and posting my first blog post'
+excerpt: 'Setting up my personal blog and posting my first blog post.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 image: '/images/01-hello-world/thumbnail.png'

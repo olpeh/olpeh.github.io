@@ -2,7 +2,7 @@
 title: I Learned Functional Reactive Programming by Learning Cycle.js
 date: 2018-04-03 00:00:00 Z
 layout: post
-excerpt: 'An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js'
+excerpt: 'An introduction to Cycle.js and a story of what I have learned building Meeting Price Calculator in Cycle.js.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 image: '/images/02-frp-cyclejs/cyclejs.png'

@@ -2,7 +2,7 @@
 title: Announcing visual-regression v0.1.1
 date: 2018-11-11 00:00:00 Z
 layout: post
-excerpt: 'A tool for automated testing against visual regressions'
+excerpt: 'A tool for automated testing against visual regressions.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 image: '/images/03-visual-regression/npm.png'
