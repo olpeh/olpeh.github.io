@@ -24,6 +24,11 @@
         >
         {% endif %}
         <span>by {{ page.author }}</span>
+        <ul class="post-tags">
+          {% for tag in page.tags %}
+          <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>

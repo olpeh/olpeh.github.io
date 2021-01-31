@@ -5,6 +5,7 @@ layout: post
 excerpt: 'MobX is an easy-to-use state handling library for web frontend projects, but it also ccomes with powerful features built-in. This blog post show cases using reactions.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: mobx
 image: '/images/09-mobx/mobx.png'
 altText: 'MobX logo'
 ---

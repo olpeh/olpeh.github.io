@@ -1,0 +1,29 @@
+<!-- Create an empty array to add objects to: -->
+{% assign postArray = '' | split: ',' %} {% for tag in page.tags %} {% for post
+in site.tags[tag] %}
+<!-- We don't want to render links to the current page -->
+{% unless post == page %}
+<!-- Push each post to the postArray. The array has to be defined as a variable again so it can be overwritten with the new objects: -->
+{% assign postArray = postArray | push: post %} {% endunless %} {% endfor %}
+{%endfor %}
+<!-- Create a new array from the filtered array: -->
+{% assign uniqPosts = postArray | uniq %} {% capture difference %} {{ uniqPosts
+| size | minus:1 }} {% endcapture %} {% unless difference contains '-' %}
+<hr />
+<section class="post-read-more">
+  <h2>Read more about these topics</h2>
+  <ul class="post-tags">
+    {% for tag in page.tags %}
+    <li>{{ tag }}</li>
+    {% endfor %}
+  </ul>
+  <ul>
+    {% for post in uniqPosts %}
+    <li>
+      <a href="{{ post.url }}" title="{{post.excerpt}}">{{ post.title }} </a>
+      – <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endunless %}

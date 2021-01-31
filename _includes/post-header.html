@@ -24,6 +24,11 @@
         {% if page.credits %}
         <span>– {{ page.credits }}</span>
         {% endif %}
+        <ul class="post-tags">
+          {% for tag in page.tags %}
+          <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>

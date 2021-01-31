@@ -6,6 +6,7 @@ layout: post
 excerpt: 'TypeScript will only bring you type checking on compile time, when compiling to JavaScript. On runtime, your code is JS and anything can happen. However, there is a solution to this problem.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: io-ts typescript
 image: '/images/07-io-ts/fire.jpg'
 altText: 'Fireman at work'
 credits: 'Photo by Hush Naidoo on Unsplash'

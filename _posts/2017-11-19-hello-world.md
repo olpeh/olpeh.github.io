@@ -5,6 +5,7 @@ layout: post
 excerpt: 'Setting up my personal blog and posting my first blog post.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: blog
 image: '/images/01-hello-world/thumbnail.png'
 altText: 'Screenshot of olpeh.github.io github page being published at olpe.fi'
 ---

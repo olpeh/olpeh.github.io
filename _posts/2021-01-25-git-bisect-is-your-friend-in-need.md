@@ -5,6 +5,7 @@ layout: post
 excerpt: 'A practical story of how using git bisect has several times saved me a lot of time and helped me investigate somewhat mysterious problems in larger code bases.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: git bisect protip
 image: '/images/15-git-bisect/stairs.jpg'
 altText: 'Lake view with aurora in the background.'
 ---

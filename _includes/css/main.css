@@ -291,6 +291,38 @@ footer nav a {
   font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
 }
 
+.post-read-more {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px 0 #858888;
+  padding: 32px;
+  margin-top: 100px;
+}
+
+.post-read-more h2 {
+  margin-top: 0;
+}
+
+.post-tags {
+  margin-top: 8px;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-tags li::before {
+  content: "#";
+}
+
+.post-tags li {
+  background-color: #27445a;
+  color: #ffffff;
+  padding: 0 8px;
+}
+
+.post-tags li:not(:first-of-type) {
+  margin-left: 16px;
+}
+
 @media screen and (max-width: 900px) {
   .post-full-page .post-header {
     padding-left: 40px;
