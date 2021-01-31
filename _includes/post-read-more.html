@@ -1,18 +1,22 @@
+<!-- Create an empty array to add objects to: -->
+{% assign postArray = '' | split: ',' %} {% for tag in page.tags %} {% for post
+in site.tags[tag] %}
+<!-- We don't want to render links to the current page -->
+{% unless post == page %}
+<!-- Push each post to the postArray. The array has to be defined as a variable again so it can be overwritten with the new objects: -->
+{% assign postArray = postArray | push: post %} {% endunless %} {% endfor %}
+{%endfor %}
+<!-- Create a new array from the filtered array: -->
+{% assign uniqPosts = postArray | uniq %} {% capture difference %} {{ uniqPosts
+| size | minus:1 }} {% endcapture %} {% unless difference contains '-' %}
 <hr />
-<div class="post-read-more">
+<section class="post-read-more">
   <h2>Read more about these topics</h2>
   <ul class="post-tags">
-    <!-- Create an empty array to add objects to: -->
-    {% assign postArray = '' | split: ',' %} {% for tag in page.tags %}
+    {% for tag in page.tags %}
     <li>{{ tag }}</li>
-    {% for post in site.tags[tag] %}
-    <!-- Push each post to the postArray. The array has to be defined as a variable again so it can be overwritten with the new objects: -->
-    {% assign postArray = postArray | push: post %} {% endfor %} {%endfor %}
+    {% endfor %}
   </ul>
-
-  <!-- Create a new array from the filtered array: -->
-  {% assign uniqPosts = postArray | uniq %}
-  <!-- Loop through your filtered array to get unique posts: -->
   <ul>
     {% for post in uniqPosts %}
     <li>
@@ -21,4 +25,5 @@
     </li>
     {% endfor %}
   </ul>
-</div>
+</section>
+{% endunless %}
