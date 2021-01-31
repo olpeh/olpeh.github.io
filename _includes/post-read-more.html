@@ -1,3 +1,4 @@
+<hr />
 <div class="post-read-more">
   <h2>Read more about these topics</h2>
   <ul class="post-tags">
@@ -14,7 +15,10 @@
   <!-- Loop through your filtered array to get unique posts: -->
   <ul>
     {% for post in uniqPosts %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    <li>
+      <a href="{{ post.url }}" title="{{post.excerpt}}">{{ post.title }} </a>
+      – <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span>
+    </li>
     {% endfor %}
   </ul>
 </div>

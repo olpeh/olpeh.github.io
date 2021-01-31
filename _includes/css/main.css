@@ -291,6 +291,17 @@ footer nav a {
   font-family: "Lato", "Helvetica Neue", Helvetica, sans-serif;
 }
 
+.post-read-more {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 12px 0 #858888;
+  padding: 32px;
+  margin-top: 100px;
+}
+
+.post-read-more h2 {
+  margin-top: 0;
+}
+
 .post-tags {
   margin-top: 8px;
   display: flex;
