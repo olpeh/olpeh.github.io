@@ -6,6 +6,7 @@ layout: post
 excerpt: 'Why is Server Side Rendering highly relevant again in the golden age of Single Page Applications?'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: SSR CSR performance web
 image: '/images/11-ssr/thomas-lambert-unsplash.jpg'
 altText: 'Aerial photo of a circle road in nature'
 credits: 'Photo by Thomas Lambert on Unsplash'

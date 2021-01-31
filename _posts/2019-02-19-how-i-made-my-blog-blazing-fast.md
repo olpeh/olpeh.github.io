@@ -5,6 +5,7 @@ layout: post
 excerpt: 'Have you noticed how fast my website loads? In this blog post, I will explain what usually slows down web pages, and how I was able to improve the performance of my website.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: blog performance
 image: '/images/08-blazing-fast/bonfire.jpg'
 altText: 'Sparks coming from a bonfire, taken with a long exposure time.'
 ---

@@ -5,6 +5,7 @@ layout: post
 excerpt: 'Recently, I wanted to create and deploy a simple Slack bot. It turned out to be more difficult than I expected and I decided to write about why. I was expecting it to take me 30 minutes but it took me 8.5h.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: slack bot
 image: '/images/10-slack-bot/slack.png'
 altText: 'Slack logo'
 ---

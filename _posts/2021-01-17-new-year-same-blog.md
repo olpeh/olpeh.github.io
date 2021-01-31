@@ -5,6 +5,7 @@ layout: post
 excerpt: "It's 2021, and I thought it would be time to either finish my blog rewrite or try if the old setup would work."
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
+tags: blog
 image: '/images/13-new-year-same-blog/winter-2021.jpg'
 altText: 'Wintery scene with trees filled with snow and the moon in the background on a blue sky.'
 ---
