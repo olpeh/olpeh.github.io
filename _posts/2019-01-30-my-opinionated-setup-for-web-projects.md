@@ -5,7 +5,7 @@ layout: post
 excerpt: 'During the past few years, I have worked on multiple smaller and larger projects. In this blog post I explain my default project setup for a typical web frontend project.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-tags: setup typescript
+tags: setup typescript npm prettier testing
 image: '/images/05-project-setup/tools.png'
 altText: 'Tools'
 credits: 'Photo by Fleur Treurniet on Unsplash'
