@@ -1,21 +1,17 @@
 <div class="post-read-more">
   <h2>Read more about these topics</h2>
   <ul class="post-tags">
-    {% for tag in site.tags %}
-    <li>{{ tag[0] }}</li>
-    {% endfor %}
+    <!-- Create an empty array to add objects to: -->
+    {% assign postArray = '' | split: ',' %} {% for tag in page.tags %}
+    <li>{{ tag }}</li>
+    {% for post in site.tags[tag] %}
+    <!-- Push each post to the postArray. The array has to be defined as a variable again so it can be overwritten with the new objects: -->
+    {% assign postArray = postArray | push: post %} {% endfor %} {%endfor %}
   </ul>
 
-  <!-- Create an empty array to add objects to: -->
-  {% assign postArray = '' | split: ',' %}
-  <!-- Loop through the tags: -->
-  {% for tag in site.tags %} {% for post in tag[1] %}
-  <!-- Push each tag to the tagArray. The array has to be defined as a variable again so it can be overwritten with the new objects: -->
-  {% assign postArray = postArray | push: post %} {% endfor %} {%endfor %}
   <!-- Create a new array from the filtered array: -->
   {% assign uniqPosts = postArray | uniq %}
-
-  <!-- Loop through your filtered array to get unique tags: -->
+  <!-- Loop through your filtered array to get unique posts: -->
   <ul>
     {% for post in uniqPosts %}
     <li><a href="{{ post.url }}">{{ post.title }}</a></li>
