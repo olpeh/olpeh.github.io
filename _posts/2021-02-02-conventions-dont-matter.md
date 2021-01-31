@@ -5,7 +5,7 @@ layout: post
 excerpt: "Agreed conventions can make a huge difference in a team's performance. Successful development teams often have agreed on a set of conventions that tries to follow. However, you should not copy the conventions from others, because the conventions don’t matter."
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-tags: conventions teamwork best practises performance
+tags: conventions teamwork practises performance
 image: '/images/16-conventions/myway.jpg'
 altText: 'Photo of an ongoing renovation inside a building'
 credits: 'Photo by Rommel Davila on Unsplash'
