@@ -1,11 +1,11 @@
 ---
 title: 'Conventions Don’t Matter – What Matters Is Consistency'
-date: 2021-02-02 12:00:00 Z
+date: 2021-02-01 12:00:00 Z
 layout: post
-excerpt: "Agreed conventions can make a huge difference in a team's performance. Successful development teams often have agreed on a set of conventions that tries to follow. However, you should not copy the conventions from others, because the conventions don’t matter."
+excerpt: "Agreed conventions can make a huge difference in a team's performance. Successful development teams often have agreed on a set of conventions that everyone in the team tries to follow. However, you should not copy the conventions from others, because the conventions don’t matter."
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-tags: conventions teamwork practises performance
+tags: conventions teamwork practises
 image: '/images/16-conventions/myway.jpg'
 altText: 'Photo of an ongoing renovation inside a building'
 credits: 'Photo by Rommel Davila on Unsplash'
@@ -13,9 +13,9 @@ credits: 'Photo by Rommel Davila on Unsplash'
 
 ## Consistency Is the Key
 
-When working in a larger development team, it is important to have clear conventions for different aspects of the projects. Some of the conventions could be about the team’s ways of working, but most time consuming debates usually are about code style and coding conventions. I personally think that the conventions really don’t matter. What matters is that everyone follows the agreed conventions consistently.
+When working in a larger development team, it's important to have clear conventions for various aspects of the project. Some of the conventions could be about the team’s ways of working, such as code review processes, git practices and other topics. Most time consuming debates usually are about code style and coding conventions. I personally think that the conventions really don’t matter. What matters is that everyone follows the agreed conventions consistently.
 
-This is why code formatting tools, such as Prettier have become widely adopted and popular. Prettier puts an end to the non important discussions about coding style such as using or omitting semicolons trailing commas etc. in JavaScript or TypeScript projects. Prettier takes care of formatting the code and in your code reviews, you can focus on things that matter.
+This is also why code formatting tools, such as Prettier have become widely adopted and popular. Prettier puts an end to the non-important discussions about coding style, such as using or omitting semicolons or trailing commas and other useless discussions which are quite typical discussion in JavaScript or TypeScript projects. Prettier takes care of formatting the code, and in your code reviews, you can focus on things that matter.
 
 ### Why Conventions Are Needed
 
@@ -23,9 +23,9 @@ However, there's a lot more into conventions than code formatting. Especially wh
 
 ## Don't Blindly Copy Best Practises
 
-There are a lot of examples of long form best practices and conventions written up, which you can check out and adopt in your team as it suits your team. Something that works for others, may not work in your cause though. It is always best to agree on the conventions that work for your team and project. However, I would argue that the conventions themselves are unimportant. The only thing that matters is that everyone is following the same conventions and doing so consistently. Over time, the code base should remain somewhat uniform to the extent it is possible.
+There are a lot of examples of long form best practices and conventions written up, which you can check out and adopt in your team as it suits your team. Something that works for others, may not work in your cause though. It is always best to discuss together and agree on the conventions that work for your team and project. However, I would argue that the conventions themselves are unimportant. The only thing that matters is that everyone is following the same conventions and doing so consistently. Over time, the code base should remain somewhat uniform to the extent it is possible.
 
-You may think that is a bad idea, and stops innovation and adopting new trends and technologies. I dare to disagree. New conventions can be agreed on, and when a new convention is agreed on, it should be used in the codebase from that day on. Either by refactoring the whole code base to follow the new convention, which should be doable if the previous convention was followed carefully, or by using tools such as [phenomnomnominal/betterer](https://github.com/phenomnomnominal/betterer){:target="\_blank"}{:rel="noopener noreferrer"} to incrementally adopt a new convention, and stop anyone from adding new code that does not follow the newly agreed convention. It is equally important to document the agreed conventions and keep the documentation up-to-date over time.
+You may think that is a bad idea, and stops innovation and adopting new trends and technologies. I dare to disagree. New conventions can be agreed on, and when a new convention is agreed on, it should be used in the codebase from that day on. Either by refactoring the whole code base to follow the new convention, which should be doable if the previous convention was followed carefully, or by using tools such as [phenomnomnominal/betterer](https://github.com/phenomnomnominal/betterer){:target="\_blank"}{:rel="noopener noreferrer"} to incrementally adopt a new convention, and stop anyone from adding new code that does not follow the newly agreed convention. It is equally important to document the agreed conventions and keep the documentation up-to-date over time in addition to making sure everyone on the team hears about and understands the agreed conventions.
 
 ## Conventions Should Not Be Carved in Stone
 
@@ -33,4 +33,4 @@ A team's conventions should be evolving as the team evolves, learns something ne
 
 ## What Works for Your Team
 
-How are the conventions agreed on in your team? How do you document your conventions? What has been the most challenging topic to agree on? I would be interested to know that. You can reach out to me on [Twitter: @0lpeh](https://twitter.com/0lpeh/){:target="\_blank"}{:rel="noopener noreferrer"} or any other way that suits you best.
+How are the conventions agreed on in your team? How do you document your conventions? What has been the most challenging topic to agree on? I would be interested to know that. You can reach out to me on [Twitter: @0lpeh](https://twitter.com/0lpeh/){:target="\_blank"}{:rel="noopener noreferrer"} via DM or [by commenting on this Twitter thread](https://twitter.com/0lpeh/) or in any other way that suits you best.
