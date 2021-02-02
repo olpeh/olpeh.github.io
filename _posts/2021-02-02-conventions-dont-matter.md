@@ -7,7 +7,7 @@ author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 tags: conventions teamwork practises
 image: '/images/16-conventions/myway.jpg'
-altText: 'Photo of an ongoing renovation inside a building'
+altText: 'Photo of two signs that point to different directions. One says my way and the other one says highway.'
 credits: 'Photo by Rommel Davila on Unsplash'
 ---
 
