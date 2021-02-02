@@ -33,4 +33,4 @@ A team's conventions should be evolving as the team evolves, learns something ne
 
 ## What Works for Your Team
 
-How are the conventions agreed on in your team? How do you document your conventions? What has been the most challenging topic to agree on? I would be interested to know that. You can reach out to me on [Twitter: @0lpeh](https://twitter.com/0lpeh/){:target="\_blank"}{:rel="noopener noreferrer"} via DM or [by commenting on this Twitter thread](https://twitter.com/0lpeh/) or in any other way that suits you best.
+How are the conventions agreed on in your team? How do you document your conventions? What has been the most challenging topic to agree on? I would be interested to know that. You can reach out to me on [Twitter: @0lpeh](https://twitter.com/0lpeh/){:target="\_blank"}{:rel="noopener noreferrer"} via DM or by [commenting on this Twitter thread](https://twitter.com/0lpeh/status/1356532110056689665) or in any other way that suits you best.
