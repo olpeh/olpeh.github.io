@@ -1,6 +1,6 @@
 ---
 title: "Conventions Don't Matter – What Matters Is Consistency"
-date: 2021-02-01 12:00:00 Z
+date: 2021-02-02 12:00:00 Z
 layout: post
 excerpt: "Agreed conventions can make a huge difference in a team's performance. Successful development teams often have agreed on a set of conventions that everyone in the team tries to follow. However, you should not copy the conventions from others, because the conventions don’t matter."
 author: 'Olavi Haapala'
