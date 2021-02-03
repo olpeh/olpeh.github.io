@@ -303,8 +303,9 @@ footer nav a {
 }
 
 .post-tags {
-  margin-top: 8px;
+  margin-top: 16px;
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding-left: 0;
 }
@@ -316,11 +317,12 @@ footer nav a {
 .post-tags li {
   background-color: #27445a;
   color: #ffffff;
-  padding: 0 8px;
+  padding: 4px 8px;
+  margin: 8px;
 }
 
-.post-tags li:not(:first-of-type) {
-  margin-left: 16px;
+.post-tags li:first-of-type {
+  margin-left: 0;
 }
 
 @media screen and (max-width: 900px) {
