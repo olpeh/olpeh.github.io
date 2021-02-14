@@ -10,9 +10,9 @@ tags: estimating 90-90-rule
 
 ## Foreword
 
-You may have heard about the ninety-ninety rule in software engireening. This post intorduces my variation of the rule.
+You probably have heard about the ninety-ninety rule in software engireening. This post introduces my variation of the rule.
 
-The point of this blog post is not to scare you, but rather to help you understand why estimation is difficult and often fails. You may need to update your mental model for estimations. Unless you are a seasoned developer with lots of experience in estimating, my advice is to try to stay away from estimating if you can.
+The point of this blog post is not to scare you, but rather to help you understand why estimation is difficult and often fails. You may need to update your mental model for estimations because it's too easy to not consider all the non-coding related work in estimations. Unless you are a seasoned developer with lots of experience in estimating, my advice is to try to stay away from estimating if you can.
 
 ## The First Thing You Should Learn About Estimations
 
@@ -20,15 +20,15 @@ Estimating is **hard**.
 
 Estimating is **challenging**.
 
-Your estimates will probably be **too low**.
+Your estimates will be **too low**.
 
 Estimating is **difficult**.
 
 Estimating is **guessing**.
 
-Your estimations **will be wrong**.
+Your estimations will be **wrong**.
 
-**Double** or **triple** your initial estimates – quite often **π** is a nice multiplier and there are some theories behind it as well.
+**Double** or **triple** your initial estimates – quite often **π** is a nice multiplier and there are some theories behind this as well.
 
 You should probably try to **avoid having to do estimates** if possible.
 
@@ -62,11 +62,11 @@ My variation of the ninety-ninety rule is as it says in the title of this blog p
 >
 > — Olavi Haapala
 
-It is often way too easy to only think about the time spent coding a fix or a feature when doing estimations. However, based on my experience, that accounts only for the first 90% of the time – the other 90% remains. After you have coded something and opened a PR, there's still quite a lot of work remaining and you should be focusing on finaling one task all the way to prod before starting a new one.
+It is often too easy to only think about the time spent coding a fix or a feature when doing estimations. However, based on my experience, that accounts only for the first 90% of the time – the other 90% remains. After you have coded something and opened a PR, there's still quite a lot of work remaining before the task is completed. This is also why you should be focusing on finalizing one task all the way to prod before starting a new one.
 
 ### Abandoned PRs Are the Worst
 
-I have personally opened quite many PRs in open source libraries without taking into account the amount of work that remains after you open a PR. You most probably will receive some feedback about your code changes and need to modify the code. Additionally you might need to add more tests and documentation, and communicate about the changes. All of this, even if small changes and casual communication takes quite a lot of time and mental energy if nothing else.
+I have personally opened quite many PRs in open source libraries without taking into account the amount of work that remains after you open a PR. You most probably will receive some feedback about your code changes and need to modify the code. Additionally you might need to add more tests and documentation, and communicate about the changes. All of this, even if small changes and casual communication takes quite a lot of time and mental energy if nothing else. Some of my PRs have been left abandonded due to lack of time or motivation to work on the remaining 90% of the work.
 
 Opening a PR and then abandoning it might be a huge burden for the maintainers. They need to keep communicating with you, checking up with your PR and waiting for you to contribute to the remaining 90% of the work.
 
@@ -106,4 +106,4 @@ After you have implemented a fix, there are a few more things to take into accou
 
 I hope this blog post was at least somewhat useful to you.
 
-If you did not pick up anything else from this blog post, at least you can keep in mind that estimating is hard.
+If you did not pick up anything else from this blog post, at least you can keep in mind that estimating is hard and you should avoid doing it if you are able to choose.
