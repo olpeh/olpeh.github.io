@@ -35,6 +35,6 @@
 <script src="/js/quicklink.js" defer></script>
 <script>
   window.addEventListener("load", () => {
-    quicklink.listen();
+    quicklink.listen({ ignores: [/feed.xml/] });
   });
 </script>
