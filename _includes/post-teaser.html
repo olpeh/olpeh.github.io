@@ -12,10 +12,10 @@
     {% endif %}
     <div class="rest">
       <a class="post-full-page-link" href="{{ page.url }}">
-        <h2 class="post-title">{{ page.title }}</h2>
+        <h2 class="post-title">{{ page.title | escape }}</h2>
       </a>
       <div class="post-meta">
-        <p>{{ page.excerpt }}</p>
+        <p>{{ page.excerpt | escape }}</p>
         <hr />
         <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
         {% if page.updated %}

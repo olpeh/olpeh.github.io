@@ -192,6 +192,7 @@ article .post-content img {
 
 article .post-content img[src$=".jpg"],
 article .post-content img[src$=".jpeg"],
+article .post-content img[src$=".gif"],
 article .post-content img[src$=".png"] {
   box-shadow: 4px 4px 12px 0px #858888;
 }
