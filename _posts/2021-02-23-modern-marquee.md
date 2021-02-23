@@ -33,7 +33,7 @@ Here's an example for you, that should render this text as an element with scrol
 
 When implementing a `<marquee>`-like element using modern technologies, please bear in mind that you (probably) won’t need JS for the job outside of maybe using something like React to render the element.
 
-My example implementation is using React in a Next.js project, but I chose not to use JS to achieve the wanted result. It is often better to try to achieve as much as possible without CSS whenever feasible. JS is the root of all performance issues and especially when used for something that can be achieved using HTML and CSS only. I will probably write another blog post about this topic at a later point in time.
+My example implementation is using React in a Next.js project, but I chose not to use JS to achieve the wanted result. It is often better to try to achieve as much as possible without JS whenever feasible. JS is the root of all performance issues and especially when used for something that can be achieved using HTML and CSS only. I will probably write another blog post about this topic at a later point in time.
 
 ## Marquee Using CSS Only
 
