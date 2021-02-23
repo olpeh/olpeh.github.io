@@ -1,19 +1,21 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
+<title>
+  {% if page.title %}{{ page.title | escape }} – {% endif %}{{ site.title }}
+</title>
 <meta
   property="og:title"
-  content="{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}"
+  content="{% if page.title %}{{ page.title | escape }} – {% endif %}{{ site.title }}"
 />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta
   name="description"
-  content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{
+  content="{% if page.excerpt %}{{ page.excerpt | escape }}{% else %}{{
     site.description | strip_html
   }}{% endif %}"
 />
 <meta
-  content="{% if page.excerpt %}{{ page.excerpt }}{% else %}{{
+  content="{% if page.excerpt %}{{ page.excerpt | escape }}{% else %}{{
     site.description | strip_html
   }}{% endif %}"
   property="og:description"

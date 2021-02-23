@@ -10,9 +10,9 @@
     />
     {% endif %}
     <div class="rest">
-      <h1 class="post-title">{{ page.title }}</h1>
+      <h1 class="post-title">{{ page.title | escape }}</h1>
       <div class="post-meta">
-        <p>{{ page.excerpt }}</p>
+        <p>{{ page.excerpt | escape }}</p>
         <hr />
         <span class="date">{{ page.date | date: "%b %-d, %Y" }}</span>
         {% if page.updated %}
