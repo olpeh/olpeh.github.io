@@ -176,8 +176,6 @@ And now we can use these animations using the classes that Tailwind generates fo
 </article>
 ```
 
-And here's a link to a codepen with the above content and a functioning version of it.
-
 ## Accessibility Aspects
 
 Having animations and motion on a webpage can make some people feel physically ill or sick. That's why it is important that we as developers provide the users a way to opt-in to reduced motion. Many operating systems provide on option on the system level to set a `prefers reduced motion` setting, and you as a web developer can use that for reducing the motion using the [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion){:target="\_blank"}{:rel="noopener noreferrer"} media query.
