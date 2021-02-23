@@ -14,7 +14,7 @@ Marquee is a deprecated HTML element that renders scrolling content. For more in
 
 It is not recommended to use the `<marquee>` element even though it might still work and additionally in modern days, you rarely need anything like this. However, sometimes you do and you might need a solution to this using modern web technologies.
 
-Example `<marquee>` if your browsers still supports it:
+Example `<marquee>` if your browser still supports it:
 <marquee>
 Here's an example for you, that should render this text as an element with scrolling text if your browser still supports these.
 </marquee>
