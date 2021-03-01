@@ -5,7 +5,7 @@ layout: post
 excerpt: '<marquee> is deprecated and should not be used, but sometimes you need similar functionality even in modern web development.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-tags: marquee CSS animations A11Y
+tags: marquee CSS animations accessibility
 ---
 
 ## What Even Is/Was marquee?
