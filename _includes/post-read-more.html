@@ -20,7 +20,9 @@ in site.tags[tag] %}
   <ul>
     {% for post in uniqPosts %}
     <li>
-      <a href="{{ post.url }}" title="{{post.excerpt}}">{{ post.title }} </a>
+      <a href="{{ post.url }}" title="{{post.excerpt}}"
+        >{{ post.title | escape }}
+      </a>
       – <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span>
     </li>
     {% endfor %}
