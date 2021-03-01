@@ -21,19 +21,19 @@ This is similar to the situation described by Abraham Maslow in 1966:
 >
 > – [Wikipedia: Law of the instrument](https://en.wikipedia.org/wiki/Law_of_the_instrument){:target="\_blank"}{:rel="noopener noreferrer"}
 
-**Note:** In this blog post, I'm only talking about JS even though I'm mostly using TS at my projects – it ends up as JS after compilation anyways.
+**Note:** In this blog post, I'm only talking about JS even though I'm mostly using TS in my projects – it ends up as JS after compilation anyways.
 
 ### What to Take into Account When Implementing UI
 
-This mindset of using JS for everything causes unnecessary processing that needs to be run on your end users' devices as unnecessary client-side JS. All the JS on a website needs to be downloaded, parsed and executed. This is quite often the cause of slow and unresponsive websites on low-end mobile devices or slow network speeds.
+This mindset of using JS for everything causes unnecessary processing that needs to be run on your end users' devices as client-side JS. All the JS resources on a website need to be downloaded, parsed and executed by the web browser. This is quite often the cause of slow and unresponsive websites on low-end mobile devices or slow network speeds.
 
-#### How you should be thinking instead:
+#### How You Should Be Thinking Instead:
 
 1. Can this be done in HTML?
 1. If not, can I solve it with HTML + CSS?
 1. And if nothing else works, the solution probably requires a minimal amount of JS in addition to HTML and CSS
 
-This way of thinking is not about what is easiest for you as a developer. You may be a JavaScript focused frontend developer, and solving most of your problems with it feels natural for you. However, you should be thinking about your end users. Client-side JS is the single biggest problem when it comes to web performance. You can read some of my thoughts on web performance from my other blog posts. You can find links at [the bottom of this page](#also-read-these).
+This way of thinking is not about what is easiest for you as a developer. You may be a JavaScript focused frontend developer, and solving most of your problems with it feels natural for you. However, you should be thinking about your end users. Client-side JS is the single biggest problem when it comes to web performance. You can read some of my thoughts on web performance from my other blog posts. You can find some links at [the bottom of this page](#also-read-these).
 
 ### 1. Can This Be Done in HTML?
 
@@ -41,21 +41,23 @@ Plan and implement the basic structure and semantics of the feature in plain HTM
 
 ### 2. Try to Solve It with HTML + CSS
 
-Use CSS to apply the additional styling that is required, still keeping the semantics and accessibility in my mind. If some additional interactivity is required in the particular piece of UI you are building, go to step 3.
+Use CSS to apply the additional styling or animation that is required, still keeping the semantics and accessibility in my mind. If some additional interactivity is required in the particular piece of UI you are building, go to step 3.
 
 ### 3. Use HTML + CSS + JS
 
 Add the minimum amount of JS required to fulfill the requirements. Keep in mind that something that can be solved without JS should probably be solved without JS.
 
-When you’re done, show your code to your colleagues and let them review it. Perhaps there is still something unnecessary parts in your code, that could be solved without having a client-side JS cost on your users.
+When you’re done, show your code to your colleagues and let them review it. Perhaps there is still something unnecessary parts in your code, that could be solved without having a client-side JS cost for your users.
 
-## Silly Example
+## Simple Example
 
-This problem applies to almost anything in web frontend development, but here is a silly practical example to prove my point. Imagine you are working on a React project, and you would be working on a feature that has some UI parts that would only be visible after a certain delay, let's say after 2s.
+This problem applies to almost anything in web frontend development, but here is a simple practical example that should help me prove my point.
+
+Imagine you are working on a React project, and you are working on a feature that has some UI parts that should only become visible after a certain delay, let's say after 2s.
 
 ### Using React Hooks
 
-If you are used to solving your problems with React, using React Hooks, your initial solution could look something like this:
+If you are used to solving your problems with React and Hooks, your initial solution could look something like this:
 
 ```tsx
 const [thingVisible, setThingVisible] = useState(false);
@@ -73,15 +75,19 @@ useEffect(() => {
 return thingVisible ? <section>Here's a thing for you!</section> : null;
 ```
 
-This is fine and works. Probably you notice no difference in performance either on your ultra powerful developer machine. And probably there is no real performance issue in this case. But imagine if these pile up and suddenly you would have tens or hundreds of similar unnecessary JS computations to be run on the client-side.
+This is fine and works. Probably you notice no difference in performance either on your hyper powerful developer machine. And probably, there is no real performance issue in this case. But imagine if these pile up and suddenly you would have tens or hundreds of similar unnecessary JS computations to be run on the client-side or some larger and longer executions that are taking place.
 
 ### Using HTML + CSS Animation
 
-However, you can animate content to appear on the page with a delay using CSS animations and `animation-delay`. This is supported by all browsers and could even have a better end user experience as you could fade the content in or use any other ways of making the content appear more smoothly.
+Using CSS, you can animate content to appear on the page with a delay using CSS animations and `animation-delay`. This is supported by all browsers and could even have a better end user experience as you could fade the content in or use any other ways of making the content appear more smoothly.
+
+**The HTML:**
 
 ```html
 <section class="fade-in">Here's a thing for you!</section>
 ```
+
+**The CSS:**
 
 ```css
 .fade-in {
@@ -100,21 +106,22 @@ However, you can animate content to appear on the page with a delay using CSS an
 }
 ```
 
-## Don’t use CSS for what you can do with HTML
+## Don’t Use CSS for What You Can Do with HTML
 
 Similarly, don’t do something with CSS that you could and should be doing in HTML.
 
-An extreme example of this was that we had accidentally been using margins to separate two words from each others, instead of using a space in between words!
+An extreme example of this was that we had accidentally been using margins to separate two words from each other, instead of using a space in between the words!
 
 This was obviously not a good idea from at least the following perspectives:
 
 - It might not follow the font size, letter spacing etc.
 - It is not needed, waste of effort and processing
+- If someone would need to copy the text, there would be no space in between the words
 
 ## Frontend Development Is Not Easy
 
-Web frontend development is not an easy topic to master. It requires some experience and understanding the whole picture in order to be able to solve the right problems on the right level using the right tools. Solving something on the frontend has many levels and details baked in.
+Web frontend development is not an easy topic to master. It is something you can get started with quite rapidly, but mastering it requires some level of experience and understanding the whole picture in order to be able to solve the right problems on the right level using the right tools. Solving something on the frontend has many levels and details baked in it.
 
-Additionally, you'll need to understand when a problem should be solved on the backend instead of on the frontend for various reasons such as performance and usability.
+Additionally, you'll need to understand when a problem should be solved on the backend instead of the frontend for various reasons such as performance, usability or maintainability among others.
 
 However, keep in mind that sometimes you don't need to try to reach for a perfect solution and something that works might be good enough to be shipped to production and to be used by your end users.
