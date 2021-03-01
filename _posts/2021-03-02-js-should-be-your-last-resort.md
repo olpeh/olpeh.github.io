@@ -2,7 +2,7 @@
 title: 'JavaScript Should Be Your Last Resort'
 date: 2021-03-02 12:00:00 Z
 layout: post
-excerpt: 'Client side JavaScript is the single biggest reason for slow websites. It should be avoided and only used cautiously if nothing else works.'
+excerpt: 'Client-side JavaScript is the single biggest reason for slow websites. It should be avoided and only used cautiously if nothing else works.'
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
 tags: performance HTML CSS JS
@@ -21,11 +21,11 @@ This is similar to the situation described by Abraham Maslow in 1966:
 >
 > – [Wikipedia: Law of the instrument](https://en.wikipedia.org/wiki/Law_of_the_instrument){:target="\_blank"}{:rel="noopener noreferrer"}
 
-**Note:** In this blog post, I'm only talking about JS even though I'm mostly using TS at my projects – it ends up as JS after compilation any ways.
+**Note:** In this blog post, I'm only talking about JS even though I'm mostly using TS at my projects – it ends up as JS after compilation anyways.
 
 ### What to Take into Account When Implementing UI
 
-This mindset of using JS for everything causes unnecessary processing that needs to be run on your end users' devices as unnecessary client side JS, that needs to be downloaded, parsed and executed. This is quite often the cause of slow and unresponsive websites on low-end mobile devices or slow network speeds.
+This mindset of using JS for everything causes unnecessary processing that needs to be run on your end users' devices as unnecessary client-side JS. All the JS on a website needs to be downloaded, parsed and executed. This is quite often the cause of slow and unresponsive websites on low-end mobile devices or slow network speeds.
 
 #### How you should be thinking instead:
 
@@ -33,7 +33,7 @@ This mindset of using JS for everything causes unnecessary processing that needs
 1. If not, can I solve it with HTML + CSS?
 1. And if nothing else works, the solution probably requires a minimal amount of JS in addition to HTML and CSS
 
-This way of thinking is not about what is easiest for you as a developer. You may be a JavaScript focused frontend developer, and solving most of your problems with it feels natural for you. However, you should be thinking about your end users. Client side JS is the single biggest problem when it comes to web performance. You can read some of my thoughts on web performance from my other blog posts. Links at the end of this post.
+This way of thinking is not about what is easiest for you as a developer. You may be a JavaScript focused frontend developer, and solving most of your problems with it feels natural for you. However, you should be thinking about your end users. Client-side JS is the single biggest problem when it comes to web performance. You can read some of my thoughts on web performance from my other blog posts. You can find links at [the bottom of this page](#also-read-these).
 
 ### 1. Can This Be Done in HTML?
 
@@ -47,7 +47,7 @@ Use CSS to apply the additional styling that is required, still keeping the sema
 
 Add the minimum amount of JS required to fulfill the requirements. Keep in mind that something that can be solved without JS should probably be solved without JS.
 
-When you’re done, show your code to your colleagues and let them review it. Perhaps there is still something unnecessary parts in your code, that could be solved without having a client side JS cost on your users.
+When you’re done, show your code to your colleagues and let them review it. Perhaps there is still something unnecessary parts in your code, that could be solved without having a client-side JS cost on your users.
 
 ## Silly Example
 
@@ -73,7 +73,7 @@ useEffect(() => {
 return thingVisible ? <section>Here's a thing for you!</section> : null;
 ```
 
-This is fine and works. Probably you notice no difference in performance either on your ultra powerful developer machine. And probably there is no real performance issue in this case. But imagine if these pile up and suddenly you would have tens or hundreds of similar unnecessary JS computations to be run on the client side.
+This is fine and works. Probably you notice no difference in performance either on your ultra powerful developer machine. And probably there is no real performance issue in this case. But imagine if these pile up and suddenly you would have tens or hundreds of similar unnecessary JS computations to be run on the client-side.
 
 ### Using HTML + CSS Animation
 

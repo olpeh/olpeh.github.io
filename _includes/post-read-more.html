@@ -11,7 +11,7 @@ in site.tags[tag] %}
 uniqPosts | size | minus:1 }} {% endcapture %} {% unless difference contains '-'
 %}
 <hr />
-<section class="post-read-more">
+<section id="also-read-these" class="post-read-more">
   <h2>Read more about these topics</h2>
   <ul class="post-tags">
     {% for tag in page.tags %}
