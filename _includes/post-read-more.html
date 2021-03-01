@@ -7,8 +7,9 @@ in site.tags[tag] %}
 {% assign postArray = postArray | push: post %} {% endunless %} {% endfor %}
 {%endfor %}
 <!-- Create a new array from the filtered array: -->
-{% assign uniqPosts = postArray | uniq %} {% capture difference %} {{ uniqPosts
-| size | minus:1 }} {% endcapture %} {% unless difference contains '-' %}
+{% assign uniqPosts = postArray | uniq | reverse %} {% capture difference %} {{
+uniqPosts | size | minus:1 }} {% endcapture %} {% unless difference contains '-'
+%}
 <hr />
 <section class="post-read-more">
   <h2>Read more about these topics</h2>
