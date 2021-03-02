@@ -21,6 +21,10 @@ This is similar to the situation described by Abraham Maslow in 1966:
 >
 > – [Wikipedia: Law of the instrument](https://en.wikipedia.org/wiki/Law_of_the_instrument){:target="\_blank"}{:rel="noopener noreferrer"}
 
+![Photo of a hammer about to hit some nails]({{ "/images/20-js/fausto.jpg" | prepend: site.baseurl }})
+
+<span>Photo by <a href="https://unsplash.com/@faustomarques?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Fausto Marqués</a> on <a href="https://unsplash.com/s/photos/hammer-fausto-marques?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
 **Note:** In this blog post, I'm only talking about JS even though I'm mostly using TS in my projects – it ends up as JS after compilation anyways.
 
 ### What to Take into Account When Implementing UI
