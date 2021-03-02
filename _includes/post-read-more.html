@@ -7,10 +7,11 @@ in site.tags[tag] %}
 {% assign postArray = postArray | push: post %} {% endunless %} {% endfor %}
 {%endfor %}
 <!-- Create a new array from the filtered array: -->
-{% assign uniqPosts = postArray | uniq %} {% capture difference %} {{ uniqPosts
-| size | minus:1 }} {% endcapture %} {% unless difference contains '-' %}
+{% assign uniqPosts = postArray | uniq | reverse %} {% capture difference %} {{
+uniqPosts | size | minus:1 }} {% endcapture %} {% unless difference contains '-'
+%}
 <hr />
-<section class="post-read-more">
+<section id="also-read-these" class="post-read-more">
   <h2>Read more about these topics</h2>
   <ul class="post-tags">
     {% for tag in page.tags %}
@@ -20,7 +21,9 @@ in site.tags[tag] %}
   <ul>
     {% for post in uniqPosts %}
     <li>
-      <a href="{{ post.url }}" title="{{post.excerpt}}">{{ post.title }} </a>
+      <a href="{{ post.url }}" title="{{post.excerpt}}"
+        >{{ post.title | escape }}
+      </a>
       – <span class="date">{{ post.date | date: "%b %-d, %Y" }}</span>
     </li>
     {% endfor %}
