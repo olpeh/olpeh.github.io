@@ -96,6 +96,7 @@ Using CSS, you can animate content to appear on the page with a delay using CSS 
   animation-delay: 2s;
   animation-fill-mode: forwards;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
