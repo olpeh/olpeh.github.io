@@ -11,19 +11,24 @@ altText: 'A red and white stop signage in front of a sea view.'
 credits: 'Photo by Christian Buehner on Unsplash'
 ---
 
-Making a website accessible is challenging and requires a big effort from the developers and designers. Ideally, accessibility should be considered already at the very early stages of a project.
+Making a website accessible is challenging and requires a big effort from the whole team including developers and designers. Ideally, accessibility should be considered already at the very early stages of a project instead of trying to "fix" it afterwards when in fact it's already too late.
 
-Accessibility is not black and white either. You can not say that one website is accessible and another is not. It's about **how** well and easily accessible the website is.
+Accessibility is not a simple binary feature of a website either. You can't say that one website is accessible and another one is not. It's actually all about **how** well and easily accessible the website is.
 
-Creating accessible websites may sound like an straightforward engineering task, but it requires a lot of attention to details and knowledge about how the web works and how different users browse the web. However accessibility is not rocket science, if you take it into consideration all the way from the very beginning of the project including the design and concepting phase of the project. Additionally, you can get quite far by using the native semantic HTML elements correctly. They are mostly designed to be accessible to everyone.
+Creating accessible websites may sound like a straightforward engineering task, but it requires a lot of attention to details and knowledge about how the web works and how different users browse the web. However accessibility is not rocket science, if you take it into consideration all the way from the very beginning of the project including the design and concepting phase of the project.
+
+Additionally, you can get quite far by using semantic HTML and native input elements (don't forget labels!). They are mostly designed to be accessible to everyone. However, this blog post is not about **how** to create an accessible website.
 
 ## Accessibility Is Never Done
 
 You should never think that you are done with accessibility. Saying your site is accessible and you are done with accessibility is like saying that cutting the grass is done. It will soon need to be cut again.
 
+![Moist grass in the sunset]({{ "/images/21-a11y/grass.jpg" | prepend: site.baseurl }})
+<span>Photo by <a href="https://unsplash.com/@jweckschmied?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jonas Weckschmied</a> on <a href="https://unsplash.com/s/photos/grass?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
 There will always be some parts of the project that could still be improved, some technologies might evolve and the conventions and guidelines may change over time. The dependencies of your project may introduce new bugs and accessibility violations and you yourself or anyone else on the team may accidentally make the accessibility worse. Projects are evolving over time and you should keep a close eye on accessibility in order to not make it worse.
 
-The same goes for web performance. In this sense, web accessibility and web performance go quite nicely hand-in-hand. Making a website perform well and fast means it becomes more accessible to people on low-end devices or slow networks either temporarily or permanently. Website performance should also be monitored and improved over time in order to not make it worse.
+The same goes for web performance. In this sense, web accessibility and web performance go quite nicely hand-in-hand. Making a website perform well and fast means it becomes more accessible to people on low-end devices or slow networks either temporarily or permanently. Similarly to accessibility, web performance should also be monitored and improved over time in order to not make it worse.
 
 ## Automating Is Not a Silver Bullet
 
