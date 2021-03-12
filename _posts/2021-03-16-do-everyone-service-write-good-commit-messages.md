@@ -63,7 +63,7 @@ A large pull request should be split into smaller, meaningful commits with clear
 
 ### Something That's Obvious Now Is Not Obvious Later
 
-When working on some features in a codebase, you have quite a lot of implicit context and knowledge in your head. This is something that may be obvious while working on it, but later on it probably isn't obvious anymore. When coming back to some peace of code after a while, you'll want to see clear and informative commit messages.
+When working on some features in a codebase, you have quite a lot of implicit context and knowledge in your head. This is something that may be obvious while working on it, but later on it probably isn't obvious anymore. When coming back to some piece of code after a while, you'll want to see clear and informative commit messages.
 
 ### Commit Messages Can Be Used for Announcements
 
