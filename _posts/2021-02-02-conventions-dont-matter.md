@@ -5,7 +5,7 @@ layout: post
 excerpt: "Agreed conventions can make a huge difference in a team's performance. Successful development teams often have agreed on a set of conventions that everyone in the team tries to follow. However, you should not copy the conventions from others, because the conventions don’t matter."
 author: 'Olavi Haapala'
 author_twitter: '0lpeh'
-tags: conventions teamwork practises
+tags: conventions teamwork practices
 image: '/images/16-conventions/myway.jpg'
 altText: 'Photo of two signs that point to different directions. One says my way and the other one says highway.'
 credits: 'Photo by Rommel Davila on Unsplash'
@@ -21,7 +21,7 @@ This is also why code formatting tools, such as Prettier have become widely adop
 
 However, there's a lot more into conventions than code formatting. Especially when using general purpose languages such as JavaScript or TypeScript or libraries such as React. There often are multiple ways of handling different scenarios in the code base. Sometimes developers working simultaneously on different branches implementing different features, but technically speaking solving a similar problem, may end up solving the problem in vastly different ways. Often, it is impossible to say that one of the ways is wrong and the other one not. What matters is that the coding conventions are consistent. This is why the team needs to agree on the conventions and then enforce them and train everyone in the team to follow the agreed conventions.
 
-## Don't Blindly Copy Best Practises
+## Don't Blindly Copy Best Practices
 
 There are a lot of examples of long form best practices and conventions written up, which you can check out and adopt in your team as it suits your team. Something that works for others, may not work in your cause though. It is always best to discuss together and agree on the conventions that work for your team and project. However, I would argue that the conventions themselves are unimportant. The only thing that matters is that everyone is following the same conventions and doing so consistently. Over time, the code base should remain somewhat uniform to the extent it is possible.
 
