@@ -122,7 +122,7 @@ Refactoring should happen in small phases and not in a big bang refactoring. I e
 
 There is a lot of duplication in the codebase, so one option would be to start getting rid of those piece by piece and after that start transforming the codebase oto a more recommended way of building UI applications in Qt. However, I most probably never will do this. Instead I would probably start from scratch and build a new version that would be better designed both from the technical perspective and the UX and UI perspectives.
 
-## Don’t Start with Advanced Features Too Early
+### Don’t Start with Advanced Features Too Early
 
 I made the mistake of implementing some advanced features such as email export, database export, CSV export and import as well. This led into more complex maintenance since I had to try to keep this in mind when thinking about fixing something or adding more features. Everything needed now to be backwards compatible and I tried to make sure importing a database dump would work even across different versions of the application.
 
