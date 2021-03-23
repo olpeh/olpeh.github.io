@@ -62,11 +62,12 @@ The database design basically did not exist at all. No foreign keys are used. Li
 And did I mention the format the 2014-version-me decided to save the hour markings in?
 
 The hours markings are saved in the following format (simplified):
-Date as TEXT
-startTime as TEXT (HH:MM!)
-endTime as TEXT (HH:MM!)
-Duration as REAL
-Breakduration as REAL
+
+- Date as TEXT
+- startTime as TEXT (HH:MM!)
+- endTime as TEXT (HH:MM!)
+- Duration as REAL
+- Breakduration as REAL
 
 Why on earth did I want to save the startTime as a “HH:MM” string? You might realize what kind of issues this kind of crappy database design has led into. If I could go back in time I would change the database to at least save these as unix timestamps or datetimes.
 
