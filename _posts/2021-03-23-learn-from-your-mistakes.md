@@ -87,7 +87,7 @@ Even if a good level of testing is done, your users will end up in some weird co
 
 Managing release notes and releases in different platforms etc. takes surprisingly much effort. This is something you might want to consider automating as much as possible.
 
-Current [release instructions for this project](ttps://github.com/olpeh/wht#releasing){:target="\_blank"}{:rel="noopener noreferrer"} consist of a list of 15 steps to go through when releasing a new version, and the release notes need to be copied to at least a few places.
+Current [release instructions for this project](https://github.com/olpeh/wht#releasing){:target="\_blank"}{:rel="noopener noreferrer"} consist of a list of 15 steps to go through when releasing a new version, and the release notes need to be copied to at least a few places.
 
 Additionally, you might not want to list all of the features in the app in the documentation. I mean what’s the point? And especially, don’t do this in multiple places and services. Don’t do like I did.
 
