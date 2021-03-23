@@ -71,7 +71,7 @@ The hours markings are saved in the following format (simplified):
 
 Why on earth did I want to save the startTime as a “HH:MM” string? You might realize what kind of issues this kind of crappy database design has led into. If I could go back in time I would change the database to at least save these as unix timestamps or datetimes.
 
-This in addition to custom home made code for handling durations and displaying those as “HH:MM” is also why I ended up having bugs like [this reported by a user](https://github.com/olpeh/wht/issues/66){:target="\_blank"}{:rel="noopener noreferrer"}, displaying the time displayed as "150:60".
+This in addition to custom home made code for handling durations and displaying those as “HH:MM” is also why I ended up having [bugs like this reported by a user](https://github.com/olpeh/wht/issues/66){:target="\_blank"}{:rel="noopener noreferrer"}, displaying the time displayed as "150:60".
 
 ### Testing
 
