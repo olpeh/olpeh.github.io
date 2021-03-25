@@ -100,11 +100,12 @@ This has become especially clear now when the project has not been in active dev
 ![Screenshot of the above linked code lines in GitHub, with the following contents: TODO: Why did I do it like this earlier? Plz refactor this Why did I comment like that?]({{ "/images/23-learn/todo.png" | prepend: site.baseurl }})
 
 Something that I have learned is the importance of the following levels of documentation:
-Readme, instructions how to get started etc.
-Testing instructions
-Release / deployment instructions, with enough detail
-Good commit messages
-Clear and good code comments where needed
+
+- Readme, instructions how to get started etc.
+- Testing instructions
+- Release / deployment instructions, with enough detail
+- Good commit messages
+- Clear and good code comments where needed
 
 ### Managing Internationalization
 
